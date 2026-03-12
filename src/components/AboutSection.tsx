@@ -30,14 +30,13 @@ const AboutSection = () => {
               fill="url(#hexGradient)"
               stroke="#00C8C8"
               strokeWidth="1"
-              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
             />
           </svg>
           {/* Logo Inside */}
           <img 
             src={aiftHexagonLogo} 
             alt="AIFT" 
-            className="absolute inset-0 w-32 h-32 lg:w-44 lg:h-44 m-auto object-contain" 
+            className="absolute inset-0 w-32 h-32 lg:w-44 lg:h-44 m-auto object-contain drop-shadow-lg" 
           />
         </div>
 
