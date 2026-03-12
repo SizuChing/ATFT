@@ -176,11 +176,11 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "Smart Contract Trading × AI Automation",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     "about.label": "ABOUT AIFT",
     "about.title": "AI-Driven Intelligent Financial Ecosystem",
-    "about.desc": "AI Financial Technology Ltd. (AIFT) is a fintech company specializing in AI-powered automated trading technology, leveraging our 4th-generation quantitative AI engine to deliver comprehensive intelligent trading solutions for investors.",
+    "about.desc": "Al Financial Technologies Ltd. (AIFT) is a fintech company specializing in AI-powered automated trading technology, leveraging our 4th-generation quantitative AI engine to deliver comprehensive intelligent trading solutions for investors.",
     "about.feat1.title": "4th-Gen Quantitative AI",
     "about.feat1.desc": "Five synergistic mechanisms running simultaneously",
     "about.feat2.title": "Multi-Market Analysis",
