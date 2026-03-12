@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <img src={aiftLogo} alt="AIFT" className="h-8" />
             <p className="text-white-40 text-xs mt-2 leading-relaxed">
-              AI Financial Technology Ltd.<br />{t("footer.brand.desc")}
+              Al Financial Technologies Ltd.<br />{t("footer.brand.desc")}
             </p>
           </div>
           <div>

@@ -14,12 +14,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Hero
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "智能合約交易系統 × AI 自動化交易",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     // About
     "about.label": "ABOUT AIFT",
     "about.title": "AI 驅動的智能金融生態系統",
-    "about.desc": "AI Financial Technology Ltd.（AIFT）是一家專注於人工智慧自動化交易技術的金融科技公司，結合第四代量化 AI 引擎，為投資者提供全方位的智能交易解決方案。",
+    "about.desc": "Al Financial Technologies Ltd.（AIFT）是一家專注於人工智慧自動化交易技術的金融科技公司，結合第四代量化 AI 引擎，為投資者提供全方位的智能交易解決方案。",
     "about.feat1.title": "第四代量化 AI",
     "about.feat1.desc": "五大協同機制同時運行",
     "about.feat2.title": "多市場聯動分析",
@@ -161,7 +161,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB 合作",
     "footer.link.ecbManual": "ECB 操作手冊",
     "footer.risk": "⚠️ 風險警示：加密貨幣交易具有高度風險，價格波動劇烈，可能導致部分或全部投資損失。過去的表現不代表未來的結果。請根據您的風險承受能力謹慎投資，並在必要時諮詢專業財務顧問。",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 
@@ -176,11 +176,11 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "Smart Contract Trading × AI Automation",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     "about.label": "ABOUT AIFT",
     "about.title": "AI-Driven Intelligent Financial Ecosystem",
-    "about.desc": "AI Financial Technology Ltd. (AIFT) is a fintech company specializing in AI-powered automated trading technology, leveraging our 4th-generation quantitative AI engine to deliver comprehensive intelligent trading solutions for investors.",
+    "about.desc": "Al Financial Technologies Ltd. (AIFT) is a fintech company specializing in AI-powered automated trading technology, leveraging our 4th-generation quantitative AI engine to deliver comprehensive intelligent trading solutions for investors.",
     "about.feat1.title": "4th-Gen Quantitative AI",
     "about.feat1.desc": "Five synergistic mechanisms running simultaneously",
     "about.feat2.title": "Multi-Market Analysis",
@@ -315,7 +315,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB Partnership",
     "footer.link.ecbManual": "ECB Manual",
     "footer.risk": "⚠️ Risk Warning: Cryptocurrency trading carries high risks with severe price volatility, which may result in partial or total loss of investment. Past performance does not guarantee future results. Please invest cautiously according to your risk tolerance and consult a professional financial advisor when necessary.",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 
@@ -330,11 +330,11 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "スマートコントラクト取引 × AI 自動売買",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     "about.label": "ABOUT AIFT",
     "about.title": "AI駆動のスマート金融エコシステム",
-    "about.desc": "AI Financial Technology Ltd.（AIFT）は、AI自動売買技術に特化したフィンテック企業です。第4世代クオンツAIエンジンを活用し、投資家に包括的なスマート取引ソリューションを提供します。",
+    "about.desc": "Al Financial Technologies Ltd.（AIFT）は、AI自動売買技術に特化したフィンテック企業です。第4世代クオンツAIエンジンを活用し、投資家に包括的なスマート取引ソリューションを提供します。",
     "about.feat1.title": "第4世代クオンツAI",
     "about.feat1.desc": "5つの協調メカニズムが同時稼働",
     "about.feat2.title": "マルチマーケット分析",
@@ -469,7 +469,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB提携",
     "footer.link.ecbManual": "ECBマニュアル",
     "footer.risk": "⚠️ リスク警告：暗号通貨取引は高いリスクを伴い、価格変動が激しく、投資額の一部または全額を失う可能性があります。過去の実績は将来の結果を保証するものではありません。ご自身のリスク許容度に応じて慎重に投資し、必要に応じて専門の財務アドバイザーにご相談ください。",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 };
