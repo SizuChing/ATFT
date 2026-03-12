@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import aiftLogo from "@/assets/aift-logo.png";
 import type { Locale } from "@/i18n/translations";
 
 const navLinks = [
@@ -38,7 +39,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center gap-3">
-          <span className="font-display text-2xl tracking-wider text-foreground">AIFT</span>
+          <img src={aiftLogo} alt="AIFT" className="h-8" />
           <span className="hidden sm:block text-white-40 text-xs">AI Financial Technology Ltd.</span>
         </div>
 

@@ -1,5 +1,6 @@
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
+import aiftLogo from "@/assets/aift-logo.png";
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -25,9 +26,7 @@ const HeroSection = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-8 pt-[70px]">
         <div className="hidden lg:block lg:w-[50%]" />
         <div className="w-full lg:w-[50%] flex flex-col items-center lg:items-end text-center lg:text-right">
-          <h1 className="font-display text-[80px] sm:text-[100px] lg:text-[140px] leading-none tracking-wider text-foreground drop-shadow-lg">
-            AIFT
-          </h1>
+          <img src={aiftLogo} alt="AIFT" className="w-[280px] sm:w-[360px] lg:w-[480px] drop-shadow-lg" />
           <p className="text-sm sm:text-base tracking-[3px] text-white-80 mt-2">
             {t("hero.subtitle")}
           </p>
