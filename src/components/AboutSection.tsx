@@ -17,7 +17,7 @@ const AboutSection = () => {
     <section id="about" className="py-20 lg:py-32 px-6 lg:px-12">
       <div ref={ref} className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 opacity-0">
         <div className="flex-shrink-0 flex items-center justify-center">
-          <svg className="w-48 h-48 lg:w-64 lg:h-64 animate-pulse-glow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-48 h-48 lg:w-64 lg:h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="hexFill" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#00C8C8" stopOpacity="0.2" />
