@@ -330,11 +330,11 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "スマートコントラクト取引 × AI 自動売買",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     "about.label": "ABOUT AIFT",
     "about.title": "AI駆動のスマート金融エコシステム",
-    "about.desc": "AI Financial Technology Ltd.（AIFT）は、AI自動売買技術に特化したフィンテック企業です。第4世代クオンツAIエンジンを活用し、投資家に包括的なスマート取引ソリューションを提供します。",
+    "about.desc": "Al Financial Technologies Ltd.（AIFT）は、AI自動売買技術に特化したフィンテック企業です。第4世代クオンツAIエンジンを活用し、投資家に包括的なスマート取引ソリューションを提供します。",
     "about.feat1.title": "第4世代クオンツAI",
     "about.feat1.desc": "5つの協調メカニズムが同時稼働",
     "about.feat2.title": "マルチマーケット分析",
