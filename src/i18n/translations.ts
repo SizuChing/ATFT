@@ -14,12 +14,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     // Hero
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "智能合約交易系統 × AI 自動化交易",
-    "hero.brand": "AI Financial Technology Ltd.",
+    "hero.brand": "Al Financial Technologies Ltd.",
 
     // About
     "about.label": "ABOUT AIFT",
     "about.title": "AI 驅動的智能金融生態系統",
-    "about.desc": "AI Financial Technology Ltd.（AIFT）是一家專注於人工智慧自動化交易技術的金融科技公司，結合第四代量化 AI 引擎，為投資者提供全方位的智能交易解決方案。",
+    "about.desc": "Al Financial Technologies Ltd.（AIFT）是一家專注於人工智慧自動化交易技術的金融科技公司，結合第四代量化 AI 引擎，為投資者提供全方位的智能交易解決方案。",
     "about.feat1.title": "第四代量化 AI",
     "about.feat1.desc": "五大協同機制同時運行",
     "about.feat2.title": "多市場聯動分析",
