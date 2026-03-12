@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div>
-            <span className="font-display text-2xl text-foreground tracking-wider">AIFT</span>
+            <img src={aiftLogo} alt="AIFT" className="h-8" />
             <p className="text-white-40 text-xs mt-2 leading-relaxed">
               AI Financial Technology Ltd.<br />{t("footer.brand.desc")}
             </p>
