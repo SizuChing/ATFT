@@ -17,15 +17,7 @@ const AboutSection = () => {
     <section id="about" className="py-20 lg:py-32 px-6 lg:px-12">
       <div ref={ref} className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 opacity-0">
         <div className="flex-shrink-0 flex items-center justify-center">
-          <div
-            className="w-48 h-48 lg:w-64 lg:h-64 flex items-center justify-center animate-pulse-glow rounded-2xl"
-            style={{
-              background: "linear-gradient(135deg, hsl(270 100% 8%), hsl(270 70% 33%))",
-              clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-            }}
-          >
-            <span className="font-display text-5xl lg:text-6xl text-foreground tracking-wider">AIFT</span>
-          </div>
+          <img src={aiftHexagon} alt="AIFT" className="w-48 h-48 lg:w-64 lg:h-64 animate-pulse-glow object-contain" />
         </div>
 
         <div className="flex-1">
