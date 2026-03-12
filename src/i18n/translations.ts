@@ -469,7 +469,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB提携",
     "footer.link.ecbManual": "ECBマニュアル",
     "footer.risk": "⚠️ リスク警告：暗号通貨取引は高いリスクを伴い、価格変動が激しく、投資額の一部または全額を失う可能性があります。過去の実績は将来の結果を保証するものではありません。ご自身のリスク許容度に応じて慎重に投資し、必要に応じて専門の財務アドバイザーにご相談ください。",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 };
