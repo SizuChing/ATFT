@@ -161,7 +161,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB 合作",
     "footer.link.ecbManual": "ECB 操作手冊",
     "footer.risk": "⚠️ 風險警示：加密貨幣交易具有高度風險，價格波動劇烈，可能導致部分或全部投資損失。過去的表現不代表未來的結果。請根據您的風險承受能力謹慎投資，並在必要時諮詢專業財務顧問。",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 
