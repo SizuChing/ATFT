@@ -39,7 +39,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center gap-3">
-          <span className="font-display text-2xl tracking-wider text-foreground">AIFT</span>
+          <img src={aiftLogo} alt="AIFT" className="h-8" />
           <span className="hidden sm:block text-white-40 text-xs">AI Financial Technology Ltd.</span>
         </div>
 
