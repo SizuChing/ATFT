@@ -1,5 +1,6 @@
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
+import aiftLogo from "@/assets/aift-logo.png";
 
 const HeroSection = () => {
   const { t } = useLanguage();
