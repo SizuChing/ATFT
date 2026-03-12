@@ -1,114 +1,96 @@
 import { useState } from "react";
 import { Zap, TrendingUp } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
-
-const contractFeatures = [
-  "K 線學習預測模型（1分～12小時多時間框架）",
-  "根據前 6 根 K 線，預測第 7 根走勢",
-  "自動判斷做多 / 做空方向",
-  "50+ 全球市場指標聯動分析",
-  "即時動態調整風控與獲利率",
-];
-
-const contractStats = [
-  { label: "最高單筆獲利率", value: "2.25%" },
-  { label: "多空比觸發暫停", value: "1:15" },
-  { label: "同方向差價限制", value: ">1.5%" },
-  { label: "分析市場指標數", value: "50+" },
-  { label: "支援時間框架", value: "7 種" },
-  { label: "決策判斷閾值", value: "66%" },
-];
-
-const spotFeatures = [
-  "AI 智能選幣與最佳買入時機判斷",
-  "多維度市場數據交叉分析",
-  "自動化買賣策略執行",
-  "支援主流幣種組合投資",
-  "風險分散機制與動態調倉",
-];
-
-const spotStats = [
-  { label: "支援幣種", value: "20+" },
-  { label: "歷史回測年數", value: "5年+" },
-  { label: "最大回撤控制", value: "<8%" },
-  { label: "平均月化報酬", value: "穩健" },
-  { label: "調倉頻率", value: "動態" },
-  { label: "風控等級", value: "多層" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductsSection = () => {
   const [tab, setTab] = useState<"contract" | "spot">("contract");
   const ref = useScrollFadeUp();
+  const { t } = useLanguage();
 
-  const features = tab === "contract" ? contractFeatures : spotFeatures;
-  const stats = tab === "contract" ? contractStats : spotStats;
-  const title = tab === "contract" ? "AI 智能合約交易系統" : "AI 智能現貨交易系統";
-  const desc =
-    tab === "contract"
-      ? "透過第四代量化 AI 引擎，針對加密貨幣合約市場進行全自動化交易，以 K 線學習預測模型為核心，結合多市場指標聯動分析。"
-      : "運用 AI 深度學習技術，在現貨市場中進行智能選幣與最佳時機判斷，實現穩健增長的自動化現貨投資策略。";
+  const featureKeys = tab === "contract"
+    ? ["products.contract.f1", "products.contract.f2", "products.contract.f3", "products.contract.f4", "products.contract.f5"]
+    : ["products.spot.f1", "products.spot.f2", "products.spot.f3", "products.spot.f4", "products.spot.f5"];
+
+  const tagKeys = tab === "contract"
+    ? ["products.contract.tag1", "products.contract.tag2", "products.contract.tag3", "products.contract.tag4"]
+    : ["products.spot.tag1", "products.spot.tag2", "products.spot.tag3", "products.spot.tag4"];
+
+  const statKeys = tab === "contract"
+    ? [
+        { label: "products.stat.maxProfit", value: "products.stat.maxProfit.v" },
+        { label: "products.stat.ratio", value: "products.stat.ratio.v" },
+        { label: "products.stat.spread", value: "products.stat.spread.v" },
+        { label: "products.stat.indicators", value: "products.stat.indicators.v" },
+        { label: "products.stat.timeframes", value: "products.stat.timeframes.v" },
+        { label: "products.stat.threshold", value: "products.stat.threshold.v" },
+      ]
+    : [
+        { label: "products.stat.coins", value: "products.stat.coins.v" },
+        { label: "products.stat.backtest", value: "products.stat.backtest.v" },
+        { label: "products.stat.drawdown", value: "products.stat.drawdown.v" },
+        { label: "products.stat.monthly", value: "products.stat.monthly.v" },
+        { label: "products.stat.rebalance", value: "products.stat.rebalance.v" },
+        { label: "products.stat.riskLevel", value: "products.stat.riskLevel.v" },
+      ];
+
+  const titleKey = tab === "contract" ? "products.contract.title" : "products.spot.title";
+  const descKey = tab === "contract" ? "products.contract.desc" : "products.spot.desc";
 
   return (
     <section id="products" className="py-20 lg:py-32 px-6 lg:px-12" style={{ background: "hsl(270 100% 6%)" }}>
       <div ref={ref} className="max-w-7xl mx-auto opacity-0">
         <div className="text-center mb-12">
-          <span className="text-xs tracking-[4px] uppercase text-primary mb-3 block">Trading Systems</span>
-          <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground">交易系統</h2>
+          <span className="text-xs tracking-[4px] uppercase text-primary mb-3 block">{t("products.label")}</span>
+          <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground">{t("products.title")}</h2>
         </div>
 
-        {/* Tabs */}
         <div className="flex justify-center gap-3 mb-12">
           {[
-            { key: "contract" as const, label: "AI 智能合約交易", icon: Zap },
-            { key: "spot" as const, label: "AI 智能現貨交易", icon: TrendingUp },
-          ].map((t) => (
+            { key: "contract" as const, labelKey: "products.tab.contract", icon: Zap },
+            { key: "spot" as const, labelKey: "products.tab.spot", icon: TrendingUp },
+          ].map((item) => (
             <button
-              key={t.key}
-              onClick={() => setTab(t.key)}
+              key={item.key}
+              onClick={() => setTab(item.key)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm transition-all duration-300 ${
-                tab === t.key
+                tab === item.key
                   ? "gradient-primary text-foreground glow-box"
                   : "card-glass text-white-80 hover:text-foreground"
               }`}
             >
-              <t.icon size={16} />
-              {t.label}
+              <item.icon size={16} />
+              {t(item.labelKey)}
             </button>
           ))}
         </div>
 
-        {/* Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left - features */}
           <div className="card-glass rounded-2xl p-8">
-            <h3 className="font-heading-cn text-xl text-foreground mb-3">{title}</h3>
-            <p className="text-white-80 text-sm mb-6 leading-relaxed">{desc}</p>
+            <h3 className="font-heading-cn text-xl text-foreground mb-3">{t(titleKey)}</h3>
+            <p className="text-white-80 text-sm mb-6 leading-relaxed">{t(descKey)}</p>
             <ul className="space-y-3">
-              {features.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm text-white-80">
+              {featureKeys.map((fk) => (
+                <li key={fk} className="flex items-start gap-2 text-sm text-white-80">
                   <span className="text-primary mt-0.5">▸</span>
-                  {f}
+                  {t(fk)}
                 </li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-2 mt-6">
-              {(tab === "contract"
-                ? ["K線學習", "多空自動判斷", "風控機制", "BTC/ETH"]
-                : ["智能選幣", "動態調倉", "穩健增長", "多幣種"]
-              ).map((tag) => (
-                <span key={tag} className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {tag}
+              {tagKeys.map((tk) => (
+                <span key={tk} className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {t(tk)}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Right - stats */}
           <div className="grid grid-cols-2 gap-4">
-            {stats.map((s) => (
+            {statKeys.map((s) => (
               <div key={s.label} className="card-glass rounded-xl p-5 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 glow-box-hover">
-                <p className="text-white-40 text-xs mb-2">{s.label}</p>
-                <p className="font-mono-num text-2xl text-primary">{s.value}</p>
+                <p className="text-white-40 text-xs mb-2">{t(s.label)}</p>
+                <p className="font-mono-num text-2xl text-primary">{t(s.value)}</p>
               </div>
             ))}
           </div>
