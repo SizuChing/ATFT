@@ -16,28 +16,33 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 lg:py-32 px-6 lg:px-12">
       <div ref={ref} className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 opacity-0">
-        <div className="flex-shrink-0 flex items-center justify-center relative">
-          {/* Hexagon Background */}
-          <svg className="w-48 h-48 lg:w-64 lg:h-64 animate-pulse-glow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00C8C8" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#00C8C8" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-            <polygon
-              points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5"
-              fill="url(#hexGradient)"
-              stroke="#00C8C8"
-              strokeWidth="1"
+        <div className="flex-shrink-0 flex items-center justify-center">
+          <div className="relative w-48 h-48 lg:w-64 lg:h-64 animate-pulse-glow">
+            {/* Hexagon border */}
+            <div
+              className="absolute inset-0"
+              style={{
+                clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                background: "linear-gradient(135deg, rgba(0,200,200,0.2), rgba(0,200,200,0.1))",
+                border: "1px solid #00C8C8",
+              }}
             />
-          </svg>
-          {/* Logo Inside */}
-          <img 
-            src={aiftHexagonLogo} 
-            alt="AIFT" 
-            className="absolute inset-0 w-32 h-32 lg:w-44 lg:h-44 m-auto object-contain drop-shadow-lg" 
-          />
+            {/* Hexagon stroke overlay */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+              <polygon
+                points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5"
+                fill="none"
+                stroke="#00C8C8"
+                strokeWidth="1"
+              />
+            </svg>
+            {/* Logo centered inside */}
+            <img
+              src={aiftHexagonLogo}
+              alt="AIFT"
+              className="absolute inset-0 w-3/4 h-3/4 m-auto object-contain drop-shadow-lg"
+            />
+          </div>
         </div>
 
         <div className="flex-1">
