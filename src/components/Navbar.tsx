@@ -40,7 +40,7 @@ const Navbar = () => {
       >
         <div className="flex items-center gap-3">
           <img src={aiftLogo} alt="AIFT" className="h-8" />
-          <span className="hidden sm:block text-white-40 text-xs">AI Financial Technology Ltd.</span>
+          <span className="hidden sm:block text-white-40 text-xs">Al Financial Technologies Ltd.</span>
         </div>
 
         {/* Desktop nav */}
