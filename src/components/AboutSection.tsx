@@ -1,7 +1,7 @@
 import { Brain, Globe, Shield } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
-import aiftHexagon from "@/assets/aift-hexagon.png";
+import aiftHexagonLogo from "@/assets/aift-hexagon-logo.png";
 
 const AboutSection = () => {
   const ref = useScrollFadeUp();
