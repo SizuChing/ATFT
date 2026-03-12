@@ -315,7 +315,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.ecb": "ECB Partnership",
     "footer.link.ecbManual": "ECB Manual",
     "footer.risk": "⚠️ Risk Warning: Cryptocurrency trading carries high risks with severe price volatility, which may result in partial or total loss of investment. Past performance does not guarantee future results. Please invest cautiously according to your risk tolerance and consult a professional financial advisor when necessary.",
-    "footer.copyright": "© 2025 AI Financial Technology Ltd. All rights reserved.",
+    "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
     "footer.slogan": "Make you easy living.",
   },
 
