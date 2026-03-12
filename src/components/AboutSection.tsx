@@ -20,13 +20,15 @@ const AboutSection = () => {
           <svg className="w-48 h-48 lg:w-64 lg:h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="hexFill" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00C8C8" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#00C8C8" stopOpacity="0.05" />
+                <stop offset="0%" stopColor="#00E5E5" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#00C8C8" stopOpacity="0.1" />
               </linearGradient>
-              <filter id="hexGlow">
-                <feGaussianBlur stdDeviation="6" result="blur" />
+              <filter id="hexGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="12" result="blur1" />
+                <feGaussianBlur stdDeviation="4" in="SourceGraphic" result="blur2" />
                 <feMerge>
-                  <feMergeNode in="blur" />
+                  <feMergeNode in="blur1" />
+                  <feMergeNode in="blur2" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
@@ -37,8 +39,8 @@ const AboutSection = () => {
             <polygon
               points="100,10 185,55 185,145 100,190 15,145 15,55"
               fill="url(#hexFill)"
-              stroke="#00C8C8"
-              strokeWidth="1.5"
+              stroke="#00E5E5"
+              strokeWidth="2.5"
               filter="url(#hexGlow)"
             />
             <image
