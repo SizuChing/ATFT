@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import aiftLogo from "@/assets/aift-logo.png";
 import type { Locale } from "@/i18n/translations";
 
 const navLinks = [
