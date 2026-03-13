@@ -132,8 +132,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
 
     // AI Prediction Dashboard
+    "nav.aiTerminal": "AI 終端",
     "dash.live": "LIVE SYSTEM · 即時運算中",
-    "dash.title": "AI Prediction Dashboard",
+    "dash.title": "AI 市場預測終端",
     "dash.desc": "整合多時間框架 K 線、50 大市場指標與 AI 投票模型\n將複雜市場分析轉化為清晰可視的智能交易決策依據",
     "dash.systemActive": "System Active",
     "dash.tab.prediction": "K 線預測",
