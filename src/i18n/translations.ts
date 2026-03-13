@@ -124,12 +124,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.p4": "一站式完成開戶、存款、自動交易全流程",
     "ecb.btn1": "前往 ECB 官網開戶",
     "ecb.btn2": "ECB 操作說明手冊",
-    "ecb.flow.title": "ECB 開戶 × AIFT 接入流程",
-    "ecb.flow.s1": "前往 ECB 官網完成帳號註冊與 KYC 驗證",
-    "ecb.flow.s2": "存入法幣或加密貨幣資產至 ECB 帳戶",
-    "ecb.flow.s3": "授權 AIFT 系統透過 API 串接您的交易帳戶",
-    "ecb.flow.s4": "一鍵啟動 AIFT AI，系統開始自動執行交易",
-    "ecb.flow.s5": "即時監控收益，隨時查閱交易報表與績效",
+    "ecb.flow.title": "ECB 開戶 × AIFT AI 基金投資流程",
+    "ecb.flow.s1": "前往 ECB 官網完成帳號註冊與身份驗證（KYC）",
+    "ecb.flow.s2": "存入法幣或加密貨幣資產至您的 ECB 帳戶",
+    "ecb.flow.s3": "於 ECB 平台上完成授權，委託 AIFT 管理資金運作",
+    "ecb.flow.s4": "認購 AIFT AI 基金產品，選擇適合的投資方案",
+    "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
 
     // Partners
     "partners.label": "Partners",
