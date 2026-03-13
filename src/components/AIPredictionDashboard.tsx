@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 /* ─── data ─── */
 const KLINE_DATA = [
@@ -29,6 +29,13 @@ const STATUS_CARDS = [
   { label: "風控狀態", value: "✓ Protected", color: "green" },
 ];
 
+type TabKey = "prediction" | "indicators" | "voting";
+const TABS: { key: TabKey; label: string; sub: string }[] = [
+  { key: "prediction", label: "Prediction", sub: "K 線預測" },
+  { key: "indicators", label: "Indicators", sub: "指標總覽" },
+  { key: "voting", label: "Voting", sub: "投票結果" },
+];
+
 /* ─── helpers ─── */
 const TAG_COLORS: Record<string, string> = {
   purple: "bg-purple-500/20 text-purple-300 border-purple-500/40",
@@ -45,6 +52,39 @@ const STATUS_COLORS: Record<string, string> = {
   number: "text-purple-300",
   active: "text-emerald-400",
 };
+
+/* ─── seeded random for stable candle data ─── */
+function seededRandom(seed: number) {
+  let s = seed;
+  return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+}
+
+function generateCandleData(seed: number, dir: "bull" | "bear") {
+  const rng = seededRandom(seed);
+  let price = 40 + rng() * 20;
+  const candles = [];
+  for (let i = 0; i < 6; i++) {
+    const isBull = rng() > 0.45;
+    const bodySize = 3 + rng() * 8;
+    const wickUp = 1 + rng() * 4;
+    const wickDown = 1 + rng() * 4;
+    const open = price;
+    const close = isBull ? open + bodySize : open - bodySize;
+    const high = Math.max(open, close) + wickUp;
+    const low = Math.min(open, close) - wickDown;
+    candles.push({ open, close, high, low, bull: isBull });
+    price = close + (rng() - 0.5) * 3;
+  }
+  // prediction candle
+  const lastClose = candles[5].close;
+  const predBody = 3 + rng() * 6;
+  const predOpen = lastClose + (rng() - 0.5) * 2;
+  const predClose = dir === "bull" ? predOpen + predBody : predOpen - predBody;
+  const predHigh = Math.max(predOpen, predClose) + 1 + rng() * 3;
+  const predLow = Math.min(predOpen, predClose) - 1 - rng() * 3;
+  candles.push({ open: predOpen, close: predClose, high: predHigh, low: predLow, bull: dir === "bull" });
+  return candles;
+}
 
 /* ─── useCountUp ─── */
 function useCountUp(target: number, duration: number, start: boolean) {
@@ -78,39 +118,72 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-/* ─── Mini K-line SVG ─── */
-function MiniKLine({ dir }: { dir: "bull" | "bear" }) {
-  // 6 real candles + 1 dashed prediction
-  const candles = Array.from({ length: 6 }, (_, i) => {
-    const isBull = Math.random() > 0.45;
-    const y = 10 + Math.random() * 20;
-    const h = 8 + Math.random() * 12;
-    return { x: 6 + i * 14, y, h, bull: isBull };
-  });
-  const predY = 12 + Math.random() * 15;
-  const predH = 10 + Math.random() * 10;
+/* ─── Mini K-line SVG (realistic candles) ─── */
+function MiniKLine({ dir, seed }: { dir: "bull" | "bear"; seed: number }) {
+  const candles = useMemo(() => generateCandleData(seed, dir), [seed, dir]);
+
+  // Normalize to SVG coords
+  const allPrices = candles.flatMap(c => [c.high, c.low]);
+  const minP = Math.min(...allPrices);
+  const maxP = Math.max(...allPrices);
+  const range = maxP - minP || 1;
+  const toY = (p: number) => 4 + ((maxP - p) / range) * 52;
+
+  const candleW = 8;
+  const gap = 4;
+  const svgW = 7 * (candleW + gap) + gap;
 
   return (
-    <svg viewBox="0 0 108 50" className="w-full h-10">
-      {candles.map((c, i) => (
-        <g key={i}>
-          <line x1={c.x + 3} y1={c.y - 4} x2={c.x + 3} y2={c.y + c.h + 4} stroke={c.bull ? "#a855f7" : "#6b7280"} strokeWidth="1" />
-          <rect x={c.x} y={c.y} width="6" height={c.h} rx="1" fill={c.bull ? "#a855f7" : "#4b5563"} />
-        </g>
-      ))}
-      {/* prediction candle */}
-      <g className="animate-pulse">
-        <line x1={90 + 3} y1={predY - 4} x2={90 + 3} y2={predY + predH + 4} stroke={dir === "bull" ? "#d946ef" : "#9ca3af"} strokeWidth="1" strokeDasharray="2 2" />
-        <rect x={90} y={predY} width="6" height={predH} rx="1" fill={dir === "bull" ? "#d946ef" : "#6b7280"} opacity="0.6" strokeDasharray="3 2" stroke={dir === "bull" ? "#d946ef" : "#9ca3af"} strokeWidth="1" />
-      </g>
+    <svg viewBox={`0 0 ${svgW} 60`} className="w-full h-14">
+      {candles.map((c, i) => {
+        const x = gap + i * (candleW + gap);
+        const isPred = i === 6;
+        const bodyTop = toY(Math.max(c.open, c.close));
+        const bodyBot = toY(Math.min(c.open, c.close));
+        const bodyH = Math.max(bodyBot - bodyTop, 1);
+        const wickTop = toY(c.high);
+        const wickBot = toY(c.low);
+        const color = c.bull ? "#a855f7" : "#4b5563";
+        const predColor = c.bull ? "#d946ef" : "#9ca3af";
+
+        if (isPred) {
+          return (
+            <g key={i}>
+              {/* prediction glow */}
+              <rect x={x - 2} y={bodyTop - 2} width={candleW + 4} height={bodyH + 4} rx="3"
+                fill={c.bull ? "rgba(217,70,239,0.15)" : "rgba(156,163,175,0.1)"} className="animate-[predGlow_1.5s_ease-in-out_infinite]" />
+              {/* wick dashed */}
+              <line x1={x + candleW / 2} y1={wickTop} x2={x + candleW / 2} y2={wickBot}
+                stroke={predColor} strokeWidth="1.2" strokeDasharray="2 2" className="animate-[predBlink_1s_ease-in-out_infinite]" />
+              {/* body dashed */}
+              <rect x={x} y={bodyTop} width={candleW} height={bodyH} rx="1.5"
+                fill={c.bull ? "rgba(217,70,239,0.3)" : "rgba(107,114,128,0.3)"}
+                stroke={predColor} strokeWidth="1.2" strokeDasharray="3 2"
+                className="animate-[predBlink_1s_ease-in-out_infinite]" />
+              {/* ? label */}
+              <text x={x + candleW / 2} y={bodyTop - 5} textAnchor="middle" fontSize="6" fill={predColor}
+                className="animate-[predBlink_1s_ease-in-out_infinite]">?</text>
+            </g>
+          );
+        }
+
+        return (
+          <g key={i}>
+            <line x1={x + candleW / 2} y1={wickTop} x2={x + candleW / 2} y2={wickBot}
+              stroke={color} strokeWidth="1" />
+            <rect x={x} y={bodyTop} width={candleW} height={bodyH} rx="1"
+              fill={c.bull ? "#a855f7" : "#4b5563"} stroke={color} strokeWidth="0.5" />
+          </g>
+        );
+      })}
     </svg>
   );
 }
 
 /* ─── KLine Card ─── */
-function KLineCard({ data, index, visible, active, onClick }: {
+function KLineCard({ data, index, visible, active, onClick, seed }: {
   data: typeof KLINE_DATA[0]; index: number; visible: boolean; active: boolean;
-  onClick: () => void;
+  onClick: () => void; seed: number;
 }) {
   const conf = useCountUp(data.conf, 1200, visible);
   const isBull = data.dir === "bull";
@@ -128,7 +201,7 @@ function KLineCard({ data, index, visible, active, onClick }: {
       }}
     >
       <div className="text-center font-mono text-xs text-purple-400 mb-1">{data.tf}</div>
-      <MiniKLine dir={data.dir} />
+      <MiniKLine dir={data.dir} seed={seed} />
       <div className="flex items-center justify-between mt-2">
         <span className={`text-xs font-medium ${isBull ? "text-fuchsia-400" : "text-gray-400"}`}>
           {isBull ? "▲ 看漲" : "▼ 看跌"}
@@ -180,7 +253,7 @@ function DonutChart({ visible }: { visible: boolean }) {
     const t0 = performance.now();
     const tick = (now: number) => {
       const p = Math.min((now - t0) / 1200, 1);
-      const eased = 1 - Math.pow(1 - p, 3); // ease-out
+      const eased = 1 - Math.pow(1 - p, 3);
       setProgress(eased);
       if (p < 1) raf = requestAnimationFrame(tick);
     };
@@ -233,7 +306,7 @@ function StatusCard({ card, index, visible }: {
   const isNumber = card.color === "number";
   const isActive = card.color === "active";
   const countVal = useCountUp(isNumber ? (card.target ?? 0) : 0, 1200, visible && isNumber);
-  const barWidth = 40 + Math.random() * 50;
+  const barWidth = useMemo(() => 40 + Math.random() * 50, []);
 
   return (
     <div
@@ -271,6 +344,7 @@ function StatusCard({ card, index, visible }: {
 const AIPredictionDashboard = () => {
   const { ref: sectionRef, visible } = useInView(0.08);
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<TabKey>("prediction");
 
   return (
     <section ref={sectionRef} className="relative w-full py-20 overflow-hidden" style={{ background: "hsl(270 100% 3%)" }}>
@@ -280,7 +354,7 @@ const AIPredictionDashboard = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
 
         {/* ─── Header ─── */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-12"
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8"
           style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition: "all 0.7s ease" }}>
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-300 mb-4">
@@ -301,89 +375,123 @@ const AIPredictionDashboard = () => {
           </div>
         </div>
 
-        {/* ─── Module 1: K-Line Prediction Matrix ─── */}
-        <div className="mb-12">
-          <h3 className="text-lg font-semibold text-purple-200 mb-1">
-            K-Line Prediction Matrix<span className="text-gray-500 font-normal">｜多時間框架 K 線預測</span>
-          </h3>
-          <p className="text-xs text-gray-500 mb-5">根據前六根 K 線走勢，AI 預測第七根 K 線市場方向</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-            {KLINE_DATA.map((d, i) => (
-              <KLineCard key={d.tf} data={d} index={i} visible={visible} active={activeCard === i}
-                onClick={() => setActiveCard(activeCard === i ? null : i)} />
-            ))}
-          </div>
+        {/* ─── Tabs ─── */}
+        <div className="flex gap-1 mb-8 rounded-xl bg-[hsl(270,100%,5%)] border border-purple-500/15 p-1 w-fit"
+          style={{ opacity: visible ? 1 : 0, transition: "opacity 0.5s ease 0.3s" }}>
+          {TABS.map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`relative px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300
+                ${activeTab === tab.key
+                  ? "bg-purple-500/20 text-purple-200 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                  : "text-gray-500 hover:text-gray-300 hover:bg-purple-500/5"
+                }`}
+            >
+              <span className="font-mono text-xs">{tab.label}</span>
+              <span className="block text-[10px] mt-0.5 opacity-70">{tab.sub}</span>
+              {activeTab === tab.key && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-purple-400" />
+              )}
+            </button>
+          ))}
         </div>
 
-        {/* ─── Module 2 & 3: Two columns ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        {/* ─── Tab Content ─── */}
+        <div className="min-h-[400px]">
 
-          {/* Left — 50 Indicators */}
-          <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6">
-            <h3 className="text-lg font-semibold text-purple-200 mb-1">50+ Global Market Indicators</h3>
-            <p className="text-xs text-gray-500 mb-5">AI 同步分析超過 50 項全球金融商品，跨市場聯動提升預測精度</p>
-
-            {INDICATOR_GROUPS.map((group, gi) => {
-              let offset = 0;
-              for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS[k].items.length;
-              return (
-                <div key={group.label} className="mb-4">
-                  <div className="text-xs text-gray-500 mb-2">{group.label}</div>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item, ii) => (
-                      <IndicatorTag key={item} item={item} color={group.color}
-                        delay={(offset + ii) * 30} visible={visible} />
-                    ))}
-                  </div>
+          {/* Tab: Prediction */}
+          {activeTab === "prediction" && (
+            <div className="animate-[fadeTab_0.4s_ease]">
+              <div className="mb-12">
+                <h3 className="text-lg font-semibold text-purple-200 mb-1">
+                  K-Line Prediction Matrix<span className="text-gray-500 font-normal">｜多時間框架 K 線預測</span>
+                </h3>
+                <p className="text-xs text-gray-500 mb-5">根據前六根 K 線走勢，AI 預測第七根 K 線市場方向</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                  {KLINE_DATA.map((d, i) => (
+                    <KLineCard key={d.tf} data={d} index={i} visible={visible} active={activeCard === i}
+                      onClick={() => setActiveCard(activeCard === i ? null : i)} seed={1000 + i * 137} />
+                  ))}
                 </div>
-              );
-            })}
+              </div>
 
-            <ProgressLoop visible={visible} />
-          </div>
-
-          {/* Right — AI Voting Engine */}
-          <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6">
-            <h3 className="text-lg font-semibold text-purple-200 mb-1">AI Voting Decision Engine</h3>
-            <p className="text-xs text-gray-500 mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
-
-            <DonutChart visible={visible} />
-
-            <div className="flex items-center gap-1 mt-2 mb-1 justify-center">
-              <span className="text-xs text-fuchsia-400">45% 看漲</span>
-              <span className="text-xs text-gray-600 mx-2">|</span>
-              <span className="text-xs text-gray-400">55% 看跌</span>
-            </div>
-
-            <div className="mt-6 space-y-3">
-              {[
-                { label: "當前 AI 判斷", value: "偏空", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                { label: "策略方向", value: "做空觀察", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                { label: "投票置信度", value: "中高", cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
-              ].map(row => (
-                <div key={row.label} className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">{row.label}</span>
-                  <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
+              {/* Strategy Status stays in prediction tab */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-purple-200 mb-1">
+                  Strategy Status<span className="text-gray-500 font-normal">｜策略狀態總覽</span>
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-4">
+                  {STATUS_CARDS.map((card, i) => (
+                    <StatusCard key={card.label} card={card} index={i} visible={visible} />
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
+          )}
 
-            <p className="text-[11px] text-gray-600 mt-5 text-center">
-              當特定方向投票比例超過 66%，系統將自動形成明確進場方向判斷
-            </p>
-          </div>
-        </div>
+          {/* Tab: Indicators */}
+          {activeTab === "indicators" && (
+            <div className="animate-[fadeTab_0.4s_ease]">
+              <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6 max-w-3xl">
+                <h3 className="text-lg font-semibold text-purple-200 mb-1">50+ Global Market Indicators</h3>
+                <p className="text-xs text-gray-500 mb-5">AI 同步分析超過 50 項全球金融商品，跨市場聯動提升預測精度</p>
 
-        {/* ─── Module 4: Strategy Status ─── */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-purple-200 mb-1">
-            Strategy Status<span className="text-gray-500 font-normal">｜策略狀態總覽</span>
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-4">
-            {STATUS_CARDS.map((card, i) => (
-              <StatusCard key={card.label} card={card} index={i} visible={visible} />
-            ))}
-          </div>
+                {INDICATOR_GROUPS.map((group, gi) => {
+                  let offset = 0;
+                  for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS[k].items.length;
+                  return (
+                    <div key={group.label} className="mb-4">
+                      <div className="text-xs text-gray-500 mb-2">{group.label}</div>
+                      <div className="flex flex-wrap gap-2">
+                        {group.items.map((item, ii) => (
+                          <IndicatorTag key={item} item={item} color={group.color}
+                            delay={(offset + ii) * 30} visible={visible} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                <ProgressLoop visible={visible} />
+              </div>
+            </div>
+          )}
+
+          {/* Tab: Voting */}
+          {activeTab === "voting" && (
+            <div className="animate-[fadeTab_0.4s_ease]">
+              <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6 max-w-lg mx-auto">
+                <h3 className="text-lg font-semibold text-purple-200 mb-1">AI Voting Decision Engine</h3>
+                <p className="text-xs text-gray-500 mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
+
+                <DonutChart visible={visible} />
+
+                <div className="flex items-center gap-1 mt-2 mb-1 justify-center">
+                  <span className="text-xs text-fuchsia-400">45% 看漲</span>
+                  <span className="text-xs text-gray-600 mx-2">|</span>
+                  <span className="text-xs text-gray-400">55% 看跌</span>
+                </div>
+
+                <div className="mt-6 space-y-3">
+                  {[
+                    { label: "當前 AI 判斷", value: "偏空", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+                    { label: "策略方向", value: "做空觀察", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+                    { label: "投票置信度", value: "中高", cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
+                  ].map(row => (
+                    <div key={row.label} className="flex items-center justify-between">
+                      <span className="text-sm text-gray-400">{row.label}</span>
+                      <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-[11px] text-gray-600 mt-5 text-center">
+                  當特定方向投票比例超過 66%，系統將自動形成明確進場方向判斷
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ─── Footer note ─── */}

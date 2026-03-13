@@ -150,6 +150,22 @@
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
+/* AI Dashboard prediction candle animations */
+@keyframes predBlink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes predGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes fadeTab {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
