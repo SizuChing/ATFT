@@ -136,9 +136,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "合作夥伴",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "歐洲合法持牌銀行",
-    "partners.binance.name": "全球最大加密交易所",
+    "partners.binance.name": "全球最大加密交易所 Binance",
     "partners.binance.desc": "AIFT 自動交易平台",
-    "partners.coinw.name": "國際知名加密交易所",
+    "partners.coinw.name": "國際知名加密交易所 CoinW",
     "partners.coinw.desc": "AIFT 合約交易平台",
 
     // CTA
@@ -292,9 +292,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "Partners",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "European Licensed Bank",
-    "partners.binance.name": "World's Largest Crypto Exchange",
+    "partners.binance.name": "World's Largest Crypto Exchange Binance",
     "partners.binance.desc": "AIFT Auto-Trading Platform",
-    "partners.coinw.name": "International Crypto Exchange",
+    "partners.coinw.name": "International Crypto Exchange CoinW",
     "partners.coinw.desc": "AIFT Contract Trading Platform",
 
     "cta.title": "Ready to Let AI Trade for You?",
@@ -446,9 +446,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "パートナー",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "欧州認可銀行",
-    "partners.binance.name": "世界最大の暗号通貨取引所",
+    "partners.binance.name": "世界最大の暗号通貨取引所 Binance",
     "partners.binance.desc": "AIFT 自動取引プラットフォーム",
-    "partners.coinw.name": "国際的な暗号通貨取引所",
+    "partners.coinw.name": "国際的な暗号通貨取引所 CoinW",
     "partners.coinw.desc": "AIFT 契約取引プラットフォーム",
 
     "cta.title": "AIに取引を任せる準備はできましたか？",
