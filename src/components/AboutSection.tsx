@@ -20,8 +20,8 @@ const AboutSection = () => {
           <svg className="w-48 h-48 lg:w-64 lg:h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="hexFill" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00E5E5" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#00C8C8" stopOpacity="0.1" />
+                <stop offset="0%" stopColor="#150028" />
+                <stop offset="100%" stopColor="#5B1F8A" />
               </linearGradient>
               <filter id="hexGlow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="12" result="blur1" />
