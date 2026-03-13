@@ -39,10 +39,10 @@ const Navbar = () => {
           scrolled ? "bg-background/95 backdrop-blur-[20px]" : "bg-background/85 backdrop-blur-[20px]"
         }`}
       >
-        <div className="flex items-center gap-3">
+        <a href="#" className="flex items-center gap-3" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <img src={aiftLogo} alt="AIFT" className="h-8" />
           <span className="hidden sm:block text-white-40 text-xs">Al Financial Technologies Ltd.</span>
-        </div>
+        </a>
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
