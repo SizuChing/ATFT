@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ─── data ─── */
 const KLINE_DATA = [
@@ -12,53 +13,42 @@ const KLINE_DATA = [
   { tf: "12H", dir: "bear" as const, conf: 88 },
 ];
 
-type IndicatorItem = { name: string; price: number; decimals: number };
-const INDICATOR_GROUPS: { label: string; color: string; items: IndicatorItem[] }[] = [
-  { label: "加密貨幣", color: "purple", items: [
+type IndicatorItem = { name: string; i18nKey?: string; price: number; decimals: number };
+const INDICATOR_GROUPS_DATA: { i18nLabel: string; color: string; items: IndicatorItem[] }[] = [
+  { i18nLabel: "dash.ind.crypto", color: "purple", items: [
     { name: "BTC", price: 67432.50, decimals: 2 }, { name: "ETH", price: 3521.80, decimals: 2 },
     { name: "XRP", price: 0.5284, decimals: 4 }, { name: "BNB", price: 584.30, decimals: 2 },
     { name: "SOL", price: 142.65, decimals: 2 }, { name: "DOGE", price: 0.1247, decimals: 4 },
     { name: "ADA", price: 0.4523, decimals: 4 }, { name: "AVAX", price: 35.82, decimals: 2 },
   ]},
-  { label: "外匯", color: "blue", items: [
+  { i18nLabel: "dash.ind.forex", color: "blue", items: [
     { name: "USD/TWD", price: 31.42, decimals: 2 }, { name: "EUR/USD", price: 1.0847, decimals: 4 },
     { name: "USD/JPY", price: 154.32, decimals: 2 }, { name: "GBP/USD", price: 1.2634, decimals: 4 },
     { name: "USD/CNY", price: 7.2451, decimals: 4 }, { name: "USD/CHF", price: 0.8923, decimals: 4 },
     { name: "USD/CAD", price: 1.3642, decimals: 4 }, { name: "USD/KRW", price: 1342.5, decimals: 1 },
   ]},
-  { label: "商品", color: "orange", items: [
-    { name: "黃金", price: 2348.60, decimals: 2 }, { name: "白銀", price: 27.84, decimals: 2 },
-    { name: "原油", price: 78.52, decimals: 2 }, { name: "天然氣", price: 2.134, decimals: 3 },
-    { name: "銅", price: 4.312, decimals: 3 },
+  { i18nLabel: "dash.ind.commodity", color: "orange", items: [
+    { name: "Gold", i18nKey: "dash.ind.gold", price: 2348.60, decimals: 2 },
+    { name: "Silver", i18nKey: "dash.ind.silver", price: 27.84, decimals: 2 },
+    { name: "Oil", i18nKey: "dash.ind.oil", price: 78.52, decimals: 2 },
+    { name: "Gas", i18nKey: "dash.ind.gas", price: 2.134, decimals: 3 },
+    { name: "Copper", i18nKey: "dash.ind.copper", price: 4.312, decimals: 3 },
   ]},
-  { label: "股指", color: "green", items: [
+  { i18nLabel: "dash.ind.index", color: "green", items: [
     { name: "SP500", price: 5214.08, decimals: 2 }, { name: "NASDAQ", price: 16340.2, decimals: 1 },
     { name: "DOW", price: 38852.3, decimals: 1 }, { name: "DAX", price: 18432.5, decimals: 1 },
     { name: "NIKKEI", price: 38274.0, decimals: 1 }, { name: "TOPIX", price: 2697.1, decimals: 1 },
     { name: "FTSE", price: 8164.3, decimals: 1 },
   ]},
-  { label: "經濟指標", color: "gray", items: [
+  { i18nLabel: "dash.ind.economic", color: "gray", items: [
     { name: "CPI", price: 3.4, decimals: 1 }, { name: "PPI", price: 2.2, decimals: 1 },
     { name: "GDP", price: 3.1, decimals: 1 }, { name: "VIX", price: 13.45, decimals: 2 },
-    { name: "非農就業", price: 272, decimals: 0 }, { name: "收益率曲線", price: 4.28, decimals: 2 },
+    { name: "NFP", i18nKey: "dash.ind.nonfarm", price: 272, decimals: 0 },
+    { name: "Yield", i18nKey: "dash.ind.yield", price: 4.28, decimals: 2 },
   ]},
 ];
 
-const STATUS_CARDS = [
-  { label: "即時預測方向", value: "Bearish ▼", color: "red" },
-  { label: "投票強度", value: "High", color: "purple" },
-  { label: "AI Confidence", value: "89%", color: "number", target: 89 },
-  { label: "市場波動狀態", value: "Normal", color: "green" },
-  { label: "系統狀態", value: "● Active", color: "active" },
-  { label: "風控狀態", value: "✓ Protected", color: "green" },
-];
-
 type TabKey = "prediction" | "indicators" | "voting";
-const TABS: { key: TabKey; label: string; sub: string }[] = [
-  { key: "prediction", label: "Prediction", sub: "K 線預測" },
-  { key: "indicators", label: "Indicators", sub: "指標總覽" },
-  { key: "voting", label: "Voting", sub: "投票結果" },
-];
 
 /* ─── helpers ─── */
 const TAG_COLORS: Record<string, string> = {
@@ -99,7 +89,6 @@ function generateCandleData(seed: number, dir: "bull" | "bear") {
     candles.push({ open, close, high, low, bull: isBull });
     price = close + (rng() - 0.5) * 3;
   }
-  // prediction candle
   const lastClose = candles[5].close;
   const predBody = 3 + rng() * 6;
   const predOpen = lastClose + (rng() - 0.5) * 2;
@@ -142,17 +131,14 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-/* ─── Mini K-line SVG (realistic candles) ─── */
+/* ─── Mini K-line SVG ─── */
 function MiniKLine({ dir, seed }: { dir: "bull" | "bear"; seed: number }) {
   const candles = useMemo(() => generateCandleData(seed, dir), [seed, dir]);
-
-  // Normalize to SVG coords
   const allPrices = candles.flatMap(c => [c.high, c.low]);
   const minP = Math.min(...allPrices);
   const maxP = Math.max(...allPrices);
   const range = maxP - minP || 1;
   const toY = (p: number) => 4 + ((maxP - p) / range) * 52;
-
   const candleW = 8;
   const gap = 4;
   const svgW = 7 * (candleW + gap) + gap;
@@ -173,18 +159,14 @@ function MiniKLine({ dir, seed }: { dir: "bull" | "bear"; seed: number }) {
         if (isPred) {
           return (
             <g key={i}>
-              {/* prediction glow */}
               <rect x={x - 2} y={bodyTop - 2} width={candleW + 4} height={bodyH + 4} rx="3"
                 fill={c.bull ? "rgba(217,70,239,0.15)" : "rgba(156,163,175,0.1)"} className="animate-[predGlow_1.5s_ease-in-out_infinite]" />
-              {/* wick dashed */}
               <line x1={x + candleW / 2} y1={wickTop} x2={x + candleW / 2} y2={wickBot}
                 stroke={predColor} strokeWidth="1.2" strokeDasharray="2 2" className="animate-[predBlink_1s_ease-in-out_infinite]" />
-              {/* body dashed */}
               <rect x={x} y={bodyTop} width={candleW} height={bodyH} rx="1.5"
                 fill={c.bull ? "rgba(217,70,239,0.3)" : "rgba(107,114,128,0.3)"}
                 stroke={predColor} strokeWidth="1.2" strokeDasharray="3 2"
                 className="animate-[predBlink_1s_ease-in-out_infinite]" />
-              {/* ? label */}
               <text x={x + candleW / 2} y={bodyTop - 5} textAnchor="middle" fontSize="6" fill={predColor}
                 className="animate-[predBlink_1s_ease-in-out_infinite]">?</text>
             </g>
@@ -205,9 +187,9 @@ function MiniKLine({ dir, seed }: { dir: "bull" | "bear"; seed: number }) {
 }
 
 /* ─── KLine Card ─── */
-function KLineCard({ data, index, visible, active, onClick, seed }: {
+function KLineCard({ data, index, visible, active, onClick, seed, bullLabel, bearLabel }: {
   data: typeof KLINE_DATA[0]; index: number; visible: boolean; active: boolean;
-  onClick: () => void; seed: number;
+  onClick: () => void; seed: number; bullLabel: string; bearLabel: string;
 }) {
   const conf = useCountUp(data.conf, 1200, visible);
   const isBull = data.dir === "bull";
@@ -227,8 +209,8 @@ function KLineCard({ data, index, visible, active, onClick, seed }: {
       <div className="text-center font-mono text-xs text-purple-400 mb-1">{data.tf}</div>
       <MiniKLine dir={data.dir} seed={seed} />
       <div className="flex items-center justify-between mt-2">
-        <span className={`text-xs font-medium ${isBull ? "text-fuchsia-400" : "text-gray-400"}`}>
-          {isBull ? "▲ 看漲" : "▼ 看跌"}
+        <span className={`text-[10px] sm:text-xs font-medium ${isBull ? "text-fuchsia-400" : "text-gray-400"}`}>
+          {isBull ? bullLabel : bearLabel}
         </span>
         <span className="font-mono text-sm text-purple-200">{conf}%</span>
       </div>
@@ -237,20 +219,16 @@ function KLineCard({ data, index, visible, active, onClick, seed }: {
 }
 
 /* ─── Indicator Tag ─── */
-function IndicatorTag({ item, color, delay, visible }: {
-  item: IndicatorItem; color: string; delay: number; visible: boolean;
+function IndicatorTag({ item, displayName, color, delay, visible }: {
+  item: IndicatorItem; displayName: string; color: string; delay: number; visible: boolean;
 }) {
-  const [up, setUp] = useState(Math.random() > 0.5);
   const [changePct, setChangePct] = useState(() => +(Math.random() * 4 - 1.5).toFixed(2));
   const [price, setPrice] = useState(item.price);
 
   useEffect(() => {
     const iv = setInterval(() => {
-      const newUp = Math.random() > 0.5;
-      setUp(newUp);
       const delta = (Math.random() * 3 - 1).toFixed(2);
       setChangePct(+delta);
-      // simulate small price jitter
       setPrice(prev => {
         const jitter = prev * (parseFloat(delta) / 100) * 0.3;
         return +(prev + jitter).toFixed(item.decimals);
@@ -270,8 +248,8 @@ function IndicatorTag({ item, color, delay, visible }: {
         transitionDelay: `${delay}ms`,
       }}
     >
-      <span className="font-medium whitespace-nowrap">{item.name}</span>
-      <span className="font-mono text-[9px] sm:text-[11px] opacity-80 hidden xs:inline sm:inline">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
+      <span className="font-medium whitespace-nowrap">{displayName}</span>
+      <span className="font-mono text-[9px] sm:text-[11px] opacity-80 hidden sm:inline">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
       <span className={`font-mono text-[9px] sm:text-[10px] transition-colors duration-300 whitespace-nowrap ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
         {isPositive ? "▲" : "▼"}{Math.abs(changePct).toFixed(2)}%
       </span>
@@ -280,8 +258,10 @@ function IndicatorTag({ item, color, delay, visible }: {
 }
 
 /* ─── Donut Chart ─── */
-function DonutChart({ visible, bullPct }: { visible: boolean; bullPct: number }) {
-  const bearPct = 100 - bullPct;
+function DonutChart({ visible, bullPct, bearishLabel, bullishLabel, bearishSignal, bullishSignal }: {
+  visible: boolean; bullPct: number;
+  bearishLabel: string; bullishLabel: string; bearishSignal: string; bullishSignal: string;
+}) {
   const r = 54;
   const c = 2 * Math.PI * r;
   const [progress, setProgress] = useState(0);
@@ -300,7 +280,6 @@ function DonutChart({ visible, bullPct }: { visible: boolean; bullPct: number })
     return () => cancelAnimationFrame(raf);
   }, [visible]);
 
-  // Smoothly animate ratio changes after initial load
   const [displayBull, setDisplayBull] = useState(bullPct);
   useEffect(() => {
     if (progress < 1) return;
@@ -335,16 +314,16 @@ function DonutChart({ visible, bullPct }: { visible: boolean; bullPct: number })
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className={`text-2xl font-bold transition-colors duration-300 ${isBearish ? "text-red-400" : "text-fuchsia-400"}`}>
-          {isBearish ? "偏空" : "偏多"}
+          {isBearish ? bearishLabel : bullishLabel}
         </span>
-        <span className="text-xs text-gray-400 mt-1">{isBearish ? "Bearish Signal" : "Bullish Signal"}</span>
+        <span className="text-xs text-gray-400 mt-1">{isBearish ? bearishSignal : bullishSignal}</span>
       </div>
     </div>
   );
 }
 
 /* ─── Progress Loop ─── */
-function ProgressLoop({ visible }: { visible: boolean }) {
+function ProgressLoop({ visible, label }: { visible: boolean; label: string }) {
   const [pct, setPct] = useState(0);
   useEffect(() => {
     if (!visible) return;
@@ -353,7 +332,7 @@ function ProgressLoop({ visible }: { visible: boolean }) {
   }, [visible]);
   return (
     <div className="mt-3">
-      <div className="text-xs text-gray-400 mb-1">正在分析 50 項指標...</div>
+      <div className="text-xs text-gray-400 mb-1">{label}</div>
       <div className="h-1 w-full rounded-full bg-purple-500/10 overflow-hidden">
         <div className="h-full bg-purple-500/60 rounded-full transition-all duration-100" style={{ width: `${pct}%` }} />
       </div>
@@ -362,12 +341,11 @@ function ProgressLoop({ visible }: { visible: boolean }) {
 }
 
 /* ─── StatusCard ─── */
-function StatusCard({ card, index, visible }: {
-  card: typeof STATUS_CARDS[0]; index: number; visible: boolean;
+function StatusCard({ label, value, colorCls, index, visible, isNumber, target, isActive }: {
+  label: string; value: string; colorCls: string; index: number; visible: boolean;
+  isNumber?: boolean; target?: number; isActive?: boolean;
 }) {
-  const isNumber = card.color === "number";
-  const isActive = card.color === "active";
-  const countVal = useCountUp(isNumber ? (card.target ?? 0) : 0, 1200, visible && isNumber);
+  const countVal = useCountUp(isNumber ? (target ?? 0) : 0, 1200, visible && !!isNumber);
   const barWidth = useMemo(() => 40 + Math.random() * 50, []);
 
   return (
@@ -379,7 +357,7 @@ function StatusCard({ card, index, visible }: {
         transitionDelay: `${index * 80}ms`,
       }}
     >
-      <div className="text-xs text-gray-400 mb-2">{card.label}</div>
+      <div className="text-xs text-gray-400 mb-2">{label}</div>
       {isNumber ? (
         <div className="font-mono text-xl text-purple-300">{countVal}%</div>
       ) : isActive ? (
@@ -388,8 +366,8 @@ function StatusCard({ card, index, visible }: {
           Active
         </div>
       ) : (
-        <div className={`inline-block rounded-md border px-2 py-0.5 text-sm font-medium ${STATUS_COLORS[card.color]}`}>
-          {card.value}
+        <div className={`inline-block rounded-md border px-2 py-0.5 text-sm font-medium ${colorCls}`}>
+          {value}
         </div>
       )}
       <div className="mt-3 h-0.5 w-full rounded-full bg-purple-500/10 overflow-hidden">
@@ -404,25 +382,47 @@ function StatusCard({ card, index, visible }: {
 
 /* ═══════════════════════════════════════════ MAIN ═══════════════════════════════════════════ */
 const AIPredictionDashboard = () => {
+  const { t } = useLanguage();
   const { ref: sectionRef, visible } = useInView(0.08);
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>("prediction");
   const [bullPct, setBullPct] = useState(45);
 
-  // Dynamic voting ratio fluctuation
   useEffect(() => {
     const iv = setInterval(() => {
       setBullPct(prev => {
-        const delta = (Math.random() - 0.5) * 4; // ±2%
+        const delta = (Math.random() - 0.5) * 4;
         return Math.min(55, Math.max(35, +(prev + delta).toFixed(1)));
       });
     }, 4000);
     return () => clearInterval(iv);
   }, []);
 
+  const TABS = [
+    { key: "prediction" as TabKey, label: "Prediction", sub: t("dash.tab.prediction") },
+    { key: "indicators" as TabKey, label: "Indicators", sub: t("dash.tab.indicators") },
+    { key: "voting" as TabKey, label: "Voting", sub: t("dash.tab.voting") },
+  ];
+
+  const statusCards = [
+    { label: t("dash.status.direction"), value: t("dash.status.direction.v"), colorCls: STATUS_COLORS.red },
+    { label: t("dash.status.strength"), value: t("dash.status.strength.v"), colorCls: STATUS_COLORS.purple },
+    { label: t("dash.status.confidence"), value: "89%", colorCls: "", isNumber: true, target: 89 },
+    { label: t("dash.status.volatility"), value: t("dash.status.volatility.v"), colorCls: STATUS_COLORS.green },
+    { label: t("dash.status.system"), value: "Active", colorCls: "", isActive: true },
+    { label: t("dash.status.risk"), value: t("dash.status.risk.v"), colorCls: STATUS_COLORS.green },
+  ];
+
+  const votingRows = [
+    { label: t("dash.vote.judgment"), value: t("dash.vote.judgment.v"), cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+    { label: t("dash.vote.strategyDir"), value: t("dash.vote.strategyDir.v"), cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+    { label: t("dash.vote.confidenceLevel"), value: t("dash.vote.confidenceLevel.v"), cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
+  ];
+
+  const descLines = t("dash.desc").split("\n");
+
   return (
     <section ref={sectionRef} className="relative w-full py-20 overflow-hidden" style={{ background: "hsl(270 100% 3%)" }}>
-      {/* subtle bg glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/5 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -433,19 +433,20 @@ const AIPredictionDashboard = () => {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-xs text-purple-300 mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
-              LIVE SYSTEM · 即時運算中
+              {t("dash.live")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 font-heading-cn">
-              AI Prediction Dashboard
+              {t("dash.title")}
             </h2>
             <p className="text-sm text-gray-400 max-w-xl leading-relaxed">
-              整合多時間框架 K 線、50 大市場指標與 AI 投票模型<br />
-              將複雜市場分析轉化為清晰可視的智能交易決策依據
+              {descLines.map((line, i) => (
+                <span key={i}>{line}{i < descLines.length - 1 && <br />}</span>
+              ))}
             </p>
           </div>
           <div className="flex items-center gap-2 mt-4 md:mt-2">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-            <span className="text-xs text-emerald-400 font-medium tracking-wide">System Active</span>
+            <span className="text-xs text-emerald-400 font-medium tracking-wide">{t("dash.systemActive")}</span>
           </div>
         </div>
 
@@ -479,25 +480,27 @@ const AIPredictionDashboard = () => {
             <div className="animate-[fadeTab_0.4s_ease]">
               <div className="mb-10">
                 <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">
-                  K-Line Prediction Matrix<span className="text-gray-500 font-normal hidden sm:inline">｜多時間框架 K 線預測</span>
+                  K-Line Prediction Matrix<span className="text-gray-500 font-normal hidden sm:inline">｜{t("dash.kline.title")}</span>
                 </h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">根據前六根 K 線走勢，AI 預測第七根 K 線市場方向</p>
+                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">{t("dash.kline.desc")}</p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                   {KLINE_DATA.map((d, i) => (
                     <KLineCard key={d.tf} data={d} index={i} visible={visible} active={activeCard === i}
-                      onClick={() => setActiveCard(activeCard === i ? null : i)} seed={1000 + i * 137} />
+                      onClick={() => setActiveCard(activeCard === i ? null : i)} seed={1000 + i * 137}
+                      bullLabel={t("dash.kline.bull")} bearLabel={t("dash.kline.bear")} />
                   ))}
                 </div>
               </div>
 
-              {/* Strategy Status */}
               <div className="mb-6">
                 <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">
-                  Strategy Status<span className="text-gray-500 font-normal hidden sm:inline">｜策略狀態總覽</span>
+                  Strategy Status<span className="text-gray-500 font-normal hidden sm:inline">｜{t("dash.strategy.title")}</span>
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mt-4">
-                  {STATUS_CARDS.map((card, i) => (
-                    <StatusCard key={card.label} card={card} index={i} visible={visible} />
+                  {statusCards.map((card, i) => (
+                    <StatusCard key={card.label} label={card.label} value={card.value}
+                      colorCls={card.colorCls} index={i} visible={visible}
+                      isNumber={card.isNumber} target={card.target} isActive={card.isActive} />
                   ))}
                 </div>
               </div>
@@ -508,19 +511,21 @@ const AIPredictionDashboard = () => {
           {activeTab === "indicators" && (
             <div className="animate-[fadeTab_0.4s_ease]">
               <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">50+ Global Market Indicators</h3>
-                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">AI 同步分析超過 50 項全球金融商品，跨市場聯動提升預測精度</p>
+                <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">{t("dash.ind.title")}</h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">{t("dash.ind.desc")}</p>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-1">
-                  {INDICATOR_GROUPS.map((group, gi) => {
+                  {INDICATOR_GROUPS_DATA.map((group, gi) => {
                     let offset = 0;
-                    for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS[k].items.length;
+                    for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS_DATA[k].items.length;
                     return (
-                      <div key={group.label} className="mb-4">
-                        <div className="text-[11px] sm:text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">{group.label}</div>
+                      <div key={group.i18nLabel} className="mb-4">
+                        <div className="text-[11px] sm:text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">{t(group.i18nLabel)}</div>
                         <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {group.items.map((item, ii) => (
-                            <IndicatorTag key={item.name} item={item} color={group.color}
+                            <IndicatorTag key={item.name} item={item}
+                              displayName={item.i18nKey ? t(item.i18nKey) : item.name}
+                              color={group.color}
                               delay={(offset + ii) * 30} visible={visible} />
                           ))}
                         </div>
@@ -529,7 +534,7 @@ const AIPredictionDashboard = () => {
                   })}
                 </div>
 
-                <ProgressLoop visible={visible} />
+                <ProgressLoop visible={visible} label={t("dash.ind.analyzing")} />
               </div>
             </div>
           )}
@@ -538,31 +543,28 @@ const AIPredictionDashboard = () => {
           {activeTab === "voting" && (
             <div className="animate-[fadeTab_0.4s_ease]">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-                {/* Donut chart — wider on desktop */}
                 <div className="lg:col-span-3 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">AI Voting Decision Engine</h3>
-                  <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">{t("dash.vote.title")}</h3>
+                  <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">{t("dash.vote.desc")}</p>
 
                   <div className="flex flex-col sm:flex-row items-center gap-6">
-                    <DonutChart visible={visible} bullPct={bullPct} />
+                    <DonutChart visible={visible} bullPct={bullPct}
+                      bearishLabel={t("dash.vote.bearish")} bullishLabel={t("dash.vote.bullish")}
+                      bearishSignal={t("dash.vote.bearishSignal")} bullishSignal={t("dash.vote.bullishSignal")} />
                     <div className="flex-1 w-full">
                       <div className="flex items-center gap-3 mb-4 justify-center sm:justify-start">
                         <span className="flex items-center gap-1.5 text-xs">
                           <span className="h-2.5 w-2.5 rounded-sm bg-fuchsia-500" />
-                          <span className="text-fuchsia-400 font-mono">{bullPct.toFixed(1)}% 看漲</span>
+                          <span className="text-fuchsia-400 font-mono">{bullPct.toFixed(1)}% {t("dash.vote.bull")}</span>
                         </span>
                         <span className="flex items-center gap-1.5 text-xs">
                           <span className="h-2.5 w-2.5 rounded-sm bg-gray-500" />
-                          <span className="text-gray-400 font-mono">{(100 - bullPct).toFixed(1)}% 看跌</span>
+                          <span className="text-gray-400 font-mono">{(100 - bullPct).toFixed(1)}% {t("dash.vote.bear")}</span>
                         </span>
                       </div>
 
                       <div className="space-y-3">
-                        {[
-                          { label: "當前 AI 判斷", value: "偏空", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                          { label: "策略方向", value: "做空觀察", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                          { label: "投票置信度", value: "中高", cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
-                        ].map(row => (
+                        {votingRows.map(row => (
                           <div key={row.label} className="flex items-center justify-between">
                             <span className="text-xs sm:text-sm text-gray-400">{row.label}</span>
                             <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
@@ -573,13 +575,12 @@ const AIPredictionDashboard = () => {
                   </div>
 
                   <p className="text-[10px] sm:text-[11px] text-gray-600 mt-5 text-center">
-                    當特定方向投票比例超過 66%，系統將自動形成明確進場方向判斷
+                    {t("dash.vote.note")}
                   </p>
                 </div>
 
-                {/* Voting breakdown sidebar — desktop right column */}
                 <div className="lg:col-span-2 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
-                  <h4 className="text-sm font-semibold text-purple-200 mb-3">各時間框架投票</h4>
+                  <h4 className="text-sm font-semibold text-purple-200 mb-3">{t("dash.vote.breakdown")}</h4>
                   <div className="space-y-2">
                     {KLINE_DATA.map(d => {
                       const isBull = d.dir === "bull";
@@ -604,11 +605,11 @@ const AIPredictionDashboard = () => {
                   </div>
                   <div className="mt-4 pt-3 border-t border-purple-500/10">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-500">看漲票數</span>
+                      <span className="text-gray-500">{t("dash.vote.bullCount")}</span>
                       <span className="font-mono text-fuchsia-400">3 / 8</span>
                     </div>
                     <div className="flex items-center justify-between text-xs mt-1">
-                      <span className="text-gray-500">看跌票數</span>
+                      <span className="text-gray-500">{t("dash.vote.bearCount")}</span>
                       <span className="font-mono text-gray-400">5 / 8</span>
                     </div>
                   </div>
@@ -620,8 +621,8 @@ const AIPredictionDashboard = () => {
 
         {/* ─── Footer note ─── */}
         <p className="text-center text-[10px] sm:text-xs text-gray-600 italic mt-8 max-w-2xl mx-auto leading-relaxed">
-          根據多時間框架與跨市場指標整合結果，系統動態調整進場方向與交易節奏。<br />
-          預測模型透過多維度交叉驗證機制，持續優化預測精度與策略表現。
+          {t("dash.footer1")}<br />
+          {t("dash.footer2")}
         </p>
       </div>
     </section>
