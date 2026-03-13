@@ -136,9 +136,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "合作夥伴",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "歐洲合法持牌銀行",
-    "partners.binance.name": "全球最大加密交易所",
+    "partners.binance.name": "全球最大加密交易所 Binance",
     "partners.binance.desc": "AIFT 自動交易平台",
-    "partners.coinw.name": "國際知名加密交易所",
+    "partners.coinw.name": "國際知名加密交易所 CoinW",
     "partners.coinw.desc": "AIFT 合約交易平台",
 
     // CTA
