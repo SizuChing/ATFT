@@ -12,12 +12,36 @@ const KLINE_DATA = [
   { tf: "12H", dir: "bear" as const, conf: 88 },
 ];
 
-const INDICATOR_GROUPS = [
-  { label: "加密貨幣", color: "purple", items: ["BTC", "ETH", "XRP", "BNB", "SOL", "DOGE", "ADA", "AVAX"] },
-  { label: "外匯", color: "blue", items: ["USD", "EUR", "JPY", "GBP", "CNY", "CHF", "CAD", "KRW"] },
-  { label: "商品", color: "orange", items: ["黃金", "白銀", "原油", "天然氣", "銅"] },
-  { label: "股指", color: "green", items: ["SP500", "NASDAQ", "DOW", "DAX", "NIKKEI", "TOPIX", "FTSE"] },
-  { label: "經濟指標", color: "gray", items: ["CPI", "PPI", "GDP", "VIX", "非農就業", "收益率曲線"] },
+type IndicatorItem = { name: string; price: number; decimals: number };
+const INDICATOR_GROUPS: { label: string; color: string; items: IndicatorItem[] }[] = [
+  { label: "加密貨幣", color: "purple", items: [
+    { name: "BTC", price: 67432.50, decimals: 2 }, { name: "ETH", price: 3521.80, decimals: 2 },
+    { name: "XRP", price: 0.5284, decimals: 4 }, { name: "BNB", price: 584.30, decimals: 2 },
+    { name: "SOL", price: 142.65, decimals: 2 }, { name: "DOGE", price: 0.1247, decimals: 4 },
+    { name: "ADA", price: 0.4523, decimals: 4 }, { name: "AVAX", price: 35.82, decimals: 2 },
+  ]},
+  { label: "外匯", color: "blue", items: [
+    { name: "USD/TWD", price: 31.42, decimals: 2 }, { name: "EUR/USD", price: 1.0847, decimals: 4 },
+    { name: "USD/JPY", price: 154.32, decimals: 2 }, { name: "GBP/USD", price: 1.2634, decimals: 4 },
+    { name: "USD/CNY", price: 7.2451, decimals: 4 }, { name: "USD/CHF", price: 0.8923, decimals: 4 },
+    { name: "USD/CAD", price: 1.3642, decimals: 4 }, { name: "USD/KRW", price: 1342.5, decimals: 1 },
+  ]},
+  { label: "商品", color: "orange", items: [
+    { name: "黃金", price: 2348.60, decimals: 2 }, { name: "白銀", price: 27.84, decimals: 2 },
+    { name: "原油", price: 78.52, decimals: 2 }, { name: "天然氣", price: 2.134, decimals: 3 },
+    { name: "銅", price: 4.312, decimals: 3 },
+  ]},
+  { label: "股指", color: "green", items: [
+    { name: "SP500", price: 5214.08, decimals: 2 }, { name: "NASDAQ", price: 16340.2, decimals: 1 },
+    { name: "DOW", price: 38852.3, decimals: 1 }, { name: "DAX", price: 18432.5, decimals: 1 },
+    { name: "NIKKEI", price: 38274.0, decimals: 1 }, { name: "TOPIX", price: 2697.1, decimals: 1 },
+    { name: "FTSE", price: 8164.3, decimals: 1 },
+  ]},
+  { label: "經濟指標", color: "gray", items: [
+    { name: "CPI", price: 3.4, decimals: 1 }, { name: "PPI", price: 2.2, decimals: 1 },
+    { name: "GDP", price: 3.1, decimals: 1 }, { name: "VIX", price: 13.45, decimals: 2 },
+    { name: "非農就業", price: 272, decimals: 0 }, { name: "收益率曲線", price: 4.28, decimals: 2 },
+  ]},
 ];
 
 const STATUS_CARDS = [
@@ -214,28 +238,44 @@ function KLineCard({ data, index, visible, active, onClick, seed }: {
 
 /* ─── Indicator Tag ─── */
 function IndicatorTag({ item, color, delay, visible }: {
-  item: string; color: string; delay: number; visible: boolean;
+  item: IndicatorItem; color: string; delay: number; visible: boolean;
 }) {
   const [up, setUp] = useState(Math.random() > 0.5);
+  const [changePct, setChangePct] = useState(() => +(Math.random() * 4 - 1.5).toFixed(2));
+  const [price, setPrice] = useState(item.price);
+
   useEffect(() => {
-    const iv = setInterval(() => setUp(Math.random() > 0.5), 3000 + Math.random() * 2000);
+    const iv = setInterval(() => {
+      const newUp = Math.random() > 0.5;
+      setUp(newUp);
+      const delta = (Math.random() * 3 - 1).toFixed(2);
+      setChangePct(+delta);
+      // simulate small price jitter
+      setPrice(prev => {
+        const jitter = prev * (parseFloat(delta) / 100) * 0.3;
+        return +(prev + jitter).toFixed(item.decimals);
+      });
+    }, 3000 + Math.random() * 2000);
     return () => clearInterval(iv);
-  }, []);
+  }, [item.decimals]);
+
+  const isPositive = changePct >= 0;
 
   return (
-    <span
-      className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-xs font-medium transition-all duration-300 ${TAG_COLORS[color]}`}
+    <div
+      className={`inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(8px)",
         transitionDelay: `${delay}ms`,
       }}
     >
-      {item}
-      <span className={`text-[10px] transition-colors duration-300 ${up ? "text-emerald-400" : "text-red-400"}`}>
-        {up ? "▲" : "▼"}
+      <span className="font-medium">{item.name}</span>
+      <span className="font-mono text-[11px] opacity-80">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
+      <span className={`font-mono text-[10px] transition-colors duration-300 ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
+        {isPositive ? "▲" : "▼"}{Math.abs(changePct).toFixed(2)}%
       </span>
-    </span>
+    </div>
   );
 }
 
@@ -445,7 +485,7 @@ const AIPredictionDashboard = () => {
                       <div className="text-xs text-gray-500 mb-2">{group.label}</div>
                       <div className="flex flex-wrap gap-2">
                         {group.items.map((item, ii) => (
-                          <IndicatorTag key={item} item={item} color={group.color}
+                          <IndicatorTag key={item.name} item={item} color={group.color}
                             delay={(offset + ii) * 30} visible={visible} />
                         ))}
                       </div>
