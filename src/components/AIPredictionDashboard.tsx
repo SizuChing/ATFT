@@ -12,12 +12,36 @@ const KLINE_DATA = [
   { tf: "12H", dir: "bear" as const, conf: 88 },
 ];
 
-const INDICATOR_GROUPS = [
-  { label: "加密貨幣", color: "purple", items: ["BTC", "ETH", "XRP", "BNB", "SOL", "DOGE", "ADA", "AVAX"] },
-  { label: "外匯", color: "blue", items: ["USD", "EUR", "JPY", "GBP", "CNY", "CHF", "CAD", "KRW"] },
-  { label: "商品", color: "orange", items: ["黃金", "白銀", "原油", "天然氣", "銅"] },
-  { label: "股指", color: "green", items: ["SP500", "NASDAQ", "DOW", "DAX", "NIKKEI", "TOPIX", "FTSE"] },
-  { label: "經濟指標", color: "gray", items: ["CPI", "PPI", "GDP", "VIX", "非農就業", "收益率曲線"] },
+type IndicatorItem = { name: string; price: number; decimals: number };
+const INDICATOR_GROUPS: { label: string; color: string; items: IndicatorItem[] }[] = [
+  { label: "加密貨幣", color: "purple", items: [
+    { name: "BTC", price: 67432.50, decimals: 2 }, { name: "ETH", price: 3521.80, decimals: 2 },
+    { name: "XRP", price: 0.5284, decimals: 4 }, { name: "BNB", price: 584.30, decimals: 2 },
+    { name: "SOL", price: 142.65, decimals: 2 }, { name: "DOGE", price: 0.1247, decimals: 4 },
+    { name: "ADA", price: 0.4523, decimals: 4 }, { name: "AVAX", price: 35.82, decimals: 2 },
+  ]},
+  { label: "外匯", color: "blue", items: [
+    { name: "USD/TWD", price: 31.42, decimals: 2 }, { name: "EUR/USD", price: 1.0847, decimals: 4 },
+    { name: "USD/JPY", price: 154.32, decimals: 2 }, { name: "GBP/USD", price: 1.2634, decimals: 4 },
+    { name: "USD/CNY", price: 7.2451, decimals: 4 }, { name: "USD/CHF", price: 0.8923, decimals: 4 },
+    { name: "USD/CAD", price: 1.3642, decimals: 4 }, { name: "USD/KRW", price: 1342.5, decimals: 1 },
+  ]},
+  { label: "商品", color: "orange", items: [
+    { name: "黃金", price: 2348.60, decimals: 2 }, { name: "白銀", price: 27.84, decimals: 2 },
+    { name: "原油", price: 78.52, decimals: 2 }, { name: "天然氣", price: 2.134, decimals: 3 },
+    { name: "銅", price: 4.312, decimals: 3 },
+  ]},
+  { label: "股指", color: "green", items: [
+    { name: "SP500", price: 5214.08, decimals: 2 }, { name: "NASDAQ", price: 16340.2, decimals: 1 },
+    { name: "DOW", price: 38852.3, decimals: 1 }, { name: "DAX", price: 18432.5, decimals: 1 },
+    { name: "NIKKEI", price: 38274.0, decimals: 1 }, { name: "TOPIX", price: 2697.1, decimals: 1 },
+    { name: "FTSE", price: 8164.3, decimals: 1 },
+  ]},
+  { label: "經濟指標", color: "gray", items: [
+    { name: "CPI", price: 3.4, decimals: 1 }, { name: "PPI", price: 2.2, decimals: 1 },
+    { name: "GDP", price: 3.1, decimals: 1 }, { name: "VIX", price: 13.45, decimals: 2 },
+    { name: "非農就業", price: 272, decimals: 0 }, { name: "收益率曲線", price: 4.28, decimals: 2 },
+  ]},
 ];
 
 const STATUS_CARDS = [
