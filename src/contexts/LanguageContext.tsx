@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import type { Locale } from "@/i18n/translations";
 import { translations } from "@/i18n/translations";
 
@@ -8,24 +8,32 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const FALLBACK_LOCALE: Locale = "zh-TW";
+
+const fallbackContext: LanguageContextType = {
+  locale: FALLBACK_LOCALE,
+  setLocale: () => {
+    // no-op fallback to avoid hard crash when provider is temporarily unavailable (e.g. HMR)
+  },
+  t: (key: string) => translations[FALLBACK_LOCALE]?.[key] ?? key,
+};
+
+const LanguageContext = createContext<LanguageContextType>(fallbackContext);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [locale, setLocale] = useState<Locale>("zh-TW");
+  const [locale, setLocale] = useState<Locale>(FALLBACK_LOCALE);
 
-  const t = (key: string): string => {
-    return translations[locale]?.[key] ?? key;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </LanguageContext.Provider>
+  const value = useMemo<LanguageContextType>(
+    () => ({
+      locale,
+      setLocale,
+      t: (key: string) => translations[locale]?.[key] ?? key,
+    }),
+    [locale],
   );
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) throw new Error("useLanguage must be used within LanguageProvider");
-  return context;
-};
+export const useLanguage = () => useContext(LanguageContext);
+
