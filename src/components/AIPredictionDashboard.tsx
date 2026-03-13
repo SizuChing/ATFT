@@ -238,28 +238,44 @@ function KLineCard({ data, index, visible, active, onClick, seed }: {
 
 /* ─── Indicator Tag ─── */
 function IndicatorTag({ item, color, delay, visible }: {
-  item: string; color: string; delay: number; visible: boolean;
+  item: IndicatorItem; color: string; delay: number; visible: boolean;
 }) {
   const [up, setUp] = useState(Math.random() > 0.5);
+  const [changePct, setChangePct] = useState(() => +(Math.random() * 4 - 1.5).toFixed(2));
+  const [price, setPrice] = useState(item.price);
+
   useEffect(() => {
-    const iv = setInterval(() => setUp(Math.random() > 0.5), 3000 + Math.random() * 2000);
+    const iv = setInterval(() => {
+      const newUp = Math.random() > 0.5;
+      setUp(newUp);
+      const delta = (Math.random() * 3 - 1).toFixed(2);
+      setChangePct(+delta);
+      // simulate small price jitter
+      setPrice(prev => {
+        const jitter = prev * (parseFloat(delta) / 100) * 0.3;
+        return +(prev + jitter).toFixed(item.decimals);
+      });
+    }, 3000 + Math.random() * 2000);
     return () => clearInterval(iv);
-  }, []);
+  }, [item.decimals]);
+
+  const isPositive = changePct >= 0;
 
   return (
-    <span
-      className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-xs font-medium transition-all duration-300 ${TAG_COLORS[color]}`}
+    <div
+      className={`inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(8px)",
         transitionDelay: `${delay}ms`,
       }}
     >
-      {item}
-      <span className={`text-[10px] transition-colors duration-300 ${up ? "text-emerald-400" : "text-red-400"}`}>
-        {up ? "▲" : "▼"}
+      <span className="font-medium">{item.name}</span>
+      <span className="font-mono text-[11px] opacity-80">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
+      <span className={`font-mono text-[10px] transition-colors duration-300 ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
+        {isPositive ? "▲" : "▼"}{Math.abs(changePct).toFixed(2)}%
       </span>
-    </span>
+    </div>
   );
 }
 
