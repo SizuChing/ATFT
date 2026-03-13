@@ -485,7 +485,7 @@ const AIPredictionDashboard = () => {
                       <div className="text-xs text-gray-500 mb-2">{group.label}</div>
                       <div className="flex flex-wrap gap-2">
                         {group.items.map((item, ii) => (
-                          <IndicatorTag key={item} item={item} color={group.color}
+                          <IndicatorTag key={item.name} item={item} color={group.color}
                             delay={(offset + ii) * 30} visible={visible} />
                         ))}
                       </div>
