@@ -132,8 +132,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
 
     // AI Prediction Dashboard
+    "nav.aiTerminal": "AI 終端",
     "dash.live": "LIVE SYSTEM · 即時運算中",
-    "dash.title": "AI Prediction Dashboard",
+    "dash.title": "AI 市場預測終端",
     "dash.desc": "整合多時間框架 K 線、50 大市場指標與 AI 投票模型\n將複雜市場分析轉化為清晰可視的智能交易決策依據",
     "dash.systemActive": "System Active",
     "dash.tab.prediction": "K 線預測",
@@ -348,8 +349,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI automatically executes quantitative trading strategies, check fund returns and performance in real-time",
 
     // AI Prediction Dashboard
+    "nav.aiTerminal": "AI Terminal",
     "dash.live": "LIVE SYSTEM · Real-time Computing",
-    "dash.title": "AI Prediction Dashboard",
+    "dash.title": "AI Market Prediction Terminal",
     "dash.desc": "Integrating multi-timeframe K-lines, 50+ market indicators, and AI voting models\nTransforming complex market analysis into clear, visual intelligent trading decisions",
     "dash.systemActive": "System Active",
     "dash.tab.prediction": "K-Line Prediction",
@@ -561,8 +563,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI がクオンツ取引戦略を自動実行、ファンド収益とパフォーマンスをリアルタイムで確認",
 
     // AI Prediction Dashboard
+    "nav.aiTerminal": "AIターミナル",
     "dash.live": "LIVE SYSTEM · リアルタイム演算中",
-    "dash.title": "AI Prediction Dashboard",
+    "dash.title": "AI市場予測ターミナル",
     "dash.desc": "マルチタイムフレームK線、50以上の市場指標、AI投票モデルを統合\n複雑な市場分析を明確で視覚的なスマート取引判断に変換",
     "dash.systemActive": "System Active",
     "dash.tab.prediction": "K線予測",
