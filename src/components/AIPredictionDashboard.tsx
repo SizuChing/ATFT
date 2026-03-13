@@ -407,6 +407,18 @@ const AIPredictionDashboard = () => {
   const { ref: sectionRef, visible } = useInView(0.08);
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>("prediction");
+  const [bullPct, setBullPct] = useState(45);
+
+  // Dynamic voting ratio fluctuation
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setBullPct(prev => {
+        const delta = (Math.random() - 0.5) * 4; // ±2%
+        return Math.min(55, Math.max(35, +(prev + delta).toFixed(1)));
+      });
+    }, 4000);
+    return () => clearInterval(iv);
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative w-full py-20 overflow-hidden" style={{ background: "hsl(270 100% 3%)" }}>
