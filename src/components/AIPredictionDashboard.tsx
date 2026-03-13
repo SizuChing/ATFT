@@ -263,16 +263,16 @@ function IndicatorTag({ item, color, delay, visible }: {
 
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
+      className={`inline-flex items-center gap-1 sm:gap-2 rounded-lg border px-1.5 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(8px)",
         transitionDelay: `${delay}ms`,
       }}
     >
-      <span className="font-medium">{item.name}</span>
-      <span className="font-mono text-[11px] opacity-80">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
-      <span className={`font-mono text-[10px] transition-colors duration-300 ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
+      <span className="font-medium whitespace-nowrap">{item.name}</span>
+      <span className="font-mono text-[9px] sm:text-[11px] opacity-80 hidden xs:inline sm:inline">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
+      <span className={`font-mono text-[9px] sm:text-[10px] transition-colors duration-300 whitespace-nowrap ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
         {isPositive ? "▲" : "▼"}{Math.abs(changePct).toFixed(2)}%
       </span>
     </div>
