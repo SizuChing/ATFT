@@ -544,16 +544,16 @@ const AIPredictionDashboard = () => {
                   <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
 
                   <div className="flex flex-col sm:flex-row items-center gap-6">
-                    <DonutChart visible={visible} />
+                    <DonutChart visible={visible} bullPct={bullPct} />
                     <div className="flex-1 w-full">
                       <div className="flex items-center gap-3 mb-4 justify-center sm:justify-start">
                         <span className="flex items-center gap-1.5 text-xs">
                           <span className="h-2.5 w-2.5 rounded-sm bg-fuchsia-500" />
-                          <span className="text-fuchsia-400">45% 看漲</span>
+                          <span className="text-fuchsia-400 font-mono">{bullPct.toFixed(1)}% 看漲</span>
                         </span>
                         <span className="flex items-center gap-1.5 text-xs">
                           <span className="h-2.5 w-2.5 rounded-sm bg-gray-500" />
-                          <span className="text-gray-400">55% 看跌</span>
+                          <span className="text-gray-400 font-mono">{(100 - bullPct).toFixed(1)}% 看跌</span>
                         </span>
                       </div>
 
