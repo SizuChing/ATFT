@@ -25,9 +25,11 @@ const AboutSection = () => {
               </linearGradient>
               <filter id="hexGlow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="12" result="blur1" />
+                <feFlood flood-color="#9D4EDD" flood-opacity="0.5" result="color" />
+                <feComposite in="color" in2="blur1" operator="in" result="coloredBlur" />
                 <feGaussianBlur stdDeviation="4" in="SourceGraphic" result="blur2" />
                 <feMerge>
-                  <feMergeNode in="blur1" />
+                  <feMergeNode in="coloredBlur" />
                   <feMergeNode in="blur2" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
@@ -39,7 +41,7 @@ const AboutSection = () => {
             <polygon
               points="100,10 185,55 185,145 100,190 15,145 15,55"
               fill="url(#hexFill)"
-              stroke="#00E5E5"
+              stroke="#9D4EDD"
               strokeWidth="2.5"
               filter="url(#hexGlow)"
             />
