@@ -280,9 +280,8 @@ function IndicatorTag({ item, color, delay, visible }: {
 }
 
 /* ─── Donut Chart ─── */
-function DonutChart({ visible }: { visible: boolean }) {
-  const bullPct = 45;
-  const bearPct = 55;
+function DonutChart({ visible, bullPct }: { visible: boolean; bullPct: number }) {
+  const bearPct = 100 - bullPct;
   const r = 54;
   const c = 2 * Math.PI * r;
   const [progress, setProgress] = useState(0);
@@ -301,21 +300,44 @@ function DonutChart({ visible }: { visible: boolean }) {
     return () => cancelAnimationFrame(raf);
   }, [visible]);
 
-  const bullLen = (bullPct / 100) * c * progress;
-  const bearLen = (bearPct / 100) * c * progress;
+  // Smoothly animate ratio changes after initial load
+  const [displayBull, setDisplayBull] = useState(bullPct);
+  useEffect(() => {
+    if (progress < 1) return;
+    let raf: number;
+    const from = displayBull;
+    const to = bullPct;
+    const t0 = performance.now();
+    const dur = 600;
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / dur, 1);
+      setDisplayBull(from + (to - from) * p);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [bullPct, progress]);
+
+  const activeBull = progress < 1 ? bullPct : displayBull;
+  const activeBear = 100 - activeBull;
+  const bullLen = (activeBull / 100) * c * progress;
+  const bearLen = (activeBear / 100) * c * progress;
+  const isBearish = activeBear > activeBull;
 
   return (
     <div className="relative w-48 h-48 mx-auto">
       <svg viewBox="0 0 128 128" className="w-full h-full -rotate-90">
         <circle cx="64" cy="64" r={r} fill="none" stroke="hsl(270 50% 12%)" strokeWidth="12" />
         <circle cx="64" cy="64" r={r} fill="none" stroke="#d946ef" strokeWidth="12"
-          strokeDasharray={`${bullLen} ${c - bullLen}`} strokeLinecap="round" />
+          strokeDasharray={`${bullLen} ${c - bullLen}`} strokeLinecap="round" className="transition-all duration-500" />
         <circle cx="64" cy="64" r={r} fill="none" stroke="#6b7280" strokeWidth="12"
-          strokeDasharray={`${bearLen} ${c - bearLen}`} strokeDashoffset={`-${bullLen}`} strokeLinecap="round" />
+          strokeDasharray={`${bearLen} ${c - bearLen}`} strokeDashoffset={`-${bullLen}`} strokeLinecap="round" className="transition-all duration-500" />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold text-red-400">偏空</span>
-        <span className="text-xs text-gray-400 mt-1">Bearish Signal</span>
+        <span className={`text-2xl font-bold transition-colors duration-300 ${isBearish ? "text-red-400" : "text-fuchsia-400"}`}>
+          {isBearish ? "偏空" : "偏多"}
+        </span>
+        <span className="text-xs text-gray-400 mt-1">{isBearish ? "Bearish Signal" : "Bullish Signal"}</span>
       </div>
     </div>
   );
