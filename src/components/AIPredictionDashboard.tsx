@@ -263,16 +263,16 @@ function IndicatorTag({ item, color, delay, visible }: {
 
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
+      className={`inline-flex items-center gap-1 sm:gap-2 rounded-lg border px-1.5 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs transition-all duration-300 ${TAG_COLORS[color]}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(8px)",
         transitionDelay: `${delay}ms`,
       }}
     >
-      <span className="font-medium">{item.name}</span>
-      <span className="font-mono text-[11px] opacity-80">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
-      <span className={`font-mono text-[10px] transition-colors duration-300 ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
+      <span className="font-medium whitespace-nowrap">{item.name}</span>
+      <span className="font-mono text-[9px] sm:text-[11px] opacity-80 hidden xs:inline sm:inline">{price.toLocaleString(undefined, { minimumFractionDigits: item.decimals, maximumFractionDigits: item.decimals })}</span>
+      <span className={`font-mono text-[9px] sm:text-[10px] transition-colors duration-300 whitespace-nowrap ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
         {isPositive ? "▲" : "▼"}{Math.abs(changePct).toFixed(2)}%
       </span>
     </div>
@@ -416,22 +416,22 @@ const AIPredictionDashboard = () => {
         </div>
 
         {/* ─── Tabs ─── */}
-        <div className="flex gap-1 mb-8 rounded-xl bg-[hsl(270,100%,5%)] border border-purple-500/15 p-1 w-fit"
+        <div className="flex gap-0.5 sm:gap-1 mb-8 rounded-xl bg-[hsl(270,100%,5%)] border border-purple-500/15 p-1 w-full sm:w-fit overflow-x-auto"
           style={{ opacity: visible ? 1 : 0, transition: "opacity 0.5s ease 0.3s" }}>
           {TABS.map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`relative px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300
+              className={`relative flex-1 sm:flex-none px-3 sm:px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 min-w-0
                 ${activeTab === tab.key
                   ? "bg-purple-500/20 text-purple-200 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
                   : "text-gray-500 hover:text-gray-300 hover:bg-purple-500/5"
                 }`}
             >
-              <span className="font-mono text-xs">{tab.label}</span>
-              <span className="block text-[10px] mt-0.5 opacity-70">{tab.sub}</span>
+              <span className="font-mono text-[11px] sm:text-xs block truncate">{tab.label}</span>
+              <span className="block text-[9px] sm:text-[10px] mt-0.5 opacity-70 truncate">{tab.sub}</span>
               {activeTab === tab.key && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-purple-400" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 sm:w-8 h-0.5 rounded-full bg-purple-400" />
               )}
             </button>
           ))}
@@ -443,12 +443,12 @@ const AIPredictionDashboard = () => {
           {/* Tab: Prediction */}
           {activeTab === "prediction" && (
             <div className="animate-[fadeTab_0.4s_ease]">
-              <div className="mb-12">
-                <h3 className="text-lg font-semibold text-purple-200 mb-1">
-                  K-Line Prediction Matrix<span className="text-gray-500 font-normal">｜多時間框架 K 線預測</span>
+              <div className="mb-10">
+                <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">
+                  K-Line Prediction Matrix<span className="text-gray-500 font-normal hidden sm:inline">｜多時間框架 K 線預測</span>
                 </h3>
-                <p className="text-xs text-gray-500 mb-5">根據前六根 K 線走勢，AI 預測第七根 K 線市場方向</p>
-                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">根據前六根 K 線走勢，AI 預測第七根 K 線市場方向</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                   {KLINE_DATA.map((d, i) => (
                     <KLineCard key={d.tf} data={d} index={i} visible={visible} active={activeCard === i}
                       onClick={() => setActiveCard(activeCard === i ? null : i)} seed={1000 + i * 137} />
@@ -456,12 +456,12 @@ const AIPredictionDashboard = () => {
                 </div>
               </div>
 
-              {/* Strategy Status stays in prediction tab */}
+              {/* Strategy Status */}
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-purple-200 mb-1">
-                  Strategy Status<span className="text-gray-500 font-normal">｜策略狀態總覽</span>
+                <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">
+                  Strategy Status<span className="text-gray-500 font-normal hidden sm:inline">｜策略狀態總覽</span>
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mt-4">
                   {STATUS_CARDS.map((card, i) => (
                     <StatusCard key={card.label} card={card} index={i} visible={visible} />
                   ))}
@@ -473,25 +473,27 @@ const AIPredictionDashboard = () => {
           {/* Tab: Indicators */}
           {activeTab === "indicators" && (
             <div className="animate-[fadeTab_0.4s_ease]">
-              <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6 max-w-3xl">
-                <h3 className="text-lg font-semibold text-purple-200 mb-1">50+ Global Market Indicators</h3>
-                <p className="text-xs text-gray-500 mb-5">AI 同步分析超過 50 項全球金融商品，跨市場聯動提升預測精度</p>
+              <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">50+ Global Market Indicators</h3>
+                <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">AI 同步分析超過 50 項全球金融商品，跨市場聯動提升預測精度</p>
 
-                {INDICATOR_GROUPS.map((group, gi) => {
-                  let offset = 0;
-                  for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS[k].items.length;
-                  return (
-                    <div key={group.label} className="mb-4">
-                      <div className="text-xs text-gray-500 mb-2">{group.label}</div>
-                      <div className="flex flex-wrap gap-2">
-                        {group.items.map((item, ii) => (
-                          <IndicatorTag key={item.name} item={item} color={group.color}
-                            delay={(offset + ii) * 30} visible={visible} />
-                        ))}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-1">
+                  {INDICATOR_GROUPS.map((group, gi) => {
+                    let offset = 0;
+                    for (let k = 0; k < gi; k++) offset += INDICATOR_GROUPS[k].items.length;
+                    return (
+                      <div key={group.label} className="mb-4">
+                        <div className="text-[11px] sm:text-xs text-gray-500 mb-2 font-medium uppercase tracking-wider">{group.label}</div>
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                          {group.items.map((item, ii) => (
+                            <IndicatorTag key={item.name} item={item} color={group.color}
+                              delay={(offset + ii) * 30} visible={visible} />
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
 
                 <ProgressLoop visible={visible} />
               </div>
@@ -501,41 +503,89 @@ const AIPredictionDashboard = () => {
           {/* Tab: Voting */}
           {activeTab === "voting" && (
             <div className="animate-[fadeTab_0.4s_ease]">
-              <div className="rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-6 max-w-lg mx-auto">
-                <h3 className="text-lg font-semibold text-purple-200 mb-1">AI Voting Decision Engine</h3>
-                <p className="text-xs text-gray-500 mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+                {/* Donut chart — wider on desktop */}
+                <div className="lg:col-span-3 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
+                  <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">AI Voting Decision Engine</h3>
+                  <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">系統匯整各時間框架預測結果，當同方向比例超過 66% 時形成策略判斷</p>
 
-                <DonutChart visible={visible} />
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    <DonutChart visible={visible} />
+                    <div className="flex-1 w-full">
+                      <div className="flex items-center gap-3 mb-4 justify-center sm:justify-start">
+                        <span className="flex items-center gap-1.5 text-xs">
+                          <span className="h-2.5 w-2.5 rounded-sm bg-fuchsia-500" />
+                          <span className="text-fuchsia-400">45% 看漲</span>
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs">
+                          <span className="h-2.5 w-2.5 rounded-sm bg-gray-500" />
+                          <span className="text-gray-400">55% 看跌</span>
+                        </span>
+                      </div>
 
-                <div className="flex items-center gap-1 mt-2 mb-1 justify-center">
-                  <span className="text-xs text-fuchsia-400">45% 看漲</span>
-                  <span className="text-xs text-gray-600 mx-2">|</span>
-                  <span className="text-xs text-gray-400">55% 看跌</span>
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  {[
-                    { label: "當前 AI 判斷", value: "偏空", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                    { label: "策略方向", value: "做空觀察", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
-                    { label: "投票置信度", value: "中高", cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
-                  ].map(row => (
-                    <div key={row.label} className="flex items-center justify-between">
-                      <span className="text-sm text-gray-400">{row.label}</span>
-                      <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
+                      <div className="space-y-3">
+                        {[
+                          { label: "當前 AI 判斷", value: "偏空", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+                          { label: "策略方向", value: "做空觀察", cls: "bg-red-500/20 text-red-400 border-red-500/40" },
+                          { label: "投票置信度", value: "中高", cls: "bg-yellow-500/20 text-yellow-400 border-yellow-500/40" },
+                        ].map(row => (
+                          <div key={row.label} className="flex items-center justify-between">
+                            <span className="text-xs sm:text-sm text-gray-400">{row.label}</span>
+                            <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+                  </div>
+
+                  <p className="text-[10px] sm:text-[11px] text-gray-600 mt-5 text-center">
+                    當特定方向投票比例超過 66%，系統將自動形成明確進場方向判斷
+                  </p>
                 </div>
 
-                <p className="text-[11px] text-gray-600 mt-5 text-center">
-                  當特定方向投票比例超過 66%，系統將自動形成明確進場方向判斷
-                </p>
+                {/* Voting breakdown sidebar — desktop right column */}
+                <div className="lg:col-span-2 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
+                  <h4 className="text-sm font-semibold text-purple-200 mb-3">各時間框架投票</h4>
+                  <div className="space-y-2">
+                    {KLINE_DATA.map(d => {
+                      const isBull = d.dir === "bull";
+                      return (
+                        <div key={d.tf} className="flex items-center gap-3">
+                          <span className="font-mono text-[11px] text-gray-400 w-8 text-right">{d.tf}</span>
+                          <div className="flex-1 h-1.5 rounded-full bg-purple-500/10 overflow-hidden">
+                            <div
+                              className={`h-full rounded-full transition-all duration-1000 ${isBull ? "bg-fuchsia-500/60" : "bg-gray-500/60"}`}
+                              style={{ width: visible ? `${d.conf}%` : "0%" }}
+                            />
+                          </div>
+                          <span className={`text-[11px] font-mono w-8 text-right ${isBull ? "text-fuchsia-400" : "text-gray-400"}`}>
+                            {d.conf}%
+                          </span>
+                          <span className={`text-[10px] ${isBull ? "text-fuchsia-400" : "text-gray-500"}`}>
+                            {isBull ? "▲" : "▼"}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-purple-500/10">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-gray-500">看漲票數</span>
+                      <span className="font-mono text-fuchsia-400">3 / 8</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs mt-1">
+                      <span className="text-gray-500">看跌票數</span>
+                      <span className="font-mono text-gray-400">5 / 8</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
         </div>
 
         {/* ─── Footer note ─── */}
-        <p className="text-center text-xs text-gray-600 italic mt-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-center text-[10px] sm:text-xs text-gray-600 italic mt-8 max-w-2xl mx-auto leading-relaxed">
           根據多時間框架與跨市場指標整合結果，系統動態調整進場方向與交易節奏。<br />
           預測模型透過多維度交叉驗證機制，持續優化預測精度與策略表現。
         </p>
