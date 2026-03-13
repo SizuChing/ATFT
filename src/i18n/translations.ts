@@ -292,9 +292,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "Partners",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "European Licensed Bank",
-    "partners.binance.name": "World's Largest Crypto Exchange",
+    "partners.binance.name": "World's Largest Crypto Exchange Binance",
     "partners.binance.desc": "AIFT Auto-Trading Platform",
-    "partners.coinw.name": "International Crypto Exchange",
+    "partners.coinw.name": "International Crypto Exchange CoinW",
     "partners.coinw.desc": "AIFT Contract Trading Platform",
 
     "cta.title": "Ready to Let AI Trade for You?",
