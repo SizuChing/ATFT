@@ -446,9 +446,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "partners.title": "パートナー",
     "partners.ecb.name": "Europe Chartered Bank",
     "partners.ecb.desc": "欧州認可銀行",
-    "partners.binance.name": "世界最大の暗号通貨取引所",
+    "partners.binance.name": "世界最大の暗号通貨取引所 Binance",
     "partners.binance.desc": "AIFT 自動取引プラットフォーム",
-    "partners.coinw.name": "国際的な暗号通貨取引所",
+    "partners.coinw.name": "国際的な暗号通貨取引所 CoinW",
     "partners.coinw.desc": "AIFT 契約取引プラットフォーム",
 
     "cta.title": "AIに取引を任せる準備はできましたか？",
