@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-import { Locale, translations } from "@/i18n/translations";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import type { Locale } from "@/i18n/translations";
+import { translations } from "@/i18n/translations";
 
 interface LanguageContextType {
   locale: Locale;
