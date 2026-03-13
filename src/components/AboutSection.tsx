@@ -39,7 +39,7 @@ const AboutSection = () => {
             <polygon
               points="100,10 185,55 185,145 100,190 15,145 15,55"
               fill="url(#hexFill)"
-              stroke="#00E5E5"
+              stroke="#9D4EDD"
               strokeWidth="2.5"
               filter="url(#hexGlow)"
             />
