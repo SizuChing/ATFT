@@ -132,7 +132,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
 
     // AI Prediction Dashboard
-    "nav.aiTerminal": "AI 終端",
+    "nav.aiTerminal": "AI 預測",
     "dash.live": "LIVE SYSTEM · 即時運算中",
     "dash.title": "AI 市場預測終端",
     "dash.desc": "整合多時間框架 K 線、50 大市場指標與 AI 投票模型\n將複雜市場分析轉化為清晰可視的智能交易決策依據",
@@ -348,7 +348,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "认购 AIFT AI 基金产品，选择适合的投资方案",
     "ecb.flow.s5": "AIFT AI 全自动执行量化交易策略，即时查阅基金收益与绩效",
 
-    "nav.aiTerminal": "AI 终端",
+    "nav.aiTerminal": "AI 预测",
     "dash.live": "LIVE SYSTEM · 即时运算中",
     "dash.title": "AI 市场预测终端",
     "dash.desc": "整合多时间框架 K 线、50 大市场指标与 AI 投票模型\n将复杂市场分析转化为清晰可视的智能交易决策依据",
