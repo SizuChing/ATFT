@@ -16,6 +16,7 @@ const navLinks = [
 
 const localeLabels: Record<Locale, string> = {
   "zh-TW": "繁中",
+  "zh-CN": "简中",
   en: "EN",
   ja: "日本語",
 };
