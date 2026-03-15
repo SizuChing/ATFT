@@ -776,7 +776,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI がクオンツ取引戦略を自動実行、ファンド収益とパフォーマンスをリアルタイムで確認",
 
     // AI Prediction Dashboard
-    "nav.aiTerminal": "AIターミナル",
+    "nav.aiTerminal": "AI予測",
     "dash.live": "LIVE SYSTEM · リアルタイム演算中",
     "dash.title": "AI市場予測ターミナル",
     "dash.desc": "マルチタイムフレームK線、50以上の市場指標、AI投票モデルを統合\n複雑な市場分析を明確で視覚的なスマート取引判断に変換",
