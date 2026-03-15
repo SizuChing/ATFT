@@ -562,7 +562,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s5": "AIFT AI automatically executes quantitative trading strategies, check fund returns and performance in real-time",
 
     // AI Prediction Dashboard
-    "nav.aiTerminal": "AI Terminal",
+    "nav.aiTerminal": "AI Prediction",
     "dash.live": "LIVE SYSTEM · Real-time Computing",
     "dash.title": "AI Market Prediction Terminal",
     "dash.desc": "Integrating multi-timeframe K-lines, 50+ market indicators, and AI voting models\nTransforming complex market analysis into clear, visual intelligent trading decisions",
