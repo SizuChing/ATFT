@@ -37,7 +37,7 @@ const HeroSection = () => {
       </div>
 
       <div className="absolute bottom-8 left-0 right-0 px-6 lg:px-12 z-10">
-        <p className="font-display text-[28px] sm:text-[40px] lg:text-[60px] text-foreground italic tracking-wider opacity-90">
+        <p className="text-[28px] sm:text-[40px] lg:text-[60px] text-foreground tracking-wider opacity-90" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontStyle: 'italic' }}>
           {t("hero.brand")}
         </p>
       </div>
