@@ -360,6 +360,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "回测报告",
+    "backtest.title": "ETH AI 交易月度回报报告",
     "backtest.label": "历史回测数据",
     "backtest.desc1": "以下为 AIFT AI 系统历史回测绩效，",
     "backtest.desc2": "数据涵盖 2023 年至今，含浮盈亏计算。",
