@@ -1417,6 +1417,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.twoFactor.step3.desc": "認証アプリに表示される6桁のコードを入力して、バインドを完了します。",
     "guide.twoFactor.step4.title": "リカバリーコードをバックアップ",
     "guide.twoFactor.step4.desc": "システムがリカバリーコードを提供します。スマートフォン紛失時に備えて安全に保管してください。",
+    "guide.faq.desc": "口座開設に関するよくあるご質問と回答です。",
     "guide.faq.q1": "口座開設にはどのくらい時間がかかりますか？",
     "guide.faq.a1": "通常、書類提出から審査完了まで1〜3営業日かかります。書類の完全性によります。",
     "guide.faq.q2": "どの国のユーザーが対応していますか？",
