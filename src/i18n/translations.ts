@@ -802,6 +802,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "AIFT AI ファンド商品を購入し、適切な投資プランを選択",
     "ecb.flow.s5": "AIFT AI がクオンツ取引戦略を自動実行、ファンド収益とパフォーマンスをリアルタイムで確認",
 
+    // Backtest Report
+    "nav.backtest": "バックテスト",
+    "backtest.label": "過去のバックテストデータ",
+    "backtest.desc1": "以下はAIFT AIシステムの過去のバックテスト実績です。",
+    "backtest.desc2": "2023年から現在までのデータで、含み損益を含みます。",
+    "backtest.disclaimer": "過去のバックテストデータは将来の実際のリターンを保証するものではありません。投資にはリスクが伴います。",
+    "backtest.tableTitle": "含み損益込み Including Floating Profit and Loss",
+    "backtest.year": "年度",
+
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI予測",
     "dash.live": "LIVE SYSTEM · リアルタイム演算中",
