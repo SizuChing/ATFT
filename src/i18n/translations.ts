@@ -357,6 +357,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "认购 AIFT AI 基金产品，选择适合的投资方案",
     "ecb.flow.s5": "AIFT AI 全自动执行量化交易策略，即时查阅基金收益与绩效",
 
+    // Backtest Report
+    "nav.backtest": "回测报告",
+    "backtest.label": "历史回测数据",
+    "backtest.desc1": "以下为 AIFT AI 系统历史回测绩效，",
+    "backtest.desc2": "数据涵盖 2023 年至今，含浮盈亏计算。",
+    "backtest.disclaimer": "历史回测数据不代表未来实际报酬，投资涉及风险。",
+    "backtest.tableTitle": "含浮盈亏 Including Floating Profit and Loss",
+    "backtest.year": "年份",
+
     "nav.aiTerminal": "AI 预测",
     "dash.live": "LIVE SYSTEM · 即时运算中",
     "dash.title": "AI 市场预测终端",
