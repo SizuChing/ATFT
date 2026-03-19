@@ -1062,6 +1062,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.twoFactor.step3.desc": "Enter the 6-digit code displayed by your authenticator to complete binding.",
     "guide.twoFactor.step4.title": "Backup Recovery Codes",
     "guide.twoFactor.step4.desc": "The system will provide recovery codes. Store them safely in case your phone is lost.",
+    "guide.faq.desc": "Frequently asked questions about the account opening process.",
     "guide.faq.q1": "How long does account opening take?",
     "guide.faq.a1": "Typically 1-3 business days from submission to approval, depending on document completeness.",
     "guide.faq.q2": "Which countries are supported?",
