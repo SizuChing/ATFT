@@ -8,6 +8,7 @@ const navLinks = [
   { key: "nav.about", href: "#about" },
   { key: "nav.products", href: "#products" },
   { key: "nav.aiTerminal", href: "#ai-terminal" },
+  { key: "nav.backtest", href: "#backtest" },
   { key: "nav.howItWorks", href: "#how-it-works" },
   { key: "nav.risk", href: "#risk" },
   { key: "nav.ecb", href: "#ecb" },

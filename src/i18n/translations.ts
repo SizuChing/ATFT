@@ -131,6 +131,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "認購 AIFT AI 基金產品，選擇適合的投資方案",
     "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
 
+    // Backtest Report
+    "nav.backtest": "回測報告",
+    "backtest.label": "歷史回測數據",
+    "backtest.desc1": "以下為 AIFT AI 系統歷史回測績效，",
+    "backtest.desc2": "數據涵蓋 2023 年至今，含浮盈虧計算。",
+    "backtest.disclaimer": "歷史回測數據不代表未來實際報酬，投資涉及風險。",
+    "backtest.tableTitle": "含浮盈虧 Including Floating Profit and Loss",
+    "backtest.year": "年份",
+
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI 預測",
     "dash.live": "LIVE SYSTEM · 即時運算中",
@@ -348,6 +357,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "认购 AIFT AI 基金产品，选择适合的投资方案",
     "ecb.flow.s5": "AIFT AI 全自动执行量化交易策略，即时查阅基金收益与绩效",
 
+    // Backtest Report
+    "nav.backtest": "回测报告",
+    "backtest.label": "历史回测数据",
+    "backtest.desc1": "以下为 AIFT AI 系统历史回测绩效，",
+    "backtest.desc2": "数据涵盖 2023 年至今，含浮盈亏计算。",
+    "backtest.disclaimer": "历史回测数据不代表未来实际报酬，投资涉及风险。",
+    "backtest.tableTitle": "含浮盈亏 Including Floating Profit and Loss",
+    "backtest.year": "年份",
+
     "nav.aiTerminal": "AI 预测",
     "dash.live": "LIVE SYSTEM · 即时运算中",
     "dash.title": "AI 市场预测终端",
@@ -560,6 +578,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "Authorize on the ECB platform to entrust AIFT to manage fund operations",
     "ecb.flow.s4": "Subscribe to AIFT AI Fund products, select suitable investment plan",
     "ecb.flow.s5": "AIFT AI automatically executes quantitative trading strategies, check fund returns and performance in real-time",
+
+    // Backtest Report
+    "nav.backtest": "Backtest Report",
+    "backtest.label": "Historical Backtest Data",
+    "backtest.desc1": "Below is the AIFT AI system historical backtest performance,",
+    "backtest.desc2": "covering data from 2023 to present, including floating P&L.",
+    "backtest.disclaimer": "Historical backtest data does not represent future actual returns. Investment involves risk.",
+    "backtest.tableTitle": "Including Floating Profit and Loss",
+    "backtest.year": "Year",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI Prediction",
@@ -774,6 +801,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "ECBプラットフォームで承認を完了し、AIFTに資金運用を委託",
     "ecb.flow.s4": "AIFT AI ファンド商品を購入し、適切な投資プランを選択",
     "ecb.flow.s5": "AIFT AI がクオンツ取引戦略を自動実行、ファンド収益とパフォーマンスをリアルタイムで確認",
+
+    // Backtest Report
+    "nav.backtest": "バックテスト",
+    "backtest.label": "過去のバックテストデータ",
+    "backtest.desc1": "以下はAIFT AIシステムの過去のバックテスト実績です。",
+    "backtest.desc2": "2023年から現在までのデータで、含み損益を含みます。",
+    "backtest.disclaimer": "過去のバックテストデータは将来の実際のリターンを保証するものではありません。投資にはリスクが伴います。",
+    "backtest.tableTitle": "含み損益込み Including Floating Profit and Loss",
+    "backtest.year": "年度",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI予測",
