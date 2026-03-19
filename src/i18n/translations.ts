@@ -583,6 +583,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
+    "backtest.title": "ETH AI Trading Monthly Return Report",
     "backtest.label": "Historical Backtest Data",
     "backtest.desc1": "Below is the AIFT AI system historical backtest performance,",
     "backtest.desc2": "covering data from 2023 to present, including floating P&L.",
