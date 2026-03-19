@@ -807,6 +807,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "バックテスト",
+    "backtest.title": "ETH AI 取引月次リターンレポート",
     "backtest.label": "過去のバックテストデータ",
     "backtest.desc1": "以下はAIFT AIシステムの過去のバックテスト実績です。",
     "backtest.desc2": "2023年から現在までのデータで、含み損益を含みます。",
