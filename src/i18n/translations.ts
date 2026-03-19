@@ -707,6 +707,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.twoFactor.step3.desc": "输入验证器显示的 6 位数验证码，完成绑定。",
     "guide.twoFactor.step4.title": "备份恢复码",
     "guide.twoFactor.step4.desc": "系统会提供恢复码，请妥善保存以防手机丢失时使用。",
+    "guide.faq.desc": "以下为开户过程中常见的问题与解答。",
     "guide.faq.q1": "开户需要多长时间？",
     "guide.faq.a1": "一般情况下，从提交资料到审核通过约需 1-3 个工作天，视文件完整度而定。",
     "guide.faq.q2": "支持哪些国家的用户？",
