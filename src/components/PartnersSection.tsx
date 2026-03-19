@@ -25,7 +25,7 @@ const PartnersSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {partners.map((p) => (
             <div key={p.nameKey} className="card-glass rounded-2xl p-8 text-center hover:-translate-y-1 hover:border-primary/50 transition-all duration-300 glow-box-hover">
-              <div className="w-16 h-16 rounded-xl bg-muted flex items-center justify-center mx-auto mb-4 overflow-hidden">
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 overflow-hidden">
                 <img src={p.logo} alt={t(p.nameKey)} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-foreground font-medium mb-1">{t(p.nameKey)}</h3>
