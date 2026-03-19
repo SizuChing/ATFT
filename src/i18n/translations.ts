@@ -353,6 +353,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.twoFactor.step3.desc": "輸入驗證器顯示的 6 位數驗證碼，完成綁定。",
     "guide.twoFactor.step4.title": "備份恢復碼",
     "guide.twoFactor.step4.desc": "系統會提供恢復碼，請妥善保存以防手機遺失時使用。",
+    "guide.faq.desc": "以下為開戶過程中常見的問題與解答。",
     "guide.faq.q1": "開戶需要多長時間？",
     "guide.faq.a1": "一般情況下，從提交資料到審核通過約需 1-3 個工作天，視文件完整度而定。",
     "guide.faq.q2": "支援哪些國家的用戶？",
