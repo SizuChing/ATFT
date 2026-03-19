@@ -579,6 +579,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s4": "Subscribe to AIFT AI Fund products, select suitable investment plan",
     "ecb.flow.s5": "AIFT AI automatically executes quantitative trading strategies, check fund returns and performance in real-time",
 
+    // Backtest Report
+    "nav.backtest": "Backtest Report",
+    "backtest.label": "Historical Backtest Data",
+    "backtest.desc1": "Below is the AIFT AI system historical backtest performance,",
+    "backtest.desc2": "covering data from 2023 to present, including floating P&L.",
+    "backtest.disclaimer": "Historical backtest data does not represent future actual returns. Investment involves risk.",
+    "backtest.tableTitle": "Including Floating Profit and Loss",
+    "backtest.year": "Year",
+
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI Prediction",
     "dash.live": "LIVE SYSTEM · Real-time Computing",
