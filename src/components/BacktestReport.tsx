@@ -123,7 +123,7 @@ const BacktestReport = () => {
             BACKTEST REPORT · {t("backtest.label")}
           </span>
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
-            ETH AI Trading Monthly Return Report
+            {t("backtest.title")}
           </h2>
           <p className="text-white-40 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             {t("backtest.desc1")}

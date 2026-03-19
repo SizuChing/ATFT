@@ -133,6 +133,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "回測報告",
+    "backtest.title": "ETH AI 交易月度回報報告",
     "backtest.label": "歷史回測數據",
     "backtest.desc1": "以下為 AIFT AI 系統歷史回測績效，",
     "backtest.desc2": "數據涵蓋 2023 年至今，含浮盈虧計算。",
@@ -359,6 +360,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "回测报告",
+    "backtest.title": "ETH AI 交易月度回报报告",
     "backtest.label": "历史回测数据",
     "backtest.desc1": "以下为 AIFT AI 系统历史回测绩效，",
     "backtest.desc2": "数据涵盖 2023 年至今，含浮盈亏计算。",
@@ -581,6 +583,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
+    "backtest.title": "ETH AI Trading Monthly Return Report",
     "backtest.label": "Historical Backtest Data",
     "backtest.desc1": "Below is the AIFT AI system historical backtest performance,",
     "backtest.desc2": "covering data from 2023 to present, including floating P&L.",
@@ -804,6 +807,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "バックテスト",
+    "backtest.title": "ETH AI 取引月次リターンレポート",
     "backtest.label": "過去のバックテストデータ",
     "backtest.desc1": "以下はAIFT AIシステムの過去のバックテスト実績です。",
     "backtest.desc2": "2023年から現在までのデータで、含み損益を含みます。",
