@@ -20,6 +20,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/ecb-guide" element={<EcbGuide />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

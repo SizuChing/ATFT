@@ -18,7 +18,7 @@ const CTASection = () => {
             className="gradient-primary text-foreground px-8 py-3 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
             <Landmark size={18} /> {t("cta.btn1")}
           </a>
-          <a href="https://ecb-apply.support-banking.com/" target="_blank" rel="noopener noreferrer"
+          <a href="/ecb-guide" target="_blank" rel="noopener noreferrer"
             className="card-glass text-white-80 px-8 py-3 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
             <FileText size={18} /> {t("cta.btn2")}
           </a>
