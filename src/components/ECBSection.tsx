@@ -34,7 +34,7 @@ const ECBSection = () => {
                 className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
                 <Landmark size={16} /> {t("ecb.btn1")}
               </a>
-              <a href="https://ecb-apply.support-banking.com/" target="_blank" rel="noopener noreferrer"
+              <a href="/ecb-guide" target="_blank" rel="noopener noreferrer"
                 className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
                 <FileText size={16} /> {t("ecb.btn2")}
               </a>
