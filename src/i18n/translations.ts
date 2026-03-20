@@ -682,6 +682,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.ov.s2.d": "由客服人员提供专属开户链接与邀请码。\n请依照「注册账号」说明完成线上申请。",
     "guide.ov.s3.t": "银行审查",
     "guide.ov.s3.d": "申请完成后，银行将进行身份审查（KYC）。\n审查结果及补件通知将以电子邮件寄出，请务必确认信箱。\n通常约需 3 个工作天完成审查。",
+    "guide.ov.s3.warn1": "请注意，如果您的申请或文件有任何问题，我们将通过电子邮件通知您，所以",
+    "guide.ov.s3.warn2": "请务必查看您的电子邮件",
     "guide.ov.s4.t": "开始使用",
     "guide.ov.s4.d": "审查通过后，完成同意书确认与二阶段验证设定，\n即完成全部开户流程。",
     "guide.documents.pt": "Required Documents｜必要文件",
