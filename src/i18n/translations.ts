@@ -264,6 +264,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.ov.s2.d": "由客服人員提供專屬開戶連結與邀請碼。\n請依照「註冊帳號」說明完成線上申請。",
     "guide.ov.s3.t": "銀行審查",
     "guide.ov.s3.d": "申請完成後，銀行將進行身份審查（KYC）。\n審查結果及補件通知將以電子郵件寄出，請務必確認信箱。\n通常約需 3 個工作天完成審查。",
+    "guide.ov.s3.warn1": "請注意，如果您的申請或文件有任何問題，我們將透過電子郵件通知您，所以",
+    "guide.ov.s3.warn2": "請務必查看您的電子郵件",
     "guide.ov.s4.t": "開始使用",
     "guide.ov.s4.d": "審查通過後，完成同意書確認與二階段驗證設定，\n即完成全部開戶流程。",
     // ② Documents
