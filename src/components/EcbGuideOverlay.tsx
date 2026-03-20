@@ -123,7 +123,7 @@ const EcbGuideOverlay = () => {
     </div>
   );
 
-  const renderSteps = (prefix: string, count: number, imgAfter: number[] = []) => (
+  const renderSteps = (prefix: string, count: number, imgAfter: number[] = [], imgMap: Record<number, string> = {}) => (
     <>
       {Array.from({ length: count }, (_, i) => {
         const n = i + 1;
@@ -136,7 +136,7 @@ const EcbGuideOverlay = () => {
               const note = tryT(`guide.${prefix}.s${n}.n${ni}`);
               return note ? <Note key={ni} text={note} /> : null;
             })}
-            {imgAfter.includes(n) && <Img />}
+            {imgAfter.includes(n) && (imgMap[n] ? <img src={imgMap[n]} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" /> : <Img />)}
             {n < count && <Divider />}
           </div>
         );
