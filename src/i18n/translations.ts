@@ -237,6 +237,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide Page
     "guide.sidebarTitle": "ECB 開戶操作手冊",
     "guide.backHome": "← 返回官網首頁",
+    "guide.close": "關閉",
     "guide.breadcrumb.home": "官網首頁",
     "guide.breadcrumb.manual": "ECB 開戶手冊",
     "guide.imgPlaceholder": "圖片區域 — 請上傳截圖",
