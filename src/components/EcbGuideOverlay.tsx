@@ -443,6 +443,90 @@ const EcbGuideOverlay = () => {
     "/images/address-05.webp",
   ];
 
+  const individualImgs = [
+    "/images/individual-01.webp",
+    "/images/individual-02.webp",
+    "/images/individual-03.webp",
+    "/images/individual-04.webp",
+    "/images/individual-05.webp",
+  ];
+
+  const renderPersonal = () => (
+    <>
+      {/* Top note */}
+      <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.per.topNote")}</p>
+
+      {/* STEP 01 */}
+      <div className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.per.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.per.s1.d")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.per.s1.personal")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.per.s1.corporate")}</p>
+        <img src={individualImgs[0]} alt="Step 01" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 02 */}
+      <div className="mb-8">
+        <Label num={2} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.per.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.per.s2.d")}</p>
+        <div className="card-glass rounded-lg p-4 mb-3 space-y-1">
+          {[1, 2, 3, 4, 5].map((fi) => (
+            <p key={fi} className="text-white-40 text-sm leading-[1.9]">{t(`guide.per.s2.f${fi}`)}</p>
+          ))}
+        </div>
+        <img src={individualImgs[1]} alt="Step 02" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 03 */}
+      <div className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.per.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.per.s3.d")}</p>
+        <div className="card-glass rounded-lg p-4 mb-3 space-y-1">
+          {[1, 2].map((fi) => (
+            <p key={fi} className="text-white-40 text-sm leading-[1.9]">{t(`guide.per.s3.f${fi}`)}</p>
+          ))}
+        </div>
+        <img src={individualImgs[2]} alt="Step 03" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 04 */}
+      <div className="mb-8">
+        <Label num={4} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.per.s4.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.per.s4.d")}</p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.per.s4.n1")}</span>
+        </p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {t("guide.per.s4.n2")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {t("guide.per.s4.n3")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {t("guide.per.s4.n4")}</p>
+        <img src={individualImgs[3]} alt="Step 04" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 05 */}
+      <div className="mb-8">
+        <Label num={5} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.per.s5.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.per.s5.d")}</p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.per.s5.n1")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.per.s5.n2")}</span>
+        </p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {t("guide.per.s5.n3")}</p>
+        <img src={individualImgs[4]} alt="Step 05" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
   const renderHomeAddress = () => (
     <>
       {/* Top note */}
@@ -552,7 +636,7 @@ const EcbGuideOverlay = () => {
       case "corpAddress":
         return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.ca.intro")}</p>{renderBullets("guide.ca", 3)}<Img /></>);
       case "personal":
-        return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.per.intro")}</p><Img /></>);
+        return renderPersonal();
       case "homeAddress":
         return renderHomeAddress();
       case "review":
