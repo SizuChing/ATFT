@@ -194,7 +194,7 @@ const EcbGuideOverlay = () => {
           <p className="text-white-40 text-xs leading-[1.8] mt-1">
             ※ 請提供<span className="text-red-500 font-medium">90天內簽發的</span>註冊證明。
           </p>
-          <Img />
+          {/* No image for DOC 04 */}
         </div>
       );
     }
