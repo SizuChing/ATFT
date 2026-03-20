@@ -17,6 +17,9 @@ import auth02Img from "@/assets/auth-02.webp";
 import auth03Img from "@/assets/auth-03.webp";
 import auth04Img from "@/assets/auth-04.webp";
 import auth05Img from "@/assets/auth-05.webp";
+import agree01Img from "@/assets/agree-01.webp";
+import agree02Img from "@/assets/agree-02.webp";
+import agree03Img from "@/assets/agree-03.webp";
 import {
   Accordion,
   AccordionContent,
@@ -372,7 +375,7 @@ const EcbGuideOverlay = () => {
           </>
         );
       case "consent":
-        return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.con.intro")}</p><Img /></>);
+        return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
       case "faq":
         return (
