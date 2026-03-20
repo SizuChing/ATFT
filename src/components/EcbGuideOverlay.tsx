@@ -463,7 +463,7 @@ const EcbGuideOverlay = () => {
       case "personal":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.per.intro")}</p><Img /></>);
       case "homeAddress":
-        return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.ha.intro")}</p>{renderBullets("guide.ha", 5)}{tryT("guide.ha.note") && <Note text={t("guide.ha.note")} />}<Img /></>);
+        return renderHomeAddress();
       case "review":
         return renderReview();
       case "consent":
