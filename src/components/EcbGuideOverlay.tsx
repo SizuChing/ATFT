@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, Menu,
+  X, ChevronRight, Menu, LayoutGrid,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
