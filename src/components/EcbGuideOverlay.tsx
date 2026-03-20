@@ -10,6 +10,8 @@ import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import aiftLogo from "@/assets/aift-logo.png";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
+import step02Img from "@/assets/step02-signup.webp";
+import step03Img from "@/assets/step03-signup.webp";
 import {
   Accordion,
   AccordionContent,
@@ -121,7 +123,7 @@ const EcbGuideOverlay = () => {
     </div>
   );
 
-  const renderSteps = (prefix: string, count: number, imgAfter: number[] = []) => (
+  const renderSteps = (prefix: string, count: number, imgAfter: number[] = [], imgMap: Record<number, string> = {}) => (
     <>
       {Array.from({ length: count }, (_, i) => {
         const n = i + 1;
@@ -134,7 +136,7 @@ const EcbGuideOverlay = () => {
               const note = tryT(`guide.${prefix}.s${n}.n${ni}`);
               return note ? <Note key={ni} text={note} /> : null;
             })}
-            {imgAfter.includes(n) && <Img />}
+            {imgAfter.includes(n) && (imgMap[n] ? <img src={imgMap[n]} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" /> : <Img />)}
             {n < count && <Divider />}
           </div>
         );
@@ -336,7 +338,7 @@ const EcbGuideOverlay = () => {
             {docTab === "personal" ? renderDocs([1, 2, 3]) : renderDocs([1, 2, 3, 4, 5])}
           </>
         );
-      case "signup": return renderSteps("su", 3, [2, 3]);
+      case "signup": return renderSteps("su", 3, [2, 3], { 2: step02Img, 3: step03Img });
       case "login": return renderSteps("lg", 2, [1, 2]);
       case "account":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.intro")}</p><Img /></>);
