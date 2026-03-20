@@ -22,10 +22,10 @@ const sectionKeys = [
 
 type SectionKey = (typeof sectionKeys)[number];
 
-const sectionIcons: Record<SectionKey, string> = {
-  overview: "📋", documents: "📄", signup: "✍️", login: "🔑",
-  account: "👤", corporate: "🏢", corpAddress: "📍", personal: "🙍",
-  homeAddress: "🏠", review: "📊", consent: "📝", twoFactor: "🔐", faq: "❓",
+const sectionIcons: Record<SectionKey, LucideIcon> = {
+  overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
+  account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
+  homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
 };
 
 const faqCategories = [
