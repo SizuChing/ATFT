@@ -83,26 +83,46 @@ const EcbGuide = () => {
 
   const Divider = () => <div className="border-b border-[hsl(285_74%_55%/0.15)] my-8" />;
 
-  const renderNavBtns = () => (
-    <div className="flex justify-between items-center mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
-      {prev ? (
-        <button
-          onClick={() => handleNav(prev)}
-          className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors"
-        >
-          ← {t(`guide.nav.${prev}`)}
-        </button>
-      ) : <div />}
-      {next ? (
-        <button
-          onClick={() => handleNav(next)}
-          className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all"
-        >
-          {t("guide.nextStep")}：{t(`guide.nav.${next}`)} →
-        </button>
-      ) : <div />}
-    </div>
-  );
+  const renderNavBtns = () => {
+    if (active === "personal") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+          <div className="flex gap-2">
+            <button onClick={() => handleNav("account")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+              ← {t("guide.nav.account")}
+            </button>
+            <button onClick={() => handleNav("corpAddress")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+              ← {t("guide.nav.corpAddress")}
+            </button>
+          </div>
+          <button onClick={() => handleNav("homeAddress")} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.homeAddress")} →
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex justify-between items-center mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+        {prev ? (
+          <button
+            onClick={() => handleNav(prev)}
+            className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors"
+          >
+            ← {t(`guide.nav.${prev}`)}
+          </button>
+        ) : <div />}
+        {next ? (
+          <button
+            onClick={() => handleNav(next)}
+            className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all"
+          >
+            {t("guide.nextStep")}：{t(`guide.nav.${next}`)} →
+          </button>
+        ) : <div />}
+      </div>
+    );
+  };
 
   /* ── Step renderer ── */
   const renderSteps = (prefix: string, count: number, imgAfter: number[] = []) => (
