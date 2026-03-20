@@ -1365,6 +1365,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d1.d": "Please photograph the passport photo page (spread open).\nMust be a valid passport (recommended: at least 3-6 months remaining validity).",
     "guide.doc.d1.n1": "All four corners of the passport must be visible; text and photo must be clearly legible.",
     "guide.doc.d1.n2": "For corporate accounts, please provide the representative's passport.",
+    "guide.doc.d1.n3": "If you plan to open a corporate account, please provide the corporate representative's passport.",
     "guide.doc.d2.t": "Selfie",
     "guide.doc.d2.d": "Please hold the passport photo page and take a clear selfie.",
     "guide.doc.d2.n1": "Must be the same passport as DOC 01.",
