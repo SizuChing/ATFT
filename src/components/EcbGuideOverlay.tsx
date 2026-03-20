@@ -121,6 +121,25 @@ const EcbGuideOverlay = () => {
   const Divider = () => <div className="border-b border-[hsl(285_74%_55%/0.15)] my-8" />;
 
   const renderNavBtns = () => {
+    // Special 3-button layout for "account" section (branching to personal or corporate)
+    if (active === "account") {
+      return (
+        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+          <button onClick={() => handleNav("signup")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.nav.signup")}
+          </button>
+          <div className="flex flex-col gap-2 items-end">
+            <button onClick={() => handleNav("personal")} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+              {t("guide.acc.navPersonal")} →
+            </button>
+            <button onClick={() => handleNav("corporate")} className="border border-primary/60 px-5 py-2.5 rounded-lg text-sm text-primary hover:bg-primary/10 transition-all">
+              {t("guide.acc.navCorporate")} →
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     // Special 3-button layout for "personal" section
     if (active === "personal") {
       return (
