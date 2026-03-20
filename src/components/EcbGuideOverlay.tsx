@@ -72,8 +72,8 @@ const EcbGuideOverlay = () => {
       setAnimating(false);
       const timer = setTimeout(() => {
         setVisible(false);
-        setActive("overview");
-        setDrawerOpen(false);
+      setActive("index");
+      setDrawerOpen(false);
       }, 400);
       return () => clearTimeout(timer);
     }
