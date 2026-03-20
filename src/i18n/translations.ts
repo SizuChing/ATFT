@@ -1089,6 +1089,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.ov.s2.d": "A dedicated account opening link and invitation code will be provided by customer service.\nFollow the \"Sign Up\" instructions to complete the online application.",
     "guide.ov.s3.t": "Bank Review",
     "guide.ov.s3.d": "After submission, the bank will conduct identity verification (KYC).\nReview results and supplementary document requests will be sent via email.\nThe review typically takes about 3 business days.",
+    "guide.ov.s3.warn1": "Please note that if there are any issues with your application or documents, we will notify you via email, so ",
+    "guide.ov.s3.warn2": "please make sure to check your email",
     "guide.ov.s4.t": "Start Using Your Account",
     "guide.ov.s4.d": "Once approved, complete the consent form and two-factor authentication setup\nto finish the entire account opening process.",
     "guide.documents.pt": "Required Documents",
