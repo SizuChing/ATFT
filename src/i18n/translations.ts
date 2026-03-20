@@ -826,6 +826,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d1.d": "请拍摄含照片的护照展开页。\n必须为有效期限内之护照（建议剩余效期 3～6 个月以上）。",
     "guide.doc.d1.n1": "须拍摄护照完整四角，文字与照片需清晰可辨。",
     "guide.doc.d1.n2": "公司账户请提供代表人护照。",
+    "guide.doc.d1.n3": "如果您打算开设公司账户，请提供公司代表的护照。",
     "guide.doc.d2.t": "自拍照（Selfie）",
     "guide.doc.d2.d": "请手持护照照片页，自拍一张清晰的照片。",
     "guide.doc.d2.n1": "须与 DOC 01 为同一本护照。",
