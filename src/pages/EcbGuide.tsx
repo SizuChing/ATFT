@@ -25,10 +25,10 @@ const sectionIcons: Record<SectionKey, string> = {
 
 const faqCategories = [
   { key: "opening", count: 3 },
-  { key: "docs", count: 5 },
+  { key: "docs", count: 6 },
   { key: "process", count: 4 },
-  { key: "reviewFaq", count: 2 },
-  { key: "postApproval", count: 5 },
+  { key: "reviewFaq", count: 5 },
+  { key: "postApproval", count: 8 },
 ];
 
 const EcbGuide = () => {

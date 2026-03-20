@@ -418,10 +418,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.faq.c5.a2": "是的，為帳戶安全必須設定二階段驗證（2FA）。",
     "guide.faq.c5.q3": "二階段驗證要用什麼 App？",
     "guide.faq.c5.a3": "請使用 Google Authenticator（App Store 或 Google Play 免費下載）。",
-    "guide.faq.c5.q4": "換手機後怎麼辦？",
-    "guide.faq.c5.a4": "在新手機重新安裝 Google Authenticator 並重新設定，建議設定時截圖保存 QR Code 備用。",
-    "guide.faq.c5.q5": "OTP 驗證碼輸入正確但無法登入？",
-    "guide.faq.c5.a5": "OTP 有效期限為 10 分鐘，請確認是否已過期，如過期請重新取得新驗證碼再試。",
+    "guide.faq.c5.q4": "認證碼無法正確輸入？",
+    "guide.faq.c5.a4": "認證碼每數十秒更新一次，請確認您輸入的是最新的驗證碼。",
+    "guide.faq.c5.q5": "登入時收不到 OTP（一次性密碼）？",
+    "guide.faq.c5.a5": "請先確認垃圾郵件資料夾。\n若仍未收到，請返回登入頁面重新嘗試登入。",
+    "guide.faq.c5.q6": "換手機後怎麼辦？",
+    "guide.faq.c5.a6": "在新手機重新安裝 Google Authenticator 並重新設定，建議設定時截圖保存 QR Code 備用。",
+    "guide.faq.c5.q7": "OTP 驗證碼輸入正確但無法登入？",
+    "guide.faq.c5.a7": "OTP 有效期限為 10 分鐘，請確認是否已過期，如過期請重新取得新驗證碼再試。",
   },
 
   "zh-CN": {
