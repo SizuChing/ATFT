@@ -821,10 +821,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.faq.c5.a2": "是的，为账户安全必须设定二阶段验证（2FA）。",
     "guide.faq.c5.q3": "二阶段验证要用什么 App？",
     "guide.faq.c5.a3": "请使用 Google Authenticator（App Store 或 Google Play 免费下载）。",
-    "guide.faq.c5.q4": "换手机后怎么办？",
-    "guide.faq.c5.a4": "在新手机重新安装 Google Authenticator 并重新设定，建议设定时截图保存 QR Code 备用。",
-    "guide.faq.c5.q5": "OTP 验证码输入正确但无法登录？",
-    "guide.faq.c5.a5": "OTP 有效期限为 10 分钟，请确认是否已过期，如过期请重新取得新验证码再试。",
+    "guide.faq.c5.q4": "认证码无法正确输入？",
+    "guide.faq.c5.a4": "认证码每数十秒更新一次，请确认您输入的是最新的验证码。",
+    "guide.faq.c5.q5": "登录时收不到 OTP（一次性密码）？",
+    "guide.faq.c5.a5": "请先确认垃圾邮件文件夹。\n若仍未收到，请返回登录页面重新尝试登录。",
+    "guide.faq.c5.q6": "换手机后怎么办？",
+    "guide.faq.c5.a6": "在新手机重新安装 Google Authenticator 并重新设定，建议设定时截图保存 QR Code 备用。",
+    "guide.faq.c5.q7": "OTP 验证码输入正确但无法登录？",
+    "guide.faq.c5.a7": "OTP 有效期限为 10 分钟，请确认是否已过期，如过期请重新取得新验证码再试。",
   },
 
   en: {
