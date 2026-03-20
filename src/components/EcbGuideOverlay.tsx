@@ -121,6 +121,25 @@ const EcbGuideOverlay = () => {
   const Divider = () => <div className="border-b border-[hsl(285_74%_55%/0.15)] my-8" />;
 
   const renderNavBtns = () => {
+    // Special 3-button layout for "account" section (branching to personal or corporate)
+    if (active === "account") {
+      return (
+        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+          <button onClick={() => handleNav("signup")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.nav.signup")}
+          </button>
+          <div className="flex flex-col gap-2 items-end">
+            <button onClick={() => handleNav("personal")} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+              {t("guide.acc.navPersonal")} →
+            </button>
+            <button onClick={() => handleNav("corporate")} className="border border-primary/60 px-5 py-2.5 rounded-lg text-sm text-primary hover:bg-primary/10 transition-all">
+              {t("guide.acc.navCorporate")} →
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     // Special 3-button layout for "personal" section
     if (active === "personal") {
       return (
@@ -485,6 +504,68 @@ const EcbGuideOverlay = () => {
     "/images/corporate-03.webp",
   ];
 
+  const registerImages = [
+    "/images/register-01.webp",
+    "/images/register-02.webp",
+    "/images/register-03.webp",
+    "/images/register-04.webp",
+  ];
+
+  const renderAccount = () => (
+    <>
+      {/* STEP 01 */}
+      <div className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.acc.s1.d")}</p>
+        <Note text={t("guide.acc.s1.n1")} />
+        <img src={registerImages[0]} alt="Step 1" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+      {/* STEP 02 */}
+      <div className="mb-8">
+        <Label num={2} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.s2.d")}</p>
+        <div className="card-glass rounded-lg overflow-hidden mb-4">
+          <table className="w-full text-sm">
+            <tbody>
+              {[1, 2, 3].map((fi) => (
+                <tr key={fi} className="border-b border-[hsl(285_74%_55%/0.1)] last:border-b-0">
+                  <td className="px-4 py-3 font-mono text-foreground whitespace-nowrap">{t(`guide.acc.s2.f${fi}`)}</td>
+                  <td className="px-4 py-3 text-white-40">{t(`guide.acc.s2.f${fi}d`)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-[#F87171] text-xs leading-[1.8]">※ {t("guide.acc.s2.warn")}</p>
+        <Note text={t("guide.acc.s2.n1")} />
+        <img src={registerImages[1]} alt="Step 2" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+      {/* STEP 03 */}
+      <div className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.acc.s3.d")}</p>
+        <img src={registerImages[2]} alt="Step 3" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+      {/* STEP 04 */}
+      <div className="mb-8">
+        <Label num={4} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s4.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.s4.d")}</p>
+        <div className="space-y-2 ml-4">
+          <p className="text-white-40 text-sm">• {t("guide.acc.s4.type1")}</p>
+          <p className="text-white-40 text-sm">• {t("guide.acc.s4.type2")}</p>
+        </div>
+        <img src={registerImages[3]} alt="Step 4" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
   const renderCorporate = () => (
     <>
       <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.corp.topNote")}</p>
@@ -775,7 +856,7 @@ const EcbGuideOverlay = () => {
       case "signup": return renderSteps("su", 3, [2, 3], { 2: step02Img, 3: step03Img });
       case "login": return renderSteps("lg", 2, [1, 2]);
       case "account":
-        return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.intro")}</p><Img /></>);
+        return renderAccount();
       case "corporate":
         return renderCorporate();
       case "corpAddress":
