@@ -58,7 +58,7 @@ const EcbGuideOverlay = () => {
   const { isOpen, close } = useEcbGuide();
   const [visible, setVisible] = useState(false);
   const [animating, setAnimating] = useState(false);
-  const [active, setActive] = useState<SectionKey>("overview");
+  const [active, setActive] = useState<ActivePage>("index");
   const [docTab, setDocTab] = useState<"personal" | "corporate">("personal");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { t } = useLanguage();
