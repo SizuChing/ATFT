@@ -1909,6 +1909,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d2.d": "パスポートの写真ページを持って、鮮明なセルフィーを撮影してください。",
     "guide.doc.d2.n1": "DOC 01と同じパスポートであること。",
     "guide.doc.d2.n2": "指で文字を隠さないこと。顔とパスポートの文字が鮮明に見えること。",
+    "guide.doc.d2.n3": "法人口座を開設する場合は、法人代表者の自撮り写真をご用意ください。",
     "guide.doc.d3.t": "住所証明書類",
     "guide.doc.d3.d": "以下のいずれかの書類をご提出ください（発行日から90日以内、英語版）：",
     "guide.doc.d3.i1": "運転免許証（表裏）",
