@@ -993,19 +993,71 @@ const EcbGuideOverlay = () => {
           </div>
         </div>
 
-        <div className="px-6 lg:px-10 py-10 max-w-4xl">
-          <h1 className="font-heading-cn text-2xl lg:text-[32px] text-foreground mb-2">
-            {t(`guide.${active}.pt`)}
-          </h1>
-          <p className="text-white-40 text-sm leading-[1.9] mb-6">{t(`guide.${active}.desc`)}</p>
-          <div className="border-b border-[hsl(285_74%_55%/0.2)] mb-8" />
+        {active === "index" ? (
+          <div className="px-6 lg:px-10 py-10 max-w-4xl mx-auto">
+            <div key="index" className="animate-fade-up">
+              {/* Index header */}
+              <div className="text-center mb-10">
+                <h1 className="font-heading-cn text-3xl lg:text-[40px] text-foreground mb-2 tracking-tight">
+                  {t("guide.index.title")}
+                </h1>
+                <p className="text-primary text-lg lg:text-xl font-medium mb-4">
+                  {t("guide.index.subtitle")}
+                </p>
+                <p className="text-white-40 text-sm leading-relaxed">
+                  {t("guide.index.desc1")}<br />
+                  {t("guide.index.desc2")}
+                </p>
+              </div>
 
-          <div key={active} className="animate-fade-up">
-            {renderContent()}
+              {/* Card grid */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                {sectionKeys.map((key, i) => {
+                  const Icon = sectionIcons[key];
+                  const isLast = i === sectionKeys.length - 1;
+                  const isOddTotal = sectionKeys.length % 2 !== 0;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleNav(key)}
+                      className={`group rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1 ${
+                        isLast && isOddTotal ? "col-span-2 lg:col-span-1 max-w-[calc(50%-0.5rem)] lg:max-w-none mx-auto lg:mx-0 w-full" : ""
+                      }`}
+                      style={{
+                        background: "rgba(21, 0, 40, 0.7)",
+                        border: "1px solid rgba(180, 60, 220, 0.25)",
+                        borderRadius: "12px",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.8)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.25)";
+                      }}
+                    >
+                      <Icon size={28} className="text-primary mx-auto mb-3" />
+                      <span className="text-foreground text-sm">{t(`guide.nav.${key}`)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
+        ) : (
+          <div className="px-6 lg:px-10 py-10 max-w-4xl">
+            <h1 className="font-heading-cn text-2xl lg:text-[32px] text-foreground mb-2">
+              {t(`guide.${active}.pt`)}
+            </h1>
+            <p className="text-white-40 text-sm leading-[1.9] mb-6">{t(`guide.${active}.desc`)}</p>
+            <div className="border-b border-[hsl(285_74%_55%/0.2)] mb-8" />
 
-          {renderNavBtns()}
-        </div>
+            <div key={active} className="animate-fade-up">
+              {renderContent()}
+            </div>
+
+            {renderNavBtns()}
+          </div>
+        )}
       </main>
     </div>
   );
