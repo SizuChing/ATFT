@@ -10,6 +10,7 @@ import ECBSection from "@/components/ECBSection";
 import PartnersSection from "@/components/PartnersSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import EcbGuideOverlay from "@/components/EcbGuideOverlay";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <PartnersSection />
       <CTASection />
       <Footer />
+      <EcbGuideOverlay />
     </div>
   );
 };

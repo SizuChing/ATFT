@@ -1,10 +1,12 @@
 import { Landmark, FileText } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useEcbGuide } from "@/contexts/EcbGuideContext";
 
 const ECBSection = () => {
   const ref = useScrollFadeUp();
   const { t } = useLanguage();
+  const { open } = useEcbGuide();
 
   const flowStepKeys = ["ecb.flow.s1", "ecb.flow.s2", "ecb.flow.s3", "ecb.flow.s4", "ecb.flow.s5"];
   const pointKeys = ["ecb.p1", "ecb.p2", "ecb.p3", "ecb.p4"];
@@ -34,10 +36,10 @@ const ECBSection = () => {
                 className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
                 <Landmark size={16} /> {t("ecb.btn1")}
               </a>
-              <a href="/ecb-guide"
+              <button onClick={open}
                 className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
                 <FileText size={16} /> {t("ecb.btn2")}
-              </a>
+              </button>
             </div>
           </div>
 
