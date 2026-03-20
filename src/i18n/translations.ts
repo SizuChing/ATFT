@@ -317,7 +317,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.lg.s2.d": "登入後系統將寄送 OTP（一次性密碼）至您的信箱。\n請在 10 分鐘內完成輸入。",
     "guide.lg.s2.n1": "若未收到，請確認垃圾郵件資料夾。",
     // ⑤ Account
-    "guide.nav.account": "帳號資料設定",
     "guide.account.pt": "Register｜帳號資料設定",
     "guide.account.desc": "完成帳號啟用與基本資料設定，選擇帳戶類型後進入 KYC 驗證流程。",
     "guide.acc.s1.t": "確認啟用信件",
