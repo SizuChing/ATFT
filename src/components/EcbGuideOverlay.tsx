@@ -435,7 +435,7 @@ const EcbGuideOverlay = () => {
     </>
   );
 
-
+  const renderContent = () => {
     switch (active) {
       case "overview": return renderOverview();
       case "documents":
