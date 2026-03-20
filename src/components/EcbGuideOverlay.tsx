@@ -155,7 +155,7 @@ const EcbGuideOverlay = () => {
           <Note text={t("guide.doc.d1.n1")} />
           <Note text={t("guide.doc.d1.n2")} />
           <Note text={t("guide.doc.d1.n3")} />
-          <Img />
+          <img src={passportImg} alt="Passport example" className="rounded-lg my-4 max-w-xs" />
         </div>
       );
     }
