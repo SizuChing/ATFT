@@ -27,8 +27,8 @@ const faqCategories = [
   { key: "opening", count: 3 },
   { key: "docs", count: 6 },
   { key: "process", count: 4 },
-  { key: "reviewFaq", count: 5 },
-  { key: "postApproval", count: 8 },
+  { key: "reviewFaq", count: 4 },
+  { key: "postApproval", count: 7 },
 ];
 
 const EcbGuide = () => {
