@@ -20,6 +20,9 @@ import auth05Img from "@/assets/auth-05.webp";
 import agree01Img from "@/assets/agree-01.webp";
 import agree02Img from "@/assets/agree-02.webp";
 import agree03Img from "@/assets/agree-03.webp";
+import result02Img from "@/assets/result-02.webp";
+import result03Img from "@/assets/result-03.webp";
+import result05Img from "@/assets/result-05.webp";
 import {
   Accordion,
   AccordionContent,
@@ -329,6 +332,109 @@ const EcbGuideOverlay = () => {
     );
   };
 
+  const scrollToStep = (stepNum: number) => {
+    const el = document.getElementById(`review-step-${stepNum}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const sectionLinkMap: Record<string, SectionKey> = {
+    link1: "corporate",
+    link2: "corpAddress",
+    link3: "personal",
+    link4: "homeAddress",
+  };
+
+  const renderReview = () => (
+    <>
+      <p className="text-white-40 text-sm leading-[1.9] mb-6">{t("guide.rev.intro")}</p>
+
+      {/* STEP 01 */}
+      <div id="review-step-1" className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-3">{t("guide.rev.s1.d")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.rev.s1.approved")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.rev.s1.rejected")}</p>
+        <div className="mt-3 space-y-1">
+          <p>
+            <button onClick={() => scrollToStep(5)} className="text-[#4ADE80] font-medium text-sm hover:underline underline-offset-2">
+              {t("guide.rev.s1.goApproved")}
+            </button>
+          </p>
+          <p>
+            <button onClick={() => scrollToStep(2)} className="text-[#F87171] font-medium text-sm hover:underline underline-offset-2">
+              {t("guide.rev.s1.goRejected")}
+            </button>
+          </p>
+        </div>
+        <Img />
+      </div>
+      <Divider />
+
+      {/* STEP 02 - red title */}
+      <div id="review-step-2" className="mb-8">
+        <Label num={2} />
+        <h3 className="text-[#F87171] text-base font-medium mb-2">{t("guide.rev.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s2.d")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">
+          ※ {t("guide.rev.s2.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
+          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+            {t("guide.nav.login")}
+          </button>
+        </p>
+        <img src={result02Img} alt="Step 02" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 03 */}
+      <div id="review-step-3" className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
+          {t("guide.rev.s3.d").split("「Rejected」").map((part, i, arr) =>
+            i < arr.length - 1 ? (
+              <span key={i}>{part}<span className="text-[#F87171] font-medium">「Rejected」</span></span>
+            ) : part
+          )}
+        </p>
+        <img src={result03Img} alt="Step 03" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 04 */}
+      <div id="review-step-4" className="mb-8">
+        <Label num={4} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s4.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-3">{t("guide.rev.s4.d")}</p>
+        <div className="ml-4 space-y-1">
+          {(["link1", "link2", "link3", "link4"] as const).map((lk) => (
+            <p key={lk}>
+              <button onClick={() => handleNav(sectionLinkMap[lk])} className="text-primary text-sm underline underline-offset-2 hover:opacity-80">
+                • {t(`guide.rev.s4.${lk}`)}
+              </button>
+            </p>
+          ))}
+        </div>
+        <p className="text-[#F87171] font-medium text-sm mt-3">{t("guide.rev.s4.warn")}</p>
+      </div>
+      <Divider />
+
+      {/* STEP 05 */}
+      <div id="review-step-5" className="mb-8">
+        <Label num={5} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s5.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s5.d")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">
+          ※ {t("guide.rev.s5.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
+          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+            {t("guide.nav.login")}
+          </button>
+        </p>
+        <img src={result05Img} alt="Step 05" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
   const renderContent = () => {
     switch (active) {
       case "overview": return renderOverview();
@@ -359,21 +465,7 @@ const EcbGuideOverlay = () => {
       case "homeAddress":
         return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.ha.intro")}</p>{renderBullets("guide.ha", 5)}{tryT("guide.ha.note") && <Note text={t("guide.ha.note")} />}<Img /></>);
       case "review":
-        return (
-          <>
-            <p className="text-white-40 text-sm leading-[1.9] mb-6">{t("guide.rev.intro")}</p>
-            <h3 className="text-foreground text-sm font-medium mb-3">{t("guide.rev.statusTitle")}</h3>
-            {(["approved", "rejected", "pending"] as const).map((s) => (
-              <div key={s} className="card-glass rounded-lg p-4 mb-3">
-                <span className={`font-mono text-sm font-bold ${s === "approved" ? "text-[#4ADE80]" : s === "rejected" ? "text-[#F87171]" : "text-yellow-400"}`}>
-                  {t(`guide.rev.${s}.label`)}
-                </span>
-                <p className="text-white-40 text-sm mt-1">{t(`guide.rev.${s}.desc`)}</p>
-              </div>
-            ))}
-            <Img />
-          </>
-        );
+        return renderReview();
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
