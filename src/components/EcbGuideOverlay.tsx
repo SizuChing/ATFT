@@ -8,6 +8,8 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import aiftLogo from "@/assets/aift-logo.png";
+import passportImg from "@/assets/passport.webp";
+import selfieImg from "@/assets/selfie.webp";
 import {
   Accordion,
   AccordionContent,
@@ -153,7 +155,7 @@ const EcbGuideOverlay = () => {
           <Note text={t("guide.doc.d1.n1")} />
           <Note text={t("guide.doc.d1.n2")} />
           <Note text={t("guide.doc.d1.n3")} />
-          <Img />
+          <img src={passportImg} alt="Passport example" className="rounded-lg my-4 max-w-xs" />
         </div>
       );
     }
@@ -176,7 +178,7 @@ const EcbGuideOverlay = () => {
           <p className="text-white-40 text-xs leading-[1.8] mt-1">
             ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中不包含地址信息，恕不接受，請提前聯絡您的銀行。
           </p>
-          <Img />
+          {/* No image for DOC 03 */}
         </div>
       );
     }
@@ -219,7 +221,19 @@ const EcbGuideOverlay = () => {
         </div>
       );
     }
-    // Default: DOC 02 and others
+    if (n === 2) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d2.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.doc.d2.d")}</p>
+          <Note text={t("guide.doc.d2.n1")} />
+          <Note text={t("guide.doc.d2.n2")} />
+          <Note text={t("guide.doc.d2.n3")} />
+          <img src={selfieImg} alt="Selfie example" className="rounded-lg my-4 max-w-[200px]" />
+        </div>
+      );
+    }
     return null;
   };
 
