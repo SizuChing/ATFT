@@ -1858,7 +1858,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.nav.documents": "必要書類",
     "guide.nav.signup": "サインアップ",
     "guide.nav.login": "ログイン",
-    "guide.nav.account": "アカウント情報入力",
+    "guide.nav.account": "アカウント登録",
     "guide.nav.corporate": "法人情報",
     "guide.nav.corpAddress": "法人住所の証明",
     "guide.nav.personal": "個人情報",
