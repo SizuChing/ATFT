@@ -727,7 +727,7 @@ const EcbGuideOverlay = () => {
       case "account":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.intro")}</p><Img /></>);
       case "corporate":
-        return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.corp.intro")}</p>{renderBullets("guide.corp", 4)}<Img /></>);
+        return renderCorporate();
       case "corpAddress":
         return renderCorpAddress();
       case "personal":
