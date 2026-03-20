@@ -337,7 +337,6 @@ const EcbGuideOverlay = () => {
             <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
               {t(`guide.ov.s${n}.d`)}
             </p>
-            </p>
             {n === 3 && (
               <p className="text-white-40 text-sm leading-[1.9] mt-2">
                 {t("guide.ov.s3.warn1")}
