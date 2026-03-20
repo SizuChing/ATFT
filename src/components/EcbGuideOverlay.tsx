@@ -124,8 +124,8 @@ const EcbGuideOverlay = () => {
     // Special 3-button layout for "personal" section
     if (active === "personal") {
       return (
-        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
-          <div className="flex gap-2">
+        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+          <div className="flex flex-col gap-2">
             <button onClick={() => handleNav("account")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
               ← {t("guide.nav.account")}
             </button>
