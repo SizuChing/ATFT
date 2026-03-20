@@ -12,6 +12,11 @@ import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
 import step02Img from "@/assets/step02-signup.webp";
 import step03Img from "@/assets/step03-signup.webp";
+import auth01Img from "@/assets/auth-01.webp";
+import auth02Img from "@/assets/auth-02.webp";
+import auth03Img from "@/assets/auth-03.webp";
+import auth04Img from "@/assets/auth-04.webp";
+import auth05Img from "@/assets/auth-05.webp";
 import {
   Accordion,
   AccordionContent,
