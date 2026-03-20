@@ -1225,10 +1225,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.faq.c5.a2": "Yes, 2FA is required for account security.",
     "guide.faq.c5.q3": "Which app for two-factor authentication?",
     "guide.faq.c5.a3": "Use Google Authenticator (free on App Store or Google Play).",
-    "guide.faq.c5.q4": "What if I change my phone?",
-    "guide.faq.c5.a4": "Reinstall Google Authenticator on the new phone and set up again. We recommend saving a screenshot of the QR code during initial setup.",
-    "guide.faq.c5.q5": "OTP code is correct but I can't log in?",
-    "guide.faq.c5.a5": "OTP is valid for 10 minutes. Check if it has expired — if so, request a new code and try again.",
+    "guide.faq.c5.q4": "Authentication code won't enter correctly?",
+    "guide.faq.c5.a4": "The authentication code refreshes every few tens of seconds. Please make sure you are entering the latest code.",
+    "guide.faq.c5.q5": "Not receiving OTP (one-time password) at login?",
+    "guide.faq.c5.a5": "Please check your spam folder first.\nIf still not received, return to the login page and try logging in again.",
+    "guide.faq.c5.q6": "What if I change my phone?",
+    "guide.faq.c5.a6": "Reinstall Google Authenticator on the new phone and set up again. We recommend saving a screenshot of the QR code during initial setup.",
+    "guide.faq.c5.q7": "OTP code is correct but I can't log in?",
+    "guide.faq.c5.a7": "OTP is valid for 10 minutes. Check if it has expired — if so, request a new code and try again.",
   },
 
   ja: {
