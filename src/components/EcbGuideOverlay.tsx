@@ -994,14 +994,14 @@ const EcbGuideOverlay = () => {
         </div>
 
         {active === "index" ? (
-          <div className="px-6 lg:px-10 py-10 max-w-4xl mx-auto">
+          <div className="px-6 lg:px-10 py-8 max-w-3xl mx-auto">
             <div key="index" className="animate-fade-up">
               {/* Index header */}
-              <div className="text-center mb-10">
-                <h1 className="font-heading-cn text-3xl lg:text-[40px] text-foreground mb-2 tracking-tight">
+              <div className="text-center mb-6">
+                <h1 className="font-heading-cn text-3xl lg:text-[40px] text-foreground mb-2 tracking-tight leading-[1.1]">
                   {t("guide.index.title")}
                 </h1>
-                <p className="text-primary text-lg lg:text-xl font-medium mb-4">
+                <p className="text-primary text-lg lg:text-xl font-medium mb-3">
                   {t("guide.index.subtitle")}
                 </p>
                 <p className="text-white-40 text-sm leading-relaxed">
@@ -1011,22 +1011,17 @@ const EcbGuideOverlay = () => {
               </div>
 
               {/* Card grid */}
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                {sectionKeys.map((key, i) => {
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                {sectionKeys.map((key) => {
                   const Icon = sectionIcons[key];
-                  const isLast = i === sectionKeys.length - 1;
-                  const isOddTotal = sectionKeys.length % 2 !== 0;
                   return (
                     <button
                       key={key}
                       onClick={() => handleNav(key)}
-                      className={`group rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1 ${
-                        isLast && isOddTotal ? "col-span-2 lg:col-span-1 max-w-[calc(50%-0.5rem)] lg:max-w-none mx-auto lg:mx-0 w-full" : ""
-                      }`}
+                      className="group flex items-center gap-3 h-14 px-5 rounded-[10px] transition-all duration-[250ms] hover:-translate-y-0.5 text-left"
                       style={{
                         background: "rgba(21, 0, 40, 0.7)",
                         border: "1px solid rgba(180, 60, 220, 0.25)",
-                        borderRadius: "12px",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.8)";
@@ -1035,8 +1030,8 @@ const EcbGuideOverlay = () => {
                         e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.25)";
                       }}
                     >
-                      <Icon size={28} className="text-primary mx-auto mb-3" />
-                      <span className="text-foreground text-sm">{t(`guide.nav.${key}`)}</span>
+                      <Icon size={20} className="text-primary shrink-0" />
+                      <span className="text-foreground text-sm font-medium">{t(`guide.nav.${key}`)}</span>
                     </button>
                   );
                 })}
