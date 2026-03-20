@@ -332,7 +332,110 @@ const EcbGuideOverlay = () => {
     );
   };
 
-  const renderContent = () => {
+  const scrollToStep = (stepNum: number) => {
+    const el = document.getElementById(`review-step-${stepNum}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const sectionLinkMap: Record<string, SectionKey> = {
+    link1: "corporate",
+    link2: "corpAddress",
+    link3: "personal",
+    link4: "homeAddress",
+  };
+
+  const renderReview = () => (
+    <>
+      <p className="text-white-40 text-sm leading-[1.9] mb-6">{t("guide.rev.intro")}</p>
+
+      {/* STEP 01 */}
+      <div id="review-step-1" className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-3">{t("guide.rev.s1.d")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.rev.s1.approved")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.rev.s1.rejected")}</p>
+        <div className="mt-3 space-y-1">
+          <p>
+            <button onClick={() => scrollToStep(5)} className="text-[#4ADE80] font-medium text-sm hover:underline underline-offset-2">
+              {t("guide.rev.s1.goApproved")}
+            </button>
+          </p>
+          <p>
+            <button onClick={() => scrollToStep(2)} className="text-[#F87171] font-medium text-sm hover:underline underline-offset-2">
+              {t("guide.rev.s1.goRejected")}
+            </button>
+          </p>
+        </div>
+        <Img />
+      </div>
+      <Divider />
+
+      {/* STEP 02 - red title */}
+      <div id="review-step-2" className="mb-8">
+        <Label num={2} />
+        <h3 className="text-[#F87171] text-base font-medium mb-2">{t("guide.rev.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s2.d")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">
+          ※ {t("guide.rev.s2.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
+          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+            {t("guide.nav.login")}
+          </button>
+        </p>
+        <img src={result02Img} alt="Step 02" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 03 */}
+      <div id="review-step-3" className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
+          {t("guide.rev.s3.d").split("「Rejected」").map((part, i, arr) =>
+            i < arr.length - 1 ? (
+              <span key={i}>{part}<span className="text-[#F87171] font-medium">「Rejected」</span></span>
+            ) : part
+          )}
+        </p>
+        <img src={result03Img} alt="Step 03" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 04 */}
+      <div id="review-step-4" className="mb-8">
+        <Label num={4} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s4.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-3">{t("guide.rev.s4.d")}</p>
+        <div className="ml-4 space-y-1">
+          {(["link1", "link2", "link3", "link4"] as const).map((lk) => (
+            <p key={lk}>
+              <button onClick={() => handleNav(sectionLinkMap[lk])} className="text-primary text-sm underline underline-offset-2 hover:opacity-80">
+                • {t(`guide.rev.s4.${lk}`)}
+              </button>
+            </p>
+          ))}
+        </div>
+        <p className="text-[#F87171] font-medium text-sm mt-3">{t("guide.rev.s4.warn")}</p>
+      </div>
+      <Divider />
+
+      {/* STEP 05 */}
+      <div id="review-step-5" className="mb-8">
+        <Label num={5} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.rev.s5.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s5.d")}</p>
+        <p className="text-white-40 text-xs leading-[1.8] mt-1">
+          ※ {t("guide.rev.s5.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
+          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+            {t("guide.nav.login")}
+          </button>
+        </p>
+        <img src={result05Img} alt="Step 05" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
+
     switch (active) {
       case "overview": return renderOverview();
       case "documents":
