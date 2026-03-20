@@ -87,9 +87,9 @@ const EcbGuideOverlay = () => {
     contentRef.current?.scrollTo({ top: 0 });
   };
 
-  const idx = sectionKeys.indexOf(active);
+  const idx = active === "index" ? -1 : sectionKeys.indexOf(active);
   const prev = idx > 0 ? sectionKeys[idx - 1] : null;
-  const next = idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
+  const next = idx >= 0 && idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
 
   const tryT = (key: string) => {
     const val = t(key);
