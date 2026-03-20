@@ -362,21 +362,7 @@ const EcbGuideOverlay = () => {
       case "homeAddress":
         return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.ha.intro")}</p>{renderBullets("guide.ha", 5)}{tryT("guide.ha.note") && <Note text={t("guide.ha.note")} />}<Img /></>);
       case "review":
-        return (
-          <>
-            <p className="text-white-40 text-sm leading-[1.9] mb-6">{t("guide.rev.intro")}</p>
-            <h3 className="text-foreground text-sm font-medium mb-3">{t("guide.rev.statusTitle")}</h3>
-            {(["approved", "rejected", "pending"] as const).map((s) => (
-              <div key={s} className="card-glass rounded-lg p-4 mb-3">
-                <span className={`font-mono text-sm font-bold ${s === "approved" ? "text-[#4ADE80]" : s === "rejected" ? "text-[#F87171]" : "text-yellow-400"}`}>
-                  {t(`guide.rev.${s}.label`)}
-                </span>
-                <p className="text-white-40 text-sm mt-1">{t(`guide.rev.${s}.desc`)}</p>
-              </div>
-            ))}
-            <Img />
-          </>
-        );
+        return renderReview();
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
