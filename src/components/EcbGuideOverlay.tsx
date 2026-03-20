@@ -217,7 +217,7 @@ const EcbGuideOverlay = () => {
           <p className="text-white-40 text-xs leading-[1.8] mt-1">
             ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中未包含您的地址，恕不接受，請提前聯絡您的銀行。
           </p>
-          <Img />
+          {/* No image for DOC 05 */}
         </div>
       );
     }
