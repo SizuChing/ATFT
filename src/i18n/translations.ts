@@ -1496,6 +1496,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.ov.s2.d": "カスタマーサービスから専用の口座開設リンクと招待コードが提供されます。\n「サインアップ」の説明に従ってオンライン申請を完了してください。",
     "guide.ov.s3.t": "銀行審査",
     "guide.ov.s3.d": "申請完了後、銀行が本人確認審査（KYC）を実施します。\n審査結果および追加書類の通知はメールで送信されますので、必ずご確認ください。\n審査は通常約3営業日で完了します。",
+    "guide.ov.s3.warn1": "申請や書類に問題がある場合はメールでお知らせしますので、",
+    "guide.ov.s3.warn2": "必ずメールをご確認ください",
     "guide.ov.s4.t": "利用開始",
     "guide.ov.s4.d": "審査通過後、同意書の確認と二段階認証の設定を完了すると、\n口座開設の全プロセスが完了します。",
     "guide.documents.pt": "Required Documents｜必要書類",
