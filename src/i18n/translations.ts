@@ -831,6 +831,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d2.d": "请手持护照照片页，自拍一张清晰的照片。",
     "guide.doc.d2.n1": "须与 DOC 01 为同一本护照。",
     "guide.doc.d2.n2": "手指不可遮住文字，文字与脸部需清晰可辨。",
+    "guide.doc.d2.n3": "如果您打算开立公司账户，请准备一张公司代表的自拍照。",
     "guide.doc.d3.t": "住址证明文件",
     "guide.doc.d3.d": "请提供以下任一种文件（发行日起 90 天内，英文版）：",
     "guide.doc.d3.i1": "驾照（正反面）",
