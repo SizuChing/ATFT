@@ -335,25 +335,8 @@ const EcbGuideOverlay = () => {
             <Label num={n} />
             <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.ov.s${n}.t`)}</h3>
             <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
-              {n === 1 ? (
-                <>
-                  {t("guide.ov.s1.d").split(t("guide.nav.documents")).map((part, pi, arr) =>
-                    pi < arr.length - 1 ? (
-                      <span key={pi}>{part}<button onClick={() => handleNav("documents")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{t("guide.nav.documents")}</button></span>
-                    ) : part
-                  )}
-                </>
-              ) : n === 2 ? (
-                <>
-                  {t("guide.ov.s2.d").split(t("guide.nav.signup")).map((part, pi, arr) =>
-                    pi < arr.length - 1 ? (
-                      <span key={pi}>{part}<button onClick={() => handleNav("signup")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{t("guide.nav.signup")}</button></span>
-                    ) : part
-                  )}
-                </>
-              ) : (
-                t(`guide.ov.s${n}.d`)
-              )}
+              {t(`guide.ov.s${n}.d`)}
+            </p>
             </p>
             {n === 3 && (
               <p className="text-white-40 text-sm leading-[1.9] mt-2">
