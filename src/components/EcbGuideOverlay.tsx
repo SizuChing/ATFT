@@ -566,6 +566,7 @@ const EcbGuideOverlay = () => {
     </>
   );
 
+  const renderCorporate = () => (
     <>
       <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.corp.topNote")}</p>
 
