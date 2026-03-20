@@ -363,7 +363,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ⑪ Consent
     "guide.consent.pt": "Consent Form｜同意書確認",
     "guide.consent.desc": "審查通過後需要確認的同意書與條款。",
-    "guide.con.intro": "審查通過後，請在申請畫面的「Consent Form」頁面閱讀並確認同意書內容。\n可線上捲動閱覽，或點擊下載 PDF 版本後確認。",
+    "guide.con.intro": "審查通過後，請依照以下步驟完成同意書確認。",
+    "guide.con.s1.t": "選擇同意書",
+    "guide.con.s1.d": "進入 Account Verification（帳號驗證）頁面後，找到 STEP 4【Consent Form（同意書）】欄位，點擊「Proceed」按鈕。",
+    "guide.con.s1.n1": "申請法人帳戶者，請點擊 STEP 6 的「Proceed」按鈕。",
+    "guide.con.s2.t": "閱讀同意書內容",
+    "guide.con.s2.d": "畫面顯示同意書（Consent Form）後，請透過頁碼或箭頭（ > ）逐頁翻閱，務必確認至最後一頁。\n如有需要，可點擊畫面中央的「Consent Form（PDF）」按鈕，下載後儲存或列印閱覽。",
+    "guide.con.s3.t": "確認同意",
+    "guide.con.s3.d": "閱讀完同意書後，勾選畫面下方的「I read and agree the Consent Form」核取方塊，再點擊「Agree」按鈕完成確認。",
     // ⑫ Two Factor
     "guide.twoFactor.pt": "Two-Factor Authentication｜二階段驗證設定",
     "guide.twoFactor.desc": "為保護帳戶安全，必須完成二階段驗證（2FA）設定。",
