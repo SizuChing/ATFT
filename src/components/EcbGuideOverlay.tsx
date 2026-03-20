@@ -10,6 +10,8 @@ import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import aiftLogo from "@/assets/aift-logo.png";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
+import step02Img from "@/assets/step02-signup.webp";
+import step03Img from "@/assets/step03-signup.webp";
 import {
   Accordion,
   AccordionContent,
