@@ -435,6 +435,97 @@ const EcbGuideOverlay = () => {
     </>
   );
 
+  const addressImgs = [
+    "/images/address-01.webp",
+    "/images/address-02.webp",
+    "/images/address-03.webp",
+    "/images/address-04.webp",
+    "/images/address-05.webp",
+  ];
+
+  const renderHomeAddress = () => (
+    <>
+      {/* Top note */}
+      <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.ha.topNote")}</p>
+
+      {/* STEP 01 */}
+      <div className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.ha.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.ha.s1.d")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.ha.s1.personal")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.ha.s1.corporate")}</p>
+        <img src={addressImgs[0]} alt="Step 01" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 02 */}
+      <div className="mb-8">
+        <Label num={2} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.ha.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.ha.s2.d")}</p>
+        <div className="card-glass rounded-lg p-4 mb-3 space-y-1">
+          {[1, 2, 3, 4, 5, 6, 7].map((fi) => (
+            <p key={fi} className="text-white-40 text-sm leading-[1.9]">{t(`guide.ha.s2.f${fi}`)}</p>
+          ))}
+        </div>
+        <p className="text-muted-foreground text-xs leading-[1.8] mt-2">⚠️ {t("guide.ha.s2.optional")}</p>
+        <img src={addressImgs[1]} alt="Step 02" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 03 */}
+      <div className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.ha.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.ha.s3.d")}</p>
+        <div className="ml-4 space-y-1">
+          {[1, 2, 3, 4, 5].map((di) => (
+            <p key={di} className="text-white-40 text-sm leading-[1.9]">• {t(`guide.ha.s3.doc${di}`)}</p>
+          ))}
+        </div>
+        <p className="text-xs leading-[1.8] mt-3">
+          <span className="text-red-500 font-medium">※ {t("guide.ha.s3.n1")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.ha.s3.n2")}</span>
+        </p>
+        <img src={addressImgs[2]} alt="Step 03" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 04 */}
+      <div className="mb-8">
+        <Label num={4} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.ha.s4.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.ha.s4.d")}</p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.ha.s4.n1")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.ha.s4.n2")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.ha.s4.n3")}</span>
+        </p>
+        <img src={addressImgs[3]} alt="Step 04" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 05 */}
+      <div className="mb-8">
+        <Label num={5} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.ha.s5.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.ha.s5.d")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4">• {t("guide.ha.s5.personal")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] ml-4 whitespace-pre-line">• {t("guide.ha.s5.corporate")}</p>
+        <p className="text-white-40 text-sm leading-[1.9] mt-3">{t("guide.ha.s5.email")}</p>
+        <p className="text-red-500 font-medium text-sm mt-2">※ {t("guide.ha.s5.warn")}</p>
+        <img src={addressImgs[4]} alt="Step 05" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
   const renderContent = () => {
     switch (active) {
       case "overview": return renderOverview();
@@ -463,7 +554,7 @@ const EcbGuideOverlay = () => {
       case "personal":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.per.intro")}</p><Img /></>);
       case "homeAddress":
-        return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.ha.intro")}</p>{renderBullets("guide.ha", 5)}{tryT("guide.ha.note") && <Note text={t("guide.ha.note")} />}<Img /></>);
+        return renderHomeAddress();
       case "review":
         return renderReview();
       case "consent":
