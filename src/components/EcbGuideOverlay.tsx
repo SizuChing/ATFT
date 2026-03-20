@@ -20,6 +20,9 @@ import auth05Img from "@/assets/auth-05.webp";
 import agree01Img from "@/assets/agree-01.webp";
 import agree02Img from "@/assets/agree-02.webp";
 import agree03Img from "@/assets/agree-03.webp";
+import result02Img from "@/assets/result-02.webp";
+import result03Img from "@/assets/result-03.webp";
+import result05Img from "@/assets/result-05.webp";
 import {
   Accordion,
   AccordionContent,
