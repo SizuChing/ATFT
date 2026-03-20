@@ -955,10 +955,10 @@ const EcbGuideOverlay = () => {
 
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-14 bg-background/95 backdrop-blur-xl border-b border-border flex items-center justify-between px-4">
-        <div className="flex items-center gap-2">
+        <button onClick={() => handleNav("index")} className="flex items-center gap-2">
           <img src={aiftLogo} alt="AIFT" className="h-6" />
           <span className="text-xs text-white-40">{t("guide.sidebarTitle")}</span>
-        </div>
+        </button>
         <div className="flex items-center gap-3">
           <button onClick={() => setDrawerOpen(!drawerOpen)} className="text-foreground">
             {drawerOpen ? <X size={22} /> : <Menu size={22} />}
