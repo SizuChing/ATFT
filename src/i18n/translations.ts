@@ -290,6 +290,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d3.i3": "銀行對賬單",
     "guide.doc.d3.i4": "交易記錄",
     "guide.doc.d3.i5": "居住證明",
+    "guide.doc.d3.n1": "非英文文件請附英文翻譯認證。",
     "guide.doc.d4.t": "公司註冊記錄（僅限公司銀行帳戶）",
     "guide.doc.d4.d": "請以PDF格式提供公司註冊資料。",
     "guide.doc.d5.t": "公司地址證明（限公司帳戶）",
