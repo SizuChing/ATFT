@@ -237,6 +237,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide Page
     "guide.sidebarTitle": "ECB 開戶操作手冊",
     "guide.backHome": "← 返回官網首頁",
+    "guide.close": "關閉",
     "guide.breadcrumb.home": "官網首頁",
     "guide.breadcrumb.manual": "ECB 開戶手冊",
     "guide.imgPlaceholder": "圖片區域 — 請上傳截圖",
@@ -653,6 +654,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB 开户操作手册",
     "guide.backHome": "← 返回官网首页",
+    "guide.close": "关闭",
     "guide.breadcrumb.home": "官网首页",
     "guide.breadcrumb.manual": "ECB 开户手册",
     "guide.imgPlaceholder": "图片区域 — 请上传截图",
@@ -1057,6 +1059,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB Account Opening Guide",
     "guide.backHome": "← Back to Homepage",
+    "guide.close": "Close",
     "guide.breadcrumb.home": "Homepage",
     "guide.breadcrumb.manual": "ECB Account Guide",
     "guide.imgPlaceholder": "Image Area — Please Upload Screenshot",
@@ -1461,6 +1464,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB 口座開設マニュアル",
     "guide.backHome": "← トップページに戻る",
+    "guide.close": "閉じる",
     "guide.breadcrumb.home": "トップページ",
     "guide.breadcrumb.manual": "ECB 口座開設マニュアル",
     "guide.imgPlaceholder": "画像エリア — スクリーンショットをアップロード",
