@@ -272,7 +272,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.documents.pt": "Required Documents｜必要文件",
     "guide.documents.desc": "開戶所需的文件清單，請事先準備以加速審核流程。",
     "guide.doc.tab.personal": "個人帳戶",
-    "guide.doc.tab.corporate": "法人帳戶",
+    "guide.doc.tab.corporate": "公司帳戶",
     "guide.doc.d1.t": "護照",
     "guide.doc.d1.d": "請拍攝含照片的護照展開頁。\n必須為有效期限內之護照（建議剩餘效期 3～6 個月以上）。",
     "guide.doc.d1.n1": "請注意，如果護照全貌（四個角落）無法完整顯示，或者文字或照片模糊不清，您將被要求重新提交。",
