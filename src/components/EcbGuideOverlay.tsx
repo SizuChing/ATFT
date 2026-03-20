@@ -196,6 +196,21 @@ const EcbGuideOverlay = () => {
     </>
   );
 
+  /* ── Helper: render text with {highlighted} portions in red ── */
+  const renderHighlighted = (text: string) => {
+    const parts = text.split(/(\{[^}]+\})/g);
+    return parts.map((part, i) => {
+      if (part.startsWith("{") && part.endsWith("}")) {
+        return <span key={i} className="text-[#F87171] font-medium">{part.slice(1, -1)}</span>;
+      }
+      return part;
+    });
+  };
+
+  const HighlightedNote = ({ text }: { text: string }) => (
+    <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {renderHighlighted(text)}</p>
+  );
+
   /* ── Custom DOC rendering with red-highlighted text ── */
   const renderDocCustom = (n: number) => {
     if (n === 1) {
@@ -203,75 +218,11 @@ const EcbGuideOverlay = () => {
         <div className="mb-8">
           <Label num={n} prefix="DOC" />
           <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d1.t")}</h3>
-          <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
-            請拍攝含照片的護照展開頁。{"\n"}必須為<span className="text-red-500 font-medium">有效</span>期限內之護照（建議剩餘效期 3～6 個月以上）。
-          </p>
+          <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.doc.d1.d")}</p>
           <Note text={t("guide.doc.d1.n1")} />
           <Note text={t("guide.doc.d1.n2")} />
           <Note text={t("guide.doc.d1.n3")} />
           <img src={passportImg} alt="Passport example" className="rounded-lg my-4 max-w-xs" />
-        </div>
-      );
-    }
-    if (n === 3) {
-      return (
-        <div className="mb-8">
-          <Label num={n} prefix="DOC" />
-          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d3.t")}</h3>
-          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d3.d")}</p>
-          {[1, 2, 3, 4, 5].map((li) => {
-            const item = tryT(`guide.doc.d3.i${li}`);
-            return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
-          })}
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，並附上原件。
-          </p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 所有<span className="text-red-500 font-medium">文件必須在過去90天內簽發</span>（駕駛證除外）。
-          </p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中不包含地址信息，恕不接受，請提前聯絡您的銀行。
-          </p>
-          {/* No image for DOC 03 */}
-        </div>
-      );
-    }
-    if (n === 4) {
-      return (
-        <div className="mb-8">
-          <Label num={n} prefix="DOC" />
-          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d4.t")}</h3>
-          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d4.d")}</p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，以及原件。
-          </p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 請提供<span className="text-red-500 font-medium">90天內簽發的</span>註冊證明。
-          </p>
-          {/* No image for DOC 04 */}
-        </div>
-      );
-    }
-    if (n === 5) {
-      return (
-        <div className="mb-8">
-          <Label num={n} prefix="DOC" />
-          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d5.t")}</h3>
-          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d5.d")}</p>
-          {[1, 2, 3].map((li) => {
-            const item = tryT(`guide.doc.d5.i${li}`);
-            return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
-          })}
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，並附上原件。
-          </p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 請提供<span className="text-red-500 font-medium">90天內簽發的</span>公司註冊證書。
-          </p>
-          <p className="text-white-40 text-xs leading-[1.8] mt-1">
-            ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中未包含您的地址，恕不接受，請提前聯絡您的銀行。
-          </p>
-          {/* No image for DOC 05 */}
         </div>
       );
     }
@@ -285,6 +236,49 @@ const EcbGuideOverlay = () => {
           <Note text={t("guide.doc.d2.n2")} />
           <Note text={t("guide.doc.d2.n3")} />
           <img src={selfieImg} alt="Selfie example" className="rounded-lg my-4 max-w-[200px]" />
+        </div>
+      );
+    }
+    if (n === 3) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d3.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d3.d")}</p>
+          {[1, 2, 3, 4, 5].map((li) => {
+            const item = tryT(`guide.doc.d3.i${li}`);
+            return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
+          })}
+          <HighlightedNote text={t("guide.doc.d3.n1")} />
+          <HighlightedNote text={t("guide.doc.d3.n2")} />
+          <HighlightedNote text={t("guide.doc.d3.n3")} />
+        </div>
+      );
+    }
+    if (n === 4) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d4.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d4.d")}</p>
+          <HighlightedNote text={t("guide.doc.d4.n1")} />
+          <HighlightedNote text={t("guide.doc.d4.n2")} />
+        </div>
+      );
+    }
+    if (n === 5) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d5.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d5.d")}</p>
+          {[1, 2, 3].map((li) => {
+            const item = tryT(`guide.doc.d5.i${li}`);
+            return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
+          })}
+          <HighlightedNote text={t("guide.doc.d5.n1")} />
+          <HighlightedNote text={t("guide.doc.d5.n2")} />
+          <HighlightedNote text={t("guide.doc.d5.n3")} />
         </div>
       );
     }
