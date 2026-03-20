@@ -1059,6 +1059,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB Account Opening Guide",
     "guide.backHome": "← Back to Homepage",
+    "guide.close": "Close",
     "guide.breadcrumb.home": "Homepage",
     "guide.breadcrumb.manual": "ECB Account Guide",
     "guide.imgPlaceholder": "Image Area — Please Upload Screenshot",
