@@ -368,7 +368,6 @@ const EcbGuideOverlay = () => {
             </button>
           </p>
         </div>
-        <Img />
       </div>
       <Divider />
 
