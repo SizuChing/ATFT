@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+// Review section assets: result-02, result-03, result-05
 import {
   X, ChevronRight, Menu,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
