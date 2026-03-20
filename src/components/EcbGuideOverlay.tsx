@@ -140,25 +140,112 @@ const EcbGuideOverlay = () => {
     </>
   );
 
-  const renderDocs = (docs: number[]) => (
-    <>
-      {docs.map((n, i) => (
-        <div key={n} className="mb-8">
+  /* ── Custom DOC rendering with red-highlighted text ── */
+  const renderDocCustom = (n: number) => {
+    if (n === 1) {
+      return (
+        <div className="mb-8">
           <Label num={n} prefix="DOC" />
-          <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.doc.d${n}.t`)}</h3>
-          <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.doc.d${n}.d`)}</p>
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d1.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
+            請拍攝含照片的護照展開頁。{"\n"}必須為<span className="text-red-500 font-medium">有效</span>期限內之護照（建議剩餘效期 3～6 個月以上）。
+          </p>
+          <Note text={t("guide.doc.d1.n1")} />
+          <Note text={t("guide.doc.d1.n2")} />
+          <Note text={t("guide.doc.d1.n3")} />
+          <Img />
+        </div>
+      );
+    }
+    if (n === 3) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d3.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d3.d")}</p>
           {[1, 2, 3, 4, 5].map((li) => {
-            const item = tryT(`guide.doc.d${n}.i${li}`);
+            const item = tryT(`guide.doc.d3.i${li}`);
             return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
           })}
-          {[1, 2].map((ni) => {
-            const note = tryT(`guide.doc.d${n}.n${ni}`);
-            return note ? <Note key={ni} text={note} /> : null;
-          })}
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，並附上原件。
+          </p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 所有<span className="text-red-500 font-medium">文件必須在過去90天內簽發</span>（駕駛證除外）。
+          </p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中不包含地址信息，恕不接受，請提前聯絡您的銀行。
+          </p>
           <Img />
-          {i < docs.length - 1 && <Divider />}
         </div>
-      ))}
+      );
+    }
+    if (n === 4) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d4.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d4.d")}</p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，以及原件。
+          </p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 請提供<span className="text-red-500 font-medium">90天內簽發的</span>註冊證明。
+          </p>
+          <Img />
+        </div>
+      );
+    }
+    if (n === 5) {
+      return (
+        <div className="mb-8">
+          <Label num={n} prefix="DOC" />
+          <h3 className="text-foreground text-base font-medium mb-2">{t("guide.doc.d5.t")}</h3>
+          <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.doc.d5.d")}</p>
+          {[1, 2, 3].map((li) => {
+            const item = tryT(`guide.doc.d5.i${li}`);
+            return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
+          })}
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 請提交<span className="text-red-500 font-medium">英文版</span>文件或<span className="text-red-500 font-medium">英文翻譯件</span>，並附上原件。
+          </p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 請提供<span className="text-red-500 font-medium">90天內簽發的</span>公司註冊證書。
+          </p>
+          <p className="text-white-40 text-xs leading-[1.8] mt-1">
+            ※ 部分銀行可提供英文版帳戶餘額證明和交易記錄，但若其中未包含您的地址，恕不接受，請提前聯絡您的銀行。
+          </p>
+          <Img />
+        </div>
+      );
+    }
+    // Default: DOC 02 and others
+    return null;
+  };
+
+  const renderDocs = (docs: number[]) => (
+    <>
+      {docs.map((n, i) => {
+        const custom = renderDocCustom(n);
+        if (custom) return <div key={n}>{custom}{i < docs.length - 1 && <Divider />}</div>;
+        return (
+          <div key={n} className="mb-8">
+            <Label num={n} prefix="DOC" />
+            <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.doc.d${n}.t`)}</h3>
+            <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.doc.d${n}.d`)}</p>
+            {[1, 2, 3, 4, 5].map((li) => {
+              const item = tryT(`guide.doc.d${n}.i${li}`);
+              return item ? <p key={li} className="text-white-40 text-sm leading-[1.9] ml-4">• {item}</p> : null;
+            })}
+            {[1, 2, 3].map((ni) => {
+              const note = tryT(`guide.doc.d${n}.n${ni}`);
+              return note ? <Note key={ni} text={note} /> : null;
+            })}
+            <Img />
+            {i < docs.length - 1 && <Divider />}
+          </div>
+        );
+      })}
     </>
   );
 
