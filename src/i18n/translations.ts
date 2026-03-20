@@ -654,6 +654,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB 开户操作手册",
     "guide.backHome": "← 返回官网首页",
+    "guide.close": "关闭",
     "guide.breadcrumb.home": "官网首页",
     "guide.breadcrumb.manual": "ECB 开户手册",
     "guide.imgPlaceholder": "图片区域 — 请上传截图",
