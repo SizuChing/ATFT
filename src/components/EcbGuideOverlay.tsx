@@ -38,6 +38,7 @@ const sectionKeys = [
 ] as const;
 
 type SectionKey = (typeof sectionKeys)[number];
+type ActivePage = "index" | SectionKey;
 
 const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
