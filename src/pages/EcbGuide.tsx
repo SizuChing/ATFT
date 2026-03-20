@@ -313,7 +313,7 @@ const EcbGuide = () => {
           {!mobile && active === key && (
             <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
           )}
-          <span>{sectionIcons[key]}</span>
+          {(() => { const Icon = sectionIcons[key]; return <Icon size={16} />; })()}
           <span>{t(`guide.nav.${key}`)}</span>
         </button>
       ))}
