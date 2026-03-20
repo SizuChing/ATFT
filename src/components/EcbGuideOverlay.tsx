@@ -337,19 +337,19 @@ const EcbGuideOverlay = () => {
             <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
               {n === 1 ? (
                 <>
-                  開戶所需的文件請事先準備齊全。{"\n"}點擊「
-                  <button onClick={() => handleNav("documents")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
-                    {t("guide.nav.documents")}
-                  </button>
-                  」查看詳細清單。
+                  {t("guide.ov.s1.d").split(t("guide.nav.documents")).map((part, pi, arr) =>
+                    pi < arr.length - 1 ? (
+                      <span key={pi}>{part}<button onClick={() => handleNav("documents")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{t("guide.nav.documents")}</button></span>
+                    ) : part
+                  )}
                 </>
               ) : n === 2 ? (
                 <>
-                  由客服人員提供專屬開戶連結與邀請碼。{"\n"}請依照「
-                  <button onClick={() => handleNav("signup")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
-                    {t("guide.nav.signup")}
-                  </button>
-                  」說明完成線上申請。
+                  {t("guide.ov.s2.d").split(t("guide.nav.signup")).map((part, pi, arr) =>
+                    pi < arr.length - 1 ? (
+                      <span key={pi}>{part}<button onClick={() => handleNav("signup")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">{t("guide.nav.signup")}</button></span>
+                    ) : part
+                  )}
                 </>
               ) : (
                 t(`guide.ov.s${n}.d`)
