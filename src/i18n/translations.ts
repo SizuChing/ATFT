@@ -1370,6 +1370,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.doc.d2.d": "Please hold the passport photo page and take a clear selfie.",
     "guide.doc.d2.n1": "Must be the same passport as DOC 01.",
     "guide.doc.d2.n2": "Fingers must not cover any text; both face and passport text must be clearly visible.",
+    "guide.doc.d2.n3": "If you plan to open a corporate account, please prepare a selfie of the corporate representative.",
     "guide.doc.d3.t": "Address Proof Document",
     "guide.doc.d3.d": "Please provide any one of the following documents (issued within 90 days, in English):",
     "guide.doc.d3.i1": "Driver's license (front and back)",
