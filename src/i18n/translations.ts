@@ -793,7 +793,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.nav.documents": "必要文件",
     "guide.nav.signup": "注册账号（Sign Up）",
     "guide.nav.login": "登录（Login）",
-    "guide.nav.account": "账号资料填写",
+    "guide.nav.account": "账号资料设置",
     "guide.nav.corporate": "公司资料",
     "guide.nav.corpAddress": "公司地址证明",
     "guide.nav.personal": "个人资料",
