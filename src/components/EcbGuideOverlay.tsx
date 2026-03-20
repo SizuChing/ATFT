@@ -794,7 +794,7 @@ const EcbGuideOverlay = () => {
       case "signup": return renderSteps("su", 3, [2, 3], { 2: step02Img, 3: step03Img });
       case "login": return renderSteps("lg", 2, [1, 2]);
       case "account":
-        return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.intro")}</p><Img /></>);
+        return renderAccount();
       case "corporate":
         return renderCorporate();
       case "corpAddress":
