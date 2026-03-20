@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, Menu,
+  X, ChevronRight, Menu, LayoutGrid,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
@@ -38,6 +38,7 @@ const sectionKeys = [
 ] as const;
 
 type SectionKey = (typeof sectionKeys)[number];
+type ActivePage = "index" | SectionKey;
 
 const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
@@ -57,7 +58,7 @@ const EcbGuideOverlay = () => {
   const { isOpen, close } = useEcbGuide();
   const [visible, setVisible] = useState(false);
   const [animating, setAnimating] = useState(false);
-  const [active, setActive] = useState<SectionKey>("overview");
+  const [active, setActive] = useState<ActivePage>("index");
   const [docTab, setDocTab] = useState<"personal" | "corporate">("personal");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { t } = useLanguage();
@@ -71,8 +72,8 @@ const EcbGuideOverlay = () => {
       setAnimating(false);
       const timer = setTimeout(() => {
         setVisible(false);
-        setActive("overview");
-        setDrawerOpen(false);
+      setActive("index");
+      setDrawerOpen(false);
       }, 400);
       return () => clearTimeout(timer);
     }
@@ -80,15 +81,15 @@ const EcbGuideOverlay = () => {
 
   if (!visible) return null;
 
-  const handleNav = (key: SectionKey) => {
+  const handleNav = (key: ActivePage) => {
     setActive(key);
     setDrawerOpen(false);
     contentRef.current?.scrollTo({ top: 0 });
   };
 
-  const idx = sectionKeys.indexOf(active);
+  const idx = active === "index" ? -1 : sectionKeys.indexOf(active);
   const prev = idx > 0 ? sectionKeys[idx - 1] : null;
-  const next = idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
+  const next = idx >= 0 && idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
 
   const tryT = (key: string) => {
     const val = t(key);
@@ -893,6 +894,20 @@ const EcbGuideOverlay = () => {
 
   const sidebarNav = (mobile = false) => (
     <nav className={mobile ? "py-4" : "flex-1 overflow-y-auto py-4"}>
+      {/* Index / Home button */}
+      <button onClick={() => handleNav("index")}
+        className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
+          active === "index"
+            ? `text-${mobile ? "primary" : "foreground"} bg-[hsl(285_74%_61%/0.12)]`
+            : "text-white-80 hover:text-foreground hover:bg-[hsl(285_74%_61%/0.06)]"
+        }`}>
+        {!mobile && active === "index" && (
+          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
+        )}
+        <LayoutGrid size={16} />
+        <span>{t("guide.nav.index")}</span>
+      </button>
+      <div className={`border-b border-border ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
       {sectionKeys.map((key) => {
         const Icon = sectionIcons[key];
         return (
@@ -940,10 +955,10 @@ const EcbGuideOverlay = () => {
 
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-14 bg-background/95 backdrop-blur-xl border-b border-border flex items-center justify-between px-4">
-        <div className="flex items-center gap-2">
+        <button onClick={() => handleNav("index")} className="flex items-center gap-2">
           <img src={aiftLogo} alt="AIFT" className="h-6" />
           <span className="text-xs text-white-40">{t("guide.sidebarTitle")}</span>
-        </div>
+        </button>
         <div className="flex items-center gap-3">
           <button onClick={() => setDrawerOpen(!drawerOpen)} className="text-foreground">
             {drawerOpen ? <X size={22} /> : <Menu size={22} />}
@@ -968,25 +983,81 @@ const EcbGuideOverlay = () => {
           <div className="flex items-center gap-2 text-xs text-white-40">
             <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
             <ChevronRight size={12} />
-            <span>{t("guide.breadcrumb.manual")}</span>
-            <ChevronRight size={12} />
-            <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+            <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
+            {active !== "index" && (
+              <>
+                <ChevronRight size={12} />
+                <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+              </>
+            )}
           </div>
         </div>
 
-        <div className="px-6 lg:px-10 py-10 max-w-4xl">
-          <h1 className="font-heading-cn text-2xl lg:text-[32px] text-foreground mb-2">
-            {t(`guide.${active}.pt`)}
-          </h1>
-          <p className="text-white-40 text-sm leading-[1.9] mb-6">{t(`guide.${active}.desc`)}</p>
-          <div className="border-b border-[hsl(285_74%_55%/0.2)] mb-8" />
+        {active === "index" ? (
+          <div className="px-6 lg:px-10 py-10 max-w-4xl mx-auto">
+            <div key="index" className="animate-fade-up">
+              {/* Index header */}
+              <div className="text-center mb-10">
+                <h1 className="font-heading-cn text-3xl lg:text-[40px] text-foreground mb-2 tracking-tight">
+                  {t("guide.index.title")}
+                </h1>
+                <p className="text-primary text-lg lg:text-xl font-medium mb-4">
+                  {t("guide.index.subtitle")}
+                </p>
+                <p className="text-white-40 text-sm leading-relaxed">
+                  {t("guide.index.desc1")}<br />
+                  {t("guide.index.desc2")}
+                </p>
+              </div>
 
-          <div key={active} className="animate-fade-up">
-            {renderContent()}
+              {/* Card grid */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                {sectionKeys.map((key, i) => {
+                  const Icon = sectionIcons[key];
+                  const isLast = i === sectionKeys.length - 1;
+                  const isOddTotal = sectionKeys.length % 2 !== 0;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleNav(key)}
+                      className={`group rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-1 ${
+                        isLast && isOddTotal ? "col-span-2 lg:col-span-1 max-w-[calc(50%-0.5rem)] lg:max-w-none mx-auto lg:mx-0 w-full" : ""
+                      }`}
+                      style={{
+                        background: "rgba(21, 0, 40, 0.7)",
+                        border: "1px solid rgba(180, 60, 220, 0.25)",
+                        borderRadius: "12px",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.8)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.25)";
+                      }}
+                    >
+                      <Icon size={28} className="text-primary mx-auto mb-3" />
+                      <span className="text-foreground text-sm">{t(`guide.nav.${key}`)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
+        ) : (
+          <div className="px-6 lg:px-10 py-10 max-w-4xl">
+            <h1 className="font-heading-cn text-2xl lg:text-[32px] text-foreground mb-2">
+              {t(`guide.${active}.pt`)}
+            </h1>
+            <p className="text-white-40 text-sm leading-[1.9] mb-6">{t(`guide.${active}.desc`)}</p>
+            <div className="border-b border-[hsl(285_74%_55%/0.2)] mb-8" />
 
-          {renderNavBtns()}
-        </div>
+            <div key={active} className="animate-fade-up">
+              {renderContent()}
+            </div>
+
+            {renderNavBtns()}
+          </div>
+        )}
       </main>
     </div>
   );
