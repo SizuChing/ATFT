@@ -1325,7 +1325,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.nav.documents": "Required Documents",
     "guide.nav.signup": "Sign Up",
     "guide.nav.login": "Login",
-    "guide.nav.account": "Account Information",
+    "guide.nav.account": "Account Setup",
     "guide.nav.corporate": "Corporate Information",
     "guide.nav.corpAddress": "Corporate Address Proof",
     "guide.nav.personal": "Personal Information",
