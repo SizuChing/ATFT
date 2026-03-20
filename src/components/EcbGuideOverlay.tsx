@@ -171,9 +171,56 @@ const EcbGuideOverlay = () => {
     </>
   );
 
+  const renderOverview = () => {
+    const steps = [1, 2, 3, 4];
+    return (
+      <>
+        {steps.map((n, i) => (
+          <div key={n} className="mb-8">
+            <Label num={n} />
+            <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.ov.s${n}.t`)}</h3>
+            <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">
+              {n === 1 ? (
+                <>
+                  開戶所需的文件請事先準備齊全。{"\n"}點擊「
+                  <button onClick={() => handleNav("documents")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
+                    {t("guide.nav.documents")}
+                  </button>
+                  」查看詳細清單。
+                </>
+              ) : n === 2 ? (
+                <>
+                  由客服人員提供專屬開戶連結與邀請碼。{"\n"}請依照「
+                  <button onClick={() => handleNav("signup")} className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">
+                    {t("guide.nav.signup")}
+                  </button>
+                  」說明完成線上申請。
+                </>
+              ) : (
+                t(`guide.ov.s${n}.d`)
+              )}
+            </p>
+            {n === 3 && (
+              <p className="text-white-40 text-sm leading-[1.9] mt-2">
+                {t("guide.ov.s3.warn1")}
+                <span className="text-red-500 font-medium">{t("guide.ov.s3.warn2")}</span>
+                。
+              </p>
+            )}
+            {[1, 2, 3].map((ni) => {
+              const note = tryT(`guide.ov.s${n}.n${ni}`);
+              return note ? <Note key={ni} text={note} /> : null;
+            })}
+            {i < steps.length - 1 && <Divider />}
+          </div>
+        ))}
+      </>
+    );
+  };
+
   const renderContent = () => {
     switch (active) {
-      case "overview": return renderSteps("ov", 4);
+      case "overview": return renderOverview();
       case "documents":
         return (
           <>
