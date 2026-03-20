@@ -8,6 +8,8 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import aiftLogo from "@/assets/aift-logo.png";
+import passportImg from "@/assets/passport.webp";
+import selfieImg from "@/assets/selfie.webp";
 import {
   Accordion,
   AccordionContent,
