@@ -81,7 +81,7 @@ const EcbGuideOverlay = () => {
 
   if (!visible) return null;
 
-  const handleNav = (key: SectionKey) => {
+  const handleNav = (key: ActivePage) => {
     setActive(key);
     setDrawerOpen(false);
     contentRef.current?.scrollTo({ top: 0 });
