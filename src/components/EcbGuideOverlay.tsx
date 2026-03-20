@@ -894,6 +894,20 @@ const EcbGuideOverlay = () => {
 
   const sidebarNav = (mobile = false) => (
     <nav className={mobile ? "py-4" : "flex-1 overflow-y-auto py-4"}>
+      {/* Index / Home button */}
+      <button onClick={() => handleNav("index")}
+        className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
+          active === "index"
+            ? `text-${mobile ? "primary" : "foreground"} bg-[hsl(285_74%_61%/0.12)]`
+            : "text-white-80 hover:text-foreground hover:bg-[hsl(285_74%_61%/0.06)]"
+        }`}>
+        {!mobile && active === "index" && (
+          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
+        )}
+        <LayoutGrid size={16} />
+        <span>{t("guide.nav.index")}</span>
+      </button>
+      <div className={`border-b border-border ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
       {sectionKeys.map((key) => {
         const Icon = sectionIcons[key];
         return (
