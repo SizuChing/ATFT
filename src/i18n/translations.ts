@@ -1464,6 +1464,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ECB Guide
     "guide.sidebarTitle": "ECB 口座開設マニュアル",
     "guide.backHome": "← トップページに戻る",
+    "guide.close": "閉じる",
     "guide.breadcrumb.home": "トップページ",
     "guide.breadcrumb.manual": "ECB 口座開設マニュアル",
     "guide.imgPlaceholder": "画像エリア — スクリーンショットをアップロード",
