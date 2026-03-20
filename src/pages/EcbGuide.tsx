@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Menu, X, ArrowLeft, ChevronRight } from "lucide-react";
+import {
+  Menu, X, ArrowLeft, ChevronRight,
+  ClipboardList, FileText, PenLine, KeyRound, User, Building2,
+  MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import aiftLogo from "@/assets/aift-logo.png";
 import {
