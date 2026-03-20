@@ -228,7 +228,25 @@ const EcbGuide = () => {
         return renderSteps("su", 3, [2, 3]);
 
       case "login":
-        return renderSteps("lg", 2, [1, 2]);
+        return (
+          <>
+            {Array.from({ length: 4 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.lg.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.lg.s${n}.d`)}</p>
+                  {n === 3 && (
+                    <p className="text-[#F87171] text-xs leading-[1.8] mt-1">※ {t("guide.lg.s3.warn")}</p>
+                  )}
+                  <img src={`/images/login-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  {n < 4 && <Divider />}
+                </div>
+              );
+            })}
+          </>
+        );
 
       case "account":
         return (
