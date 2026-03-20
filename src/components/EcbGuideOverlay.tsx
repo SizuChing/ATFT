@@ -12,6 +12,11 @@ import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
 import step02Img from "@/assets/step02-signup.webp";
 import step03Img from "@/assets/step03-signup.webp";
+import auth01Img from "@/assets/auth-01.webp";
+import auth02Img from "@/assets/auth-02.webp";
+import auth03Img from "@/assets/auth-03.webp";
+import auth04Img from "@/assets/auth-04.webp";
+import auth05Img from "@/assets/auth-05.webp";
 import {
   Accordion,
   AccordionContent,
@@ -368,7 +373,7 @@ const EcbGuideOverlay = () => {
         );
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.con.intro")}</p><Img /></>);
-      case "twoFactor": return renderSteps("tf", 3, [2, 3]);
+      case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
       case "faq":
         return (
           <div className="space-y-8">
