@@ -246,7 +246,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.nav.documents": "必要文件",
     "guide.nav.signup": "註冊帳號（Sign Up）",
     "guide.nav.login": "登入（Login）",
-    "guide.nav.account": "帳號資料填寫",
+    "guide.nav.account": "帳號資料設定",
     "guide.nav.corporate": "公司資料",
     "guide.nav.corpAddress": "公司地址證明",
     "guide.nav.personal": "個人資料",
