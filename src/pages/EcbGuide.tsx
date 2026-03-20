@@ -222,9 +222,19 @@ const EcbGuide = () => {
       case "corporate":
         return (
           <>
-            <p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.corp.intro")}</p>
-            {renderBullets("guide.corp", 4)}
-            <Img />
+            <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.corp.topNote")}</p>
+            {Array.from({ length: 3 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.corp.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.corp.s${n}.d`)}</p>
+                  <img src={`/images/corporate-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  {n < 3 && <Divider />}
+                </div>
+              );
+            })}
           </>
         );
 

@@ -479,6 +479,56 @@ const EcbGuideOverlay = () => {
     "/images/corp-address-04.webp",
   ];
 
+  const corporateImgs = [
+    "/images/corporate-01.webp",
+    "/images/corporate-02.webp",
+    "/images/corporate-03.webp",
+  ];
+
+  const renderCorporate = () => (
+    <>
+      <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.corp.topNote")}</p>
+
+      {/* STEP 01 */}
+      <div className="mb-8">
+        <Label num={1} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.corp.s1.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-2">{t("guide.corp.s1.d")}</p>
+        <img src={corporateImgs[0]} alt="Step 01" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 02 */}
+      <div className="mb-8">
+        <Label num={2} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.corp.s2.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.corp.s2.d")}</p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.corp.s2.n1")}</span>
+        </p>
+        <img src={corporateImgs[1]} alt="Step 02" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+      <Divider />
+
+      {/* STEP 03 */}
+      <div className="mb-8">
+        <Label num={3} />
+        <h3 className="text-foreground text-base font-medium mb-2">{t("guide.corp.s3.t")}</h3>
+        <p className="text-white-40 text-sm leading-[1.9] mb-3">{t("guide.corp.s3.d")}</p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.corp.s3.n1")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.corp.s3.n2")}</span>
+        </p>
+        <p className="text-xs leading-[1.8] mt-1">
+          <span className="text-red-500 font-medium">※ {t("guide.corp.s3.n3")}</span>
+        </p>
+        <img src={corporateImgs[2]} alt="Step 03" className="rounded-lg my-4 max-w-md w-full" />
+      </div>
+    </>
+  );
+
   const renderCorpAddress = () => (
     <>
       <p className="text-white-40 text-xs leading-[1.8] mb-6">※ {t("guide.ca.topNote")}</p>
@@ -727,7 +777,7 @@ const EcbGuideOverlay = () => {
       case "account":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-4">{t("guide.acc.intro")}</p><Img /></>);
       case "corporate":
-        return (<><p className="text-white-40 text-sm leading-[1.9] mb-4">{t("guide.corp.intro")}</p>{renderBullets("guide.corp", 4)}<Img /></>);
+        return renderCorporate();
       case "corpAddress":
         return renderCorpAddress();
       case "personal":
