@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Menu, X, ArrowLeft, ChevronRight } from "lucide-react";
+import {
+  Menu, X, ArrowLeft, ChevronRight,
+  ClipboardList, FileText, PenLine, KeyRound, User, Building2,
+  MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import aiftLogo from "@/assets/aift-logo.png";
 import {
@@ -17,10 +22,10 @@ const sectionKeys = [
 
 type SectionKey = (typeof sectionKeys)[number];
 
-const sectionIcons: Record<SectionKey, string> = {
-  overview: "📋", documents: "📄", signup: "✍️", login: "🔑",
-  account: "👤", corporate: "🏢", corpAddress: "📍", personal: "🙍",
-  homeAddress: "🏠", review: "📊", consent: "📝", twoFactor: "🔐", faq: "❓",
+const sectionIcons: Record<SectionKey, LucideIcon> = {
+  overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
+  account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
+  homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
 };
 
 const faqCategories = [
@@ -308,7 +313,7 @@ const EcbGuide = () => {
           {!mobile && active === key && (
             <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
           )}
-          <span>{sectionIcons[key]}</span>
+          {(() => { const Icon = sectionIcons[key]; return <Icon size={16} />; })()}
           <span>{t(`guide.nav.${key}`)}</span>
         </button>
       ))}
