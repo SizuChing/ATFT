@@ -983,9 +983,13 @@ const EcbGuideOverlay = () => {
           <div className="flex items-center gap-2 text-xs text-white-40">
             <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
             <ChevronRight size={12} />
-            <span>{t("guide.breadcrumb.manual")}</span>
-            <ChevronRight size={12} />
-            <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+            <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
+            {active !== "index" && (
+              <>
+                <ChevronRight size={12} />
+                <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+              </>
+            )}
           </div>
         </div>
 
