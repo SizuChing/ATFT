@@ -5,22 +5,22 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const monthlyData = [
   {
     year: "2023",
-    months: [4.88, 2.23, 10.14, -0.37, 4.16, 4.36, 0.62, -1.50, -1.55, 9.17, 3.68, 1.94],
-    total: 37.76,
+    months: [6.66, 3.38, 8.98, 2.26, 1.95, 3.08, 1.98, 0.52, 0.22, 3.83, 5.25, 4.36],
+    total: 42.47,
   },
   {
     year: "2024",
-    months: [-1.42, -5.42, 4.85, 12.55, -9.13, 6.38, 7.91, 18.32, 5.76, 5.84, 2.25, 2.71],
-    total: 50.60,
+    months: [3.08, 6.35, 5.50, 3.06, 5.31, 0.00, 3.60, 5.11, 4.18, 5.42, 9.89, 3.75],
+    total: 55.25,
   },
   {
     year: "2025",
-    months: [19.92, -0.60, 18.39, 8.65, 4.79, -2.41, -5.92, -6.74, 8.84, 12.48, 26.27, 4.51],
-    total: 88.18,
+    months: [11.15, 10.61, 10.27, 6.33, 10.57, 2.42, 7.94, 5.29, 0.94, 6.41, 3.15, 6.19],
+    total: 81.27,
   },
   {
     year: "2026",
-    months: [-10.75, null, null, null, null, null, null, null, null, null, null, null],
+    months: [4.99, 1.38, 0.54, null, null, null, null, null, null, null, null, null],
     total: null,
   },
 ];
@@ -28,9 +28,9 @@ const monthlyData = [
 const monthHeaders = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const highlights = [
-  { value: 37.76, label: "2023 年度回報" },
-  { value: 50.60, label: "2024 年度回報" },
-  { value: 88.18, label: "2025 年度回報" },
+  { value: 42.47, labelKey: "backtest.highlight1" },
+  { value: 55.25, labelKey: "backtest.highlight2" },
+  { value: 81.27, labelKey: "backtest.highlight3" },
 ];
 
 function AnimatedNumber({ target, duration = 1500 }: { target: number; duration?: number }) {
@@ -72,9 +72,10 @@ function AnimatedNumber({ target, duration = 1500 }: { target: number; duration?
 
 function CellValue({ val }: { val: number | null }) {
   if (val === null) return <span style={{ color: "rgba(255,255,255,0.3)" }}>-</span>;
-  const formatted = `${val >= 0 ? "" : ""}${val.toFixed(2)}%`;
+  const formatted = `${val.toFixed(2)}%`;
+  if (val === 0) return <span style={{ color: "rgba(255,255,255,0.3)" }}>{formatted}</span>;
   return (
-    <span className={val >= 0 ? "text-[#4ADE80]" : "text-[#F87171]"}>
+    <span className={val > 0 ? "text-[#4ADE80]" : "text-[#F87171]"}>
       {formatted}
     </span>
   );
@@ -133,7 +134,7 @@ const BacktestReport = () => {
 
           {/* Disclaimer */}
           <p className="absolute top-0 right-0 text-[11px] max-w-[280px] text-right" style={{ color: "rgba(255,255,255,0.3)" }}>
-            * {t("backtest.disclaimer")}
+            {t("backtest.disclaimer")}
           </p>
         </div>
 
@@ -189,9 +190,9 @@ const BacktestReport = () => {
         {/* Highlights */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 text-center">
           {highlights.map((h) => (
-            <div key={h.label}>
+            <div key={h.labelKey}>
               <AnimatedNumber target={h.value} />
-              <p className="text-white-40 text-sm mt-2">{h.label}</p>
+              <p className="text-white-40 text-sm mt-2">{t(h.labelKey)}</p>
             </div>
           ))}
         </div>
