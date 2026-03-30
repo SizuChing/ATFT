@@ -1261,7 +1261,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.desc1": "Below is the AIFT AI system's historical monthly actual return record,",
     "backtest.desc2": "covering data from 2023 to present.",
     "backtest.disclaimer": "＊Historical returns do not represent future actual returns. Investment involves risk.",
-    "backtest.tableTitle": "每月收益 Monthly Return",
+    "backtest.tableTitle": "Monthly Return",
     "backtest.year": "Year",
     "backtest.highlight1": "2023 Annual Return",
     "backtest.highlight2": "2024 Annual Return",
