@@ -73,7 +73,7 @@ function AnimatedNumber({ target, duration = 1500 }: { target: number; duration?
 function CellValue({ val }: { val: number | null }) {
   if (val === null) return <span style={{ color: "rgba(255,255,255,0.3)" }}>-</span>;
   const formatted = `${val.toFixed(2)}%`;
-  if (val === 0) return <span style={{ color: "rgba(255,255,255,0.3)" }}>{formatted}</span>;
+  if (val === 0) return <span className="text-[#4ADE80]">{formatted}</span>;
   return (
     <span className={val > 0 ? "text-[#4ADE80]" : "text-[#F87171]"}>
       {formatted}
