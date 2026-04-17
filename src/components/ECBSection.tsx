@@ -110,16 +110,13 @@ const ECBSection = () => {
                   <p className="text-white-60 mb-5 flex-1" style={{ fontSize: "13px", lineHeight: 1.7 }}>
                     {t("ecb.tier.over.desc")}
                   </p>
-                  <button
-                    type="button"
-                    disabled
-                    aria-disabled="true"
-                    title="EMAIL TBD"
-                    className="text-white-40 text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-white/15 bg-white/5 opacity-60 cursor-not-allowed"
+                  <a
+                    href="mailto:Aift@Aift.com"
+                    className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/10 hover:bg-primary/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                     style={{ height: "44px" }}
                   >
                     <Mail size={16} /> {t("ecb.tier.over.btn")}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
