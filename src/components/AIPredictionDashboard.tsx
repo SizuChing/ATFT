@@ -48,7 +48,7 @@ const INDICATOR_GROUPS_DATA: { i18nLabel: string; color: string; items: Indicato
   ]},
 ];
 
-type TabKey = "prediction" | "indicators" | "voting";
+type TabKey = "prediction" | "indicators";
 
 /* ─── helpers ─── */
 const TAG_COLORS: Record<string, string> = {
@@ -401,7 +401,6 @@ const AIPredictionDashboard = () => {
   const TABS = [
     { key: "prediction" as TabKey, label: "Prediction", sub: t("dash.tab.prediction") },
     { key: "indicators" as TabKey, label: "Indicators", sub: t("dash.tab.indicators") },
-    { key: "voting" as TabKey, label: "Voting", sub: t("dash.tab.voting") },
   ];
 
   const statusCards = [
@@ -539,84 +538,6 @@ const AIPredictionDashboard = () => {
             </div>
           )}
 
-          {/* Tab: Voting */}
-          {activeTab === "voting" && (
-            <div className="animate-[fadeTab_0.4s_ease]">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-                <div className="lg:col-span-3 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-purple-200 mb-1">{t("dash.vote.title")}</h3>
-                  <p className="text-[11px] sm:text-xs text-gray-500 mb-4 sm:mb-5">{t("dash.vote.desc")}</p>
-
-                  <div className="flex flex-col sm:flex-row items-center gap-6">
-                    <DonutChart visible={visible} bullPct={bullPct}
-                      bearishLabel={t("dash.vote.bearish")} bullishLabel={t("dash.vote.bullish")}
-                      bearishSignal={t("dash.vote.bearishSignal")} bullishSignal={t("dash.vote.bullishSignal")} />
-                    <div className="flex-1 w-full">
-                      <div className="flex items-center gap-3 mb-4 justify-center sm:justify-start">
-                        <span className="flex items-center gap-1.5 text-xs">
-                          <span className="h-2.5 w-2.5 rounded-sm bg-fuchsia-500" />
-                          <span className="text-fuchsia-400 font-mono">{bullPct.toFixed(1)}% {t("dash.vote.bull")}</span>
-                        </span>
-                        <span className="flex items-center gap-1.5 text-xs">
-                          <span className="h-2.5 w-2.5 rounded-sm bg-gray-500" />
-                          <span className="text-gray-400 font-mono">{(100 - bullPct).toFixed(1)}% {t("dash.vote.bear")}</span>
-                        </span>
-                      </div>
-
-                      <div className="space-y-3">
-                        {votingRows.map(row => (
-                          <div key={row.label} className="flex items-center justify-between">
-                            <span className="text-xs sm:text-sm text-gray-400">{row.label}</span>
-                            <span className={`rounded-md border px-2 py-0.5 text-xs font-medium ${row.cls}`}>{row.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-[10px] sm:text-[11px] text-gray-600 mt-5 text-center">
-                    {t("dash.vote.note")}
-                  </p>
-                </div>
-
-                <div className="lg:col-span-2 rounded-2xl border border-purple-500/15 bg-[hsl(270,100%,4%)] p-4 sm:p-6">
-                  <h4 className="text-sm font-semibold text-purple-200 mb-3">{t("dash.vote.breakdown")}</h4>
-                  <div className="space-y-2">
-                    {KLINE_DATA.map(d => {
-                      const isBull = d.dir === "bull";
-                      return (
-                        <div key={d.tf} className="flex items-center gap-3">
-                          <span className="font-mono text-[11px] text-gray-400 w-8 text-right">{d.tf}</span>
-                          <div className="flex-1 h-1.5 rounded-full bg-purple-500/10 overflow-hidden">
-                            <div
-                              className={`h-full rounded-full transition-all duration-1000 ${isBull ? "bg-fuchsia-500/60" : "bg-gray-500/60"}`}
-                              style={{ width: visible ? `${d.conf}%` : "0%" }}
-                            />
-                          </div>
-                          <span className={`text-[11px] font-mono w-8 text-right ${isBull ? "text-fuchsia-400" : "text-gray-400"}`}>
-                            {d.conf}%
-                          </span>
-                          <span className={`text-[10px] ${isBull ? "text-fuchsia-400" : "text-gray-500"}`}>
-                            {isBull ? "▲" : "▼"}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-purple-500/10">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-500">{t("dash.vote.bullCount")}</span>
-                      <span className="font-mono text-fuchsia-400">3 / 8</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs mt-1">
-                      <span className="text-gray-500">{t("dash.vote.bearCount")}</span>
-                      <span className="font-mono text-gray-400">5 / 8</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* ─── Footer note ─── */}
