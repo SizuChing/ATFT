@@ -1,4 +1,4 @@
-import { Landmark, FileText } from "lucide-react";
+import { Landmark, FileText, Mail } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
@@ -43,17 +43,42 @@ const ECBSection = () => {
             </div>
           </div>
 
-          <div className="card-glass rounded-2xl p-8">
-            <h3 className="font-heading-cn text-lg text-foreground mb-6">{t("ecb.flow.title")}</h3>
-            <div className="space-y-5">
-              {flowStepKeys.map((key, i) => (
-                <div key={key} className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
-                    {i + 1}
+          <div className="space-y-6">
+            <div className="card-glass rounded-2xl p-8">
+              <h3 className="font-heading-cn text-lg text-foreground mb-6">{t("ecb.flow.title")}</h3>
+              <div className="space-y-5">
+                {flowStepKeys.map((key, i) => (
+                  <div key={key} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
+                      {i + 1}
+                    </div>
+                    <p className="text-white-80 text-sm pt-1">{t(key)}</p>
                   </div>
-                  <p className="text-white-80 text-sm pt-1">{t(key)}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            <div className="card-glass rounded-2xl p-6">
+              <h3 className="font-heading-cn text-base text-foreground mb-4">{t("ecb.tier.title")}</h3>
+              <ul className="space-y-3 mb-5">
+                <li className="flex items-start gap-2 text-sm text-white-80">
+                  <span className="text-primary mt-0.5">•</span>
+                  {t("ecb.tier.under")}
+                </li>
+                <li className="flex items-start gap-2 text-sm text-white-80">
+                  <span className="text-primary mt-0.5">•</span>
+                  {t("ecb.tier.over")}
+                </li>
+              </ul>
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                title="EMAIL TBD"
+                className="card-glass text-white-40 text-sm px-5 py-2.5 rounded-full inline-flex items-center gap-2 opacity-60 cursor-not-allowed"
+              >
+                <Mail size={16} /> {t("ecb.tier.btn")}
+              </button>
             </div>
           </div>
         </div>
