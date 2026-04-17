@@ -133,16 +133,16 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "回測報告",
-    "backtest.title": "ETH AI 交易月度回報報告",
+    "backtest.title": "ETH AI 交易月度報告",
     "backtest.label": "歷史回測數據",
     "backtest.desc1": "以下為 AIFT AI 系統歷史每月實際收益紀錄，",
     "backtest.desc2": "數據涵蓋 2023 年至今。",
     "backtest.disclaimer": "＊歷史收益數據不代表未來實際報酬，投資涉及風險。",
     "backtest.tableTitle": "每月收益 Monthly Return",
     "backtest.year": "年份",
-    "backtest.highlight1": "2023 年度回報",
-    "backtest.highlight2": "2024 年度回報",
-    "backtest.highlight3": "2025 年度回報",
+    "backtest.highlight1": "2023 年度報告",
+    "backtest.highlight2": "2024 年度報告",
+    "backtest.highlight3": "2025 年度報告",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI 預測",
@@ -703,16 +703,16 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "回测报告",
-    "backtest.title": "ETH AI 交易月度回报报告",
+    "backtest.title": "ETH AI 交易月度报告",
     "backtest.label": "历史回测数据",
     "backtest.desc1": "以下为 AIFT AI 系统历史每月实际收益记录，",
     "backtest.desc2": "数据涵盖 2023 年至今。",
     "backtest.disclaimer": "＊历史收益数据不代表未来实际报酬，投资涉及风险。",
     "backtest.tableTitle": "每月收益 Monthly Return",
     "backtest.year": "年份",
-    "backtest.highlight1": "2023 年度回报",
-    "backtest.highlight2": "2024 年度回报",
-    "backtest.highlight3": "2025 年度回报",
+    "backtest.highlight1": "2023 年度报告",
+    "backtest.highlight2": "2024 年度报告",
+    "backtest.highlight3": "2025 年度报告",
 
     "nav.aiTerminal": "AI 预测",
     "dash.live": "LIVE SYSTEM · 即时运算中",
@@ -1256,16 +1256,16 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
-    "backtest.title": "ETH AI Trading Monthly Return Report",
+    "backtest.title": "ETH AI Trading Monthly Report",
     "backtest.label": "Historical Backtest Data",
     "backtest.desc1": "Below is the AIFT AI system's historical monthly actual return record,",
     "backtest.desc2": "covering data from 2023 to present.",
-    "backtest.disclaimer": "＊Historical returns do not represent future actual returns. Investment involves risk.",
+    "backtest.disclaimer": "*Historical return data does not represent actual future returns. Investment involves risk.",
     "backtest.tableTitle": "Monthly Return",
     "backtest.year": "Year",
-    "backtest.highlight1": "2023 Annual Return",
-    "backtest.highlight2": "2024 Annual Return",
-    "backtest.highlight3": "2025 Annual Return",
+    "backtest.highlight1": "2023 Annual Report",
+    "backtest.highlight2": "2024 Annual Report",
+    "backtest.highlight3": "2025 Annual Report",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI Prediction",
@@ -1810,16 +1810,16 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // Backtest Report
     "nav.backtest": "バックテスト",
-    "backtest.title": "ETH AI 取引月次リターンレポート",
+    "backtest.title": "ETH AI 取引月次レポート",
     "backtest.label": "過去のバックテストデータ",
     "backtest.desc1": "以下は AIFT AI システムの月次実績リターンの記録です。",
     "backtest.desc2": "2023年から現在までのデータを掲載しています。",
     "backtest.disclaimer": "＊過去の運用実績は将来の成果を保証するものではありません。投資にはリスクが伴います。",
     "backtest.tableTitle": "月次リターン Monthly Return",
     "backtest.year": "年度",
-    "backtest.highlight1": "2023年度リターン",
-    "backtest.highlight2": "2024年度リターン",
-    "backtest.highlight3": "2025年度リターン",
+    "backtest.highlight1": "2023年度レポート",
+    "backtest.highlight2": "2024年度レポート",
+    "backtest.highlight3": "2025年度レポート",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI予測",

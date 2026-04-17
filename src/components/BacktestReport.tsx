@@ -121,7 +121,7 @@ const BacktestReport = () => {
         {/* Header */}
         <div className="text-center mb-8 relative">
           <span className="text-xs tracking-[4px] uppercase text-primary mb-3 block">
-            BACKTEST REPORT · {t("backtest.label")}
+            ETH AI Trading Monthly Report
           </span>
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
             {t("backtest.title")}
