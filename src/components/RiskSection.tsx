@@ -1,4 +1,4 @@
-import { Scale, OctagonX, Target, BarChart, RefreshCw, Globe } from "lucide-react";
+import { Scale, OctagonX, Target, Globe } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -10,8 +10,6 @@ const RiskSection = () => {
     { icon: Scale, titleKey: "risk.c1.title", descKey: "risk.c1.desc", statKey: "risk.c1.stat" },
     { icon: OctagonX, titleKey: "risk.c2.title", descKey: "risk.c2.desc", statKey: "risk.c2.stat" },
     { icon: Target, titleKey: "risk.c3.title", descKey: "risk.c3.desc", statKey: "risk.c3.stat" },
-    { icon: BarChart, titleKey: "risk.c4.title", descKey: "risk.c4.desc", statKey: "risk.c4.stat" },
-    { icon: RefreshCw, titleKey: "risk.c5.title", descKey: "risk.c5.desc", statKey: "risk.c5.stat" },
     { icon: Globe, titleKey: "risk.c6.title", descKey: "risk.c6.desc", statKey: "risk.c6.stat" },
   ];
 
@@ -23,7 +21,7 @@ const RiskSection = () => {
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground">{t("risk.title")}</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {cards.map((c) => (
             <div key={c.titleKey} className="card-glass rounded-xl p-6 hover:-translate-y-1 hover:border-primary/50 transition-all duration-300 glow-box-hover group">
               <c.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
