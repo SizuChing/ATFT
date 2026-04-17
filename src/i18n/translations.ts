@@ -130,6 +130,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "於 ECB 平台上完成授權，委託 AIFT 管理資金運作",
     "ecb.flow.s4": "認購 AIFT AI 基金產品，選擇適合的投資方案",
     "ecb.flow.s5": "AIFT AI 全自動執行量化交易策略，即時查閱基金收益與績效",
+    "ecb.tier.title": "依資金規模的開戶方式",
+    "ecb.tier.under": "資金規模 100 萬以下：建議直接前往 ECB 官網開戶。",
+    "ecb.tier.over": "資金規模 100 萬以上，並自行擁有 Binance 帳戶：可透過 EMAIL 聯繫，由專人協助開戶。",
+    "ecb.tier.btn": "EMAIL 聯繫（即將開放）",
 
     // Backtest Report
     "nav.backtest": "回測報告",
@@ -700,6 +704,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "于 ECB 平台上完成授权，委托 AIFT 管理资金运作",
     "ecb.flow.s4": "认购 AIFT AI 基金产品，选择适合的投资方案",
     "ecb.flow.s5": "AIFT AI 全自动执行量化交易策略，即时查阅基金收益与绩效",
+    "ecb.tier.title": "依资金规模的开户方式",
+    "ecb.tier.under": "资金规模 100 万以下：建议直接前往 ECB 官网开户。",
+    "ecb.tier.over": "资金规模 100 万以上，并自行拥有 Binance 账户：可透过 EMAIL 联系，由专人协助开户。",
+    "ecb.tier.btn": "EMAIL 联系（即将开放）",
 
     // Backtest Report
     "nav.backtest": "回测报告",
@@ -1253,6 +1261,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "Authorize on the ECB platform to entrust AIFT to manage fund operations",
     "ecb.flow.s4": "Subscribe to AIFT AI Fund products, select suitable investment plan",
     "ecb.flow.s5": "AIFT AI automatically executes quantitative trading strategies, check fund returns and performance in real-time",
+    "ecb.tier.title": "Account Opening Based on Capital Size",
+    "ecb.tier.under": "Capital under 1M: please open an account directly on the ECB official website.",
+    "ecb.tier.over": "Capital above 1M and you already have a Binance account: contact us by email for dedicated account-opening assistance.",
+    "ecb.tier.btn": "Contact via Email (coming soon)",
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
@@ -1807,6 +1819,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.flow.s3": "ECBプラットフォームで承認を完了し、AIFTに資金運用を委託",
     "ecb.flow.s4": "AIFT AI ファンド商品を購入し、適切な投資プランを選択",
     "ecb.flow.s5": "AIFT AI がクオンツ取引戦略を自動実行、ファンド収益とパフォーマンスをリアルタイムで確認",
+    "ecb.tier.title": "資金規模に応じた口座開設方法",
+    "ecb.tier.under": "資金規模 100万未満：ECB 公式サイトより直接口座開設をご利用ください。",
+    "ecb.tier.over": "資金規模 100万以上、かつ Binance アカウントをお持ちの方：メールにて専任担当者による口座開設サポートをご利用いただけます。",
+    "ecb.tier.btn": "メールでお問い合わせ（準備中）",
 
     // Backtest Report
     "nav.backtest": "バックテスト",
