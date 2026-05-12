@@ -114,7 +114,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "risk.c6.stat": "50+ 指標",
 
     // ECB
-    "ecb.badge": "非洲剛果共和國合法持牌銀行",
+    
     "ecb.title": "與 Europe Chartered Bank",
     "ecb.title2": "深度戰略合作",
     "ecb.desc": "ECB（Europe Chartered Bank）是非洲剛果共和國合法持牌的金融機構，為 AIFT 用戶提供安全、合規的資金存管與交易服務。",
