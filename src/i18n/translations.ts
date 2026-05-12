@@ -695,7 +695,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     "risk.c6.desc": "多指标交叉确认降低误判风险",
     "risk.c6.stat": "50+ 指标",
 
-    "ecb.badge": "非洲刚果共和国合法持牌银行",
     "ecb.title": "与 Europe Chartered Bank",
     "ecb.title2": "深度战略合作",
     "ecb.desc": "ECB（Europe Chartered Bank）是非洲刚果共和国合法持牌的金融机构，为 AIFT 用户提供安全、合规的资金存管与交易服务。",
