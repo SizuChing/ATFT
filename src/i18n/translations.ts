@@ -1723,7 +1723,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.products": "取引システム",
     "nav.howItWorks": "仕組み",
     "nav.risk": "リスク管理",
-    "nav.ecb": "ECB提携",
+    "nav.ecb": "運用申込",
     "nav.partners": "パートナー",
     "nav.cta": "口座開設",
 
@@ -1949,7 +1949,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "footer.link.howItWorks": "仕組み",
     "footer.link.risk": "リスク管理",
     "footer.link.aboutAift": "AIFTについて",
-    "footer.link.ecb": "ECB提携",
+    "footer.link.ecb": "運用申込",
     "footer.link.ecbManual": "ECBマニュアル",
     "footer.risk": "⚠️ リスク警告：暗号通貨取引は高いリスクを伴い、価格変動が激しく、投資額の一部または全額を失う可能性があります。過去の実績は将来の結果を保証するものではありません。ご自身のリスク許容度に応じて慎重に投資し、必要に応じて専門の財務アドバイザーにご相談ください。",
     "footer.copyright": "© 2025 Al Financial Technologies Ltd. All rights reserved.",
