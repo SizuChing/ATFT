@@ -7,7 +7,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.products": "交易系統",
     "nav.howItWorks": "運作原理",
     "nav.risk": "風控機制",
-    "nav.ecb": "ECB合作",
+    "nav.ecb": "操作申請",
     "nav.partners": "合作夥伴",
     "nav.cta": "立即開戶",
 
@@ -594,7 +594,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.products": "交易系统",
     "nav.howItWorks": "运作原理",
     "nav.risk": "风控机制",
-    "nav.ecb": "ECB合作",
+    "nav.ecb": "操作申请",
     "nav.partners": "合作伙伴",
     "nav.cta": "立即开户",
 
