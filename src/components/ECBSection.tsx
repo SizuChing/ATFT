@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Landmark, FileText, Mail } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -8,6 +9,7 @@ const ECBSection = () => {
   const ref = useScrollFadeUp();
   const { t } = useLanguage();
   const { open } = useEcbGuide();
+  const [tab, setTab] = useState("tier");
 
   const flowStepKeys = ["ecb.flow.s1", "ecb.flow.s2", "ecb.flow.s3", "ecb.flow.s4", "ecb.flow.s5"];
   const pointKeys = ["ecb.p1", "ecb.p2", "ecb.p3", "ecb.p4"];
@@ -22,7 +24,7 @@ const ECBSection = () => {
           <p className="text-white-80 text-sm leading-relaxed max-w-2xl mx-auto">{t("ecb.desc")}</p>
         </div>
 
-        <Tabs defaultValue="tier" className="w-full">
+        <Tabs value={tab} onValueChange={setTab} className="w-full">
           <TabsList className="mx-auto mb-8 flex w-full max-w-2xl h-auto bg-transparent border border-primary/20 rounded-full p-1">
             <TabsTrigger
               value="tier"
@@ -68,15 +70,14 @@ const ECBSection = () => {
                   <p className="text-white-60 mb-5 flex-1" style={{ fontSize: "13px", lineHeight: 1.7 }}>
                     {t("ecb.tier.under.desc")}
                   </p>
-                  <a
-                    href="https://www.europecharteredbank.com/home.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gradient-primary text-foreground text-sm rounded-md flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-200 w-full"
+                  <button
+                    type="button"
+                    onClick={() => setTab("partner")}
+                    className="gradient-primary text-foreground text-sm rounded-md flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-200 w-full cursor-pointer"
                     style={{ height: "44px" }}
                   >
                     <Landmark size={16} /> {t("ecb.tier.under.btn")}
-                  </a>
+                  </button>
                 </div>
 
                 {/* Right option — Above 1M */}
