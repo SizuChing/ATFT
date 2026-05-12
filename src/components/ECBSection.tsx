@@ -16,9 +16,6 @@ const ECBSection = () => {
       <div ref={ref} className="max-w-7xl mx-auto opacity-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <span className="inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-4">
-              <Landmark size={14} /> {t("ecb.badge")}
-            </span>
             <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
               {t("ecb.title")}<br />{t("ecb.title2")}
             </h2>
