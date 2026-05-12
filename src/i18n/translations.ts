@@ -141,6 +141,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tier.over.t2": "100 萬以上",
     "ecb.tier.over.desc": "自行擁有幣安（Binance）帳戶者，可透過 EMAIL 聯繫，由專人協助完成開戶流程。",
     "ecb.tier.over.btn": "EMAIL 聯繫",
+    "ecb.tabs.tier": "開戶方式",
+    "ecb.tabs.flow": "投資流程",
+    "ecb.tabs.partner": "戰略合作",
 
     // Backtest Report
     "nav.backtest": "回測報告",
@@ -721,6 +724,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tier.over.t2": "100 万以上",
     "ecb.tier.over.desc": "自行拥有币安（Binance）账户者，可透过 EMAIL 联系，由专人协助完成开户流程。",
     "ecb.tier.over.btn": "EMAIL 联系",
+    "ecb.tabs.tier": "开户方式",
+    "ecb.tabs.flow": "投资流程",
+    "ecb.tabs.partner": "战略合作",
 
     // Backtest Report
     "nav.backtest": "回测报告",
@@ -1284,6 +1290,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tier.over.t2": "Above 1M",
     "ecb.tier.over.desc": "If you already have a Binance account, contact us by email for dedicated assistance with the account opening process.",
     "ecb.tier.over.btn": "Contact via Email",
+    "ecb.tabs.tier": "Account Options",
+    "ecb.tabs.flow": "Investment Flow",
+    "ecb.tabs.partner": "Partnership",
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
@@ -1848,6 +1857,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tier.over.t2": "100万以上",
     "ecb.tier.over.desc": "Binance アカウントをお持ちの方は、メールにて専任担当者による口座開設サポートをご利用いただけます。",
     "ecb.tier.over.btn": "メールでお問い合わせ",
+    "ecb.tabs.tier": "口座開設方法",
+    "ecb.tabs.flow": "投資フロー",
+    "ecb.tabs.partner": "戦略提携",
 
     // Backtest Report
     "nav.backtest": "バックテスト",

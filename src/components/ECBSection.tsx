@@ -2,6 +2,7 @@ import { Landmark, FileText, Mail } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const ECBSection = () => {
   const ref = useScrollFadeUp();
@@ -14,49 +15,39 @@ const ECBSection = () => {
   return (
     <section id="ecb" className="py-20 lg:py-32 px-6 lg:px-12">
       <div ref={ref} className="max-w-7xl mx-auto opacity-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
-              {t("ecb.title")}<br />{t("ecb.title2")}
-            </h2>
-            <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
-            <ul className="space-y-3 mb-8">
-              {pointKeys.map((key) => (
-                <li key={key} className="flex items-start gap-2 text-sm text-white-80">
-                  <span className="text-primary mt-0.5">•</span>
-                  {t(key)}
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-3">
-              <a href="https://www.europecharteredbank.com/home.html" target="_blank" rel="noopener noreferrer"
-                className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
-                <Landmark size={16} /> {t("ecb.btn1")}
-              </a>
-              <button onClick={open}
-                className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
-                <FileText size={16} /> {t("ecb.btn2")}
-              </button>
-            </div>
-          </div>
+        <div className="text-center mb-10">
+          <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
+            {t("ecb.title")} {t("ecb.title2")}
+          </h2>
+          <p className="text-white-80 text-sm leading-relaxed max-w-2xl mx-auto">{t("ecb.desc")}</p>
+        </div>
 
-          <div className="space-y-6">
-            <div className="card-glass rounded-2xl p-8">
-              <h3 className="font-heading-cn text-lg text-foreground mb-6">{t("ecb.flow.title")}</h3>
-              <div className="space-y-5">
-                {flowStepKeys.map((key, i) => (
-                  <div key={key} className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
-                      {i + 1}
-                    </div>
-                    <p className="text-white-80 text-sm pt-1">{t(key)}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <Tabs defaultValue="tier" className="w-full">
+          <TabsList className="mx-auto mb-8 flex w-full max-w-2xl h-auto bg-transparent border border-primary/20 rounded-full p-1">
+            <TabsTrigger
+              value="tier"
+              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
+            >
+              {t("ecb.tabs.tier")}
+            </TabsTrigger>
+            <TabsTrigger
+              value="flow"
+              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
+            >
+              {t("ecb.tabs.flow")}
+            </TabsTrigger>
+            <TabsTrigger
+              value="partner"
+              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
+            >
+              {t("ecb.tabs.partner")}
+            </TabsTrigger>
+          </TabsList>
 
-            <div className="card-glass rounded-2xl p-6 mt-4">
-              <h3 className="font-heading-cn text-base text-foreground mb-5">{t("ecb.tier.title")}</h3>
+          {/* Tab 1: Account options by funding tier */}
+          <TabsContent value="tier" className="mt-0">
+            <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-5xl mx-auto">
+              <h3 className="font-heading-cn text-base lg:text-lg text-foreground mb-6 text-center">{t("ecb.tier.title")}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Left option — Under 1M */}
                 <div
@@ -117,8 +108,53 @@ const ECBSection = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </TabsContent>
+
+          {/* Tab 2: Investment flow */}
+          <TabsContent value="flow" className="mt-0">
+            <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto">
+              <h3 className="font-heading-cn text-lg text-foreground mb-6 text-center">{t("ecb.flow.title")}</h3>
+              <div className="space-y-5">
+                {flowStepKeys.map((key, i) => (
+                  <div key={key} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
+                      {i + 1}
+                    </div>
+                    <p className="text-white-80 text-sm pt-1">{t(key)}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Tab 3: Strategic partnership */}
+          <TabsContent value="partner" className="mt-0">
+            <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto">
+              <h3 className="font-heading-cn text-lg text-foreground mb-4">
+                {t("ecb.title")} {t("ecb.title2")}
+              </h3>
+              <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
+              <ul className="space-y-3 mb-8">
+                {pointKeys.map((key) => (
+                  <li key={key} className="flex items-start gap-2 text-sm text-white-80">
+                    <span className="text-primary mt-0.5">•</span>
+                    {t(key)}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3">
+                <a href="https://www.europecharteredbank.com/home.html" target="_blank" rel="noopener noreferrer"
+                  className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
+                  <Landmark size={16} /> {t("ecb.btn1")}
+                </a>
+                <button onClick={open}
+                  className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
+                  <FileText size={16} /> {t("ecb.btn2")}
+                </button>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   );
