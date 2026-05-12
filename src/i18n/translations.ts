@@ -1259,7 +1259,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     "risk.c6.desc": "Multiple indicator cross-confirmation to reduce misjudgment",
     "risk.c6.stat": "50+ Indicators",
 
-    "ecb.badge": "Licensed Bank in the Republic of the Congo, Africa",
     "ecb.title": "Strategic Partnership with",
     "ecb.title2": "Europe Chartered Bank",
     "ecb.desc": "ECB (Europe Chartered Bank) is a licensed financial institution in the Republic of the Congo, Africa, providing AIFT users with secure and compliant fund custody and trading services.",
@@ -1824,7 +1823,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     "risk.c6.desc": "複数指標のクロス確認で誤判断リスクを低減",
     "risk.c6.stat": "50+ 指標",
 
-    "ecb.badge": "アフリカ・コンゴ共和国の認可銀行",
     "ecb.title": "Europe Chartered Bankとの",
     "ecb.title2": "戦略的パートナーシップ",
     "ecb.desc": "ECB（Europe Chartered Bank）は、アフリカ・コンゴ共和国で認可された金融機関であり、AIFTユーザーに安全でコンプライアンスに準拠した資金管理と取引サービスを提供しています。",
