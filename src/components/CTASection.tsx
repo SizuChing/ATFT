@@ -20,7 +20,7 @@ const CTASection = () => {
             className="gradient-primary text-foreground px-8 py-3 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
             <Landmark size={18} /> {t("cta.btn1")}
           </a>
-          <button onClick={open}
+          <button onClick={() => open()}
             className="card-glass text-white-80 px-8 py-3 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
             <FileText size={18} /> {t("cta.btn2")}
           </button>
