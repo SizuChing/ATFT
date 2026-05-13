@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Landmark, FileText, Mail } from "lucide-react";
+import { Landmark, FileText, Send } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
@@ -104,7 +104,7 @@ const ECBSection = () => {
                     className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/10 hover:bg-primary/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                     style={{ height: "44px" }}
                   >
-                    <Mail size={16} /> {t("ecb.tier.over.btn")}
+                    <Send size={16} /> {t("ecb.tier.over.btn")}
                   </a>
                 </div>
               </div>
@@ -131,10 +131,9 @@ const ECBSection = () => {
           {/* Tab 3: Strategic partnership */}
           <TabsContent value="partner" className="mt-0">
             <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto">
-              <h3 className="font-heading-cn text-lg text-foreground mb-4">
-                {t("ecb.title")} {t("ecb.title2")}
+              <h3 className="font-heading-cn text-lg text-foreground mb-6">
+                {t("nav.ecb")}
               </h3>
-              <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
               <ul className="space-y-3 mb-8">
                 {pointKeys.map((key) => (
                   <li key={key} className="flex items-start gap-2 text-sm text-white-80">
