@@ -104,28 +104,8 @@ const ECBSection = () => {
           >
             {mode === "self" ? (
               <>
-                {/* Section 1: Bank intro (left card + right text) */}
-                <div className="grid grid-cols-1 lg:grid-cols-[40fr_60fr] gap-8 items-stretch">
-                  {/* Left — bank logo card */}
-                  <div
-                    className="rounded-2xl flex flex-col items-center justify-center text-center p-8"
-                    style={{
-                      background: "linear-gradient(160deg, rgba(40,0,70,0.9), rgba(15,0,30,0.95))",
-                      border: "1px solid rgba(180,60,220,0.4)",
-                      boxShadow: "0 0 40px rgba(180,60,220,0.25), inset 0 0 40px rgba(180,60,220,0.08)",
-                      minHeight: "260px",
-                    }}
-                  >
-                    <div className="font-heading text-foreground mb-2" style={{ fontSize: "56px", letterSpacing: "0.08em", textShadow: "0 0 20px rgba(180,60,220,0.6)" }}>
-                      ECB
-                    </div>
-                    <div className="text-white-80 text-sm mb-1">Europe Chartered Bank</div>
-                    <div className="text-white-60 text-xs mb-5">歐洲特許銀行</div>
-                    <div className="text-[12px] px-3 py-1.5 rounded-full" style={{ color: "#d49bff", border: "1px solid rgba(180,60,220,0.5)", background: "rgba(180,60,220,0.08)" }}>
-                      葛摩群島合規執照金融機構
-                    </div>
-                  </div>
-                  {/* Right — content */}
+                {/* Section 1: Bank intro */}
+                <div>
                   <div className="flex flex-col">
                     <h3 className="font-heading-cn text-foreground mb-3" style={{ fontSize: "18px", lineHeight: 1.4 }}>
                       {t("ecb.title")} {t("ecb.title2")}
@@ -133,7 +113,7 @@ const ECBSection = () => {
                     <p className="text-white-80 mb-5" style={{ fontSize: "13px", lineHeight: 1.8 }}>
                       {t("ecb.desc")}
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
                       {points.map(({ key, Icon }) => (
                         <div
                           key={key}
