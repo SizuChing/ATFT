@@ -130,9 +130,10 @@ const ECBSection = () => {
           {/* Tab 3: Strategic partnership */}
           <TabsContent value="partner" className="mt-0">
             <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto">
-              <h3 className="font-heading-cn text-lg lg:text-xl text-foreground mb-6">
+              <h3 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
                 {t("ecb.title")} {t("ecb.title2")}
               </h3>
+              <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
               <ul className="space-y-3 mb-8">
                 {pointKeys.map((key) => (
                   <li key={key} className="flex items-start gap-2 text-sm text-white-80">
