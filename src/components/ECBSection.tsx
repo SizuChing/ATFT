@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Landmark, FileText, User, Building2, Mail } from "lucide-react";
+import { Landmark, FileText, User, Building2 } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
