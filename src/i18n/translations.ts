@@ -117,7 +117,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     
     "ecb.title": "與 Europe Chartered Bank",
     "ecb.title2": "深度戰略合作",
-    "ecb.desc": "ECB（Europe Chartered Bank）是非洲剛果共和國合法持牌的金融機構，為 AIFT 用戶提供安全、合規的資金存管與交易服務。",
+    "ecb.desc": "ECB（歐洲特許銀行，Europe Chartered Bank）是一家具備葛摩群島（Comoros Islands）執照的金融機構，為 AIFT 用戶提供安全且符合合規標準的資金管理與交易服務。",
     "ecb.p1": "法幣與加密貨幣雙向支援",
     "ecb.p2": "AIFT AI 自動交易技術直接串接 ECB 帳戶",
     "ecb.p3": "資金合規存管，安全有保障",
@@ -700,7 +700,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "ecb.title": "与 Europe Chartered Bank",
     "ecb.title2": "深度战略合作",
-    "ecb.desc": "ECB（Europe Chartered Bank）是非洲刚果共和国合法持牌的金融机构，为 AIFT 用户提供安全、合规的资金存管与交易服务。",
+    "ecb.desc": "ECB（欧洲特许银行，Europe Chartered Bank）是一家具备葛摩群岛（Comoros Islands）执照的金融机构，为 AIFT 用户提供安全且符合合规标准的资金管理与交易服务。",
     "ecb.p1": "法币与加密货币双向支持",
     "ecb.p2": "AIFT AI 自动交易技术直接串接 ECB 账户",
     "ecb.p3": "资金合规存管，安全有保障",
@@ -1266,7 +1266,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "ecb.title": "Strategic Partnership with",
     "ecb.title2": "Europe Chartered Bank",
-    "ecb.desc": "ECB (Europe Chartered Bank) is a licensed financial institution in the Republic of the Congo, Africa, providing AIFT users with secure and compliant fund custody and trading services.",
+    "ecb.desc": "ECB (Europe Chartered Bank) is a licensed financial institution holding a Comoros Islands license, providing AIFT users with secure and compliance-aligned fund management and trading services.",
     "ecb.p1": "Supporting both fiat and cryptocurrency",
     "ecb.p2": "AIFT AI auto-trading technology directly integrated with ECB accounts",
     "ecb.p3": "Compliant fund custody with security guarantees",
@@ -1833,7 +1833,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     "ecb.title": "Europe Chartered Bankとの",
     "ecb.title2": "戦略的パートナーシップ",
-    "ecb.desc": "ECB（Europe Chartered Bank）は、アフリカ・コンゴ共和国で認可された金融機関であり、AIFTユーザーに安全でコンプライアンスに準拠した資金管理と取引サービスを提供しています。",
+    "ecb.desc": "ECB（Europe Chartered Bank）は、コモロ諸島ライセンスを保有する金融機関であり、AIFTユーザーに安全でコンプライアンスに準拠した資金管理と取引サービスを提供しています。",
     "ecb.p1": "法定通貨と暗号通貨の双方向対応",
     "ecb.p2": "AIFT AI自動取引技術がECBアカウントと直接連携",
     "ecb.p3": "コンプライアンス準拠の資金管理で安全を保証",
