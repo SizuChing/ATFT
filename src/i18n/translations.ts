@@ -144,6 +144,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tabs.tier": "開戶方式",
     "ecb.tabs.flow": "投資流程",
     "ecb.tabs.partner": "戰略合作",
+    "ecb.docs.title": "所需文件",
+    "ecb.docs.desc": "請依據您的帳戶類型，查閱對應的必要文件清單。",
+    "ecb.docs.personal": "個人帳戶所需文件",
+    "ecb.docs.corporate": "公司帳戶所需文件",
+    "ecb.contact.title": "歡迎隨時與 ECB 客戶支援中心聯繫",
+    "ecb.contact.desc": "如有任何開戶或使用上的疑問，歡迎透過以下方式聯繫我們。",
+    "ecb.contact.line": "LINE 官方帳號",
+    "ecb.contact.telegram": "Telegram 官方帳號",
+    "ecb.contact.qrPlaceholder": "QR Code 圖片區域 — 請上傳",
 
     // Backtest Report
     "nav.backtest": "回測報告",
@@ -727,6 +736,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tabs.tier": "开户方式",
     "ecb.tabs.flow": "投资流程",
     "ecb.tabs.partner": "战略合作",
+    "ecb.docs.title": "所需文件",
+    "ecb.docs.desc": "请依据您的账户类型，查阅对应的必要文件清单。",
+    "ecb.docs.personal": "个人账户所需文件",
+    "ecb.docs.corporate": "公司账户所需文件",
+    "ecb.contact.title": "欢迎随时与 ECB 客户支持中心联系",
+    "ecb.contact.desc": "如有任何开户或使用上的疑问，欢迎通过以下方式联系我们。",
+    "ecb.contact.line": "LINE 官方账号",
+    "ecb.contact.telegram": "Telegram 官方账号",
+    "ecb.contact.qrPlaceholder": "QR Code 图片区域 — 请上传",
 
     // Backtest Report
     "nav.backtest": "回测报告",
@@ -1293,6 +1311,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tabs.tier": "Account Options",
     "ecb.tabs.flow": "Investment Flow",
     "ecb.tabs.partner": "Partnership",
+    "ecb.docs.title": "Required Documents",
+    "ecb.docs.desc": "View the required documents list based on your account type.",
+    "ecb.docs.personal": "Personal Account Documents",
+    "ecb.docs.corporate": "Corporate Account Documents",
+    "ecb.contact.title": "Contact ECB Customer Support Anytime",
+    "ecb.contact.desc": "For any account opening or usage questions, feel free to reach out to us via the channels below.",
+    "ecb.contact.line": "LINE Official Account",
+    "ecb.contact.telegram": "Telegram Official Account",
+    "ecb.contact.qrPlaceholder": "QR Code image — please upload",
 
     // Backtest Report
     "nav.backtest": "Backtest Report",
@@ -1860,6 +1887,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.tabs.tier": "口座開設方法",
     "ecb.tabs.flow": "投資フロー",
     "ecb.tabs.partner": "戦略提携",
+    "ecb.docs.title": "必要書類",
+    "ecb.docs.desc": "アカウントタイプに応じた必要書類のリストをご確認ください。",
+    "ecb.docs.personal": "個人アカウント必要書類",
+    "ecb.docs.corporate": "法人アカウント必要書類",
+    "ecb.contact.title": "ECBカスタマーサポートまでお気軽にお問い合わせください",
+    "ecb.contact.desc": "口座開設やご利用に関するご質問は、以下の方法でお問い合わせください。",
+    "ecb.contact.line": "LINE公式アカウント",
+    "ecb.contact.telegram": "Telegram公式アカウント",
+    "ecb.contact.qrPlaceholder": "QRコード画像エリア — アップロードしてください",
 
     // Backtest Report
     "nav.backtest": "バックテスト",
