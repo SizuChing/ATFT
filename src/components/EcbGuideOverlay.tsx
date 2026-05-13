@@ -55,7 +55,7 @@ const faqCategories = [
 ];
 
 const EcbGuideOverlay = () => {
-  const { isOpen, close } = useEcbGuide();
+  const { isOpen, close, initialSection, initialDocTab } = useEcbGuide();
   const [visible, setVisible] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [active, setActive] = useState<ActivePage>("index");
@@ -68,6 +68,12 @@ const EcbGuideOverlay = () => {
     if (isOpen) {
       setVisible(true);
       requestAnimationFrame(() => setAnimating(true));
+      if (initialSection && (sectionKeys as readonly string[]).includes(initialSection)) {
+        setActive(initialSection as SectionKey);
+      }
+      if (initialDocTab) {
+        setDocTab(initialDocTab);
+      }
     } else {
       setAnimating(false);
       const timer = setTimeout(() => {
@@ -77,7 +83,7 @@ const EcbGuideOverlay = () => {
       }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isOpen]);
+  }, [isOpen, initialSection, initialDocTab]);
 
   if (!visible) return null;
 
