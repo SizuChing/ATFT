@@ -19,9 +19,8 @@ const ECBSection = () => {
       <div ref={ref} className="max-w-7xl mx-auto opacity-0">
         <div className="text-center mb-10">
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
-            {t("ecb.title")} {t("ecb.title2")}
+            {t("nav.ecb")}
           </h2>
-          <p className="text-white-80 text-sm leading-relaxed max-w-2xl mx-auto">{t("ecb.desc")}</p>
         </div>
 
         <Tabs value={tab} onValueChange={setTab} className="w-full">
