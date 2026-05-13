@@ -4,6 +4,8 @@ import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import qrLine from "@/assets/qr-line.png";
+import qrTelegram from "@/assets/qr-telegram.png";
 
 const ECBSection = () => {
   const ref = useScrollFadeUp();
@@ -191,24 +193,22 @@ const ECBSection = () => {
                   <p className="text-white-60 text-xs mb-6">{t("ecb.contact.desc")}</p>
                   <div className="flex flex-col gap-6">
                     {[
-                      { label: "LINE", text: t("ecb.contact.line") },
-                      { label: "Telegram", text: t("ecb.contact.telegram") },
+                      { label: "LINE", text: t("ecb.contact.line"), img: qrLine },
+                      { label: "Telegram", text: t("ecb.contact.telegram"), img: qrTelegram },
                     ].map((c) => (
                       <div key={c.label} className="text-center">
                         <div className="font-heading-cn text-base text-foreground mb-3">{c.label}</div>
-                        <div
-                          className="mx-auto flex items-center justify-center text-[11px] text-center px-2"
+                        <img
+                          src={c.img}
+                          alt={`${c.label} QR Code`}
+                          className="mx-auto block bg-white p-2"
                           style={{
                             width: "160px",
                             height: "160px",
-                            border: "1px dashed rgba(180, 60, 220, 0.5)",
+                            border: "1px solid rgba(180, 60, 220, 0.4)",
                             borderRadius: "8px",
-                            color: "rgba(180, 60, 220, 0.7)",
-                            lineHeight: 1.4,
                           }}
-                        >
-                          {t("ecb.contact.qrPlaceholder")}
-                        </div>
+                        />
                       </div>
                     ))}
                   </div>
