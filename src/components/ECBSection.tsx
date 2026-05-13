@@ -129,97 +129,90 @@ const ECBSection = () => {
 
           {/* Tab 3: Strategic partnership */}
           <TabsContent value="partner" className="mt-0">
-            <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto">
-              <h3 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
-                {t("ecb.title")} {t("ecb.title2")}
-              </h3>
-              <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
-              <ul className="space-y-3 mb-8">
-                {pointKeys.map((key) => (
-                  <li key={key} className="flex items-start gap-2 text-sm text-white-80">
-                    <span className="text-primary mt-0.5">•</span>
-                    {t(key)}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-3">
-                <a href="https://www.europecharteredbank.com/home.html" target="_blank" rel="noopener noreferrer"
-                  className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
-                  <Landmark size={16} /> {t("ecb.btn1")}
-                </a>
-                <button onClick={() => open()}
-                  className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
-                  <FileText size={16} /> {t("ecb.btn2")}
-                </button>
-              </div>
+            <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-8 lg:gap-10">
+                {/* Left column — existing content */}
+                <div>
+                  <h3 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
+                    {t("ecb.title")} {t("ecb.title2")}
+                  </h3>
+                  <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
+                  <ul className="space-y-3 mb-8">
+                    {pointKeys.map((key) => (
+                      <li key={key} className="flex items-start gap-2 text-sm text-white-80">
+                        <span className="text-primary mt-0.5">•</span>
+                        {t(key)}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-3">
+                    <a href="https://www.europecharteredbank.com/home.html" target="_blank" rel="noopener noreferrer"
+                      className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
+                      <Landmark size={16} /> {t("ecb.btn1")}
+                    </a>
+                    <button onClick={() => open()}
+                      className="card-glass text-white-80 text-sm px-6 py-2.5 rounded-full hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
+                      <FileText size={16} /> {t("ecb.btn2")}
+                    </button>
+                  </div>
 
-              {/* Section: Required Documents */}
-              <div className="mt-10">
-                <h4 className="font-heading-cn text-base lg:text-lg text-foreground mb-2">
-                  {t("ecb.docs.title")}
-                </h4>
-                <p className="text-white-60 text-sm mb-5">{t("ecb.docs.desc")}</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    onClick={() => open({ section: "documents", docTab: "personal" })}
-                    className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/5 hover:bg-primary/15 hover:border-primary transition-all duration-200 cursor-pointer"
-                    style={{ height: "44px" }}
-                  >
-                    <User size={16} /> {t("ecb.docs.personal")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => open({ section: "documents", docTab: "corporate" })}
-                    className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/5 hover:bg-primary/15 hover:border-primary transition-all duration-200 cursor-pointer"
-                    style={{ height: "44px" }}
-                  >
-                    <Building2 size={16} /> {t("ecb.docs.corporate")}
-                  </button>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="my-8 border-t border-[hsl(285_74%_55%/0.2)]" />
-
-              {/* Section: ECB Customer Support Contact */}
-              <div>
-                <h4 className="font-heading-cn text-base lg:text-lg text-foreground mb-2">
-                  {t("ecb.contact.title")}
-                </h4>
-                <p className="text-white-60 text-sm mb-5">{t("ecb.contact.desc")}</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    { label: "LINE", text: t("ecb.contact.line") },
-                    { label: "Telegram", text: t("ecb.contact.telegram") },
-                  ].map((c) => (
-                    <div
-                      key={c.label}
-                      className="text-center"
-                      style={{
-                        background: "rgba(21, 0, 40, 0.5)",
-                        border: "1px solid rgba(180, 60, 220, 0.2)",
-                        borderRadius: "12px",
-                        padding: "20px",
-                      }}
-                    >
-                      <div className="font-heading-cn text-lg text-foreground mb-1">{c.label}</div>
-                      <div className="text-white-60 text-xs mb-3">{c.text}</div>
-                      <div
-                        className="mx-auto flex items-center justify-center text-[11px] text-center px-2"
-                        style={{
-                          width: "120px",
-                          height: "120px",
-                          border: "1px dashed rgba(180, 60, 220, 0.5)",
-                          borderRadius: "8px",
-                          color: "rgba(180, 60, 220, 0.7)",
-                          lineHeight: 1.4,
-                        }}
+                  {/* Required Documents */}
+                  <div className="mt-10">
+                    <h4 className="font-heading-cn text-base lg:text-lg text-foreground mb-2">
+                      {t("ecb.docs.title")}
+                    </h4>
+                    <p className="text-white-60 text-sm mb-5">{t("ecb.docs.desc")}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => open({ section: "documents", docTab: "personal" })}
+                        className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/5 hover:bg-primary/15 hover:border-primary transition-all duration-200 cursor-pointer"
+                        style={{ height: "44px" }}
                       >
-                        {t("ecb.contact.qrPlaceholder")}
-                      </div>
+                        <User size={16} /> {t("ecb.docs.personal")}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => open({ section: "documents", docTab: "corporate" })}
+                        className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/5 hover:bg-primary/15 hover:border-primary transition-all duration-200 cursor-pointer"
+                        style={{ height: "44px" }}
+                      >
+                        <Building2 size={16} /> {t("ecb.docs.corporate")}
+                      </button>
                     </div>
-                  ))}
+                  </div>
+                </div>
+
+                {/* Right column — ECB customer support */}
+                <div className="lg:pl-10 lg:border-l lg:border-[rgba(180,60,220,0.2)] flex flex-col justify-center">
+                  <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-1">
+                    ECB カスタマーサポート
+                  </h4>
+                  <p className="text-white-80 text-sm mb-2">{t("ecb.contact.title")}</p>
+                  <p className="text-white-60 text-xs mb-6">{t("ecb.contact.desc")}</p>
+                  <div className="flex flex-col gap-6">
+                    {[
+                      { label: "LINE", text: t("ecb.contact.line") },
+                      { label: "Telegram", text: t("ecb.contact.telegram") },
+                    ].map((c) => (
+                      <div key={c.label} className="text-center">
+                        <div className="font-heading-cn text-base text-foreground mb-3">{c.label}</div>
+                        <div
+                          className="mx-auto flex items-center justify-center text-[11px] text-center px-2"
+                          style={{
+                            width: "160px",
+                            height: "160px",
+                            border: "1px dashed rgba(180, 60, 220, 0.5)",
+                            borderRadius: "8px",
+                            color: "rgba(180, 60, 220, 0.7)",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {t("ecb.contact.qrPlaceholder")}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
