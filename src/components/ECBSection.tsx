@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Landmark, FileText, User, Building2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Landmark, FileText, User, Building2, Mail } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
@@ -10,7 +10,17 @@ const ECBSection = () => {
   const ref = useScrollFadeUp();
   const { t } = useLanguage();
   const { open } = useEcbGuide();
-  const [mode, setMode] = useState<"self" | "assisted">("self");
+  const [mode, setMode] = useState<"self" | "assisted" | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const selectMode = (next: "self" | "assisted") => {
+    setMode(next);
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      setTimeout(() => {
+        contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  };
 
   const flowStepKeys = ["ecb.flow.s1", "ecb.flow.s2", "ecb.flow.s3", "ecb.flow.s4", "ecb.flow.s5"];
   const pointKeys = ["ecb.p1", "ecb.p2", "ecb.p3", "ecb.p4"];
@@ -22,33 +32,14 @@ const ECBSection = () => {
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
             {t("nav.ecb")}
           </h2>
+          <p className="font-heading-cn text-base lg:text-lg text-white-80">{t("ecb.tier.title")}</p>
         </div>
 
-        {/* Section 1: Investment flow */}
-        <div className="card-glass rounded-2xl max-w-5xl mx-auto" style={{ padding: "24px 32px", marginBottom: "32px" }}>
-          <h3 className="font-heading-cn text-lg text-foreground mb-4 text-center">{t("ecb.flow.title")}</h3>
-          <div className="flex flex-col">
-            {flowStepKeys.map((key, i) => (
-              <div
-                key={key}
-                className="flex items-start gap-4 py-3"
-                style={{ borderBottom: i < flowStepKeys.length - 1 ? "1px solid rgba(180,60,220,0.1)" : "none" }}
-              >
-                <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
-                  {i + 1}
-                </div>
-                <p className="text-white-80 text-sm pt-1">{t(key)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Section 2: Mode selection */}
-        <h3 className="font-heading-cn text-base lg:text-lg text-foreground mb-5 text-center">{t("ecb.tier.title")}</h3>
+        {/* Section: Mode selection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
           <button
             type="button"
-            onClick={() => setMode("self")}
+            onClick={() => selectMode("self")}
             className="text-left rounded-xl transition-all duration-300"
             style={{
               padding: "20px 24px",
@@ -70,7 +61,7 @@ const ECBSection = () => {
 
           <button
             type="button"
-            onClick={() => setMode("assisted")}
+            onClick={() => selectMode("assisted")}
             className="text-left rounded-xl transition-all duration-300"
             style={{
               padding: "20px 24px",
@@ -91,14 +82,17 @@ const ECBSection = () => {
           </button>
         </div>
 
-        {/* Section 3: Dynamic content */}
-        <div
-          key={mode}
-          className="card-glass rounded-2xl max-w-6xl mx-auto animate-fade-in"
-          style={{ padding: "28px 32px", marginTop: "24px" }}
-        >
-          {mode === "self" ? (
-            <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-8 lg:gap-0">
+        {/* Section: Dynamic content */}
+        {mode && (
+          <div
+            ref={contentRef}
+            key={mode}
+            className="card-glass rounded-2xl max-w-6xl mx-auto animate-fade-in"
+            style={{ padding: "28px 32px", marginTop: "24px", animationDuration: "0.4s" }}
+          >
+            {mode === "self" ? (
+              <>
+              <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-8 lg:gap-0">
               {/* Left */}
               <div>
                 <h3 className="font-heading-cn text-foreground mb-3" style={{ fontSize: "18px", lineHeight: 1.4 }}>
@@ -153,17 +147,42 @@ const ECBSection = () => {
                 </div>
                 </div>
               </div>
-            </div>
-          ) : (
+              </div>
+              {/* Divider + investment flow */}
+              <div className="mt-8 pt-8 border-t border-[rgba(180,60,220,0.2)]">
+                <h3 className="font-heading-cn text-lg text-foreground mb-4 text-center">{t("ecb.flow.title")}</h3>
+                <div className="flex flex-col max-w-3xl mx-auto">
+                  {flowStepKeys.map((key, i) => (
+                    <div
+                      key={key}
+                      className="flex items-start gap-4 py-3"
+                      style={{ borderBottom: i < flowStepKeys.length - 1 ? "1px solid rgba(180,60,220,0.1)" : "none" }}
+                    >
+                      <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
+                        {i + 1}
+                      </div>
+                      <p className="text-white-80 text-sm pt-1">{t(key)}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              </>
+            ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
               {/* Left — contact info */}
               <div className="flex flex-col justify-center lg:pr-8">
                 <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
                   {t("ecb.contact.title")}
                 </h4>
-                <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+                <p className="text-white-60 mb-5" style={{ fontSize: "13px", lineHeight: 1.7 }}>
                   {t("ecb.contact.desc")}
                 </p>
+                <a
+                  href="mailto:Aift@Aift.com"
+                  className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2 w-full"
+                >
+                  <Mail size={16} /> EMAIL 聯繫
+                </a>
               </div>
               {/* Middle — LINE QR */}
               <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
@@ -173,8 +192,8 @@ const ECBSection = () => {
                   alt="LINE QR Code"
                   className="mx-auto block bg-white p-2"
                   style={{
-                    width: "140px",
-                    height: "140px",
+                    width: "160px",
+                    height: "160px",
                     border: "1px solid rgba(180, 60, 220, 0.4)",
                     borderRadius: "8px",
                   }}
@@ -188,16 +207,17 @@ const ECBSection = () => {
                   alt="Telegram QR Code"
                   className="mx-auto block bg-white p-2"
                   style={{
-                    width: "140px",
-                    height: "140px",
+                    width: "160px",
+                    height: "160px",
                     border: "1px solid rgba(180, 60, 220, 0.4)",
                     borderRadius: "8px",
                   }}
                 />
               </div>
             </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
