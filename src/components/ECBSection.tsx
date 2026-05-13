@@ -185,10 +185,9 @@ const ECBSection = () => {
 
                 {/* Right column — ECB customer support */}
                 <div className="lg:pl-10 lg:border-l lg:border-[rgba(180,60,220,0.2)] flex flex-col justify-center">
-                  <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-1">
-                    ECB カスタマーサポート
+                  <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-2">
+                    {t("ecb.contact.title")}
                   </h4>
-                  <p className="text-white-80 text-sm mb-2">{t("ecb.contact.title")}</p>
                   <p className="text-white-60 text-xs mb-6">{t("ecb.contact.desc")}</p>
                   <div className="flex flex-col gap-6">
                     {[
