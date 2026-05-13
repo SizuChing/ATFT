@@ -189,24 +189,3 @@ const ECBSection = () => {
 };
 
 export default ECBSection;
-          <TabsList className="mx-auto mb-8 flex w-full max-w-2xl h-auto bg-transparent border border-primary/20 rounded-full p-1">
-            <TabsTrigger
-              value="tier"
-              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
-            >
-              {t("ecb.tabs.tier")}
-            </TabsTrigger>
-            <TabsTrigger
-              value="flow"
-              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
-            >
-              {t("ecb.tabs.flow")}
-            </TabsTrigger>
-            <TabsTrigger
-              value="partner"
-              className="flex-1 rounded-full text-sm py-2.5 data-[state=active]:gradient-primary data-[state=active]:text-foreground data-[state=active]:shadow-none text-white-80"
-            >
-              {t("ecb.tabs.partner")}
-            </TabsTrigger>
-          </TabsList>
-
