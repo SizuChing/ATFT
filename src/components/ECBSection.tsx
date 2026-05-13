@@ -25,11 +25,15 @@ const ECBSection = () => {
         </div>
 
         {/* Section 1: Investment flow */}
-        <div className="card-glass rounded-2xl p-6 lg:p-8 max-w-5xl mx-auto mb-10">
-          <h3 className="font-heading-cn text-lg text-foreground mb-6 text-center">{t("ecb.flow.title")}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+        <div className="card-glass rounded-2xl max-w-5xl mx-auto" style={{ padding: "24px 32px", marginBottom: "32px" }}>
+          <h3 className="font-heading-cn text-lg text-foreground mb-4 text-center">{t("ecb.flow.title")}</h3>
+          <div className="flex flex-col">
             {flowStepKeys.map((key, i) => (
-              <div key={key} className="flex items-start gap-4">
+              <div
+                key={key}
+                className="flex items-start gap-4 py-3"
+                style={{ borderBottom: i < flowStepKeys.length - 1 ? "1px solid rgba(180,60,220,0.1)" : "none" }}
+              >
                 <div className="w-8 h-8 rounded-full border border-primary/40 flex items-center justify-center flex-shrink-0 text-primary font-mono-num text-xs">
                   {i + 1}
                 </div>
@@ -41,12 +45,13 @@ const ECBSection = () => {
 
         {/* Section 2: Mode selection */}
         <h3 className="font-heading-cn text-base lg:text-lg text-foreground mb-5 text-center">{t("ecb.tier.title")}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
           <button
             type="button"
             onClick={() => setMode("self")}
-            className="text-left rounded-xl p-6 transition-all duration-300"
+            className="text-left rounded-xl transition-all duration-300"
             style={{
+              padding: "20px 24px",
               background: mode === "self" ? "rgba(40, 0, 70, 0.85)" : "rgba(21, 0, 40, 0.6)",
               border: mode === "self" ? "1px solid rgba(180, 60, 220, 0.9)" : "1px solid rgba(180, 60, 220, 0.3)",
               boxShadow: mode === "self" ? "0 0 24px rgba(180, 60, 220, 0.35)" : "none",
@@ -58,7 +63,7 @@ const ECBSection = () => {
             <h4 className="font-heading-cn text-foreground mb-3" style={{ fontSize: "20px", lineHeight: 1.3 }}>
               {t("ecb.tier.under.t1")} {t("ecb.tier.under.t2")}
             </h4>
-            <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+            <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.6 }}>
               {t("ecb.tier.under.desc")}
             </p>
           </button>
@@ -66,8 +71,9 @@ const ECBSection = () => {
           <button
             type="button"
             onClick={() => setMode("assisted")}
-            className="text-left rounded-xl p-6 transition-all duration-300"
+            className="text-left rounded-xl transition-all duration-300"
             style={{
+              padding: "20px 24px",
               background: mode === "assisted" ? "rgba(50, 30, 0, 0.85)" : "rgba(21, 0, 40, 0.6)",
               border: mode === "assisted" ? "1px solid rgba(220, 150, 40, 0.9)" : "1px solid rgba(180, 120, 0, 0.3)",
               boxShadow: mode === "assisted" ? "0 0 24px rgba(220, 150, 40, 0.35)" : "none",
@@ -79,25 +85,31 @@ const ECBSection = () => {
             <h4 className="font-heading-cn text-foreground mb-3" style={{ fontSize: "20px", lineHeight: 1.3 }}>
               {t("ecb.tier.over.t1")} {t("ecb.tier.over.t2")}
             </h4>
-            <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+            <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.6 }}>
               {t("ecb.tier.over.desc")}
             </p>
           </button>
         </div>
 
         {/* Section 3: Dynamic content */}
-        <div key={mode} className="card-glass rounded-2xl p-6 lg:p-8 max-w-6xl mx-auto animate-fade-in">
+        <div
+          key={mode}
+          className="card-glass rounded-2xl max-w-6xl mx-auto animate-fade-in"
+          style={{ padding: "28px 32px", marginTop: "24px" }}
+        >
           {mode === "self" ? (
-            <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-8 lg:gap-0">
               {/* Left */}
               <div>
-                <h3 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
+                <h3 className="font-heading-cn text-foreground mb-3" style={{ fontSize: "18px", lineHeight: 1.4 }}>
                   {t("ecb.title")} {t("ecb.title2")}
                 </h3>
-                <p className="text-white-80 text-sm leading-relaxed mb-6">{t("ecb.desc")}</p>
-                <ul className="space-y-3 mb-8">
+                <p className="text-white-80 mb-5" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+                  {t("ecb.desc")}
+                </p>
+                <ul className="mb-6 flex flex-col" style={{ gap: "8px" }}>
                   {pointKeys.map((key) => (
-                    <li key={key} className="flex items-start gap-2 text-sm text-white-80">
+                    <li key={key} className="flex items-start gap-2 text-white-80" style={{ fontSize: "13px", lineHeight: 1.6 }}>
                       <span className="text-primary mt-0.5">•</span>
                       {t(key)}
                     </li>
@@ -115,7 +127,8 @@ const ECBSection = () => {
                 </div>
               </div>
               {/* Right — required documents */}
-              <div className="lg:pl-10 lg:border-l lg:border-[rgba(180,60,220,0.2)]">
+              <div className="lg:border-l lg:border-[rgba(180,60,220,0.2)]" style={{ paddingLeft: undefined }}>
+                <div className="lg:pl-8">
                 <h4 className="font-heading-cn text-base lg:text-lg text-foreground mb-2">
                   {t("ecb.docs.title")}
                 </h4>
@@ -138,47 +151,56 @@ const ECBSection = () => {
                     <Building2 size={16} /> {t("ecb.docs.corporate")}
                   </button>
                 </div>
+                </div>
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
               {/* Left — contact info */}
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center lg:pr-8">
                 <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
                   {t("ecb.contact.title")}
                 </h4>
-                <p className="text-white-60 text-sm mb-6">{t("ecb.contact.desc")}</p>
+                <p className="text-white-60 mb-6" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+                  {t("ecb.contact.desc")}
+                </p>
                 <a
                   href="mailto:Aift@Aift.com"
-                  className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 self-start border border-primary/60 bg-primary/10 hover:bg-primary/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer px-6"
+                  className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/10 hover:bg-primary/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                   style={{ height: "44px" }}
                 >
                   <Mail size={16} /> EMAIL 聯繫
                 </a>
               </div>
-              {/* Right — QR codes */}
-              <div className="lg:pl-10 lg:border-l lg:border-[rgba(180,60,220,0.2)]">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {[
-                    { label: "LINE", img: qrLine },
-                    { label: "Telegram", img: qrTelegram },
-                  ].map((c) => (
-                    <div key={c.label} className="text-center">
-                      <div className="font-heading-cn text-base text-foreground mb-3">{c.label}</div>
-                      <img
-                        src={c.img}
-                        alt={`${c.label} QR Code`}
-                        className="mx-auto block bg-white p-2"
-                        style={{
-                          width: "160px",
-                          height: "160px",
-                          border: "1px solid rgba(180, 60, 220, 0.4)",
-                          borderRadius: "8px",
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
+              {/* Middle — LINE QR */}
+              <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
+                <div className="font-heading-cn text-base text-foreground mb-3">LINE</div>
+                <img
+                  src={qrLine}
+                  alt="LINE QR Code"
+                  className="mx-auto block bg-white p-2"
+                  style={{
+                    width: "140px",
+                    height: "140px",
+                    border: "1px solid rgba(180, 60, 220, 0.4)",
+                    borderRadius: "8px",
+                  }}
+                />
+              </div>
+              {/* Right — Telegram QR */}
+              <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
+                <div className="font-heading-cn text-base text-foreground mb-3">Telegram</div>
+                <img
+                  src={qrTelegram}
+                  alt="Telegram QR Code"
+                  className="mx-auto block bg-white p-2"
+                  style={{
+                    width: "140px",
+                    height: "140px",
+                    border: "1px solid rgba(180, 60, 220, 0.4)",
+                    borderRadius: "8px",
+                  }}
+                />
               </div>
             </div>
           )}
