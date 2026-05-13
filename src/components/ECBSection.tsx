@@ -161,16 +161,9 @@ const ECBSection = () => {
                 <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
                   {t("ecb.contact.title")}
                 </h4>
-                <p className="text-white-60 mb-6" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+                <p className="text-white-60" style={{ fontSize: "13px", lineHeight: 1.7 }}>
                   {t("ecb.contact.desc")}
                 </p>
-                <a
-                  href="mailto:Aift@Aift.com"
-                  className="text-foreground text-sm rounded-md inline-flex items-center justify-center gap-2 w-full border border-primary/60 bg-primary/10 hover:bg-primary/20 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
-                  style={{ height: "44px" }}
-                >
-                  <Mail size={16} /> EMAIL 聯繫
-                </a>
               </div>
               {/* Middle — LINE QR */}
               <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
