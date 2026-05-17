@@ -177,3 +177,109 @@
   background: hsl(285 74% 61% / 0.4);
   border-radius: 3px;
 }
+
+/* ============================================================
+   ECB Guide Overlay — scoped light theme (ECB official palette)
+   Only applies inside the .ecb-theme wrapper; rest of the site
+   keeps the original dark purple theme untouched.
+   ============================================================ */
+.ecb-theme {
+  background-color: #F5F6F8 !important;
+  color: #333333;
+}
+
+/* Generic text overrides inside overlay */
+.ecb-theme .text-foreground { color: #333333 !important; }
+.ecb-theme .text-white-80   { color: #666666 !important; }
+.ecb-theme .text-white-40   { color: #666666 !important; }
+.ecb-theme .text-muted-foreground { color: #888888 !important; }
+
+/* Background overrides for the dark navy tokens used previously */
+.ecb-theme [class*="bg-[#1A2F4A]"] { background-color: #F5F6F8 !important; }
+.ecb-theme [class*="bg-[#1E3A5C]"] { background-color: #2375C5 !important; }
+
+/* Card-glass becomes a clean white card */
+.ecb-theme .card-glass {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  border: 1px solid #E0E4EA !important;
+  color: #333333 !important;
+}
+
+/* Generic dividers / borders that used the blue-purple tint */
+.ecb-theme [class*="border-[rgba(35,117,197"] { border-color: #EEEEEE !important; }
+
+/* ---------- Sidebar (desktop aside) — blue with white text ---------- */
+.ecb-theme aside {
+  background-color: #2375C5 !important;
+  border-right-color: rgba(255,255,255,0.18) !important;
+}
+.ecb-theme aside .text-white-80,
+.ecb-theme aside .text-white-40,
+.ecb-theme aside .text-foreground { color: #FFFFFF !important; }
+.ecb-theme aside [class*="border-["] { border-color: rgba(255,255,255,0.2) !important; }
+
+/* Sidebar nav buttons */
+.ecb-theme aside nav button { color: #FFFFFF !important; }
+.ecb-theme aside nav button svg { color: #FFFFFF !important; }
+.ecb-theme aside nav button:hover { background-color: rgba(255,255,255,0.15) !important; }
+
+/* Active sidebar item — white pill + blue text + teal left bar */
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] {
+  background-color: #FFFFFF !important;
+  color: #2375C5 !important;
+}
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] svg,
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] span { color: #2375C5 !important; }
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] > span[class*="bg-[#2375C5]"] {
+  background-color: #64CFC3 !important;
+}
+
+/* ---------- Mobile top bar (blue) ---------- */
+.ecb-theme .lg\:hidden.fixed.top-0 {
+  background-color: #2375C5 !important;
+  border-bottom-color: rgba(255,255,255,0.2) !important;
+}
+.ecb-theme .lg\:hidden.fixed.top-0 * { color: #FFFFFF !important; }
+.ecb-theme .lg\:hidden.fixed.top-0 button:hover,
+.ecb-theme .lg\:hidden.fixed.top-0 button:hover * { color: #64CFC3 !important; }
+
+/* ---------- Mobile drawer ---------- */
+.ecb-theme .lg\:hidden.fixed.inset-0 { background-color: #2375C5 !important; }
+.ecb-theme .lg\:hidden.fixed.inset-0 nav button { color: #FFFFFF !important; }
+.ecb-theme .lg\:hidden.fixed.inset-0 nav button svg { color: #FFFFFF !important; }
+.ecb-theme .lg\:hidden.fixed.inset-0 nav button[class*="bg-[rgba(35,117,197,0.12)]"] {
+  background-color: #FFFFFF !important;
+}
+.ecb-theme .lg\:hidden.fixed.inset-0 nav button[class*="bg-[rgba(35,117,197,0.12)]"] * {
+  color: #2375C5 !important;
+}
+
+/* ---------- Breadcrumb sticky bar — white with grey text ---------- */
+.ecb-theme main > .sticky {
+  background-color: #FFFFFF !important;
+  border-bottom-color: #E0E4EA !important;
+}
+.ecb-theme main > .sticky .text-\[\#64CFC3\] { color: #666666 !important; }
+.ecb-theme main > .sticky button:hover { color: #2375C5 !important; }
+.ecb-theme main > .sticky .text-foreground { color: #2375C5 !important; }
+
+/* ---------- Index page section cards (white tile, blue icon) ---------- */
+.ecb-theme main button[style*="#1E3A5C"] {
+  background: #FFFFFF !important;
+  border-color: #E0E4EA !important;
+  color: #333333 !important;
+}
+.ecb-theme main button[style*="#1E3A5C"]:hover {
+  border-color: #2375C5 !important;
+  background: #F0F4FA !important;
+}
+.ecb-theme main button[style*="#1E3A5C"] span { color: #333333 !important; }
+
+/* ---------- Accordion FAQ ---------- */
+.ecb-theme [data-state] [class*="hover:bg-[rgba(35,117,197"]:hover,
+.ecb-theme button:hover[class*="hover:bg-[rgba(35,117,197"] { background-color: #F0F4FA !important; }
+
+/* ---------- Scrollbar inside overlay ---------- */
+.ecb-theme ::-webkit-scrollbar-track { background: #F5F6F8; }
+.ecb-theme ::-webkit-scrollbar-thumb { background: rgba(35,117,197,0.4); }

@@ -106,7 +106,11 @@ const EcbGuideOverlay = () => {
   const Img = () => (
     <div
       className="border-2 border-dashed rounded-lg py-10 text-center text-[13px] my-4"
-      style={{ borderColor: "rgba(35,117,197,0.5)", color: "#64CFC3" }}
+      style={{
+        borderColor: "rgba(35,117,197,0.5)",
+        background: "rgba(35,117,197,0.04)",
+        color: "rgba(35,117,197,0.6)",
+      }}
     >
       {t("guide.imgPlaceholder")}
     </div>
@@ -122,10 +126,10 @@ const EcbGuideOverlay = () => {
   );
 
   const Note = ({ text }: { text: string }) => (
-    <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {text}</p>
+    <p className="text-[#666666] text-xs leading-[1.8] mt-1">※ {text}</p>
   );
 
-  const Divider = () => <div className="border-b border-[rgba(35,117,197,0.15)] my-8" />;
+  const Divider = () => <div className="border-b border-[#EEEEEE] my-8" />;
 
   const renderNavBtns = () => {
     // Special 3-button layout for "account" section (branching to personal or corporate)
@@ -936,7 +940,7 @@ const EcbGuideOverlay = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] bg-[#1A2F4A] text-foreground flex"
+      className="ecb-theme fixed inset-0 z-[9999] bg-[#1A2F4A] text-foreground flex"
       style={{
         transform: animating ? "translateX(0)" : "translateX(100%)",
         transition: "transform 0.4s ease",
