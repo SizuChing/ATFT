@@ -83,14 +83,12 @@ const Navbar = () => {
             )}
           </div>
 
-          <a
-            href="https://www.europecharteredbank.com/home.html"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => document.getElementById('ecb')?.scrollIntoView({ behavior: 'smooth' })}
             className="gradient-primary text-foreground text-sm px-5 py-2 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200"
           >
             {t("nav.cta")}
-          </a>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
