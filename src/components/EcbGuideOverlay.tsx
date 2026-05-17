@@ -1028,20 +1028,22 @@ const EcbGuideOverlay = () => {
                     <button
                       key={key}
                       onClick={() => handleNav(key)}
-                      className="group flex items-center gap-3 h-14 px-5 rounded-[10px] transition-all duration-[250ms] hover:-translate-y-0.5 text-left"
+                      className="group flex items-center gap-3 h-14 px-5 rounded-lg text-left transition-all duration-[250ms] hover:-translate-y-[3px]"
                       style={{
-                        background: "#1E3A5C",
-                        border: "1px solid rgba(35, 117, 197, 0.25)",
+                        background: "#FFFFFF",
+                        border: "1px solid #E0E4EA",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(35, 117, 197, 0.8)";
+                        e.currentTarget.style.borderColor = "#2375C5";
+                        e.currentTarget.style.background = "#F0F4FA";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(35, 117, 197, 0.25)";
+                        e.currentTarget.style.borderColor = "#E0E4EA";
+                        e.currentTarget.style.background = "#FFFFFF";
                       }}
                     >
                       <Icon size={20} className="text-[#2375C5] shrink-0" />
-                      <span className="text-foreground text-sm font-medium">{t(`guide.nav.${key}`)}</span>
+                      <span className="text-[#333333] text-sm font-medium">{t(`guide.nav.${key}`)}</span>
                     </button>
                   );
                 })}
