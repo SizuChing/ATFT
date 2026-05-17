@@ -106,7 +106,7 @@ const EcbGuideOverlay = () => {
   const Img = () => (
     <div
       className="border-2 border-dashed rounded-lg py-10 text-center text-[13px] my-4"
-      style={{ borderColor: "rgba(35,117,197,0.4)", color: "rgba(35,117,197,0.6)" }}
+      style={{ borderColor: "rgba(35,117,197,0.5)", color: "#64CFC3" }}
     >
       {t("guide.imgPlaceholder")}
     </div>
@@ -115,7 +115,7 @@ const EcbGuideOverlay = () => {
   const Label = ({ num, prefix = "STEP" }: { num: number; prefix?: string }) => (
     <div
       className="inline-block font-mono text-xs font-bold text-white px-3.5 py-1 rounded mb-4"
-      style={{ background: "linear-gradient(135deg, #5B1F8A, #8B3DB8)" }}
+      style={{ background: "#2375C5" }}
     >
       {prefix} {String(num).padStart(2, "0")}
     </div>
