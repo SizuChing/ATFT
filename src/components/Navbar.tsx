@@ -129,14 +129,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <a
-            href="https://www.europecharteredbank.com/home.html"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => { document.getElementById('ecb')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }}
             className="gradient-primary text-foreground px-8 py-3 rounded-full glow-box"
           >
             {t("nav.cta")}
-          </a>
+          </button>
         </div>
       )}
     </>
