@@ -106,7 +106,7 @@ const EcbGuideOverlay = () => {
   const Img = () => (
     <div
       className="border-2 border-dashed rounded-lg py-10 text-center text-[13px] my-4"
-      style={{ borderColor: "rgba(180,60,220,0.4)", color: "rgba(180,60,220,0.6)" }}
+      style={{ borderColor: "rgba(35,117,197,0.5)", color: "#64CFC3" }}
     >
       {t("guide.imgPlaceholder")}
     </div>
@@ -115,7 +115,7 @@ const EcbGuideOverlay = () => {
   const Label = ({ num, prefix = "STEP" }: { num: number; prefix?: string }) => (
     <div
       className="inline-block font-mono text-xs font-bold text-white px-3.5 py-1 rounded mb-4"
-      style={{ background: "linear-gradient(135deg, #5B1F8A, #8B3DB8)" }}
+      style={{ background: "#2375C5" }}
     >
       {prefix} {String(num).padStart(2, "0")}
     </div>
@@ -125,21 +125,21 @@ const EcbGuideOverlay = () => {
     <p className="text-white-40 text-xs leading-[1.8] mt-1">※ {text}</p>
   );
 
-  const Divider = () => <div className="border-b border-[hsl(285_74%_55%/0.15)] my-8" />;
+  const Divider = () => <div className="border-b border-[rgba(35,117,197,0.15)] my-8" />;
 
   const renderNavBtns = () => {
     // Special 3-button layout for "account" section (branching to personal or corporate)
     if (active === "account") {
       return (
-        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
           <button onClick={() => handleNav("signup")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
             ← {t("guide.nav.signup")}
           </button>
           <div className="flex flex-col gap-2 items-end">
-            <button onClick={() => handleNav("personal")} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+            <button onClick={() => handleNav("personal")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
               {t("guide.acc.navPersonal")} →
             </button>
-            <button onClick={() => handleNav("corporate")} className="border border-primary/60 px-5 py-2.5 rounded-lg text-sm text-primary hover:bg-primary/10 transition-all">
+            <button onClick={() => handleNav("corporate")} className="border border-[#2375C5]/60 px-5 py-2.5 rounded-lg text-sm text-[#2375C5] hover:bg-[#2375C5]/10 transition-all">
               {t("guide.acc.navCorporate")} →
             </button>
           </div>
@@ -150,7 +150,7 @@ const EcbGuideOverlay = () => {
     // Special 3-button layout for "personal" section
     if (active === "personal") {
       return (
-        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+        <div className="flex justify-between items-start mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
           <div className="flex flex-col gap-2">
             <button onClick={() => handleNav("account")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
               ← {t("guide.nav.account")}
@@ -159,7 +159,7 @@ const EcbGuideOverlay = () => {
               ← {t("guide.nav.corpAddress")}
             </button>
           </div>
-          <button onClick={() => handleNav("homeAddress")} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+          <button onClick={() => handleNav("homeAddress")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
             {t("guide.nextStep")}：{t("guide.nav.homeAddress")} →
           </button>
         </div>
@@ -167,14 +167,14 @@ const EcbGuideOverlay = () => {
     }
 
     return (
-      <div className="flex justify-between items-center mt-12 pt-6 border-t border-[hsl(285_74%_55%/0.2)]">
+      <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
         {prev ? (
           <button onClick={() => handleNav(prev)} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
             ← {t(`guide.nav.${prev}`)}
           </button>
         ) : <div />}
         {next ? (
-          <button onClick={() => handleNav(next)} className="gradient-primary px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
+          <button onClick={() => handleNav(next)} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium hover:opacity-90 transition-all">
             {t("guide.nextStep")}：{t(`guide.nav.${next}`)} →
           </button>
         ) : <div />}
@@ -401,7 +401,7 @@ const EcbGuideOverlay = () => {
         <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s2.d")}</p>
         <p className="text-white-40 text-xs leading-[1.8] mt-1">
           ※ {t("guide.rev.s2.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
-          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+          <button onClick={() => handleNav("login")} className="text-[#2375C5] underline underline-offset-2 hover:opacity-80">
             {t("guide.nav.login")}
           </button>
         </p>
@@ -432,7 +432,7 @@ const EcbGuideOverlay = () => {
         <div className="ml-4 space-y-1">
           {(["link1", "link2", "link3", "link4"] as const).map((lk) => (
             <p key={lk}>
-              <button onClick={() => handleNav(sectionLinkMap[lk])} className="text-primary text-sm underline underline-offset-2 hover:opacity-80">
+              <button onClick={() => handleNav(sectionLinkMap[lk])} className="text-[#2375C5] text-sm underline underline-offset-2 hover:opacity-80">
                 • {t(`guide.rev.s4.${lk}`)}
               </button>
             </p>
@@ -449,7 +449,7 @@ const EcbGuideOverlay = () => {
         <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.rev.s5.d")}</p>
         <p className="text-white-40 text-xs leading-[1.8] mt-1">
           ※ {t("guide.rev.s5.n1").replace("「登入（Login）」", "").replace("「ログイン（Login）」", "").replace("\"Login\"", "")}
-          <button onClick={() => handleNav("login")} className="text-primary underline underline-offset-2 hover:opacity-80">
+          <button onClick={() => handleNav("login")} className="text-[#2375C5] underline underline-offset-2 hover:opacity-80">
             {t("guide.nav.login")}
           </button>
         </p>
@@ -514,7 +514,7 @@ const EcbGuideOverlay = () => {
           <table className="w-full text-sm">
             <tbody>
               {[1, 2, 3].map((fi) => (
-                <tr key={fi} className="border-b border-[hsl(285_74%_55%/0.1)] last:border-b-0">
+                <tr key={fi} className="border-b border-[rgba(35,117,197,0.1)] last:border-b-0">
                   <td className="px-4 py-3 font-mono text-foreground whitespace-nowrap">{t(`guide.acc.s2.f${fi}`)}</td>
                   <td className="px-4 py-3 text-white-40">{t(`guide.acc.s2.f${fi}d`)}</td>
                 </tr>
@@ -828,7 +828,7 @@ const EcbGuideOverlay = () => {
             <div className="flex gap-2 mb-8">
               {(["personal", "corporate"] as const).map((tab) => (
                 <button key={tab} onClick={() => setDocTab(tab)}
-                  className={`px-5 py-2 rounded-lg text-sm transition-all ${docTab === tab ? "gradient-primary text-foreground" : "card-glass text-white-80 hover:text-foreground"}`}>
+                  className={`px-5 py-2 rounded-lg text-sm transition-all ${docTab === tab ? "bg-[#75BE5A] hover:bg-[#65AE4A] text-foreground" : "card-glass text-white-80 hover:text-foreground"}`}>
                   {t(`guide.doc.tab.${tab}`)}
                 </button>
               ))}
@@ -877,11 +877,11 @@ const EcbGuideOverlay = () => {
           <div className="space-y-8">
             {faqCategories.map((cat, ci) => (
               <div key={cat.key}>
-                <h3 className="text-primary font-bold text-sm mb-3">{t(`guide.faq.c${ci + 1}.t`)}</h3>
+                <h3 className="text-[#2375C5] font-bold text-sm mb-3">{t(`guide.faq.c${ci + 1}.t`)}</h3>
                 <Accordion type="multiple" className="space-y-2">
                   {Array.from({ length: cat.count }, (_, qi) => (
                     <AccordionItem key={qi} value={`${cat.key}-${qi}`} className="card-glass rounded-lg border-none overflow-hidden">
-                      <AccordionTrigger className="px-5 py-3 text-sm text-foreground hover:bg-[hsl(285_74%_61%/0.08)] hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                      <AccordionTrigger className="px-5 py-3 text-sm text-foreground hover:bg-[rgba(35,117,197,0.08)] hover:no-underline [&[data-state=open]>svg]:rotate-180">
                         {t(`guide.faq.c${ci + 1}.q${qi + 1}`)}
                       </AccordionTrigger>
                       <AccordionContent className="px-5 pb-4 text-white-40 text-sm leading-[1.9]">
@@ -904,27 +904,27 @@ const EcbGuideOverlay = () => {
       <button onClick={() => handleNav("index")}
         className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
           active === "index"
-            ? `text-${mobile ? "primary" : "foreground"} bg-[hsl(285_74%_61%/0.12)]`
-            : "text-white-80 hover:text-foreground hover:bg-[hsl(285_74%_61%/0.06)]"
+            ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
+            : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
         }`}>
         {!mobile && active === "index" && (
-          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
+          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
         )}
         <LayoutGrid size={16} />
         <span>{t("guide.nav.index")}</span>
       </button>
-      <div className={`border-b border-border ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
+      <div className={`border-b border-[rgba(35,117,197,0.3)] ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
       {sectionKeys.map((key) => {
         const Icon = sectionIcons[key];
         return (
           <button key={key} onClick={() => handleNav(key)}
             className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
               active === key
-                ? `text-${mobile ? "primary" : "foreground"} bg-[hsl(285_74%_61%/0.12)]`
-                : "text-white-80 hover:text-foreground hover:bg-[hsl(285_74%_61%/0.06)]"
+                ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
+                : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
             }`}>
             {!mobile && active === key && (
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-primary" />
+              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
             )}
             <Icon size={16} />
             <span>{t(`guide.nav.${key}`)}</span>
@@ -936,22 +936,22 @@ const EcbGuideOverlay = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] bg-background text-foreground flex"
+      className="fixed inset-0 z-[9999] bg-[#1A2F4A] text-foreground flex"
       style={{
         transform: animating ? "translateX(0)" : "translateX(100%)",
         transition: "transform 0.4s ease",
       }}
     >
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-[260px] min-h-screen border-r border-border bg-[hsl(270_100%_4%)]">
-        <div className="p-6 border-b border-border">
+      <aside className="hidden lg:flex flex-col w-[260px] min-h-screen border-r border-[rgba(35,117,197,0.3)] bg-[#1E3A5C]">
+        <div className="p-6 border-b border-[rgba(35,117,197,0.3)]">
           <div className="flex items-center gap-3">
             <img src={aiftLogo} alt="AIFT" className="h-7" />
           </div>
           <p className="text-xs text-white-40 mt-2">{t("guide.sidebarTitle")}</p>
         </div>
         {sidebarNav()}
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-[rgba(35,117,197,0.3)]">
           <button onClick={close} className="flex items-center gap-2 text-sm text-white-80 hover:text-foreground transition-colors">
             <X size={14} />
             {t("guide.close") || "關閉"}
@@ -960,7 +960,7 @@ const EcbGuideOverlay = () => {
       </aside>
 
       {/* Mobile top bar */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-14 bg-background/95 backdrop-blur-xl border-b border-border flex items-center justify-between px-4">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 h-14 bg-[#1E3A5C]/95 backdrop-blur-xl border-b border-[rgba(35,117,197,0.3)] flex items-center justify-between px-4">
         <button onClick={() => handleNav("index")} className="flex items-center gap-2">
           <img src={aiftLogo} alt="AIFT" className="h-6" />
           <span className="text-xs text-white-40">{t("guide.sidebarTitle")}</span>
@@ -977,7 +977,7 @@ const EcbGuideOverlay = () => {
 
       {/* Mobile drawer */}
       {drawerOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-14 overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 z-40 bg-[#1E3A5C]/95 backdrop-blur-xl pt-14 overflow-y-auto">
           {sidebarNav(true)}
         </div>
       )}
@@ -985,8 +985,8 @@ const EcbGuideOverlay = () => {
       {/* Main content */}
       <main ref={contentRef} className="flex-1 overflow-y-auto pt-14 lg:pt-0">
         {/* Breadcrumb */}
-        <div className="sticky top-0 z-30 bg-background/90 backdrop-blur-md border-b border-border px-6 lg:px-10 py-3">
-          <div className="flex items-center gap-2 text-xs text-white-40">
+        <div className="sticky top-0 z-30 bg-[#1E3A5C]/90 backdrop-blur-md border-b border-[rgba(35,117,197,0.3)] px-6 lg:px-10 py-3">
+          <div className="flex items-center gap-2 text-xs text-[#64CFC3]">
             <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
             <ChevronRight size={12} />
             <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
@@ -1007,7 +1007,7 @@ const EcbGuideOverlay = () => {
                 <h1 className="font-heading-cn text-3xl lg:text-[40px] text-foreground mb-2 tracking-tight leading-[1.1]">
                   {t("guide.index.title")}
                 </h1>
-                <p className="text-primary text-lg lg:text-xl font-medium mb-3">
+                <p className="text-[#2375C5] text-lg lg:text-xl font-medium mb-3">
                   {t("guide.index.subtitle")}
                 </p>
                 <p className="text-white-40 text-sm leading-relaxed">
@@ -1026,17 +1026,17 @@ const EcbGuideOverlay = () => {
                       onClick={() => handleNav(key)}
                       className="group flex items-center gap-3 h-14 px-5 rounded-[10px] transition-all duration-[250ms] hover:-translate-y-0.5 text-left"
                       style={{
-                        background: "rgba(21, 0, 40, 0.7)",
-                        border: "1px solid rgba(180, 60, 220, 0.25)",
+                        background: "#1E3A5C",
+                        border: "1px solid rgba(35, 117, 197, 0.25)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.8)";
+                        e.currentTarget.style.borderColor = "rgba(35, 117, 197, 0.8)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(180, 60, 220, 0.25)";
+                        e.currentTarget.style.borderColor = "rgba(35, 117, 197, 0.25)";
                       }}
                     >
-                      <Icon size={20} className="text-primary shrink-0" />
+                      <Icon size={20} className="text-[#2375C5] shrink-0" />
                       <span className="text-foreground text-sm font-medium">{t(`guide.nav.${key}`)}</span>
                     </button>
                   );
@@ -1050,7 +1050,7 @@ const EcbGuideOverlay = () => {
               {t(`guide.${active}.pt`)}
             </h1>
             <p className="text-white-40 text-sm leading-[1.9] mb-6">{t(`guide.${active}.desc`)}</p>
-            <div className="border-b border-[hsl(285_74%_55%/0.2)] mb-8" />
+            <div className="border-b border-[rgba(35,117,197,0.2)] mb-8" />
 
             <div key={active} className="animate-fade-up">
               {renderContent()}
