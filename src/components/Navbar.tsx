@@ -11,7 +11,6 @@ const navLinks = [
   { key: "nav.backtest", href: "#backtest" },
   { key: "nav.howItWorks", href: "#how-it-works" },
   { key: "nav.risk", href: "#risk" },
-  { key: "nav.ecb", href: "#ecb" },
   { key: "nav.partners", href: "#partners" },
 ];
 
