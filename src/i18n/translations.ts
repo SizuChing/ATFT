@@ -9,7 +9,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.risk": "風控機制",
     "nav.ecb": "操作申請",
     "nav.partners": "合作夥伴",
-    "nav.cta": "立即開戶",
+    "nav.cta": "操作申請",
 
     // Hero
     "hero.subtitle": "AI Automated Trading System",
@@ -608,7 +608,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.risk": "风控机制",
     "nav.ecb": "操作申请",
     "nav.partners": "合作伙伴",
-    "nav.cta": "立即开户",
+    "nav.cta": "操作申请",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "智能合约交易系统 × AI 自动化交易",
@@ -1183,7 +1183,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.risk": "Risk Control",
     "nav.ecb": "ECB Partnership",
     "nav.partners": "Partners",
-    "nav.cta": "Open Account",
+    "nav.cta": "Apply Now",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "Smart Contract Trading × AI Automation",
@@ -1759,7 +1759,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.risk": "リスク管理",
     "nav.ecb": "運用申込",
     "nav.partners": "パートナー",
-    "nav.cta": "口座開設",
+    "nav.cta": "操作申請",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "スマートコントラクト取引 × AI 自動売買",
