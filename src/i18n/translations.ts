@@ -1759,7 +1759,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.risk": "リスク管理",
     "nav.ecb": "運用申込",
     "nav.partners": "パートナー",
-    "nav.cta": "操作申請",
+    "nav.cta": "運用申込",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "スマートコントラクト取引 × AI 自動売買",
