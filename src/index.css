@@ -222,7 +222,10 @@
 /* Sidebar nav buttons */
 .ecb-theme aside nav button { color: #FFFFFF !important; }
 .ecb-theme aside nav button svg { color: #FFFFFF !important; }
-.ecb-theme aside nav button:hover { background-color: rgba(255,255,255,0.15) !important; }
+.ecb-theme aside nav button span { color: #FFFFFF !important; }
+.ecb-theme aside nav button:hover { background-color: rgba(255,255,255,0.15) !important; color: #FFFFFF !important; }
+.ecb-theme aside nav button:hover svg,
+.ecb-theme aside nav button:hover span { color: #FFFFFF !important; }
 
 /* Active sidebar item — white pill + blue text + teal left bar */
 .ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] {
@@ -231,6 +234,12 @@
 }
 .ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] svg,
 .ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] span { color: #2375C5 !important; }
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"]:hover {
+  background-color: #FFFFFF !important;
+  color: #2375C5 !important;
+}
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"]:hover svg,
+.ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"]:hover span { color: #2375C5 !important; }
 .ecb-theme aside nav button[class*="bg-[rgba(35,117,197,0.12)]"] > span[class*="bg-[#2375C5]"] {
   background-color: #64CFC3 !important;
 }
