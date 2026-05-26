@@ -26,6 +26,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.feat2.desc": "交叉參考 50+ 全球關鍵指標",
     "about.feat3.title": "智能風控機制",
     "about.feat3.desc": "多重保護層確保資金安全",
+   "about.story.title": "AIFT AI 交易的誕生",
+   "about.story.body": "AIFT 的前身，是由三位來自台灣大型加密貨幣交易所的技術工程師所創立。\n\n2017 年，一位新加坡客戶委託我們為 Binance 交易所開發網格交易的外部插件。然而，當時的網格交易策略過於僵化，難以因應市場的動態變化。\n\n這個契機促使我們思考更靈活的多重判斷條件架構，奠定了今日 AIFT AI 交易系統的核心邏輯基礎。\n\n2022 年 6 月，系統正式上線實盤運行，現貨交易年化收益穩定維持在約 22% 左右。\n\n同年 11 月，ChatGPT 的發布讓我們意識到 AI 在交易分析領域的巨大潛力。經過實測驗證後，我們將 AI 技術正式導入交易系統，並於 2023 年推出初代 AIFT AI 交易服務。",
+   "about.security.title": "安全與穩定，是我們的核心理念",
+   "about.security.body": "AIFT 的交易策略，以「安全」與「穩定」為最高原則。\n\n即使面對 AI 合約交易，我們在系統設計之初便充分預設極端下跌情境，將資金安全列為首要考量。\n\n系統架構能夠承受市場 70% 以上的急跌衝擊，確保在高波動環境下仍能穩健運作，保護每一位投資者的資產安全。",
 
     // Products
     "products.label": "Trading Systems",
@@ -635,6 +639,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.feat2.desc": "交叉参考 50+ 全球关键指标",
     "about.feat3.title": "智能风控机制",
     "about.feat3.desc": "多重保护层确保资金安全",
+   "about.story.title": "AIFT AI 交易的诞生",
+   "about.story.body": "AIFT 的前身，是由三位来自台湾大型加密货币交易所的技术工程师所创立。\n\n2017 年，一位新加坡客户委托我们为 Binance 交易所开发网格交易的外部插件。然而，当时的网格交易策略过于僵化，难以因应市场的动态变化。\n\n这个契机促使我们思考更灵活的多重判断条件架构，奠定了今日 AIFT AI 交易系统的核心逻辑基础。\n\n2022 年 6 月，系统正式上线实盘运行，现货交易年化收益稳定维持在约 22% 左右。\n\n同年 11 月，ChatGPT 的发布让我们意识到 AI 在交易分析领域的巨大潜力。经过实测验证后，我们将 AI 技术正式导入交易系统，并于 2023 年推出初代 AIFT AI 交易服务。",
+   "about.security.title": "安全与稳定，是我们的核心理念",
+   "about.security.body": "AIFT 的交易策略，以「安全」与「稳定」为最高原则。\n\n即使面对 AI 合约交易，我们在系统设计之初便充分预设极端下跌情境，将资金安全列为首要考量。\n\n系统架构能够承受市场 70% 以上的急跌冲击，确保在高波动环境下仍能稳健运作，保护每一位投资者的资产安全。",
 
     "products.label": "Trading Systems",
     "products.title": "交易系统",
@@ -1222,6 +1230,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.feat2.desc": "Cross-referencing 50+ global key indicators",
     "about.feat3.title": "Smart Risk Control",
     "about.feat3.desc": "Multiple protection layers ensuring fund safety",
+   "about.story.title": "The Birth of AIFT AI Trading",
+   "about.story.body": "AIFT was originally founded by three technical engineers from a major cryptocurrency exchange in Taiwan.\n\nIn 2017, a Singaporean client commissioned us to develop an external grid-trading plugin for the Binance exchange. However, grid-trading strategies at the time were too rigid to adapt to dynamic market changes.\n\nThis opportunity prompted us to explore a more flexible multi-condition decision framework, laying the foundation of the core logic behind today's AIFT AI trading system.\n\nIn June 2022, the system went live for real-money trading, with annualized spot returns steadily holding around 22%.\n\nIn November of the same year, the launch of ChatGPT made us realize AI's enormous potential in trading analysis. After extensive testing, we formally integrated AI into our trading system and released the first generation of AIFT AI trading services in 2023.",
+   "about.security.title": "Safety and Stability Are Our Core Principles",
+   "about.security.body": "AIFT's trading strategies place \"safety\" and \"stability\" above all else.\n\nEven for AI-driven contract trading, our system was designed from day one with extreme downside scenarios in mind, treating capital protection as the top priority.\n\nThe architecture is built to withstand market crashes of more than 70%, ensuring stable operation in highly volatile conditions and safeguarding every investor's assets.",
 
     "products.label": "Trading Systems",
     "products.title": "Trading Systems",
@@ -1810,6 +1822,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.feat2.desc": "50以上のグローバル指標をクロスリファレンス",
     "about.feat3.title": "スマートリスク管理",
     "about.feat3.desc": "多層保護で資金の安全を確保",
+   "about.story.title": "AIFT AI トレーディングの誕生",
+   "about.story.body": "AIFTの前身は、台湾の大手暗号資産取引所出身の3名のテクニカルエンジニアによって設立されました。\n\n2017年、シンガポールのクライアントから、Binance取引所向けのグリッド取引プラグインの開発を依頼されました。しかし当時のグリッド取引戦略は硬直的で、市場の動的な変化に対応するのが困難でした。\n\nこの経験が、より柔軟な多重判断条件アーキテクチャを構想するきっかけとなり、現在のAIFT AIトレーディングシステムのコアロジックの基礎を築きました。\n\n2022年6月にシステムは実盤運用を開始し、現物取引の年率リターンは約22%を安定的に維持しています。\n\n同年11月、ChatGPTのリリースにより、AIがトレード分析にもたらす大きな可能性を認識しました。実証検証を経てAI技術を取引システムに正式導入し、2023年に初代AIFT AIトレーディングサービスをリリースしました。",
+   "about.security.title": "安全と安定は、私たちの中核理念です",
+   "about.security.body": "AIFTのトレーディング戦略は、「安全」と「安定」を最優先としています。\n\nAI契約取引においても、システム設計の初期段階から極端な下落シナリオを十分に想定し、資金の安全を最重要事項として位置付けています。\n\nアーキテクチャは市場の70%超の急落にも耐えうる設計となっており、高ボラティリティ環境下でも安定稼働を実現し、すべての投資家の資産を守ります。",
 
     "products.label": "Trading Systems",
     "products.title": "取引システム",
