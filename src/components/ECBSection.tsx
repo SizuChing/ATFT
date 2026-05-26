@@ -211,53 +211,20 @@ const ECBSection = () => {
                 </div>
               </>
             ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
-              {/* Left — contact info */}
-              <div className="flex flex-col justify-center lg:pr-8">
+              <div className="max-w-xl mx-auto text-center">
                 <h4 className="font-heading-cn text-lg lg:text-xl text-foreground mb-3">
                   {t("ecb.contact.title")}
                 </h4>
-                <p className="text-white-60 mb-5" style={{ fontSize: "13px", lineHeight: 1.7 }}>
+                <p className="text-white-60 mb-6" style={{ fontSize: "13px", lineHeight: 1.7 }}>
                   {t("ecb.contact.desc")}
                 </p>
                 <a
-                  href="mailto:Aift@Aift.com"
-                  className="gradient-primary text-foreground text-sm px-6 py-2.5 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2 w-full"
+                  href="mailto:service.aift@gmail.com"
+                  className="gradient-primary text-foreground text-sm px-8 py-3 rounded-full glow-box hover:-translate-y-0.5 transition-all duration-200 inline-flex items-center justify-center gap-2"
                 >
-                  <Mail size={16} /> EMAIL 聯繫
+                  <Mail size={16} /> EMAIL
                 </a>
               </div>
-              {/* Middle — LINE QR */}
-              <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
-                <div className="font-heading-cn text-base text-foreground mb-3">LINE</div>
-                <img
-                  src={qrLine}
-                  alt="LINE QR Code"
-                  className="mx-auto block bg-white p-2"
-                  style={{
-                    width: "160px",
-                    height: "160px",
-                    border: "1px solid rgba(180, 60, 220, 0.4)",
-                    borderRadius: "8px",
-                  }}
-                />
-              </div>
-              {/* Right — Telegram QR */}
-              <div className="text-center lg:px-8 lg:border-l lg:border-[rgba(180,60,220,0.15)] flex flex-col items-center justify-center">
-                <div className="font-heading-cn text-base text-foreground mb-3">Telegram</div>
-                <img
-                  src={qrTelegram}
-                  alt="Telegram QR Code"
-                  className="mx-auto block bg-white p-2"
-                  style={{
-                    width: "160px",
-                    height: "160px",
-                    border: "1px solid rgba(180, 60, 220, 0.4)",
-                    borderRadius: "8px",
-                  }}
-                />
-              </div>
-            </div>
             )}
           </div>
         )}
