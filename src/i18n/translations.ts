@@ -1816,7 +1816,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "products.tab.contract": "AI スマート先物取引",
     "products.tab.spot": "AI スマート現物取引",
     "products.contract.title": "AIスマート先物取引システム",
-    "products.contract.desc": "第4世代クオンツAIエンジンにより、暗号通貨先物市場での完全自動取引を実現。K線学習予測モデルを核心に、マルチマーケット指標連動分析を組み合わせています。",
+    "products.contract.desc": "第4世代クオンツAIエンジンを活用し、暗号通貨先物市場における完全自動取引を実現。K線学習予測モデルを中核として、マルチマーケット指標連動分析を融合しています。",
     "products.contract.f1": "K線学習予測モデル（1分～12時間マルチタイムフレーム）",
     "products.contract.f2": "前6本のK線から第7本の動きを予測",
     "products.contract.f3": "ロング/ショート方向を自動判断",
