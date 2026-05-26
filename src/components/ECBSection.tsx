@@ -3,8 +3,6 @@ import { Landmark, FileText, User, Building2, Mail, Repeat, Bot, ShieldCheck, Br
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
-import qrLine from "@/assets/qr-line.png";
-import qrTelegram from "@/assets/qr-telegram.png";
 
 const ECBSection = () => {
   const ref = useScrollFadeUp();
