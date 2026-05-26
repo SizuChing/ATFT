@@ -141,8 +141,8 @@ const ECBSection = () => {
                   <p className="text-white-60 text-sm mb-5 text-center">{t("ecb.docs.desc")}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
-                      { icon: User, title: "個人帳戶", tab: "personal" as const },
-                      { icon: Building2, title: "公司帳戶", tab: "corporate" as const },
+                      { icon: User, title: t("ecb.docs.personal"), tab: "personal" as const },
+                      { icon: Building2, title: t("ecb.docs.corporate"), tab: "corporate" as const },
                     ].map(({ icon: Icon, title, tab }) => (
                       <button
                         key={tab}
@@ -160,10 +160,10 @@ const ECBSection = () => {
                         <Icon size={36} className="text-primary flex-shrink-0" />
                         <div className="flex-1">
                           <div className="font-heading-cn text-foreground text-lg leading-tight">{title}</div>
-                          <div className="text-white-60 text-xs mt-1">所需文件清單</div>
+                          <div className="text-white-60 text-xs mt-1">{t("ecb.docs.listLabel")}</div>
                         </div>
                         <div className="text-primary text-xs flex items-center gap-1 opacity-80 group-hover:opacity-100">
-                          點擊查閱 <ArrowRight size={12} />
+                          {t("ecb.docs.view")} <ArrowRight size={12} />
                         </div>
                       </button>
                     ))}
