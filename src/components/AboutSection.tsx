@@ -1,4 +1,4 @@
-import { Brain, Globe, Shield } from "lucide-react";
+import { Brain, Globe, Shield, TrendingUp } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import aiftHexagonLogo from "@/assets/aift-hexagon-logo.png";
@@ -13,9 +13,15 @@ const AboutSection = () => {
     { icon: Shield, titleKey: "about.feat3.title", descKey: "about.feat3.desc" },
   ];
 
+  const storyBlocks = [
+    { icon: TrendingUp, titleKey: "about.story.title", bodyKey: "about.story.body" },
+    { icon: Shield, titleKey: "about.security.title", bodyKey: "about.security.body" },
+  ];
+
   return (
     <section id="about" className="py-20 lg:py-32 px-6 lg:px-12">
-      <div ref={ref} className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20 opacity-0">
+      <div ref={ref} className="max-w-7xl mx-auto opacity-0">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         <div className="flex-shrink-0 flex items-center justify-center">
           <svg className="w-48 h-48 lg:w-64 lg:h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -69,6 +75,24 @@ const AboutSection = () => {
               </div>
             ))}
           </div>
+        </div>
+        </div>
+
+        <div className="mt-12 pt-12 border-t border-[rgba(180,60,220,0.15)] space-y-8">
+          {storyBlocks.map((b) => (
+            <div key={b.titleKey}>
+              <div className="flex items-center gap-[10px]">
+                <b.icon className="w-6 h-6 text-primary" strokeWidth={2} />
+                <h3 className="text-white text-base font-bold">{t(b.titleKey)}</h3>
+              </div>
+              <div className="border-t border-[rgba(180,60,220,0.2)] my-[10px] mb-4" />
+              <div className="text-sm" style={{ color: "#B0C0D8", lineHeight: 2 }}>
+                {t(b.bodyKey).split("\n\n").map((para, i) => (
+                  <p key={i} className="mb-4 last:mb-0">{para}</p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
