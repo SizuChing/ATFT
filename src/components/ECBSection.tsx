@@ -27,13 +27,10 @@ const ECBSection = () => {
     { key: "ecb.p3", Icon: ShieldCheck },
     { key: "ecb.p4", Icon: Briefcase },
   ];
-  const flowShort = [
-    { title: "註冊 KYC", desc: "完成帳號註冊與身份驗證" },
-    { title: "存入資產", desc: "存入法幣或加密貨幣" },
-    { title: "授權 AIFT", desc: "委託 AIFT 管理資金" },
-    { title: "認購基金", desc: "選擇 AI 基金方案" },
-    { title: "自動交易", desc: "即時查閱收益績效" },
-  ];
+  const flowShort = [1, 2, 3, 4, 5].map((n) => ({
+    title: t(`ecb.flow.short.s${n}.title`),
+    desc: t(`ecb.flow.short.s${n}.desc`),
+  }));
 
   return (
     <section id="ecb" className="py-20 lg:py-32 px-6 lg:px-12">
