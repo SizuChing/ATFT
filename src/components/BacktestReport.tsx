@@ -20,8 +20,8 @@ const monthlyData = [
   },
   {
     year: "2026",
-    months: [4.99, 1.38, 0.54, null, null, null, null, null, null, null, null, null],
-    total: null,
+    months: [4.99, 1.38, 0.66, 0.09, 0.33, null, null, null, null, null, null, null],
+    total: 7.45,
   },
 ];
 
