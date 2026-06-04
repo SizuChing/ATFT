@@ -96,7 +96,7 @@ const groups: { key: GroupKey; icon: LucideIcon; sections: SectionKey[] }[] = [
       "review", "consent", "twoFactor", "faq",
     ],
   },
-  { key: "deposit", icon: PiggyBank, sections: ["depositIntro", "depositSteps"] },
+  { key: "deposit", icon: PiggyBank, sections: ["depositSteps"] },
   { key: "fund",    icon: TrendingUp, sections: ["fundIntro", "fundSteps"] },
 ];
 
@@ -204,18 +204,6 @@ const EcbGuideOverlay = () => {
 
   const renderNavBtns = () => {
     // Deposit & Fund custom navigation
-    if (active === "depositIntro") {
-      return (
-        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
-          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
-            ← {t("guide.backToHome") || "返回首頁"}
-          </button>
-          <button onClick={() => handleNav("depositSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
-            {t("guide.nextStep")}：{t("guide.nav.depositSteps")} →
-          </button>
-        </div>
-      );
-    }
     if (active === "depositSteps") {
       return (
         <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
@@ -224,6 +212,18 @@ const EcbGuideOverlay = () => {
           </button>
           <button onClick={() => handleNav("fundIntro")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
             {t("guide.nextStep")}：{t("guide.group.fund.title")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "fundIntro") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("depositSteps")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.nav.depositSteps")}
+          </button>
+          <button onClick={() => handleNav("fundSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.fundSteps")} →
           </button>
         </div>
       );
