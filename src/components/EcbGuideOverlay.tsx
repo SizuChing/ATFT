@@ -168,6 +168,56 @@ const EcbGuideOverlay = () => {
   const Divider = () => <div className="border-b border-[#EEEEEE] my-8" />;
 
   const renderNavBtns = () => {
+    // Deposit & Fund custom navigation
+    if (active === "depositIntro") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.backToHome") || "返回首頁"}
+          </button>
+          <button onClick={() => handleNav("depositSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.depositSteps")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "depositSteps") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.backToHome") || "返回首頁"}
+          </button>
+          <button onClick={() => handleNav("fundIntro")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.group.fund.title")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "fundIntro") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("depositSteps")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.nav.depositSteps")}
+          </button>
+          <button onClick={() => handleNav("fundSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.fundSteps")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "fundSteps") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("depositIntro")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.group.deposit.title")}
+          </button>
+          <button onClick={() => handleNav("index")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.backToHome") || "返回首頁"} →
+          </button>
+        </div>
+      );
+    }
+
     // Special 3-button layout for "account" section (branching to personal or corporate)
     if (active === "account") {
       return (
