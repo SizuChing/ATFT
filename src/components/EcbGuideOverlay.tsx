@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, Menu, LayoutGrid,
+  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
@@ -35,6 +35,8 @@ const sectionKeys = [
   "overview", "documents", "signup", "login", "account",
   "corporate", "corpAddress", "personal", "homeAddress",
   "review", "consent", "twoFactor", "faq",
+  "depositIntro", "depositSteps",
+  "fundIntro", "fundSteps",
 ] as const;
 
 type SectionKey = (typeof sectionKeys)[number];
@@ -44,6 +46,29 @@ const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
   account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
   homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
+  depositIntro: ClipboardList, depositSteps: PiggyBank,
+  fundIntro: ClipboardList, fundSteps: TrendingUp,
+};
+
+type GroupKey = "ecb" | "deposit" | "fund";
+
+const groups: { key: GroupKey; icon: LucideIcon; sections: SectionKey[] }[] = [
+  {
+    key: "ecb",
+    icon: Building,
+    sections: [
+      "overview", "documents", "signup", "login", "account",
+      "corporate", "corpAddress", "personal", "homeAddress",
+      "review", "consent", "twoFactor", "faq",
+    ],
+  },
+  { key: "deposit", icon: PiggyBank, sections: ["depositIntro", "depositSteps"] },
+  { key: "fund",    icon: TrendingUp, sections: ["fundIntro", "fundSteps"] },
+];
+
+const sectionGroup = (sec: SectionKey): GroupKey => {
+  for (const g of groups) if ((g.sections as readonly SectionKey[]).includes(sec)) return g.key;
+  return "ecb";
 };
 
 const faqCategories = [
@@ -61,6 +86,10 @@ const EcbGuideOverlay = () => {
   const [active, setActive] = useState<ActivePage>("index");
   const [docTab, setDocTab] = useState<"personal" | "corporate">("personal");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [expandedGroup, setExpandedGroup] = useState<GroupKey | null>(null);
+  const [openSidebarGroups, setOpenSidebarGroups] = useState<Record<GroupKey, boolean>>({
+    ecb: true, deposit: false, fund: false,
+  });
   const { t } = useLanguage();
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +99,8 @@ const EcbGuideOverlay = () => {
       requestAnimationFrame(() => setAnimating(true));
       if (initialSection && (sectionKeys as readonly string[]).includes(initialSection)) {
         setActive(initialSection as SectionKey);
+        const g = sectionGroup(initialSection as SectionKey);
+        setOpenSidebarGroups((prev) => ({ ...prev, [g]: true }));
       }
       if (initialDocTab) {
         setDocTab(initialDocTab);
@@ -80,6 +111,7 @@ const EcbGuideOverlay = () => {
         setVisible(false);
       setActive("index");
       setDrawerOpen(false);
+      setExpandedGroup(null);
       }, 400);
       return () => clearTimeout(timer);
     }
@@ -90,12 +122,17 @@ const EcbGuideOverlay = () => {
   const handleNav = (key: ActivePage) => {
     setActive(key);
     setDrawerOpen(false);
+    if (key !== "index") {
+      const g = sectionGroup(key as SectionKey);
+      setOpenSidebarGroups((prev) => ({ ...prev, [g]: true }));
+    }
     contentRef.current?.scrollTo({ top: 0 });
   };
 
-  const idx = active === "index" ? -1 : sectionKeys.indexOf(active);
-  const prev = idx > 0 ? sectionKeys[idx - 1] : null;
-  const next = idx >= 0 && idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
+  const groupSections = active === "index" ? [] : groups.find((g) => g.key === sectionGroup(active as SectionKey))!.sections;
+  const idx = active === "index" ? -1 : groupSections.indexOf(active as SectionKey);
+  const prev = idx > 0 ? groupSections[idx - 1] : null;
+  const next = idx >= 0 && idx < groupSections.length - 1 ? groupSections[idx + 1] : null;
 
   const tryT = (key: string) => {
     const val = t(key);
@@ -132,6 +169,56 @@ const EcbGuideOverlay = () => {
   const Divider = () => <div className="border-b border-[#EEEEEE] my-8" />;
 
   const renderNavBtns = () => {
+    // Deposit & Fund custom navigation
+    if (active === "depositIntro") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.backToHome") || "返回首頁"}
+          </button>
+          <button onClick={() => handleNav("depositSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.depositSteps")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "depositSteps") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.backToHome") || "返回首頁"}
+          </button>
+          <button onClick={() => handleNav("fundIntro")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.group.fund.title")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "fundIntro") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("depositSteps")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.nav.depositSteps")}
+          </button>
+          <button onClick={() => handleNav("fundSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.nextStep")}：{t("guide.nav.fundSteps")} →
+          </button>
+        </div>
+      );
+    }
+    if (active === "fundSteps") {
+      return (
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
+          <button onClick={() => handleNav("depositIntro")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+            ← {t("guide.group.deposit.title")}
+          </button>
+          <button onClick={() => handleNav("index")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
+            {t("guide.backToHome") || "返回首頁"} →
+          </button>
+        </div>
+      );
+    }
+
     // Special 3-button layout for "account" section (branching to personal or corporate)
     if (active === "account") {
       return (
@@ -876,6 +963,75 @@ const EcbGuideOverlay = () => {
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
+      case "depositIntro":
+        return (
+          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
+            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.depositIntro.tip")}</p>
+          </div>
+        );
+      case "depositSteps":
+        return (
+          <>
+            {Array.from({ length: 10 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.td.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.td.s${n}.d`)}</p>
+                  <Img />
+                  {n < 10 && <Divider />}
+                </div>
+              );
+            })}
+          </>
+        );
+      case "fundIntro":
+        return (
+          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
+            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.fundIntro.tip")}</p>
+          </div>
+        );
+      case "fundSteps":
+        return (
+          <>
+            {Array.from({ length: 13 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.fd.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.fd.s${n}.d`)}</p>
+                  {n === 4 && (
+                    <div className="card-glass rounded-lg overflow-hidden my-4">
+                      <table className="w-full text-sm">
+                        <tbody>
+                          {["daysElapsed","annualizedReturn","units","price","totalCapital","cumulativeProfit","currentRoi","annualizedReturn2"].map((k) => (
+                            <tr key={k} className="border-b border-[rgba(35,117,197,0.1)] last:border-b-0">
+                              <td className="px-4 py-3 font-mono text-foreground whitespace-nowrap">{t(`guide.fd.s4.${k}.t`)}</td>
+                              <td className="px-4 py-3 text-white-40">{t(`guide.fd.s4.${k}.d`)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {n === 6 && (
+                    <>
+                      <p className="text-[#F87171] text-xs leading-[1.8] mt-2">※ {t("guide.fd.s6.warn")}</p>
+                      <div className="rounded-lg p-4 my-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                        <p className="text-foreground text-sm font-medium mb-2">{t("guide.fd.s6.exTitle")}</p>
+                        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.fd.s6.exBody")}</p>
+                      </div>
+                    </>
+                  )}
+                  <Img />
+                  {n < 13 && <Divider />}
+                </div>
+              );
+            })}
+          </>
+        );
       case "faq":
         return (
           <div className="space-y-8">
@@ -918,21 +1074,38 @@ const EcbGuideOverlay = () => {
         <span>{t("guide.nav.index")}</span>
       </button>
       <div className={`border-b border-[rgba(35,117,197,0.3)] ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
-      {sectionKeys.map((key) => {
-        const Icon = sectionIcons[key];
+      {groups.map((g) => {
+        const GIcon = g.icon;
+        const open = openSidebarGroups[g.key];
         return (
-          <button key={key} onClick={() => handleNav(key)}
-            className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
-              active === key
-                ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
-                : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
-            }`}>
-            {!mobile && active === key && (
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
-            )}
-            <Icon size={16} />
-            <span>{t(`guide.nav.${key}`)}</span>
-          </button>
+          <div key={g.key} className="mb-1">
+            <button
+              onClick={() => setOpenSidebarGroups((prev) => ({ ...prev, [g.key]: !prev[g.key] }))}
+              className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-3"} flex items-center gap-3 transition-colors text-foreground font-bold text-sm`}
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            >
+              <GIcon size={16} className="text-[#2375C5]" />
+              <span className="flex-1">{t(`guide.group.${g.key}.title`)}</span>
+              <ChevronDown size={14} className="transition-transform" style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {open && g.sections.map((key) => {
+              const Icon = sectionIcons[key];
+              return (
+                <button key={key} onClick={() => handleNav(key)}
+                  className={`w-full text-left ${mobile ? "pl-10 pr-6 py-2.5" : "pl-9 pr-5 py-2"} text-sm flex items-center gap-3 transition-colors relative ${
+                    active === key
+                      ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
+                      : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
+                  }`}>
+                  {!mobile && active === key && (
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
+                  )}
+                  <Icon size={14} />
+                  <span>{t(`guide.nav.${key}`)}</span>
+                </button>
+              );
+            })}
+          </div>
         );
       })}
     </nav>
@@ -1020,34 +1193,71 @@ const EcbGuideOverlay = () => {
                 </p>
               </div>
 
-              {/* Card grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                {sectionKeys.map((key) => {
-                  const Icon = sectionIcons[key];
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => handleNav(key)}
-                      className="group flex items-center gap-3 h-14 px-5 rounded-lg text-left transition-all duration-[250ms] hover:-translate-y-[3px]"
-                      style={{
-                        background: "#FFFFFF",
-                        border: "1px solid #E0E4EA",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "#2375C5";
-                        e.currentTarget.style.background = "#F0F4FA";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "#E0E4EA";
-                        e.currentTarget.style.background = "#FFFFFF";
-                      }}
-                    >
-                      <Icon size={20} className="text-[#2375C5] shrink-0" />
-                      <span className="text-[#333333] text-sm font-medium">{t(`guide.nav.${key}`)}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* 3 category big cards */}
+              {!expandedGroup && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {groups.map((g) => {
+                    const GIcon = g.icon;
+                    return (
+                      <button
+                        key={g.key}
+                        onClick={() => setExpandedGroup(g.key)}
+                        className="group relative text-left transition-all duration-[250ms] hover:-translate-y-1 overflow-hidden"
+                        style={{
+                          background: "#FFFFFF",
+                          border: "1px solid #E0E4EA",
+                          borderRadius: 12,
+                          padding: 32,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "#2375C5";
+                          e.currentTarget.style.background = "#F0F4FA";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "#E0E4EA";
+                          e.currentTarget.style.background = "#FFFFFF";
+                        }}
+                      >
+                        <span className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "#2375C5" }} />
+                        <GIcon size={40} className="text-[#2375C5] mb-4" />
+                        <h3 className="text-[#333333] font-bold mb-1" style={{ fontSize: 18 }}>{t(`guide.group.${g.key}.title`)}</h3>
+                        <p className="text-[#666666]" style={{ fontSize: 13 }}>{t(`guide.group.${g.key}.sub`)}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Sub-cards for expanded group */}
+              {expandedGroup && (
+                <div>
+                  <button
+                    onClick={() => setExpandedGroup(null)}
+                    className="flex items-center gap-2 text-sm text-white-80 hover:text-foreground transition-colors mb-4"
+                  >
+                    <ArrowLeft size={14} /> {t("guide.backToCats") || "返回分類"}
+                  </button>
+                  <h2 className="text-foreground text-xl font-bold mb-4">{t(`guide.group.${expandedGroup}.title`)}</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    {groups.find((g) => g.key === expandedGroup)!.sections.map((key) => {
+                      const Icon = sectionIcons[key];
+                      return (
+                        <button
+                          key={key}
+                          onClick={() => handleNav(key)}
+                          className="group flex items-center gap-3 h-14 px-5 rounded-lg text-left transition-all duration-[250ms] hover:-translate-y-[3px]"
+                          style={{ background: "#FFFFFF", border: "1px solid #E0E4EA" }}
+                          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#2375C5"; e.currentTarget.style.background = "#F0F4FA"; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E0E4EA"; e.currentTarget.style.background = "#FFFFFF"; }}
+                        >
+                          <Icon size={20} className="text-[#2375C5] shrink-0" />
+                          <span className="text-[#333333] text-sm font-medium">{t(`guide.nav.${key}`)}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ) : (
