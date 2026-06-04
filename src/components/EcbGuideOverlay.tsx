@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, Menu, LayoutGrid,
+  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
@@ -35,6 +35,8 @@ const sectionKeys = [
   "overview", "documents", "signup", "login", "account",
   "corporate", "corpAddress", "personal", "homeAddress",
   "review", "consent", "twoFactor", "faq",
+  "depositIntro", "depositSteps",
+  "fundIntro", "fundSteps",
 ] as const;
 
 type SectionKey = (typeof sectionKeys)[number];
@@ -44,6 +46,29 @@ const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
   account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
   homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
+  depositIntro: ClipboardList, depositSteps: PiggyBank,
+  fundIntro: ClipboardList, fundSteps: TrendingUp,
+};
+
+type GroupKey = "ecb" | "deposit" | "fund";
+
+const groups: { key: GroupKey; icon: LucideIcon; sections: SectionKey[] }[] = [
+  {
+    key: "ecb",
+    icon: Building,
+    sections: [
+      "overview", "documents", "signup", "login", "account",
+      "corporate", "corpAddress", "personal", "homeAddress",
+      "review", "consent", "twoFactor", "faq",
+    ],
+  },
+  { key: "deposit", icon: PiggyBank, sections: ["depositIntro", "depositSteps"] },
+  { key: "fund",    icon: TrendingUp, sections: ["fundIntro", "fundSteps"] },
+];
+
+const sectionGroup = (sec: SectionKey): GroupKey => {
+  for (const g of groups) if ((g.sections as readonly SectionKey[]).includes(sec)) return g.key;
+  return "ecb";
 };
 
 const faqCategories = [
