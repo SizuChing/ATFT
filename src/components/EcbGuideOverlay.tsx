@@ -1057,7 +1057,13 @@ const EcbGuideOverlay = () => {
                       </div>
                     </>
                   )}
-                  <Img />
+                  {n !== 4 && (
+                    fundImgs[n] ? (
+                      <img src={fundImgs[n]} alt={`AIFT Fund Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                    ) : (
+                      <Img />
+                    )
+                  )}
                   {n < 13 && <Divider />}
                 </div>
               );
