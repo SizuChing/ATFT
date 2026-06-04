@@ -1083,7 +1083,7 @@ const EcbGuideOverlay = () => {
                         <tbody>
                           {["daysElapsed","annualizedReturn","units","price","totalCapital","cumulativeProfit","currentRoi","annualizedReturn2"].map((k) => (
                             <tr key={k} className="border-b border-[rgba(35,117,197,0.1)] last:border-b-0">
-                              <td className="px-4 py-3 font-mono text-foreground whitespace-nowrap">{t(`guide.fd.s4.${k}.t`)}</td>
+                              <td className="px-4 py-3 text-foreground whitespace-nowrap" style={{ fontFamily: "'Noto Sans TC', sans-serif", fontWeight: 500, fontStyle: "normal" }}>{t(`guide.fd.s4.${k}.t`)}</td>
                               <td className="px-4 py-3 text-white-40">{t(`guide.fd.s4.${k}.d`)}</td>
                             </tr>
                           ))}
