@@ -165,6 +165,63 @@ const EcbGuideOverlay = () => {
     contentRef.current?.scrollTo({ top: 0 });
   };
 
+  const localeLabels: Record<Locale, string> = {
+    "zh-TW": "繁中",
+    "zh-CN": "简中",
+    en: "EN",
+    ja: "日本語",
+  };
+
+  const renderLangSwitch = () => (
+    <div className="relative">
+      <button
+        onClick={() => setLangOpen((v) => !v)}
+        className="flex items-center gap-1.5 text-xs text-white hover:bg-white/10 transition-colors"
+        style={{
+          background: "transparent",
+          border: "1px solid rgba(255,255,255,0.3)",
+          borderRadius: 6,
+          padding: "6px 12px",
+        }}
+      >
+        <Globe size={14} />
+        {localeLabels[locale]}
+      </button>
+      {langOpen && (
+        <div
+          className="absolute top-full right-0 mt-2 py-1 min-w-[120px] z-50"
+          style={{
+            background: "#2375C5",
+            borderRadius: 8,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+          }}
+        >
+          {(Object.keys(localeLabels) as Locale[]).map((l) => {
+            const selected = l === locale;
+            return (
+              <button
+                key={l}
+                onClick={() => { setLocale(l); setLangOpen(false); }}
+                className="block w-full text-left text-sm transition-colors"
+                style={{
+                  color: "#FFFFFF",
+                  padding: "8px 14px",
+                  paddingLeft: selected ? 14 : 14,
+                  fontWeight: selected ? 700 : 400,
+                  borderLeft: selected ? "3px solid #64CFC3" : "3px solid transparent",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.15)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+              >
+                {localeLabels[l]}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+
   const groupSections = active === "index" ? [] : groups.find((g) => g.key === sectionGroup(active as SectionKey))!.sections;
   const idx = active === "index" ? -1 : groupSections.indexOf(active as SectionKey);
   const prev = idx > 0 ? groupSections[idx - 1] : null;
