@@ -80,7 +80,7 @@ const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
   account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
   homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
-  depositIntro: ClipboardList, depositSteps: PiggyBank,
+  depositSteps: PiggyBank,
   fundIntro: ClipboardList, fundSteps: TrendingUp,
 };
 
