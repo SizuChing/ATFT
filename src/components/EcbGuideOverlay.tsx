@@ -1170,6 +1170,7 @@ const EcbGuideOverlay = () => {
           <button onClick={() => setDrawerOpen(!drawerOpen)} className="text-foreground">
             {drawerOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
+          {renderLangSwitch()}
           <button onClick={close} className="text-white-80 hover:text-foreground text-sm flex items-center gap-1">
             <X size={16} /> {t("guide.close") || "關閉"}
           </button>
@@ -1187,16 +1188,27 @@ const EcbGuideOverlay = () => {
       <main ref={contentRef} className="flex-1 overflow-y-auto pt-14 lg:pt-0">
         {/* Breadcrumb */}
         <div className="sticky top-0 z-30 bg-[#1E3A5C]/90 backdrop-blur-md border-b border-[rgba(35,117,197,0.3)] px-6 lg:px-10 py-3">
-          <div className="flex items-center gap-2 text-xs text-[#64CFC3]">
-            <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
-            <ChevronRight size={12} />
-            <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
-            {active !== "index" && (
-              <>
-                <ChevronRight size={12} />
-                <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
-              </>
-            )}
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-xs text-[#64CFC3]">
+              <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
+              <ChevronRight size={12} />
+              <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
+              {active !== "index" && (
+                <>
+                  <ChevronRight size={12} />
+                  <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+                </>
+              )}
+            </div>
+            <div className="hidden lg:flex items-center gap-2">
+              {renderLangSwitch()}
+              <button
+                onClick={close}
+                className="flex items-center gap-1 text-xs text-white-80 hover:text-foreground transition-colors px-2 py-1"
+              >
+                <X size={14} /> {t("guide.close") || "關閉"}
+              </button>
+            </div>
           </div>
         </div>
 
