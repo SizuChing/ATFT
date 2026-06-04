@@ -21,6 +21,22 @@ import auth05Img from "@/assets/auth-05.webp";
 import agree01Img from "@/assets/agree-01.webp";
 import agree02Img from "@/assets/agree-02.webp";
 import agree03Img from "@/assets/agree-03.webp";
+import deposit01Asset from "@/assets/deposit_01.png.asset.json";
+import deposit02Asset from "@/assets/deposit_02.png.asset.json";
+import deposit03Asset from "@/assets/deposit_03.png.asset.json";
+import deposit04Asset from "@/assets/deposit_04.png.asset.json";
+import deposit05Asset from "@/assets/deposit_05.png.asset.json";
+import deposit06Asset from "@/assets/deposit_06.png.asset.json";
+import deposit07Asset from "@/assets/deposit_07.png.asset.json";
+import deposit08Asset from "@/assets/deposit_08.png.asset.json";
+import deposit09Asset from "@/assets/deposit_09.png.asset.json";
+import deposit10Asset from "@/assets/deposit_10.png.asset.json";
+const depositImgs: Record<number, string> = {
+  1: deposit01Asset.url, 2: deposit02Asset.url, 3: deposit03Asset.url,
+  4: deposit04Asset.url, 5: deposit05Asset.url, 6: deposit06Asset.url,
+  7: deposit07Asset.url, 8: deposit08Asset.url, 9: deposit09Asset.url,
+  10: deposit10Asset.url,
+};
 const result02Img = "/images/result-02.webp";
 const result03Img = "/images/result-03.webp";
 const result05Img = "/images/result-05.webp";
