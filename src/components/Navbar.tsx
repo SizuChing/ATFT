@@ -41,7 +41,7 @@ const Navbar = () => {
         }`}
       >
         <a href="#" className="flex items-center gap-3" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <img src={aiftLogo} alt="AIFT" className="h-8" />
+          <img src={aiftLogo} alt="AIFT Company Logo" className="h-8" />
           <span className="hidden sm:block text-white-40 text-xs">Al Financial Technologies Ltd.</span>
         </a>
 
@@ -94,6 +94,7 @@ const Navbar = () => {
         {/* Mobile hamburger */}
         <button
           className="lg:hidden text-foreground"
+          aria-label="Toggle navigation menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}

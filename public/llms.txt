@@ -1,0 +1,8 @@
+# AIFT — Al Financial Technologies Ltd.
+
+> AIFT is a fintech company specializing in AI-powered automated trading systems, offering smart contract (futures) and spot trading solutions powered by a 4th-generation quantitative AI engine.
+
+## Pages
+
+- [Home](/): Company overview, AI prediction dashboard, backtest report, products, partners, and risk control.
+- [ECB Manual](/ecb-manual): Step-by-step guide for opening a Europe Chartered Bank (ECB) account and connecting it to AIFT's automated trading system, including FAQ.
