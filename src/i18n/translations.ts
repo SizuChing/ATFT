@@ -1983,7 +1983,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "guide.group.deposit.title": "Start a Time Deposit",
     "guide.group.deposit.sub": "How to create a time deposit at ECB",
     "guide.group.fund.title": "Purchase AIFT FUND",
-    "guide.group.fund.sub": "How to subscribe to AIFT AI fund products",
+    "guide.group.fund.sub": "How to Purchase an AIFT Fund",
     "guide.depositIntro.pt": "Time Deposit Manual — Before You Start",
     "guide.depositIntro.desc": "Important notes before creating a time deposit.",
     "guide.depositIntro.tip": "Important:\n\nBefore purchasing AIFT funds, please make sure you have a time deposit equal in amount to your intended fund purchase.\nAlso, ensure your savings account holds enough funds to cover at least the following:\n\nTotal = Unit Price × Units Purchased + Subscription Fee\n\nNote: the purchase amount and related fees will be deducted from your savings account.",
