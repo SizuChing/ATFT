@@ -971,7 +971,7 @@ const EcbGuideOverlay = () => {
         data-animating={animating}
       >
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-[260px] min-h-screen border-r border-[rgba(35,117,197,0.3)] bg-[#1E3A5C]">
+      <aside className="hidden lg:flex flex-col w-[260px] h-full border-r border-[rgba(35,117,197,0.3)] bg-[#1E3A5C] overflow-y-auto">
         <div className="p-6 border-b border-[rgba(35,117,197,0.3)]">
           <div className="flex items-center gap-3">
             <img src={aiftLogo} alt="AIFT" className="h-7" />
