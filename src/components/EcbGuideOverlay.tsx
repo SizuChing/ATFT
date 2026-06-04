@@ -129,9 +129,10 @@ const EcbGuideOverlay = () => {
     contentRef.current?.scrollTo({ top: 0 });
   };
 
-  const idx = active === "index" ? -1 : sectionKeys.indexOf(active);
-  const prev = idx > 0 ? sectionKeys[idx - 1] : null;
-  const next = idx >= 0 && idx < sectionKeys.length - 1 ? sectionKeys[idx + 1] : null;
+  const groupSections = active === "index" ? [] : groups.find((g) => g.key === sectionGroup(active as SectionKey))!.sections;
+  const idx = active === "index" ? -1 : groupSections.indexOf(active as SectionKey);
+  const prev = idx > 0 ? groupSections[idx - 1] : null;
+  const next = idx >= 0 && idx < groupSections.length - 1 ? groupSections[idx + 1] : null;
 
   const tryT = (key: string) => {
     const val = t(key);
