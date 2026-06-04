@@ -985,12 +985,6 @@ const EcbGuideOverlay = () => {
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
-      case "depositIntro":
-        return (
-          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
-            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.depositIntro.tip")}</p>
-          </div>
-        );
       case "depositSteps":
         return (
           <>
