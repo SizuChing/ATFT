@@ -171,7 +171,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.contact.qrPlaceholder": "QR Code 圖片區域 — 請上傳",
 
     // Backtest Report
-    "nav.backtest": "回測報告",
+    "nav.backtest": "實測報告",
     "backtest.title": "ETH AI 交易月度報告",
     "backtest.label": "歷史回測數據",
     "backtest.desc1": "以下為 AIFT AI 系統歷史每月實際收益紀錄，",
@@ -866,7 +866,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.contact.qrPlaceholder": "QR Code 图片区域 — 请上传",
 
     // Backtest Report
-    "nav.backtest": "回测报告",
+    "nav.backtest": "实测报告",
     "backtest.title": "ETH AI 交易月度报告",
     "backtest.label": "历史回测数据",
     "backtest.desc1": "以下为 AIFT AI 系统历史每月实际收益记录，",
@@ -1544,7 +1544,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.contact.qrPlaceholder": "QR Code image — please upload",
 
     // Backtest Report
-    "nav.backtest": "Backtest Report",
+    "nav.backtest": "Live Test Report",
     "backtest.title": "ETH AI Trading Monthly Report",
     "backtest.label": "Historical Backtest Data",
     "backtest.desc1": "Below is the AIFT AI system's historical monthly actual return record,",
@@ -2223,7 +2223,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "ecb.contact.qrPlaceholder": "QRコード画像エリア — アップロードしてください",
 
     // Backtest Report
-    "nav.backtest": "バックテスト",
+    "nav.backtest": "実測レポート",
     "backtest.title": "ETH AI 取引月次レポート",
     "backtest.label": "過去のバックテストデータ",
     "backtest.desc1": "以下は AIFT AI システムの月次実績リターンの記録です。",
