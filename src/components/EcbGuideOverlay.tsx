@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft,
+  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft, Globe,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
+import type { Locale } from "@/i18n/translations";
 import aiftLogo from "@/assets/aift-logo.png";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
