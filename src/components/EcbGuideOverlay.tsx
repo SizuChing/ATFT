@@ -69,7 +69,7 @@ const sectionKeys = [
   "overview", "documents", "signup", "login", "account",
   "corporate", "corpAddress", "personal", "homeAddress",
   "review", "consent", "twoFactor", "faq",
-  "depositIntro", "depositSteps",
+  "depositSteps",
   "fundIntro", "fundSteps",
 ] as const;
 
@@ -80,7 +80,7 @@ const sectionIcons: Record<SectionKey, LucideIcon> = {
   overview: ClipboardList, documents: FileText, signup: PenLine, login: KeyRound,
   account: User, corporate: Building2, corpAddress: MapPin, personal: UserRound,
   homeAddress: Home, review: BarChart3, consent: ScrollText, twoFactor: ShieldCheck, faq: HelpCircle,
-  depositIntro: ClipboardList, depositSteps: PiggyBank,
+  depositSteps: PiggyBank,
   fundIntro: ClipboardList, fundSteps: TrendingUp,
 };
 
@@ -96,7 +96,7 @@ const groups: { key: GroupKey; icon: LucideIcon; sections: SectionKey[] }[] = [
       "review", "consent", "twoFactor", "faq",
     ],
   },
-  { key: "deposit", icon: PiggyBank, sections: ["depositIntro", "depositSteps"] },
+  { key: "deposit", icon: PiggyBank, sections: ["depositSteps"] },
   { key: "fund",    icon: TrendingUp, sections: ["fundIntro", "fundSteps"] },
 ];
 
@@ -204,18 +204,6 @@ const EcbGuideOverlay = () => {
 
   const renderNavBtns = () => {
     // Deposit & Fund custom navigation
-    if (active === "depositIntro") {
-      return (
-        <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
-          <button onClick={() => handleNav("index")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
-            ← {t("guide.backToHome") || "返回首頁"}
-          </button>
-          <button onClick={() => handleNav("depositSteps")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
-            {t("guide.nextStep")}：{t("guide.nav.depositSteps")} →
-          </button>
-        </div>
-      );
-    }
     if (active === "depositSteps") {
       return (
         <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
@@ -243,7 +231,7 @@ const EcbGuideOverlay = () => {
     if (active === "fundSteps") {
       return (
         <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
-          <button onClick={() => handleNav("depositIntro")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+          <button onClick={() => handleNav("depositSteps")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
             ← {t("guide.group.deposit.title")}
           </button>
           <button onClick={() => handleNav("index")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
@@ -997,12 +985,6 @@ const EcbGuideOverlay = () => {
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
-      case "depositIntro":
-        return (
-          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
-            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.depositIntro.tip")}</p>
-          </div>
-        );
       case "depositSteps":
         return (
           <>
