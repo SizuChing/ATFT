@@ -912,6 +912,75 @@ const EcbGuideOverlay = () => {
       case "consent":
         return (<><p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line mb-6">{t("guide.con.intro")}</p>{renderSteps("con", 3, [1, 2, 3], { 1: agree01Img, 2: agree02Img, 3: agree03Img })}</>);
       case "twoFactor": return renderSteps("tf", 5, [1, 2, 3, 4, 5], { 1: auth01Img, 2: auth02Img, 3: auth03Img, 4: auth04Img, 5: auth05Img });
+      case "depositIntro":
+        return (
+          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
+            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.depositIntro.tip")}</p>
+          </div>
+        );
+      case "depositSteps":
+        return (
+          <>
+            {Array.from({ length: 10 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.td.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.td.s${n}.d`)}</p>
+                  <Img />
+                  {n < 10 && <Divider />}
+                </div>
+              );
+            })}
+          </>
+        );
+      case "fundIntro":
+        return (
+          <div className="rounded-lg p-5 mb-4" style={{ background: "rgba(35,117,197,0.12)", border: "1px solid rgba(35,117,197,0.35)" }}>
+            <p className="text-foreground text-sm leading-[1.9] whitespace-pre-line">⚠️ {t("guide.fundIntro.tip")}</p>
+          </div>
+        );
+      case "fundSteps":
+        return (
+          <>
+            {Array.from({ length: 13 }, (_, i) => {
+              const n = i + 1;
+              return (
+                <div key={n} className="mb-8">
+                  <Label num={n} />
+                  <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.fd.s${n}.t`)}</h3>
+                  <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.fd.s${n}.d`)}</p>
+                  {n === 4 && (
+                    <div className="card-glass rounded-lg overflow-hidden my-4">
+                      <table className="w-full text-sm">
+                        <tbody>
+                          {["daysElapsed","annualizedReturn","units","price","totalCapital","cumulativeProfit","currentRoi","annualizedReturn2"].map((k) => (
+                            <tr key={k} className="border-b border-[rgba(35,117,197,0.1)] last:border-b-0">
+                              <td className="px-4 py-3 font-mono text-foreground whitespace-nowrap">{t(`guide.fd.s4.${k}.t`)}</td>
+                              <td className="px-4 py-3 text-white-40">{t(`guide.fd.s4.${k}.d`)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {n === 6 && (
+                    <>
+                      <p className="text-[#F87171] text-xs leading-[1.8] mt-2">※ {t("guide.fd.s6.warn")}</p>
+                      <div className="rounded-lg p-4 my-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                        <p className="text-foreground text-sm font-medium mb-2">{t("guide.fd.s6.exTitle")}</p>
+                        <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.fd.s6.exBody")}</p>
+                      </div>
+                    </>
+                  )}
+                  <Img />
+                  {n < 13 && <Divider />}
+                </div>
+              );
+            })}
+          </>
+        );
       case "faq":
         return (
           <div className="space-y-8">
