@@ -31,11 +31,27 @@ import deposit07Asset from "@/assets/deposit_07.png.asset.json";
 import deposit08Asset from "@/assets/deposit_08.png.asset.json";
 import deposit09Asset from "@/assets/deposit_09.png.asset.json";
 import deposit10Asset from "@/assets/deposit_10.png.asset.json";
+import fund01Asset from "@/assets/fund_01.png.asset.json";
+import fund02Asset from "@/assets/fund_02.png.asset.json";
+import fund03Asset from "@/assets/fund_03.png.asset.json";
+import fund05Asset from "@/assets/fund_05.png.asset.json";
+import fund06Asset from "@/assets/fund_06.png.asset.json";
+import fund07Asset from "@/assets/fund_07.png.asset.json";
+import fund08Asset from "@/assets/fund_08.png.asset.json";
+import fund09Asset from "@/assets/fund_09.png.asset.json";
+import fund10Asset from "@/assets/fund_10.png.asset.json";
+import fund11Asset from "@/assets/fund_11.png.asset.json";
 const depositImgs: Record<number, string> = {
   1: deposit01Asset.url, 2: deposit02Asset.url, 3: deposit03Asset.url,
   4: deposit04Asset.url, 5: deposit05Asset.url, 6: deposit06Asset.url,
   7: deposit07Asset.url, 8: deposit08Asset.url, 9: deposit09Asset.url,
   10: deposit10Asset.url,
+};
+const fundImgs: Record<number, string> = {
+  1: fund01Asset.url, 2: fund02Asset.url, 3: fund03Asset.url,
+  5: fund05Asset.url, 6: fund06Asset.url, 7: fund07Asset.url,
+  8: fund08Asset.url, 9: fund09Asset.url, 10: fund10Asset.url,
+  11: fund11Asset.url,
 };
 const result02Img = "/images/result-02.webp";
 const result03Img = "/images/result-03.webp";
