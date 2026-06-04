@@ -231,7 +231,7 @@ const EcbGuideOverlay = () => {
     if (active === "fundSteps") {
       return (
         <div className="flex justify-between items-center mt-12 pt-6 border-t border-[rgba(35,117,197,0.2)]">
-          <button onClick={() => handleNav("depositIntro")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
+          <button onClick={() => handleNav("depositSteps")} className="card-glass px-5 py-2.5 rounded-lg text-sm text-white-80 hover:text-foreground transition-colors">
             ← {t("guide.group.deposit.title")}
           </button>
           <button onClick={() => handleNav("index")} className="bg-[#75BE5A] hover:bg-[#65AE4A] px-5 py-2.5 rounded-lg text-sm text-foreground font-medium transition-all">
