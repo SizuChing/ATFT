@@ -940,38 +940,14 @@ const EcbGuideOverlay = () => {
 
   return (
     <div
-      className="ecb-theme fixed inset-0 z-[9999] flex lg:items-center lg:justify-center lg:p-6 lg:bg-black/70 lg:backdrop-blur-sm"
+      className="ecb-theme fixed inset-0 z-[9999] flex bg-[#1A2F4A] text-foreground"
       style={{
-        opacity: animating ? 1 : 0,
-        transition: "opacity 0.3s ease",
-      }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget && typeof window !== "undefined" && window.innerWidth >= 1024) {
-          close();
-        }
+        transform: animating ? "translateX(0)" : "translateX(100%)",
+        transition: "transform 0.4s ease",
       }}
     >
-      <style>{`
-        .ecb-modal-shell {
-          transform: translateX(100%);
-          transition: transform 0.4s ease;
-        }
-        .ecb-modal-shell[data-animating="true"] { transform: translateX(0); }
-        @media (min-width: 1024px) {
-          .ecb-modal-shell {
-            transform: scale(0.96);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          .ecb-modal-shell[data-animating="true"] { transform: scale(1); opacity: 1; }
-        }
-      `}</style>
-      <div
-        className="ecb-modal-shell relative flex w-full h-full bg-[#1A2F4A] text-foreground lg:w-full lg:max-w-[1200px] lg:h-full lg:max-h-[860px] lg:rounded-2xl lg:overflow-hidden lg:shadow-2xl lg:border lg:border-[rgba(35,117,197,0.4)]"
-        data-animating={animating}
-      >
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-[260px] h-full border-r border-[rgba(35,117,197,0.3)] bg-[#1E3A5C] overflow-y-auto">
+      <aside className="hidden lg:flex flex-col w-[260px] min-h-screen border-r border-[rgba(35,117,197,0.3)] bg-[#1E3A5C]">
         <div className="p-6 border-b border-[rgba(35,117,197,0.3)]">
           <div className="flex items-center gap-3">
             <img src={aiftLogo} alt="AIFT" className="h-7" />
@@ -1090,7 +1066,6 @@ const EcbGuideOverlay = () => {
           </div>
         )}
       </main>
-      </div>
     </div>
   );
 };

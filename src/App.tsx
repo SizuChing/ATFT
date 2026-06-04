@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { EcbGuideProvider } from "@/contexts/EcbGuideContext";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import EcbManual from "./pages/EcbManual.tsx";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/ecb-manual" element={<EcbManual />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
