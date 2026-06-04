@@ -1023,21 +1023,38 @@ const EcbGuideOverlay = () => {
         <span>{t("guide.nav.index")}</span>
       </button>
       <div className={`border-b border-[rgba(35,117,197,0.3)] ${mobile ? "mx-6 my-2" : "mx-5 my-2"}`} />
-      {sectionKeys.map((key) => {
-        const Icon = sectionIcons[key];
+      {groups.map((g) => {
+        const GIcon = g.icon;
+        const open = openSidebarGroups[g.key];
         return (
-          <button key={key} onClick={() => handleNav(key)}
-            className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-2.5"} text-sm flex items-center gap-3 transition-colors relative ${
-              active === key
-                ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
-                : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
-            }`}>
-            {!mobile && active === key && (
-              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
-            )}
-            <Icon size={16} />
-            <span>{t(`guide.nav.${key}`)}</span>
-          </button>
+          <div key={g.key} className="mb-1">
+            <button
+              onClick={() => setOpenSidebarGroups((prev) => ({ ...prev, [g.key]: !prev[g.key] }))}
+              className={`w-full text-left ${mobile ? "px-6 py-3" : "px-5 py-3"} flex items-center gap-3 transition-colors text-foreground font-bold text-sm`}
+              style={{ background: "rgba(255,255,255,0.06)" }}
+            >
+              <GIcon size={16} className="text-[#2375C5]" />
+              <span className="flex-1">{t(`guide.group.${g.key}.title`)}</span>
+              <ChevronDown size={14} className="transition-transform" style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }} />
+            </button>
+            {open && g.sections.map((key) => {
+              const Icon = sectionIcons[key];
+              return (
+                <button key={key} onClick={() => handleNav(key)}
+                  className={`w-full text-left ${mobile ? "pl-10 pr-6 py-2.5" : "pl-9 pr-5 py-2"} text-sm flex items-center gap-3 transition-colors relative ${
+                    active === key
+                      ? `text-${mobile ? "primary" : "foreground"} bg-[rgba(35,117,197,0.12)]`
+                      : "text-white-80 hover:text-foreground hover:bg-[rgba(35,117,197,0.06)]"
+                  }`}>
+                  {!mobile && active === key && (
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r bg-[#2375C5]" />
+                  )}
+                  <Icon size={14} />
+                  <span>{t(`guide.nav.${key}`)}</span>
+                </button>
+              );
+            })}
+          </div>
         );
       })}
     </nav>
