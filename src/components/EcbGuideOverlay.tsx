@@ -69,7 +69,7 @@ const sectionKeys = [
   "overview", "documents", "signup", "login", "account",
   "corporate", "corpAddress", "personal", "homeAddress",
   "review", "consent", "twoFactor", "faq",
-  "depositIntro", "depositSteps",
+  "depositSteps",
   "fundIntro", "fundSteps",
 ] as const;
 
