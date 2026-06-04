@@ -125,7 +125,8 @@ const EcbGuideOverlay = () => {
   const [openSidebarGroups, setOpenSidebarGroups] = useState<Record<GroupKey, boolean>>({
     ecb: true, deposit: false, fund: false,
   });
-  const { t } = useLanguage();
+  const { t, locale, setLocale } = useLanguage();
+  const [langOpen, setLangOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
