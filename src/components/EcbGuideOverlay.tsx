@@ -176,7 +176,7 @@ const EcbGuideOverlay = () => {
     <div className="relative">
       <button
         onClick={() => setLangOpen((v) => !v)}
-        className="flex items-center gap-1.5 text-xs text-white hover:bg-white/10 transition-colors"
+        className="flex items-center gap-1.5 text-xs text-white-80 hover:bg-white/10 transition-colors"
         style={{
           background: "transparent",
           border: "1px solid rgba(255,255,255,0.3)",
