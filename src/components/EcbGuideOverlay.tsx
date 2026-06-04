@@ -1142,34 +1142,71 @@ const EcbGuideOverlay = () => {
                 </p>
               </div>
 
-              {/* Card grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                {sectionKeys.map((key) => {
-                  const Icon = sectionIcons[key];
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => handleNav(key)}
-                      className="group flex items-center gap-3 h-14 px-5 rounded-lg text-left transition-all duration-[250ms] hover:-translate-y-[3px]"
-                      style={{
-                        background: "#FFFFFF",
-                        border: "1px solid #E0E4EA",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "#2375C5";
-                        e.currentTarget.style.background = "#F0F4FA";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "#E0E4EA";
-                        e.currentTarget.style.background = "#FFFFFF";
-                      }}
-                    >
-                      <Icon size={20} className="text-[#2375C5] shrink-0" />
-                      <span className="text-[#333333] text-sm font-medium">{t(`guide.nav.${key}`)}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* 3 category big cards */}
+              {!expandedGroup && (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {groups.map((g) => {
+                    const GIcon = g.icon;
+                    return (
+                      <button
+                        key={g.key}
+                        onClick={() => setExpandedGroup(g.key)}
+                        className="group relative text-left transition-all duration-[250ms] hover:-translate-y-1 overflow-hidden"
+                        style={{
+                          background: "#FFFFFF",
+                          border: "1px solid #E0E4EA",
+                          borderRadius: 12,
+                          padding: 32,
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "#2375C5";
+                          e.currentTarget.style.background = "#F0F4FA";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "#E0E4EA";
+                          e.currentTarget.style.background = "#FFFFFF";
+                        }}
+                      >
+                        <span className="absolute left-0 top-0 bottom-0 w-1" style={{ background: "#2375C5" }} />
+                        <GIcon size={40} className="text-[#2375C5] mb-4" />
+                        <h3 className="text-[#333333] font-bold mb-1" style={{ fontSize: 18 }}>{t(`guide.group.${g.key}.title`)}</h3>
+                        <p className="text-[#666666]" style={{ fontSize: 13 }}>{t(`guide.group.${g.key}.sub`)}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Sub-cards for expanded group */}
+              {expandedGroup && (
+                <div>
+                  <button
+                    onClick={() => setExpandedGroup(null)}
+                    className="flex items-center gap-2 text-sm text-white-80 hover:text-foreground transition-colors mb-4"
+                  >
+                    <ArrowLeft size={14} /> {t("guide.backToCats") || "返回分類"}
+                  </button>
+                  <h2 className="text-foreground text-xl font-bold mb-4">{t(`guide.group.${expandedGroup}.title`)}</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    {groups.find((g) => g.key === expandedGroup)!.sections.map((key) => {
+                      const Icon = sectionIcons[key];
+                      return (
+                        <button
+                          key={key}
+                          onClick={() => handleNav(key)}
+                          className="group flex items-center gap-3 h-14 px-5 rounded-lg text-left transition-all duration-[250ms] hover:-translate-y-[3px]"
+                          style={{ background: "#FFFFFF", border: "1px solid #E0E4EA" }}
+                          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#2375C5"; e.currentTarget.style.background = "#F0F4FA"; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E0E4EA"; e.currentTarget.style.background = "#FFFFFF"; }}
+                        >
+                          <Icon size={20} className="text-[#2375C5] shrink-0" />
+                          <span className="text-[#333333] text-sm font-medium">{t(`guide.nav.${key}`)}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ) : (
