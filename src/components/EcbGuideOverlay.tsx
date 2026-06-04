@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 // Review section assets: result-02, result-03, result-05
 import {
-  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft,
+  X, ChevronRight, ChevronDown, Menu, LayoutGrid, Building, PiggyBank, TrendingUp, ArrowLeft, Globe,
   ClipboardList, FileText, PenLine, KeyRound, User, Building2,
   MapPin, UserRound, Home, BarChart3, ScrollText, ShieldCheck, HelpCircle,
   type LucideIcon,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
+import type { Locale } from "@/i18n/translations";
 import aiftLogo from "@/assets/aift-logo.png";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
@@ -124,7 +125,8 @@ const EcbGuideOverlay = () => {
   const [openSidebarGroups, setOpenSidebarGroups] = useState<Record<GroupKey, boolean>>({
     ecb: true, deposit: false, fund: false,
   });
-  const { t } = useLanguage();
+  const { t, locale, setLocale } = useLanguage();
+  const [langOpen, setLangOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -162,6 +164,63 @@ const EcbGuideOverlay = () => {
     }
     contentRef.current?.scrollTo({ top: 0 });
   };
+
+  const localeLabels: Record<Locale, string> = {
+    "zh-TW": "繁中",
+    "zh-CN": "简中",
+    en: "EN",
+    ja: "日本語",
+  };
+
+  const renderLangSwitch = () => (
+    <div className="relative">
+      <button
+        onClick={() => setLangOpen((v) => !v)}
+        className="flex items-center gap-1.5 text-xs text-white hover:bg-white/10 transition-colors"
+        style={{
+          background: "transparent",
+          border: "1px solid rgba(255,255,255,0.3)",
+          borderRadius: 6,
+          padding: "6px 12px",
+        }}
+      >
+        <Globe size={14} />
+        {localeLabels[locale]}
+      </button>
+      {langOpen && (
+        <div
+          className="absolute top-full right-0 mt-2 py-1 min-w-[120px] z-50"
+          style={{
+            background: "#2375C5",
+            borderRadius: 8,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+          }}
+        >
+          {(Object.keys(localeLabels) as Locale[]).map((l) => {
+            const selected = l === locale;
+            return (
+              <button
+                key={l}
+                onClick={() => { setLocale(l); setLangOpen(false); }}
+                className="block w-full text-left text-sm transition-colors"
+                style={{
+                  color: "#FFFFFF",
+                  padding: "8px 14px",
+                  paddingLeft: selected ? 14 : 14,
+                  fontWeight: selected ? 700 : 400,
+                  borderLeft: selected ? "3px solid #64CFC3" : "3px solid transparent",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.15)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+              >
+                {localeLabels[l]}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 
   const groupSections = active === "index" ? [] : groups.find((g) => g.key === sectionGroup(active as SectionKey))!.sections;
   const idx = active === "index" ? -1 : groupSections.indexOf(active as SectionKey);
@@ -1168,6 +1227,7 @@ const EcbGuideOverlay = () => {
           <button onClick={() => setDrawerOpen(!drawerOpen)} className="text-foreground">
             {drawerOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
+          {renderLangSwitch()}
           <button onClick={close} className="text-white-80 hover:text-foreground text-sm flex items-center gap-1">
             <X size={16} /> {t("guide.close") || "關閉"}
           </button>
@@ -1185,16 +1245,27 @@ const EcbGuideOverlay = () => {
       <main ref={contentRef} className="flex-1 overflow-y-auto pt-14 lg:pt-0">
         {/* Breadcrumb */}
         <div className="sticky top-0 z-30 bg-[#1E3A5C]/90 backdrop-blur-md border-b border-[rgba(35,117,197,0.3)] px-6 lg:px-10 py-3">
-          <div className="flex items-center gap-2 text-xs text-[#64CFC3]">
-            <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
-            <ChevronRight size={12} />
-            <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
-            {active !== "index" && (
-              <>
-                <ChevronRight size={12} />
-                <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
-              </>
-            )}
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-xs text-[#64CFC3]">
+              <button onClick={close} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.home")}</button>
+              <ChevronRight size={12} />
+              <button onClick={() => handleNav("index")} className="hover:text-foreground transition-colors">{t("guide.breadcrumb.manual")}</button>
+              {active !== "index" && (
+                <>
+                  <ChevronRight size={12} />
+                  <span className="text-foreground">{t(`guide.nav.${active}`)}</span>
+                </>
+              )}
+            </div>
+            <div className="hidden lg:flex items-center gap-2">
+              {renderLangSwitch()}
+              <button
+                onClick={close}
+                className="flex items-center gap-1 text-xs text-white-80 hover:text-foreground transition-colors px-2 py-1"
+              >
+                <X size={14} /> {t("guide.close") || "關閉"}
+              </button>
+            </div>
           </div>
         </div>
 
