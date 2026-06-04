@@ -995,7 +995,7 @@ const EcbGuideOverlay = () => {
                   <Label num={n} />
                   <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.td.s${n}.t`)}</h3>
                   <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.td.s${n}.d`)}</p>
-                  <Img />
+                  <img src={depositImgs[n]} alt={`Time Deposit Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 10 && <Divider />}
                 </div>
               );
