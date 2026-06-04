@@ -86,6 +86,10 @@ const EcbGuideOverlay = () => {
   const [active, setActive] = useState<ActivePage>("index");
   const [docTab, setDocTab] = useState<"personal" | "corporate">("personal");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [expandedGroup, setExpandedGroup] = useState<GroupKey | null>(null);
+  const [openSidebarGroups, setOpenSidebarGroups] = useState<Record<GroupKey, boolean>>({
+    ecb: true, deposit: false, fund: false,
+  });
   const { t } = useLanguage();
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -95,6 +99,8 @@ const EcbGuideOverlay = () => {
       requestAnimationFrame(() => setAnimating(true));
       if (initialSection && (sectionKeys as readonly string[]).includes(initialSection)) {
         setActive(initialSection as SectionKey);
+        const g = sectionGroup(initialSection as SectionKey);
+        setOpenSidebarGroups((prev) => ({ ...prev, [g]: true }));
       }
       if (initialDocTab) {
         setDocTab(initialDocTab);
@@ -105,6 +111,7 @@ const EcbGuideOverlay = () => {
         setVisible(false);
       setActive("index");
       setDrawerOpen(false);
+      setExpandedGroup(null);
       }, 400);
       return () => clearTimeout(timer);
     }
@@ -115,6 +122,10 @@ const EcbGuideOverlay = () => {
   const handleNav = (key: ActivePage) => {
     setActive(key);
     setDrawerOpen(false);
+    if (key !== "index") {
+      const g = sectionGroup(key as SectionKey);
+      setOpenSidebarGroups((prev) => ({ ...prev, [g]: true }));
+    }
     contentRef.current?.scrollTo({ top: 0 });
   };
 
