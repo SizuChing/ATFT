@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import aiftLogo from "@/assets/aift-logo.png";
+import { getImage } from "@/assets/images";
 import {
   Accordion,
   AccordionContent,
