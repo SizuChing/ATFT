@@ -36,6 +36,16 @@ const ECBSection = () => {
     <section id="ecb" className="py-20 lg:py-32 px-6 lg:px-12">
       <div ref={ref} className="max-w-7xl mx-auto opacity-0">
         <div className="text-center mb-10">
+          <p
+            className="font-heading-cn mb-4"
+            style={{
+              fontSize: "clamp(20px, 3.2vw, 36px)",
+              color: "#F87171",
+              lineHeight: 1.3,
+            }}
+          >
+            {t("ecb.cta.headline")}
+          </p>
           <h2 className="font-heading-cn text-2xl sm:text-3xl lg:text-4xl text-foreground mb-4">
             {t("nav.ecb")}
           </h2>
