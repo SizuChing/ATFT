@@ -1,8 +1,8 @@
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ecbLogo from "@/assets/partner-ecb.png";
-import binanceLogo from "@/assets/partner-binance.png";
-import coinwLogo from "@/assets/partner-coinw.png";
+import ecbLogo from "@/assets/partner-ecb.webp";
+import binanceLogo from "@/assets/partner-binance.webp";
+import coinwLogo from "@/assets/partner-coinw.webp";
 
 const PartnersSection = () => {
   const ref = useScrollFadeUp();

@@ -9,7 +9,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import type { Locale } from "@/i18n/translations";
-import aiftLogo from "@/assets/aift-logo.png";
+import aiftLogo from "@/assets/aift-logo.webp";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
 import step02Img from "@/assets/step02-signup.webp";
