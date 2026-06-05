@@ -44,6 +44,7 @@ import fund10Asset from "@/assets/fund_10.png.asset.json";
 import fund11Asset from "@/assets/fund_11.png.asset.json";
 import fund12Asset from "@/assets/fund_12.png.asset.json";
 import fund13Asset from "@/assets/fund_13.png.asset.json";
+import { getImage } from "@/assets/images";
 const depositImgs: Record<number, string> = {
   1: deposit01Asset.url, 2: deposit02Asset.url, 3: deposit03Asset.url,
   4: deposit04Asset.url, 5: deposit05Asset.url, 6: deposit06Asset.url,
@@ -56,9 +57,9 @@ const fundImgs: Record<number, string> = {
   8: fund08Asset.url, 9: fund09Asset.url, 10: fund10Asset.url,
   11: fund11Asset.url, 12: fund12Asset.url, 13: fund13Asset.url,
 };
-const result02Img = "/images/result-02.webp";
-const result03Img = "/images/result-03.webp";
-const result05Img = "/images/result-05.webp";
+const result02Img = getImage("result-02.webp");
+const result03Img = getImage("result-03.webp");
+const result05Img = getImage("result-05.webp");
 import {
   Accordion,
   AccordionContent,
@@ -631,39 +632,39 @@ const EcbGuideOverlay = () => {
   );
 
   const addressImgs = [
-    "/images/address-01.webp",
-    "/images/address-02.webp",
-    "/images/address-03.webp",
-    "/images/address-04.webp",
-    "/images/address-05.webp",
+    getImage("address-01.webp"),
+    getImage("address-02.webp"),
+    getImage("address-03.webp"),
+    getImage("address-04.webp"),
+    getImage("address-05.webp"),
   ];
 
   const individualImgs = [
-    "/images/individual-01.webp",
-    "/images/individual-02.webp",
-    "/images/individual-03.webp",
-    "/images/individual-04.webp",
-    "/images/individual-05.webp",
+    getImage("individual-01.webp"),
+    getImage("individual-02.webp"),
+    getImage("individual-03.webp"),
+    getImage("individual-04.webp"),
+    getImage("individual-05.webp"),
   ];
 
   const corpAddressImgs = [
-    "/images/corp-address-01.webp",
-    "/images/corp-address-02.webp",
-    "/images/corp-address-03.webp",
-    "/images/corp-address-04.webp",
+    getImage("corp-address-01.webp"),
+    getImage("corp-address-02.webp"),
+    getImage("corp-address-03.webp"),
+    getImage("corp-address-04.webp"),
   ];
 
   const corporateImgs = [
-    "/images/corporate-01.webp",
-    "/images/corporate-02.webp",
-    "/images/corporate-03.webp",
+    getImage("corporate-01.webp"),
+    getImage("corporate-02.webp"),
+    getImage("corporate-03.webp"),
   ];
 
   const registerImages = [
-    "/images/register-01.webp",
-    "/images/register-02.webp",
-    "/images/register-03.webp",
-    "/images/register-04.webp",
+    getImage("register-01.webp"),
+    getImage("register-02.webp"),
+    getImage("register-03.webp"),
+    getImage("register-04.webp"),
   ];
 
   const renderAccount = () => (
@@ -1022,7 +1023,7 @@ const EcbGuideOverlay = () => {
                   {n === 3 && (
                     <p className="text-[#F87171] text-xs leading-[1.8] mt-1">※ {t("guide.lg.s3.warn")}</p>
                   )}
-                  <img src={`/images/login-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`login-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 4 && <Divider />}
                 </div>
               );
