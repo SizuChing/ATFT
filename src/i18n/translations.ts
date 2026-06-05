@@ -1392,6 +1392,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.ecb": "ECB Partnership",
     "nav.partners": "Partners",
     "nav.cta": "Apply Now",
+    "ecb.cta.headline": "Ready to let AI trade for you?",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "Smart Contract Trading × AI Automation",
