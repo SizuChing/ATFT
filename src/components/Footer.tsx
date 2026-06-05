@@ -1,5 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import aiftLogo from "@/assets/aift-logo.png";
+import aiftLogo from "@/assets/aift-logo.webp";
 
 const Footer = () => {
   const { t } = useLanguage();
