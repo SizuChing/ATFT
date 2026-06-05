@@ -10,6 +10,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.ecb": "操作申請",
     "nav.partners": "合作夥伴",
     "nav.cta": "操作申請",
+    "ecb.cta.headline": "準備好讓 AI 為您交易了嗎？",
 
     // Hero
     "hero.subtitle": "AI Automated Trading System",
