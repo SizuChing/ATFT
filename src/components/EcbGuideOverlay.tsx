@@ -9,7 +9,6 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEcbGuide } from "@/contexts/EcbGuideContext";
 import type { Locale } from "@/i18n/translations";
-import aiftLogo from "@/assets/aift-logo.webp";
 import passportImg from "@/assets/passport.webp";
 import selfieImg from "@/assets/selfie.webp";
 import step02Img from "@/assets/step02-signup.webp";
@@ -22,41 +21,14 @@ import auth05Img from "@/assets/auth-05.webp";
 import agree01Img from "@/assets/agree-01.webp";
 import agree02Img from "@/assets/agree-02.webp";
 import agree03Img from "@/assets/agree-03.webp";
-import deposit01Asset from "@/assets/deposit_01.png.asset.json";
-import deposit02Asset from "@/assets/deposit_02.png.asset.json";
-import deposit03Asset from "@/assets/deposit_03.png.asset.json";
-import deposit04Asset from "@/assets/deposit_04.png.asset.json";
-import deposit05Asset from "@/assets/deposit_05.png.asset.json";
-import deposit06Asset from "@/assets/deposit_06.png.asset.json";
-import deposit07Asset from "@/assets/deposit_07.png.asset.json";
-import deposit08Asset from "@/assets/deposit_08.png.asset.json";
-import deposit09Asset from "@/assets/deposit_09.png.asset.json";
-import deposit10Asset from "@/assets/deposit_10.png.asset.json";
-import fund01Asset from "@/assets/fund_01.png.asset.json";
-import fund02Asset from "@/assets/fund_02.png.asset.json";
-import fund03Asset from "@/assets/fund_03.png.asset.json";
-import fund05Asset from "@/assets/fund_05.png.asset.json";
-import fund06Asset from "@/assets/fund_06.png.asset.json";
-import fund07Asset from "@/assets/fund_07.png.asset.json";
-import fund08Asset from "@/assets/fund_08.png.asset.json";
-import fund09Asset from "@/assets/fund_09.png.asset.json";
-import fund10Asset from "@/assets/fund_10.png.asset.json";
-import fund11Asset from "@/assets/fund_11.png.asset.json";
-import fund12Asset from "@/assets/fund_12.png.asset.json";
-import fund13Asset from "@/assets/fund_13.png.asset.json";
 import { getImage } from "@/assets/images";
-const depositImgs: Record<number, string> = {
-  1: deposit01Asset.url, 2: deposit02Asset.url, 3: deposit03Asset.url,
-  4: deposit04Asset.url, 5: deposit05Asset.url, 6: deposit06Asset.url,
-  7: deposit07Asset.url, 8: deposit08Asset.url, 9: deposit09Asset.url,
-  10: deposit10Asset.url,
-};
-const fundImgs: Record<number, string> = {
-  1: fund01Asset.url, 2: fund02Asset.url, 3: fund03Asset.url,
-  5: fund05Asset.url, 6: fund06Asset.url, 7: fund07Asset.url,
-  8: fund08Asset.url, 9: fund09Asset.url, 10: fund10Asset.url,
-  11: fund11Asset.url, 12: fund12Asset.url, 13: fund13Asset.url,
-};
+const pad = (n: number) => String(n).padStart(2, "0");
+const depositImgs: Record<number, string> = Object.fromEntries(
+  Array.from({ length: 10 }, (_, i) => [i + 1, getImage(`time_deposit-${pad(i + 1)}.webp`)])
+);
+const fundImgs: Record<number, string> = Object.fromEntries(
+  [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((n) => [n, getImage(`fund-${pad(n)}.webp`)])
+);
 const result02Img = getImage("result-02.webp");
 const result03Img = getImage("result-03.webp");
 const result05Img = getImage("result-05.webp");
