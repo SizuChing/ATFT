@@ -241,7 +241,7 @@ const EcbGuide = () => {
                   {n === 3 && (
                     <p className="text-[#F87171] text-xs leading-[1.8] mt-1">※ {t("guide.lg.s3.warn")}</p>
                   )}
-                  <img src={`/images/login-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`login-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 4 && <Divider />}
                 </div>
               );
@@ -258,7 +258,7 @@ const EcbGuide = () => {
               <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s1.t")}</h3>
               <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.acc.s1.d")}</p>
               <Note text={t("guide.acc.s1.n1")} />
-              <img src="/images/register-01.webp" alt="Step 1" className="rounded-lg my-4 max-w-md w-full" />
+              <img src={getImage("register-01.webp")} alt="Step 1" className="rounded-lg my-4 max-w-md w-full" />
             </div>
             <Divider />
             {/* STEP 02 */}
@@ -280,7 +280,7 @@ const EcbGuide = () => {
               </div>
               <p className="text-[#F87171] text-xs leading-[1.8]">※ {t("guide.acc.s2.warn")}</p>
               <Note text={t("guide.acc.s2.n1")} />
-              <img src="/images/register-02.webp" alt="Step 2" className="rounded-lg my-4 max-w-md w-full" />
+              <img src={getImage("register-02.webp")} alt="Step 2" className="rounded-lg my-4 max-w-md w-full" />
             </div>
             <Divider />
             {/* STEP 03 */}
@@ -288,7 +288,7 @@ const EcbGuide = () => {
               <Label num={3} />
               <h3 className="text-foreground text-base font-medium mb-2">{t("guide.acc.s3.t")}</h3>
               <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t("guide.acc.s3.d")}</p>
-              <img src="/images/register-03.webp" alt="Step 3" className="rounded-lg my-4 max-w-md w-full" />
+              <img src={getImage("register-03.webp")} alt="Step 3" className="rounded-lg my-4 max-w-md w-full" />
             </div>
             <Divider />
             {/* STEP 04 */}
@@ -300,7 +300,7 @@ const EcbGuide = () => {
                 <p className="text-white-40 text-sm">• {t("guide.acc.s4.type1")}</p>
                 <p className="text-white-40 text-sm">• {t("guide.acc.s4.type2")}</p>
               </div>
-              <img src="/images/register-04.webp" alt="Step 4" className="rounded-lg my-4 max-w-md w-full" />
+              <img src={getImage("register-04.webp")} alt="Step 4" className="rounded-lg my-4 max-w-md w-full" />
             </div>
           </>
         );
@@ -316,7 +316,7 @@ const EcbGuide = () => {
                   <Label num={n} />
                   <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.corp.s${n}.t`)}</h3>
                   <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.corp.s${n}.d`)}</p>
-                  <img src={`/images/corporate-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`corporate-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 3 && <Divider />}
                 </div>
               );
@@ -335,7 +335,7 @@ const EcbGuide = () => {
                   <Label num={n} />
                   <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.ca.s${n}.t`)}</h3>
                   <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.ca.s${n}.d`)}</p>
-                  <img src={`/images/corp-address-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`corp-address-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 4 && <Divider />}
                 </div>
               );
@@ -354,7 +354,7 @@ const EcbGuide = () => {
                   <Label num={n} />
                   <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.per.s${n}.t`)}</h3>
                   <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.per.s${n}.d`)}</p>
-                  <img src={`/images/individual-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`individual-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 5 && <Divider />}
                 </div>
               );
@@ -373,7 +373,7 @@ const EcbGuide = () => {
                   <Label num={n} />
                   <h3 className="text-foreground text-base font-medium mb-2">{t(`guide.ha.s${n}.t`)}</h3>
                   <p className="text-white-40 text-sm leading-[1.9] whitespace-pre-line">{t(`guide.ha.s${n}.d`)}</p>
-                  <img src={`/images/address-0${n}.webp`} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
+                  <img src={getImage(`address-0${n}.webp`)} alt={`Step ${n}`} className="rounded-lg my-4 max-w-md w-full" />
                   {n < 5 && <Divider />}
                 </div>
               );
