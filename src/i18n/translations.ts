@@ -713,6 +713,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.ecb": "操作申请",
     "nav.partners": "合作伙伴",
     "nav.cta": "操作申请",
+    "ecb.cta.headline": "准备好让 AI 为您交易了吗？",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "智能合约交易系统 × AI 自动化交易",
