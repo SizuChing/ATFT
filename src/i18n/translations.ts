@@ -2072,6 +2072,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.ecb": "運用申込",
     "nav.partners": "パートナー",
     "nav.cta": "運用申込",
+    "ecb.cta.headline": "AIに取引を任せる準備はできましたか？",
 
     "hero.subtitle": "AI Automated Trading System",
     "hero.tag": "スマートコントラクト取引 × AI 自動売買",
