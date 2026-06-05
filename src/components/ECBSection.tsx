@@ -40,7 +40,7 @@ const ECBSection = () => {
             className="font-heading-cn mb-4"
             style={{
               fontSize: "clamp(20px, 3.2vw, 36px)",
-              color: "#F87171",
+              color: "#FFFFFF",
               lineHeight: 1.3,
             }}
           >
