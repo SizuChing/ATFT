@@ -8,7 +8,6 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import RiskSection from "@/components/RiskSection";
 import ECBSection from "@/components/ECBSection";
 import PartnersSection from "@/components/PartnersSection";
-import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import EcbGuideOverlay from "@/components/EcbGuideOverlay";
 
@@ -25,7 +24,6 @@ const Index = () => {
       <RiskSection />
       <ECBSection />
       <PartnersSection />
-      <CTASection />
       <Footer />
       <EcbGuideOverlay />
     </div>
