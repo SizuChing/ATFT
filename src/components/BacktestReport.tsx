@@ -199,6 +199,16 @@ const BacktestReport = () => {
           </table>
         </div>
 
+        {/* Highlights */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 text-center">
+          {highlights.map((h) => (
+            <div key={h.labelKey}>
+              <AnimatedNumber target={h.value} />
+              <p className="text-white-40 text-sm mt-2">{t(h.labelKey)}</p>
+            </div>
+          ))}
+        </div>
+
         {/* Divider + ECB FUND table */}
         <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "40px" }} className="pt-8">
           <div className="text-center mb-3">
@@ -241,16 +251,6 @@ const BacktestReport = () => {
               </tbody>
             </table>
           </div>
-        </div>
-
-        {/* Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 text-center">
-          {highlights.map((h) => (
-            <div key={h.labelKey}>
-              <AnimatedNumber target={h.value} />
-              <p className="text-white-40 text-sm mt-2">{t(h.labelKey)}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
