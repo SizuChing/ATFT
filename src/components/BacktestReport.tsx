@@ -140,7 +140,7 @@ const BacktestReport = () => {
           </p>
 
           {/* Disclaimer */}
-          <p className="absolute top-0 right-0 text-[11px] max-w-[280px] text-right" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="mt-4 lg:mt-0 lg:absolute lg:top-0 lg:right-0 text-[11px] max-w-[280px] mx-auto lg:mx-0 text-center lg:text-right" style={{ color: "rgba(255,255,255,0.3)" }}>
             {t("backtest.disclaimer")}
           </p>
         </div>
