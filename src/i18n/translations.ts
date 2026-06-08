@@ -183,6 +183,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.highlight1": "2023 年度報告",
     "backtest.highlight2": "2024 年度報告",
     "backtest.highlight3": "2025 年度報告",
+    "backtest.ethLabel": "ETH AI · 回測數據",
+    "backtest.fundLabel": "ECB FUND · 實盤績效",
+    "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
+    "backtest.fundDesc1": "以下為『AIFT Steady Growth Fund A001』歷史每月實際年化報酬率（%）記錄",
+    "backtest.fundDesc2": "基金啟動日期：2026-04-08",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI 預測",
