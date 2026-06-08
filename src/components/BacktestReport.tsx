@@ -27,6 +27,13 @@ const monthlyData = [
 
 const monthHeaders = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+const fundMonthlyData = [
+  {
+    year: "2026",
+    months: [null, null, null, 4.43, 2.53, null, null, null, null, null, null, null] as (number | null)[],
+  },
+];
+
 const highlights = [
   { value: 42.47, labelKey: "backtest.highlight1" },
   { value: 55.25, labelKey: "backtest.highlight2" },
@@ -139,6 +146,11 @@ const BacktestReport = () => {
         </div>
 
         {/* Table */}
+        <div className="text-center mb-3">
+          <span className="text-[11px] tracking-[3px] uppercase text-primary">
+            {t("backtest.ethLabel")}
+          </span>
+        </div>
         <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
           {/* Table header label */}
           <div
@@ -185,6 +197,50 @@ const BacktestReport = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Divider + ECB FUND table */}
+        <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "40px" }} className="pt-8">
+          <div className="text-center mb-3">
+            <span className="text-[11px] tracking-[3px] uppercase text-primary">
+              {t("backtest.fundLabel")}
+            </span>
+          </div>
+          <p className="text-white-40 text-center text-sm sm:text-base leading-relaxed mb-4">
+            {t("backtest.fundDesc1")}
+            <br />
+            {t("backtest.fundDesc2")}
+          </p>
+          <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
+            <div
+              className="px-6 py-3 text-center text-sm font-bold text-foreground"
+              style={{ background: "linear-gradient(135deg, #5B1F8A, #7B3DB8)" }}
+            >
+              {t("backtest.fundTableTitle")}
+            </div>
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">{t("backtest.year")}</th>
+                  {monthHeaders.map((m) => (
+                    <th key={m} className="px-2 py-3 text-center text-white-80 font-medium whitespace-nowrap">{m}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {fundMonthlyData.map((row) => (
+                  <tr key={row.year} className="border-b border-border/50">
+                    <td className="px-3 py-3 text-foreground font-bold whitespace-nowrap">{row.year}</td>
+                    {row.months.map((val, j) => (
+                      <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
+                        <CellValue val={val} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Highlights */}
