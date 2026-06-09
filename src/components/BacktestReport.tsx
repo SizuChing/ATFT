@@ -31,6 +31,7 @@ const fundMonthlyData = [
   {
     year: "2026",
     months: [null, null, null, 4.43, 2.53, null, null, null, null, null, null, null] as (number | null)[],
+    total: 6.96,
   },
 ];
 
