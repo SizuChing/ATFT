@@ -236,6 +236,7 @@ const BacktestReport = () => {
                   {monthHeaders.map((m) => (
                     <th key={m} className="px-2 py-3 text-center text-white-80 font-medium whitespace-nowrap">{m}</th>
                   ))}
+                  <th className="px-3 py-3 text-center text-foreground font-bold whitespace-nowrap">Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -247,9 +248,17 @@ const BacktestReport = () => {
                         <CellValue val={val} />
                       </td>
                     ))}
+                    <td className="px-3 py-3 text-center whitespace-nowrap">
+                      <span className="text-foreground font-bold text-base">{row.total.toFixed(2)}%</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
+            </table>
+          </div>
+          <p className="text-center mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
+            {t("backtest.fundDisclaimer")}
+          </p>
             </table>
           </div>
         </div>
