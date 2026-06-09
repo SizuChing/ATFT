@@ -1575,6 +1575,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "Below is the『AIFT Steady Growth Fund A001』historical monthly actual APR Change (%) record",
     "backtest.fundDesc2": "Fund activated since: 2026-04-08",
+    "backtest.fundDisclaimer": "Performance may vary depending on the timing of investment.",
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI Prediction",
