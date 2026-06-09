@@ -890,6 +890,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "以下为『AIFT Steady Growth Fund A001』历史每月实际年化收益率（%）记录",
     "backtest.fundDesc2": "基金启动日期：2026-04-08",
+    "backtest.fundDisclaimer": "投资起始时间不同，绩效表现将有所差异。",
 
     "nav.aiTerminal": "AI 预测",
     "dash.live": "LIVE SYSTEM · 即时运算中",
