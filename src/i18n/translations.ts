@@ -186,7 +186,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.ethLabel": "ETH AI · 回測數據",
     "backtest.fundLabel": "ECB FUND · 實盤績效",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
-    "backtest.fundDesc1": "以下為『AIFT Steady Growth Fund A001』歷史每月實際年化報酬率（%）記錄",
+    "backtest.fundDesc1": "以下為『AIFT Steady Growth Fund A001』歷史每月實績報酬率（%）記錄",
     "backtest.fundDesc2": "基金啟動日期：2026-04-08",
     "backtest.fundDisclaimer": "投資起始時間不同，績效表現將有所差異。",
 
@@ -888,7 +888,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.ethLabel": "ETH AI · 回测数据",
     "backtest.fundLabel": "ECB FUND · 实盘绩效",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
-    "backtest.fundDesc1": "以下为『AIFT Steady Growth Fund A001』历史每月实际年化收益率（%）记录",
+    "backtest.fundDesc1": "以下为『AIFT Steady Growth Fund A001』历史每月实绩收益率（%）记录",
     "backtest.fundDesc2": "基金启动日期：2026-04-08",
     "backtest.fundDisclaimer": "投资起始时间不同，绩效表现将有所差异。",
 
@@ -1573,7 +1573,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.ethLabel": "ETH AI · Backtest Data",
     "backtest.fundLabel": "ECB FUND · Live Performance",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
-    "backtest.fundDesc1": "Below is the『AIFT Steady Growth Fund A001』historical monthly actual APR Change (%) record",
+    "backtest.fundDesc1": "Below is the『AIFT Steady Growth Fund A001』historical monthly actual return (%) record",
     "backtest.fundDesc2": "Fund activated since: 2026-04-08",
     "backtest.fundDisclaimer": "Performance may vary depending on the timing of investment.",
 
@@ -2259,7 +2259,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.ethLabel": "ETH AI · バックテストデータ",
     "backtest.fundLabel": "ECB FUND · 実績パフォーマンス",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
-    "backtest.fundDesc1": "以下は『AIFT Steady Growth Fund A001』の毎月の実績年率リターン（%）の記録です",
+    "backtest.fundDesc1": "以下は『AIFT Steady Growth Fund A001』の毎月の実績リターン（%）の記録です",
     "backtest.fundDesc2": "ファンド開始日：2026-04-08",
     "backtest.fundDisclaimer": "スタートする時期によりパフォーマンスが異なります。",
 
