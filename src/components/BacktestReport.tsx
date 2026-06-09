@@ -259,8 +259,6 @@ const BacktestReport = () => {
           <p className="text-center mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
             {t("backtest.fundDisclaimer")}
           </p>
-            </table>
-          </div>
         </div>
       </div>
     </section>
