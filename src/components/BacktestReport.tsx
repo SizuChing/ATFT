@@ -20,8 +20,8 @@ const monthlyData = [
   },
   {
     year: "2026",
-    months: [4.99, 1.38, 0.66, 0.09, 0.33, null, null, null, null, null, null, null],
-    total: 7.45,
+    months: [4.99, 1.38, 0.66, 0.09, 0.33, 0.63, null, null, null, null, null, null],
+    total: 8.08,
   },
 ];
 
@@ -30,8 +30,8 @@ const monthHeaders = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "S
 const fundMonthlyData = [
   {
     year: "2026",
-    months: [null, null, null, 4.43, 2.53, null, null, null, null, null, null, null] as (number | null)[],
-    total: 6.96,
+    months: [null, null, null, 4.43, 2.53, 2.88, null, null, null, null, null, null] as (number | null)[],
+    total: 9.84,
   },
 ];
 
