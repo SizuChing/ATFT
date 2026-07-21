@@ -14,7 +14,7 @@ interface AboutVideoProps {
   youtubeUrl?: string;
 }
 
-const AboutVideo = ({ youtubeUrl = YOUTUBE_DEMO_URL }: AboutVideoProps) => {
+const AboutVideo = ({ youtubeUrl = YOUTUBE_VIDEO_URL }: AboutVideoProps) => {
   const { t } = useLanguage();
   const videoId = getYouTubeEmbedId(youtubeUrl);
 
