@@ -2,6 +2,7 @@ import { Brain, Globe, Shield, TrendingUp } from "lucide-react";
 import { useScrollFadeUp } from "@/hooks/useScrollFadeUp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import aiftHexagonLogo from "@/assets/aift-hexagon-logo.webp";
+import AboutVideo from "@/components/AboutVideo";
 
 const AboutSection = () => {
   const ref = useScrollFadeUp();
