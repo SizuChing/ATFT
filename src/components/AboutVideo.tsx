@@ -1,7 +1,7 @@
 import { Play } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const YOUTUBE_DEMO_URL = "https://www.youtube.com/watch?v=M7lc1UVf-VE";
+const YOUTUBE_VIDEO_URL = "https://youtu.be/EZYD1IPmGwQ";
 
 function getYouTubeEmbedId(url: string): string | null {
   const match = url.match(
@@ -14,7 +14,7 @@ interface AboutVideoProps {
   youtubeUrl?: string;
 }
 
-const AboutVideo = ({ youtubeUrl = YOUTUBE_DEMO_URL }: AboutVideoProps) => {
+const AboutVideo = ({ youtubeUrl = YOUTUBE_VIDEO_URL }: AboutVideoProps) => {
   const { t } = useLanguage();
   const videoId = getYouTubeEmbedId(youtubeUrl);
 
