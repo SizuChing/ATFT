@@ -2120,7 +2120,7 @@ export const translations: Record<Locale, Record<string, string>> = {
    "about.security.body": "AIFTのトレードの根本理念は、「安全」と「安定」です。\n\nAI先物取引においても、急激な下落局面を常に想定した設計を施しており、資金の安全確保を最優先に考えています。\n\nシステムは市場が70%以上急落するような極端な相場環境においても安定的に稼働できる耐性を持ち、すべての投資家の資産を守ることを最大の使命としています。",
    "about.video.label": "動画紹介",
    "about.video.title": "AIFT AIトレード実演",
-   "about.video.desc": "第4世代クオンツAIエンジンによる完全自動取引の様子を動画でご確認ください。"
+   "about.video.desc": "第4世代クオンツAIエンジンによる完全自動取引の様子を動画でご確認ください。",
 
     "products.label": "Trading Systems",
     "products.title": "取引システム",
