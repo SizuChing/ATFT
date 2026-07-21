@@ -95,6 +95,10 @@ const AboutSection = () => {
             </div>
           ))}
         </div>
+
+        <div className="mt-12 pt-12 border-t border-[rgba(180,60,220,0.15)]">
+          <AboutVideo />
+        </div>
       </div>
     </section>
   );
