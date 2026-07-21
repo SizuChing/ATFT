@@ -29,8 +29,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "about.feat3.desc": "多重保護層確保資金安全",
    "about.story.title": "AIFT AI 交易的誕生",
    "about.story.body": "AIFT 的前身，是由三位來自台灣大型加密貨幣交易所的技術工程師所創立。\n\n2017 年，一位新加坡客戶委託我們為 Binance 交易所開發網格交易的外部插件。然而，當時的網格交易策略過於僵化，難以因應市場的動態變化。\n\n這個契機促使我們思考更靈活的多重判斷條件架構，奠定了今日 AIFT AI 交易系統的核心邏輯基礎。\n\n2022 年 6 月，系統正式上線實盤運行，現貨交易年化收益穩定維持在約 22% 左右。\n\n同年 11 月，ChatGPT 的發布讓我們意識到 AI 在交易分析領域的巨大潛力。經過實測驗證後，我們將 AI 技術正式導入交易系統，並於 2023 年推出初代 AIFT AI 交易服務。",
-   "about.security.title": "安全與穩定，是我們的核心理念",
-   "about.security.body": "AIFT 的交易策略，以「安全」與「穩定」為最高原則。\n\n即使面對 AI 合約交易，我們在系統設計之初便充分預設極端下跌情境，將資金安全列為首要考量。\n\n系統架構能夠承受市場 70% 以上的急跌衝擊，確保在高波動環境下仍能穩健運作，保護每一位投資者的資產安全。",
+    "about.security.title": "安全與穩定，是我們的核心理念",
+    "about.security.body": "AIFT 的交易策略，以「安全」與「穩定」為最高原則。\n\n即使面對 AI 合約交易，我們在系統設計之初便充分預設極端下跌情境，將資金安全列為首要考量。\n\n系統架構能夠承受市場 70% 以上的急跌衝擊，確保在高波動環境下仍能穩健運作，保護每一位投資者的資產安全。",
+    "about.video.label": "影片介紹",
+    "about.video.title": "AIFT AI 交易實戰演示",
+    "about.video.desc": "觀看影片，了解 AIFT 如何透過第四代量化 AI 引擎實現全自動化交易。",
 
     // Products
     "products.label": "Trading Systems",
