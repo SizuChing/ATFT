@@ -741,6 +741,9 @@ export const translations: Record<Locale, Record<string, string>> = {
    "about.story.body": "AIFT 的前身，是由三位来自台湾大型加密货币交易所的技术工程师所创立。\n\n2017 年，一位新加坡客户委托我们为 Binance 交易所开发网格交易的外部插件。然而，当时的网格交易策略过于僵化，难以因应市场的动态变化。\n\n这个契机促使我们思考更灵活的多重判断条件架构，奠定了今日 AIFT AI 交易系统的核心逻辑基础。\n\n2022 年 6 月，系统正式上线实盘运行，现货交易年化收益稳定维持在约 22% 左右。\n\n同年 11 月，ChatGPT 的发布让我们意识到 AI 在交易分析领域的巨大潜力。经过实测验证后，我们将 AI 技术正式导入交易系统，并于 2023 年推出初代 AIFT AI 交易服务。",
    "about.security.title": "安全与稳定，是我们的核心理念",
    "about.security.body": "AIFT 的交易策略，以「安全」与「稳定」为最高原则。\n\n即使面对 AI 合约交易，我们在系统设计之初便充分预设极端下跌情境，将资金安全列为首要考量。\n\n系统架构能够承受市场 70% 以上的急跌冲击，确保在高波动环境下仍能稳健运作，保护每一位投资者的资产安全。",
+   "about.video.label": "视频介绍",
+   "about.video.title": "AIFT AI 交易实战演示",
+   "about.video.desc": "观看视频，了解 AIFT 如何通过第四代量化 AI 引擎实现全自动化交易。",
 
     "products.label": "Trading Systems",
     "products.title": "交易系统",
