@@ -13,6 +13,30 @@ const Footer = () => {
             <p className="text-white-40 text-xs mt-2 leading-relaxed">
               Al Financial Technologies Ltd.<br />{t("footer.brand.desc")}
             </p>
+            <div className="mt-4" style={{ marginTop: "16px" }}>
+              <div className="mb-[6px] flex items-baseline gap-1">
+                <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{t("footer.company.label")}：</span>
+                <span className="text-[12px] text-white">AI Financial Technologies</span>
+              </div>
+              <div className="mb-[6px] flex items-baseline gap-1">
+                <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{t("footer.founded.label")}：</span>
+                <span className="text-[12px] text-white">2019年11月11日</span>
+              </div>
+              <div className="mb-[6px] flex items-baseline gap-1">
+                <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{t("footer.location.label")}：</span>
+                <span className="text-[12px] text-white">Kaohsiung City</span>
+              </div>
+              <div className="mb-[6px] flex items-baseline gap-1">
+                <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{t("footer.ceo.label")}：</span>
+                <span className="text-[12px] text-white">TSENG SHIH HAO</span>
+              </div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>{t("footer.email.label")}：</span>
+                <a href="mailto:service.aift@gmail.com" className="text-[12px] transition-colors hover:text-white" style={{ color: "rgba(255,255,255,0.6)" }}>
+                  service.aift@gmail.com
+                </a>
+              </div>
+            </div>
           </div>
           <div>
             <h4 className="text-foreground text-sm font-medium mb-3">{t("footer.col.trading")}</h4>
