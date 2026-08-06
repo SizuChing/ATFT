@@ -231,6 +231,13 @@ const ECBSection = () => {
                 >
                   <Mail size={16} /> EMAIL
                 </a>
+                <a
+                  href="mailto:service.aift@gmail.com"
+                  className="block text-center transition-colors hover:text-white/80"
+                  style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", marginTop: "8px" }}
+                >
+                  service.aift@gmail.com
+                </a>
               </div>
             )}
           </div>
