@@ -20,18 +20,26 @@ const monthlyData = [
   },
   {
     year: "2026",
-    months: [4.99, 1.38, 0.66, 0.09, 0.33, 0.63, 0.00, null, null, null, null, null],
-    total: 8.08,
+    months: [4.99, 1.38, 0.66, 0.09, 0.33, 0.63, 0.00, 8.26, null, null, null, null],
+    total: 16.34,
   },
 ];
 
 const monthHeaders = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const fundMonthlyData = [
+const fundA001Data = [
   {
     year: "2026",
-    months: [null, null, null, 4.43, 2.53, 2.88, 3.25, null, null, null, null, null] as (number | null)[],
-    total: 13.09,
+    months: [null, null, null, 4.43, 2.53, 2.88, 3.25, 3.19, null, null, null, null] as (number | null | undefined)[],
+    total: 16.28,
+  },
+];
+
+const fundA002Data = [
+  {
+    year: "2026",
+    months: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, 1.81, null, null, null, null] as (number | null | undefined)[],
+    total: 1.81,
   },
 ];
 
@@ -78,7 +86,8 @@ function AnimatedNumber({ target, duration = 1500 }: { target: number; duration?
   );
 }
 
-function CellValue({ val }: { val: number | null }) {
+function CellValue({ val }: { val: number | null | undefined }) {
+  if (val === undefined) return <span>&nbsp;</span>;
   if (val === null) return <span style={{ color: "rgba(255,255,255,0.3)" }}>-</span>;
   const formatted = `${val.toFixed(2)}%`;
   if (val === 0) return <span className="text-[#4ADE80]">{formatted}</span>;
@@ -86,6 +95,45 @@ function CellValue({ val }: { val: number | null }) {
     <span className={val > 0 ? "text-[#4ADE80]" : "text-[#F87171]"}>
       {formatted}
     </span>
+  );
+}
+
+function FundTable({ rows, title }: { rows: typeof fundA001Data; title: string }) {
+  return (
+    <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
+      <div
+        className="px-6 py-3 text-center text-sm font-bold text-foreground"
+        style={{ background: "linear-gradient(135deg, #5B1F8A, #7B3DB8)" }}
+      >
+        {title}
+      </div>
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border">
+            <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">Year</th>
+            {monthHeaders.map((m) => (
+              <th key={m} className="px-2 py-3 text-center text-white-80 font-medium whitespace-nowrap">{m}</th>
+            ))}
+            <th className="px-3 py-3 text-center text-foreground font-bold whitespace-nowrap">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.year} className="border-b border-border/50">
+              <td className="px-3 py-3 text-foreground font-bold whitespace-nowrap">{row.year}</td>
+              {row.months.map((val, j) => (
+                <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
+                  <CellValue val={val} />
+                </td>
+              ))}
+              <td className="px-3 py-3 text-center whitespace-nowrap">
+                <span className="text-foreground font-bold text-base">{row.total.toFixed(2)}%</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -210,52 +258,32 @@ const BacktestReport = () => {
           ))}
         </div>
 
-        {/* Divider + ECB FUND table */}
+        {/* Divider + ECB FUND tables */}
         <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "40px" }} className="pt-8">
           <div className="text-center mb-3">
             <span className="text-[11px] tracking-[3px] uppercase text-primary">
               {t("backtest.fundLabel")}
             </span>
           </div>
+
+          {/* A001 */}
           <p className="text-white-40 text-center text-sm sm:text-base leading-relaxed mb-4">
             {t("backtest.fundDesc1")}
             <br />
             {t("backtest.fundDesc2")}
           </p>
-          <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
-            <div
-              className="px-6 py-3 text-center text-sm font-bold text-foreground"
-              style={{ background: "linear-gradient(135deg, #5B1F8A, #7B3DB8)" }}
-            >
-              {t("backtest.fundTableTitle")}
-            </div>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">{t("backtest.year")}</th>
-                  {monthHeaders.map((m) => (
-                    <th key={m} className="px-2 py-3 text-center text-white-80 font-medium whitespace-nowrap">{m}</th>
-                  ))}
-                  <th className="px-3 py-3 text-center text-foreground font-bold whitespace-nowrap">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {fundMonthlyData.map((row) => (
-                  <tr key={row.year} className="border-b border-border/50">
-                    <td className="px-3 py-3 text-foreground font-bold whitespace-nowrap">{row.year}</td>
-                    {row.months.map((val, j) => (
-                      <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
-                        <CellValue val={val} />
-                      </td>
-                    ))}
-                    <td className="px-3 py-3 text-center whitespace-nowrap">
-                      <span className="text-foreground font-bold text-base">{row.total.toFixed(2)}%</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <FundTable rows={fundA001Data} title={t("backtest.fundTableTitle")} />
+
+          {/* A002 */}
+          <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "48px" }} className="pt-8">
+            <p className="text-white-40 text-center text-sm sm:text-base leading-relaxed mb-4">
+              {t("backtest.fundA002Desc1")}
+              <br />
+              {t("backtest.fundA002Desc2")}
+            </p>
+            <FundTable rows={fundA002Data} title={t("backtest.fundA002TableTitle")} />
           </div>
+
           <p className="text-center mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
             {t("backtest.fundDisclaimer")}
           </p>
