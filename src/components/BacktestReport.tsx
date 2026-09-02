@@ -99,6 +99,7 @@ function CellValue({ val }: { val: number | null | undefined }) {
 }
 
 function FundTable({ rows, title }: { rows: typeof fundA001Data; title: string }) {
+  const { t } = useLanguage();
   return (
     <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
       <div
@@ -110,7 +111,7 @@ function FundTable({ rows, title }: { rows: typeof fundA001Data; title: string }
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border">
-            <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">Year</th>
+            <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">{t("backtest.year")}</th>
             {monthHeaders.map((m) => (
               <th key={m} className="px-2 py-3 text-center text-white-80 font-medium whitespace-nowrap">{m}</th>
             ))}
