@@ -273,7 +273,7 @@ const BacktestReport = () => {
             <br />
             {t("backtest.fundDesc2")}
           </p>
-          <FundTable rows={fundA001Data} title={t("backtest.fundTableTitle")} />
+          <FundTable rows={fundA001Data} title={t("backtest.fundA001TableTitle")} />
 
           {/* A002 */}
           <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "48px" }} className="pt-8">
