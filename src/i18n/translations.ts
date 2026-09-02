@@ -192,6 +192,10 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.fundDesc1": "以下為『AIFT Steady Growth Fund A001』歷史每月實績報酬率（%）記錄",
     "backtest.fundDesc2": "基金啟動日期：2026-04-08",
     "backtest.fundDisclaimer": "投資起始時間不同，績效表現將有所差異。",
+    "backtest.fundA002TableTitle": "Fund A002 - 每月實績報酬率變化",
+    "backtest.fundA002Desc1": "以下為『AIFT Steady Growth Fund A002』歷史每月實績報酬率（%）記錄",
+    "backtest.fundA002Desc2": "基金啟動日期：2026-08-27",
+
 
     // AI Prediction Dashboard
     "nav.aiTerminal": "AI 預測",
