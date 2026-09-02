@@ -188,13 +188,15 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.highlight3": "2025 年度報告",
     "backtest.ethLabel": "ETH AI · 回測數據",
     "backtest.fundLabel": "ECB FUND · 實盤績效",
+    "backtest.fundA001TableTitle": "Fund A001 - 每月實績報酬率變化（月次）",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "以下為『AIFT Steady Growth Fund A001』歷史每月實績報酬率（%）記錄",
     "backtest.fundDesc2": "基金啟動日期：2026-04-08",
     "backtest.fundDisclaimer": "投資起始時間不同，績效表現將有所差異。",
-    "backtest.fundA002TableTitle": "Fund A002 - 每月實績報酬率變化",
+    "backtest.fundA002TableTitle": "Fund A002 - 每月實績報酬率變化（月次）",
     "backtest.fundA002Desc1": "以下為『AIFT Steady Growth Fund A002』歷史每月實績報酬率（%）記錄",
     "backtest.fundA002Desc2": "基金啟動日期：2026-08-27",
+
 
 
     // AI Prediction Dashboard
@@ -900,15 +902,17 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.highlight1": "2023 年度报告",
     "backtest.highlight2": "2024 年度报告",
     "backtest.highlight3": "2025 年度报告",
-    "backtest.ethLabel": "ETH AI · 回测数据",
+    "backtest.ethLabel": "ETH AI · 实盘绩效",
     "backtest.fundLabel": "ECB FUND · 实盘绩效",
+    "backtest.fundA001TableTitle": "Fund A001 - 每月实绩收益率变化（月次）",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "以下为『AIFT Steady Growth Fund A001』历史每月实绩收益率（%）记录",
     "backtest.fundDesc2": "基金启动日期：2026-04-08",
     "backtest.fundDisclaimer": "投资起始时间不同，绩效表现将有所差异。",
-    "backtest.fundA002TableTitle": "Fund A002 - 每月实绩报酬率变化",
+    "backtest.fundA002TableTitle": "Fund A002 - 每月实绩收益率变化（月次）",
     "backtest.fundA002Desc1": "以下为『AIFT Steady Growth Fund A002』历史每月实绩收益率（%）记录",
     "backtest.fundA002Desc2": "基金启动日期：2026-08-27",
+
 
 
     "nav.aiTerminal": "AI 预测",
@@ -1599,6 +1603,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.highlight3": "2025 Annual Report",
     "backtest.ethLabel": "ETH AI · Backtest Data",
     "backtest.fundLabel": "ECB FUND · Live Performance",
+    "backtest.fundA001TableTitle": "Fund A001 - Annual Percentage Rate Change (Monthly)",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "Below is the『AIFT Steady Growth Fund A001』historical monthly actual return (%) record",
     "backtest.fundDesc2": "Fund activated since: 2026-04-08",
@@ -1606,6 +1611,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.fundA002TableTitle": "Fund A002 - Annual Percentage Rate Change (Monthly)",
     "backtest.fundA002Desc1": "Below is the『AIFT Steady Growth Fund A002』historical monthly actual return (%) record",
     "backtest.fundA002Desc2": "Fund activated since: 2026-08-27",
+
 
 
     // AI Prediction Dashboard
@@ -2297,6 +2303,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.highlight3": "2025年度レポート",
     "backtest.ethLabel": "ETH AI · バックテストデータ",
     "backtest.fundLabel": "ECB FUND · 実績パフォーマンス",
+    "backtest.fundA001TableTitle": "Fund A001 - 月次実績リターン変化",
     "backtest.fundTableTitle": "Annual Percentage Rate Change (Monthly)",
     "backtest.fundDesc1": "以下は『AIFT Steady Growth Fund A001』の毎月の実績リターン（%）の記録です",
     "backtest.fundDesc2": "ファンド開始日：2026-04-08",
@@ -2304,6 +2311,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "backtest.fundA002TableTitle": "Fund A002 - 月次実績リターン変化",
     "backtest.fundA002Desc1": "以下は『AIFT Steady Growth Fund A002』の毎月の実績リターン（%）の記録です",
     "backtest.fundA002Desc2": "ファンド開始日：2026-08-27",
+
 
 
     // AI Prediction Dashboard
