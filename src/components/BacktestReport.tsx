@@ -259,36 +259,6 @@ const BacktestReport = () => {
           ))}
         </div>
 
-        {/* Divider + ECB FUND tables */}
-        <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "40px" }} className="pt-8">
-          <div className="text-center mb-3">
-            <span className="text-[11px] tracking-[3px] uppercase text-primary">
-              {t("backtest.fundLabel")}
-            </span>
-          </div>
-
-          {/* A001 */}
-          <p className="text-white-40 text-center text-sm sm:text-base leading-relaxed mb-4">
-            {t("backtest.fundDesc1")}
-            <br />
-            {t("backtest.fundDesc2")}
-          </p>
-          <FundTable rows={fundA001Data} title={t("backtest.fundA001TableTitle")} />
-
-          {/* A002 */}
-          <div style={{ borderTop: "1px solid rgba(180,60,220,0.2)", marginTop: "48px" }} className="pt-8">
-            <p className="text-white-40 text-center text-sm sm:text-base leading-relaxed mb-4">
-              {t("backtest.fundA002Desc1")}
-              <br />
-              {t("backtest.fundA002Desc2")}
-            </p>
-            <FundTable rows={fundA002Data} title={t("backtest.fundA002TableTitle")} />
-          </div>
-
-          <p className="text-center mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
-            {t("backtest.fundDisclaimer")}
-          </p>
-        </div>
       </div>
     </section>
   );
