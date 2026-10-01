@@ -210,7 +210,7 @@ const BacktestReport = () => {
             {t("backtest.tableTitle")}
           </div>
 
-          <table className="w-full text-sm">
+          <table className="w-full table-fixed text-sm">
             <thead>
               <tr className="border-b border-border">
                 <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">{t("backtest.year")}</th>
@@ -235,7 +235,7 @@ const BacktestReport = () => {
                     <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
                       {row.year === "2026" && j === 8 ? (
                         <span
-                          className="inline-flex items-center gap-1 rounded-full px-1.5 py-0 font-bold"
+                          className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0 font-bold whitespace-nowrap"
                           style={{
                             background: "linear-gradient(135deg, rgba(74,222,128,0.12), rgba(123,61,184,0.2))",
                             border: "1px solid rgba(74,222,128,0.4)",
@@ -247,7 +247,7 @@ const BacktestReport = () => {
                           >
                             NEW
                           </span>
-                          <span className="text-[#4ADE80]">{val!.toFixed(2)}%</span>
+                          <span className="text-[10px] sm:text-xs text-[#4ADE80]">{val!.toFixed(2)}%</span>
                         </span>
                       ) : (
                         <CellValue val={val} />
