@@ -235,15 +235,14 @@ const BacktestReport = () => {
                     <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
                       {row.year === "2026" && j === 8 ? (
                         <span
-                          className="relative inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-bold animate-pulse"
+                          className="inline-flex items-center gap-1 rounded-full px-1.5 py-0 font-bold"
                           style={{
-                            background: "linear-gradient(135deg, rgba(74,222,128,0.15), rgba(123,61,184,0.25))",
-                            border: "1px solid rgba(74,222,128,0.45)",
-                            boxShadow: "0 0 14px rgba(74,222,128,0.3)",
+                            background: "linear-gradient(135deg, rgba(74,222,128,0.12), rgba(123,61,184,0.2))",
+                            border: "1px solid rgba(74,222,128,0.4)",
                           }}
                         >
                           <span
-                            className="text-[9px] font-bold tracking-[1px] uppercase"
+                            className="text-[8px] font-bold tracking-[0.5px] uppercase"
                             style={{ color: "#64CFC3" }}
                           >
                             NEW
