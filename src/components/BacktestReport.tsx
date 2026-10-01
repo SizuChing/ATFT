@@ -240,8 +240,8 @@ const BacktestReport = () => {
                         style={
                           isNewEra
                             ? {
-                                background: "rgba(123,61,184,0.12)",
-                                ...(j === 8 ? { borderLeft: "1px solid rgba(147,51,234,0.35)" } : {}),
+                                background: "rgba(123,61,184,0.25)",
+                                ...(j === 8 ? { borderLeft: "1px solid rgba(168,85,247,0.5)" } : {}),
                               }
                             : undefined
                         }
@@ -267,7 +267,7 @@ const BacktestReport = () => {
         <div className="mt-4 text-center text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
           <span
             className="mr-2 inline-block h-3 w-3 rounded-sm align-middle"
-            style={{ background: "rgba(123,61,184,0.25)", border: "1px solid rgba(147,51,234,0.45)" }}
+            style={{ background: "rgba(123,61,184,0.4)", border: "1px solid rgba(168,85,247,0.6)" }}
           />
           <span className="align-middle">{t("backtest.sepNote")}</span>
         </div>
