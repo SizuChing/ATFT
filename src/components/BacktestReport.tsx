@@ -231,29 +231,25 @@ const BacktestReport = () => {
                   }}
                 >
                   <td className="px-3 py-3 text-foreground font-bold whitespace-nowrap">{row.year}</td>
-                  {row.months.map((val, j) => (
-                    <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
-                      {row.year === "2026" && j === 8 ? (
-                        <span
-                          className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0 font-bold whitespace-nowrap"
-                          style={{
-                            background: "linear-gradient(135deg, rgba(74,222,128,0.12), rgba(123,61,184,0.2))",
-                            border: "1px solid rgba(74,222,128,0.4)",
-                          }}
-                        >
-                          <span
-                            className="text-[8px] font-bold tracking-[0.5px] uppercase"
-                            style={{ color: "#64CFC3" }}
-                          >
-                            NEW
-                          </span>
-                          <span className="text-[10px] sm:text-xs text-[#4ADE80]">{val!.toFixed(2)}%</span>
-                        </span>
-                      ) : (
+                  {row.months.map((val, j) => {
+                    const isNewEra = row.year === "2026" && j >= 8;
+                    return (
+                      <td
+                        key={j}
+                        className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm"
+                        style={
+                          isNewEra
+                            ? {
+                                background: "rgba(123,61,184,0.12)",
+                                ...(j === 8 ? { borderLeft: "1px solid rgba(147,51,234,0.35)" } : {}),
+                              }
+                            : undefined
+                        }
+                      >
                         <CellValue val={val} />
-                      )}
-                    </td>
-                  ))}
+                      </td>
+                    );
+                  })}
                   <td className="px-3 py-3 text-center whitespace-nowrap">
                     {row.total !== null ? (
                       <span className="text-foreground font-bold text-base">{row.total.toFixed(2)}%</span>
@@ -267,14 +263,12 @@ const BacktestReport = () => {
           </table>
         </div>
 
-        {/* Sep 2026 AI model update note */}
+        {/* AI model era note */}
         <div className="mt-4 text-center text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
           <span
-            className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-bold tracking-[1px] uppercase mr-2 align-middle"
-            style={{ background: "rgba(100,207,195,0.15)", color: "#64CFC3", border: "1px solid rgba(100,207,195,0.4)" }}
-          >
-            NEW
-          </span>
+            className="mr-2 inline-block h-3 w-3 rounded-sm align-middle"
+            style={{ background: "rgba(123,61,184,0.25)", border: "1px solid rgba(147,51,234,0.45)" }}
+          />
           <span className="align-middle">{t("backtest.sepNote")}</span>
         </div>
 
