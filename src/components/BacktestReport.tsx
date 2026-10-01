@@ -204,7 +204,7 @@ const BacktestReport = () => {
         <div className="overflow-x-auto rounded-2xl border border-border" style={{ background: "rgba(21,0,40,0.8)" }}>
           {/* Table header label */}
           <div
-            className="px-6 py-3 text-center text-sm font-bold text-foreground"
+            className="min-w-[720px] px-6 py-3 text-center text-sm font-bold text-foreground"
             style={{ background: "linear-gradient(135deg, #5B1F8A, #7B3DB8)" }}
           >
             {t("backtest.tableTitle")}
