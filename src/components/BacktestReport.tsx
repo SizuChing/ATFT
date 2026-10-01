@@ -20,8 +20,8 @@ const monthlyData = [
   },
   {
     year: "2026",
-    months: [4.99, 1.38, 0.66, 0.09, 0.33, 0.63, 0.00, 8.26, null, null, null, null],
-    total: 16.34,
+    months: [4.99, 1.38, 0.66, 0.09, 0.33, 0.63, 0.00, 8.26, 3.56, null, null, null],
+    total: 19.90,
   },
 ];
 
@@ -233,7 +233,26 @@ const BacktestReport = () => {
                   <td className="px-3 py-3 text-foreground font-bold whitespace-nowrap">{row.year}</td>
                   {row.months.map((val, j) => (
                     <td key={j} className="px-2 py-3 text-center whitespace-nowrap text-xs sm:text-sm">
-                      <CellValue val={val} />
+                      {row.year === "2026" && j === 8 ? (
+                        <span
+                          className="relative inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-bold animate-pulse"
+                          style={{
+                            background: "linear-gradient(135deg, rgba(74,222,128,0.15), rgba(123,61,184,0.25))",
+                            border: "1px solid rgba(74,222,128,0.45)",
+                            boxShadow: "0 0 14px rgba(74,222,128,0.3)",
+                          }}
+                        >
+                          <span
+                            className="text-[9px] font-bold tracking-[1px] uppercase"
+                            style={{ color: "#64CFC3" }}
+                          >
+                            NEW
+                          </span>
+                          <span className="text-[#4ADE80]">{val!.toFixed(2)}%</span>
+                        </span>
+                      ) : (
+                        <CellValue val={val} />
+                      )}
                     </td>
                   ))}
                   <td className="px-3 py-3 text-center whitespace-nowrap">
@@ -248,6 +267,18 @@ const BacktestReport = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Sep 2026 AI model update note */}
+        <div className="mt-4 text-center text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <span
+            className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-bold tracking-[1px] uppercase mr-2 align-middle"
+            style={{ background: "rgba(100,207,195,0.15)", color: "#64CFC3", border: "1px solid rgba(100,207,195,0.4)" }}
+          >
+            NEW
+          </span>
+          <span className="align-middle">{t("backtest.sepNote")}</span>
+        </div>
+
 
         {/* Highlights */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 text-center">
