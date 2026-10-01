@@ -210,7 +210,7 @@ const BacktestReport = () => {
             {t("backtest.tableTitle")}
           </div>
 
-          <table className="w-full table-fixed text-sm">
+          <table className="w-full min-w-[720px] text-sm">
             <thead>
               <tr className="border-b border-border">
                 <th className="px-3 py-3 text-left text-white-80 font-medium whitespace-nowrap">{t("backtest.year")}</th>
